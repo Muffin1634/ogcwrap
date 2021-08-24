@@ -1,0 +1,4 @@
+!build/*.o
+other/
+!other/readme.md
+sublime/

@@ -1,0 +1,258 @@
+/*******************************************************************************
+ * prereqs
+ */
+
+typedef unsigned char	ubyte;
+typedef unsigned short	uword;
+typedef signed int		s32;
+
+struct					wiimote_t;
+struct					wiimote_listen_t;
+struct					bd_addr;
+
+typedef void (*wii_event_cb)(struct wiimote_t *, s32);
+typedef void (*cmd_blk_cb)(struct wiimote_t *,ubyte *, uword);
+
+
+typedef enum win_bt_stack_t {
+	WIIUSE_STACK_UNKNOWN,
+	WIIUSE_STACK_MS,
+	WIIUSE_STACK_BLUESOLEIL
+} win_bt_stack_t;
+
+typedef enum ir_position_t {
+	WIIUSE_IR_ABOVE,
+	WIIUSE_IR_BELOW
+} ir_position_t;
+
+typedef enum aspect_t {
+	WIIUSE_ASPECT_4_3,
+	WIIUSE_ASPECT_16_9
+} aspect_t;
+
+extern "C"
+{
+	const char * wiiuse_version(void);
+#ifndef GEKKO
+	struct wiimote_t * * wiiuse_init(int);
+#else
+	int wiiuse_register(struct wiimote_listen_t *, struct bd_addr *, struct wiimote_t *(*)(struct bd_addr *));
+	struct wiimote_t * * wiiuse_init(int, wii_event_cb);
+	void wiiuse_sensorbar_enable(int);
+#endif
+	void wiiuse_disconnected(struct wiimote_t *);
+	void wiiuse_cleanup(struct wiimote_t * *, int);
+	void wiiuse_rumble(struct wiimote_t *, int);
+	void wiiuse_toggle_rumble(struct wiimote_t *);
+	void wiiuse_set_leds(struct wiimote_t *, int, cmd_blk_cb);
+	void wiiuse_motion_sensing(struct wiimote_t *, int);
+	int wiiuse_read_data(struct wiimote_t *, ubyte *, unsigned int, unsigned short, cmd_blk_cb);
+	int wiiuse_write_data(struct wiimote_t *, unsigned int, ubyte *, ubyte, cmd_blk_cb);
+	void wiiuse_status(struct wiimote_t *, cmd_blk_cb);
+	struct wiimote_t * wiiuse_get_by_id(struct wiimote_t * *, int, int);
+	int wiiuse_set_flags(struct wiimote_t *, int, int);
+	float wiiuse_set_smooth_alpha(struct wiimote_t *, float);
+	void wiiuse_set_bluetooth_stack(struct wiimote_t * *, int, enum win_bt_stack_t);
+	void wiiuse_resync(struct wiimote_t *);
+	void wiiuse_set_timeout(struct wiimote_t * *, int, ubyte, ubyte);
+	int wiiuse_write_streamdata(struct wiimote_t *, ubyte *, ubyte, cmd_blk_cb);
+	int wiiuse_find(struct wiimote_t * *, int, int);
+	int wiiuse_connect(struct wiimote_t * *, int);
+	void wiiuse_disconnect(struct wiimote_t *);
+	int wiiuse_poll(struct wiimote_t * *, int);
+	void wiiuse_set_ir_mode(struct wiimote_t *);
+	void wiiuse_set_ir(struct wiimote_t *, int);
+	void wiiuse_set_ir_vres(struct wiimote_t *, unsigned int, unsigned int);
+	void wiiuse_set_ir_position(struct wiimote_t *, enum ir_position_t);
+	void wiiuse_set_aspect_ratio(struct wiimote_t *, enum aspect_t);
+	void wiiuse_set_ir_sensitivity(struct wiimote_t *, int);
+	void wiiuse_set_motion_plus(struct wiimote_t *, int);
+	void wiiuse_set_speaker(struct wiimote_t *, int );
+}
+
+/*******************************************************************************
+ * function forward declarations
+ */
+
+namespace wiimote
+{
+	namespace wiiuse
+	{
+		// library management
+		const char * version(void);
+		struct wiimote_t * * init(int);
+		struct wiimote_t * * init(int, wii_event_cb);
+
+		// wiimote handling
+		int registerWM(struct wiimote_listen_t *, struct bd_addr *, struct wiimote_t * (*)(struct bd_addr *));
+		void cleanupWM(struct wiimote_t * *, int);
+
+		// bluetooth handling
+		int findWM(struct wiimote_t * *, int, int);
+		int connectWM(struct wiimote_t * *, int);
+		void resyncWM(struct wiimote_t *);
+		void disconnectWM(struct wiimote_t *);
+
+		// gethods
+		struct wiimote_t * getWMByID(struct wiimote_t * *, int, int);
+		void getStatus(struct wiimote_t *, cmd_blk_cb);
+
+		// sethods
+		void setLEDs(struct wiimote_t *, int, cmd_blk_cb);
+		void setRumbleStatus(struct wiimote_t *, bool);
+		void setSensorBarStatus(bool);
+		int setFlags(struct wiimote_t *, int, int);
+		float setSmoothingAlpha(struct wiimote_t *, float);
+		void setBluetoothStack(struct wiimote_t * *, int, enum win_bt_stack_t);
+		void setTimeout(struct wiimote_t * *, int, ubyte, cmd_blk_cb);
+		void setMotionStatus(struct wiimote_t *, bool);
+		void setMotionPlusStatus(struct wiimote_t *, bool);
+		void setSpeakerStatus(struct wiimote_t *, bool);
+		void setAspectRatio(struct wiimote_t *, enum aspect_t);
+		void setIRStatus(struct wiimote_t *, bool);
+		void setIRPosition(struct wiimote_t *, enum ir_position_t);
+		void setIRVRes(struct wiimote_t *, unsigned int, unsigned int);
+		void setIRSensitivity(struct wiimote_t *, int);
+		void setIRMode(struct wiimote_t *);
+
+		void toggleRumbleStatus(struct wiimote_t *);
+
+		// read methods
+		int readData(struct wiimote_t *, ubyte *, unsigned int, unsigned short, cmd_blk_cb);
+		int pollWM(struct wiimote_t * *, int);
+
+		// write methods
+		int writeData(struct wiimote_t *, unsigned int, ubyte *, ubyte, cmd_blk_cb);
+		int writeStreamData(struct wiimote_t *, ubyte *, ubyte, cmd_blk_cb);
+	}
+}
+
+/*******************************************************************************
+ * functions
+ */
+
+const char * wiimote::wiiuse::version(void)
+	{ return wiiuse_version(); }
+
+struct wiimote_t * * wiimote::wiiuse::init(int number [[maybe_unused]])
+{
+	#ifndef GEKKO
+		return wiiuse_init(number);
+	#else
+		#warning You must supply another argument of type wii_event_cb to this function as well. (Wii, ::init)
+		return nullptr;
+	#endif
+}
+
+struct wiimote_t * * wiimote::wiiuse::init(int number, wii_event_cb cb [[maybe_unused]])
+{
+	#ifndef GEKKO
+		#ifndef warn_wiiuse_init
+			#define warn_wiiuse_init
+			#warning You do not need to supply the wii_event_cb as it is not required if you are not developing a program for the Wii. (not Wii, ::init)
+		#endif
+		return wiiuse_init(number);
+	#else
+		return wiiuse_init(number, cb);
+	#endif
+}
+
+int wiimote::wiiuse::registerWM(struct wiimote_listen_t * wml [[maybe_unused]], struct bd_addr * bdaddr [[maybe_unused]], struct wiimote_t * (*assign_cb [[maybe_unused]])(struct bd_addr *))
+{
+	#ifndef GEKKO
+		#warning This function is not defined for the platform you are developing for. (not Wii, ::register)
+		return -1;
+	#else
+		return wiiuse_register(wml, bdaddr, assign_cb);
+	#endif
+}
+
+void cleanupWM(struct wiimote_t * * wma, int wiimotes)
+	{ wiiuse_cleanup(wma, wiimotes); }
+
+int findWM(struct wiimote_t * * wma, int max, int timeout)
+	{ return wiiuse_find(wma, max, timeout); }
+
+int connectWM(struct wiimote_t * * wma, int wiimotes)
+	{ return wiiuse_connect(wma, wiimotes); }
+
+void resyncWM(struct wiimote_t * wm)
+	{ wiiuse_resync(wm); }
+
+void disconnectWM(struct wiimote_t * wm)
+	{ wiiuse_disconnect(wm); }
+
+struct wiimote_t * getWMByID(struct wiimote_t * * wma, int wiimotes, int uid)
+	{ return wiiuse_get_by_id(wma, wiimotes, uid); }
+
+void getStatus(struct wiimote_t * wm, cmd_blk_cb cb)
+	{ wiiuse_status(wm, cb); }
+
+void setLEDs(struct wiimote_t * wm, int leds, cmd_blk_cb cb)
+	{ wiiuse_set_leds(wm, leds, cb); }
+
+void setRumbleStatus(struct wiimote_t * wm, bool status)
+	{ wiiuse_rumble(wm, ((int)(status))); }
+
+void wiimote::wiiuse::setSensorBarStatus(bool status [[maybe_unused]])
+{
+	#ifndef GEKKO
+		#warning This function is not defined for the platform you are developing for. (not Wii, ::setSensorBarStatus)
+	#else
+		wiiuse_sensorbar_enable(((int)(status)));
+	#endif
+}
+
+int setFlags(struct wiimote_t * wm, int enable, int disable)
+	{ return wiiuse_set_flags(wm, enable, disable); }
+
+float setSmoothingAlpha(struct wiimote_t * wm, float alpha)
+	{ return wiiuse_set_smooth_alpha(wm, alpha); }
+
+void setBluetoothStack(struct wiimote_t * * wma, int wiimotes, enum win_bt_stack_t stack)
+	{ wiiuse_set_bluetooth_stack(wma, wiimotes, stack); }
+
+void setTimeout(struct wiimote_t * * wma, int wiimotes, ubyte wmtime, ubyte exptime)
+	{ wiiuse_set_timeout(wma, wiimotes, wmtime, exptime); }
+
+void setMotionStatus(struct wiimote_t * wm, bool status)
+	{ wiiuse_motion_sensing(wm, ((int)(status))); }
+
+void setMotionPlusStatus(struct wiimote_t * wm, bool status)
+	{ wiiuse_set_motion_plus(wm, ((int)(status))); }
+
+void setSpeakerStatus(struct wiimote_t * wm, bool status)
+	{ wiiuse_set_speaker(wm, ((int)(status))); }
+
+void setAspectRatio(struct wiimote_t * wm, enum aspect_t aspect)
+	{ wiiuse_set_aspect_ratio(wm, aspect); }
+
+void setIRStatus(struct wiimote_t * wm, bool status)
+	{ wiiuse_set_ir(wm, ((int)(status))); }
+
+void setIRPosition(struct wiimote_t * wm, enum ir_position_t position)
+	{ wiiuse_set_ir_position(wm, position); }
+
+void setIRRes(struct wiimote_t * wm, unsigned int xres, unsigned int yres)
+	{ wiiuse_set_ir_vres(wm, xres, yres); }
+
+void setIRSensitivity(struct wiimote_t * wm, int level)
+	{ wiiuse_set_ir_sensitivity(wm, level); }
+
+void setIRMode(struct wiimote_t * wm)
+	{ wiiuse_set_ir_mode(wm); }
+
+void toggleRumbleStatus(struct wiimote_t * wm)
+	{ wiiuse_toggle_rumble(wm); }
+
+int readData(struct wiimote_t * wm, ubyte * buffer, unsigned int offset, unsigned short len, cmd_blk_cb cb)
+	{ return wiiuse_read_data(wm, buffer, offset, len, cb); }
+
+int pollWM(struct wiimote_t * * wma, int wiimotes)
+	{ return wiiuse_poll(wma, wiimotes); }
+
+int writeData(struct wiimote_t * wm, unsigned int addr, ubyte * data, ubyte len, cmd_blk_cb cb)
+	{ return wiiuse_write_data(wm, addr, data, len, cb); }
+
+int writeStreamData(struct wiimote_t * wm, ubyte * data, ubyte len, cmd_blk_cb cb)
+	{ return wiiuse_write_streamdata(wm, data, len, cb); }
