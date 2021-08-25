@@ -4,8 +4,11 @@
 
 namespace debug
 {
+	// library management
 	void init(u8, u16);
-	void _break(void);
+
+	// breakpoint
+	void breakpt(void);
 }
 
 #endif // wrap_debug_hpp

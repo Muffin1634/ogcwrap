@@ -2,7 +2,7 @@
 #ifndef wrap_wpad_h
 #define wrap_wpad_h
 
-namespace wiimote
+namespace ogcwrap
 {
 	namespace wpad
 	{

@@ -4,7 +4,7 @@
 .SECONDARY:
 
 # mark phony targets
-.PHONY: all clean debug
+.PHONY: all load clean debug
 
 #-------------------------------------------------------------------------------
 # directories and files
@@ -61,7 +61,16 @@ LDFLAGS				:= $(LDFLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 # targets
 
 # default target
-all: libwrap.a
+all:
+	@make --no-print-dir libwrap.a
+	@echo
+	@make --no-print-dir load
+
+# load target
+load:
+	@cp -vf $(DIRS_LIB)/libwrap.a $(DEVKITPRO)/libogc/lib/wii/libwrap.a
+	@rm -vrf ../libwraptest/lib/local/include/*
+	@cp -vr includes/* ../libwraptest/lib/local/include/
 
 # clean target
 clean:
@@ -97,7 +106,7 @@ test.elf: test.o
 
 libwrap.a: $(OBJFILES)
 	@echo building static library archive $@
-	@$(AR) -rvlsf $(DIRS_LIB)/libwrap.a $(addprefix $(DIRS_BUILD)/,$(patsubst test.o,,$(OBJFILES)))
+	@$(AR) -rvlsf $(DIRS_LIB)/libwrap.a $(addprefix $(DIRS_BUILD)/,$(OBJFILES_LIB))
 	@echo done building archive
 
 #-------------------------------------------------------------------------------

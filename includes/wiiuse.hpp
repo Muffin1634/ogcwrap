@@ -2,7 +2,7 @@
 #ifndef wrap_wiiuse_h
 #define wrap_wiiuse_h
 
-namespace wiimote
+namespace ogcwrap
 {
 	namespace wiiuse
 	{
@@ -32,7 +32,7 @@ namespace wiimote
 		int setFlags(struct wiimote_t *, int, int);
 		float setSmoothingAlpha(struct wiimote_t *, float);
 		void setBluetoothStack(struct wiimote_t * *, int, enum win_bt_stack_t);
-		void setTimeout(struct wiimote_t * *, ubyte *, ubyte, cmd_blk_cb);
+		void setTimeout(struct wiimote_t * *, int, ubyte, ubyte);
 		void setMotionStatus(struct wiimote_t *, bool);
 		void setMotionPlusStatus(struct wiimote_t *, bool);
 		void setSpeakerStatus(struct wiimote_t *, bool);

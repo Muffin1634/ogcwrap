@@ -60,7 +60,7 @@ extern "C"
  * function forward declarations
  */
 
-namespace wiimote
+namespace ogcwrap
 {
 	namespace wpad
 	{
@@ -111,13 +111,13 @@ namespace wiimote
  * functions
  */
 
-bool wiimote::wpad::init(void)
+bool ogcwrap::wpad::init(void)
 	{ return (WPAD_Init() == 0 ? true : false); }
 
-void wiimote::wpad::shutdown(void)
+void ogcwrap::wpad::shutdown(void)
 	{ WPAD_Shutdown(); }
 
-void wiimote::wpad::setCallback(u8 type, WPADShutdownCallback cb)
+void ogcwrap::wpad::setCallback(u8 type, WPADShutdownCallback cb)
 {
 	switch (type)
 	{
@@ -132,67 +132,67 @@ void wiimote::wpad::setCallback(u8 type, WPADShutdownCallback cb)
 	}
 }
 
-void wiimote::wpad::setDataFormat(u8 channel, u8 fmt)
+void ogcwrap::wpad::setDataFormat(u8 channel, u8 fmt)
 	{ WPAD_SetDataFormat(((s32)(channel)), ((s32)(fmt))); }
 
-void wiimote::wpad::setMotionPlus(u8 channel, bool status)
+void ogcwrap::wpad::setMotionPlus(u8 channel, bool status)
 	{ WPAD_SetMotionPlus(((s32)(channel)), ((u8)(status))); }
 
-void wiimote::wpad::setVRes(u8 channel, u16 xres, u16 yres)
+void ogcwrap::wpad::setVRes(u8 channel, u16 xres, u16 yres)
 	{ WPAD_SetVRes(((s32)(channel)), ((u32)(xres)), ((u32)(yres))); }
 
-void wiimote::wpad::setEventBuffers(u8 channel, WPADData * bufs, u32 count)
+void ogcwrap::wpad::setEventBuffers(u8 channel, WPADData * bufs, u32 count)
 	{ WPAD_SetEventBufs(((s32)(channel)), bufs, count); }
 
-void wiimote::wpad::setIdleTimeout(u32 seconds)
+void ogcwrap::wpad::setIdleTimeout(u32 seconds)
 	{ WPAD_SetIdleTimeout(seconds); }
 
-void wiimote::wpad::setIdleThresholds(u8 channel, s32 buttons, s32 ir, s32 accel, s32 js, s32 wb, s32 mp)
+void ogcwrap::wpad::setIdleThresholds(u8 channel, s32 buttons, s32 ir, s32 accel, s32 js, s32 wb, s32 mp)
 	{ WPAD_SetIdleThresholds(((s32)(channel)), buttons, ir, accel, js, wb, mp); }
 
-s32 wiimote::wpad::getStatus(void)
+s32 ogcwrap::wpad::getStatus(void)
 	{ return WPAD_GetStatus(); }
 
-bool wiimote::wpad::getSpeakerStatus(u8 channel)
+bool ogcwrap::wpad::getSpeakerStatus(u8 channel)
 	{ return (WPAD_IsSpeakerEnabled(((s32)(channel))) == 1 ? true : false); }
 
-u32 wiimote::wpad::getDroppedEventCount(u8 channel)
+u32 ogcwrap::wpad::getDroppedEventCount(u8 channel)
 	{ return ((u32)(WPAD_DroppedEvents(((s32)(channel))))); }
 
-u8 wiimote::wpad::getBatteryLevel(u8 channel)
+u8 ogcwrap::wpad::getBatteryLevel(u8 channel)
 	{ return WPAD_BatteryLevel(((int)(channel))); }
 
-void wiimote::wpad::encodeData(WPADEncStatus * info, u32 flags, const s16 * PCMSamples, s32 sampleCount, u8 * data)
+void ogcwrap::wpad::encodeData(WPADEncStatus * info, u32 flags, const s16 * PCMSamples, s32 sampleCount, u8 * data)
 	{ WPAD_EncodeData(info, flags, PCMSamples, sampleCount, data); }
 
-bool wiimote::wpad::writeRumbleStatus(u8 channel, bool status)
+bool ogcwrap::wpad::writeRumbleStatus(u8 channel, bool status)
 	{ return (WPAD_Rumble(((s32)(channel)), ((int)(status))) == 0 ? true : false); }
 
-bool wiimote::wpad::writeSpeakerStatus(u8 channel, bool status)
+bool ogcwrap::wpad::writeSpeakerStatus(u8 channel, bool status)
 	{ return (WPAD_ControlSpeaker(((s32)(channel)), ((s32)(status))) == 0 ? true : false); }
 
-bool wiimote::wpad::writeStreamData(u8 channel, void * dataBuffer, u32 dataSize)
+bool ogcwrap::wpad::writeStreamData(u8 channel, void * dataBuffer, u32 dataSize)
 	{ return (WPAD_SendStreamData(((s32)(channel)), dataBuffer, dataSize) == 0 ? true : false); }
 
-void wiimote::wpad::flush(u8 channel)
+void ogcwrap::wpad::flush(u8 channel)
 	{ WPAD_Flush(((s32)(channel))); }
 
-void wiimote::wpad::readEvents(u8 channel, WPADData * data)
+void ogcwrap::wpad::readEvents(u8 channel, WPADData * data)
 	{ WPAD_ReadEvent(((s32)(channel)), data); }
 
-u32 wiimote::wpad::readPendingEvents(u8 channel, WPADDataCallback cb)
+u32 ogcwrap::wpad::readPendingEvents(u8 channel, WPADDataCallback cb)
 	{ return ((u32)(WPAD_ReadPending(((s32)(channel)), cb))); }
 
-bool wiimote::wpad::probe(u8 channel, u32 * type)
+bool ogcwrap::wpad::probe(u8 channel, u32 * type)
 	{ return (WPAD_Probe(((s32)(channel)), type) == 0 ? true : false); }
 
-void wiimote::wpad::scan(void)
+void ogcwrap::wpad::scan(void)
 	{ WPAD_ScanPads(); }
 
-WPADData * wiimote::wpad::readWPADData(u8 channel)
+WPADData * ogcwrap::wpad::readWPADData(u8 channel)
 	{ return WPAD_Data(((s32)(channel))); }
 
-u32 wiimote::wpad::readButtonStatus(u8 channel, u8 type)
+u32 ogcwrap::wpad::readButtonStatus(u8 channel, u8 type)
 {
 	switch (type)
 	{
@@ -207,17 +207,17 @@ u32 wiimote::wpad::readButtonStatus(u8 channel, u8 type)
 	}
 }
 
-void wiimote::wpad::readIR(u8 channel, struct ir_t * ir)
+void ogcwrap::wpad::readIR(u8 channel, struct ir_t * ir)
 	{ WPAD_IR(((s32)(channel)), ir); }
 
-void wiimote::wpad::readOrientation(u8 channel, struct orient_t * orient)
+void ogcwrap::wpad::readOrientation(u8 channel, struct orient_t * orient)
 	{ WPAD_Orientation(((s32)(channel)), orient); }
 
-void wiimote::wpad::readGForce(u8 channel, struct gforce_t * gforce)
+void ogcwrap::wpad::readGForce(u8 channel, struct gforce_t * gforce)
 	{ WPAD_GForce(((s32)(channel)), gforce); }
 
-void wiimote::wpad::readAcceleration(u8 channel, struct vec3w_t * accel)
+void ogcwrap::wpad::readAcceleration(u8 channel, struct vec3w_t * accel)
 	{ WPAD_Accel(((s32)(channel)), accel); }
 
-void wiimote::wpad::readExpansion(u8 channel, struct expansion_t * exp)
+void ogcwrap::wpad::readExpansion(u8 channel, struct expansion_t * exp)
 	{ WPAD_Expansion(((s32)(channel)), exp); }
