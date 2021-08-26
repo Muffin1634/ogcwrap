@@ -29,13 +29,14 @@ namespace ogcwrap
 		{
 			DSFP_ERROR = -1,
 
-			TOP_FIELD = 1,
-			BOTTOM_FIELD = 0
+			TopField = 1,
+			BottomField = 0
 		} DSFieldPos;
 	}
 }
 
 using ogcwrap::video::TVMode;
 using ogcwrap::video::RetraceTime;
+using ogcwrap::video::DSFieldPos;
 
 #endif // wrap_video_td_h

@@ -63,8 +63,8 @@ namespace ogcwrap
 		{
 			DSFP_ERROR = -1,
 
-			TOP_FIELD = 1,
-			BOTTOM_FIELD = 0
+			TopField = 1,
+			BottomField = 0
 		};
 
 		// library management
@@ -110,7 +110,7 @@ void ogcwrap::video::init(void)
 GXRModeObj * ogcwrap::video::getPreferredRMode(GXRModeObj * rmode)
 	{ return VIDEO_GetPreferredMode(rmode); }
 
-ogcwrap::video::tv_mode_t ogcwrap::video::getTVMode(void)
+tv_mode_t ogcwrap::video::getTVMode(void)
 {
 	switch (VIDEO_GetCurrentTvMode())
 	{
@@ -146,14 +146,14 @@ u32 ogcwrap::video::getFramebufferSize(GXRModeObj * rmode)
 u32 ogcwrap::video::getCurrentLine(void)
 	{ return VIDEO_GetCurrentLine(); }
 
-ogcwrap::video::ds_field_pos_t ogcwrap::video::getNextField(void)
+ds_field_pos_t ogcwrap::video::getNextField(void)
 {
 	switch (VIDEO_GetNextField())
 	{
 		case 1:
-			return ds_field_pos_t::TOP_FIELD;
+			return ds_field_pos_t::TopField;
 		case 0:
-			return ds_field_pos_t::BOTTOM_FIELD;
+			return ds_field_pos_t::BottomField;
 		default:
 			return ds_field_pos_t::DSFP_ERROR;
 	}

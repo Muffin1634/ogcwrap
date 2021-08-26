@@ -160,7 +160,7 @@ struct wiimote_t * * ogcwrap::wiiuse::init(int number, wii_event_cb cb [[maybe_u
 int ogcwrap::wiiuse::registerWM(struct wiimote_listen_t * wml [[maybe_unused]], struct bd_addr * bdaddr [[maybe_unused]], struct wiimote_t * (*assign_cb [[maybe_unused]])(struct bd_addr *))
 {
 	#ifndef GEKKO
-		#warning This function is not defined for the platform you are developing for. (not Wii, ::register)
+		#warning This function is not defined for the platform you are developing for. (not Wii, ::registerWM)
 		return -1;
 	#else
 		return wiiuse_register(wml, bdaddr, assign_cb);

@@ -2,6 +2,9 @@
 #ifndef wrap_wiiuse_h
 #define wrap_wiiuse_h
 
+#include <gctypes.h>
+#include <wiiuse/wiiuse.h>
+
 namespace ogcwrap
 {
 	namespace wiiuse

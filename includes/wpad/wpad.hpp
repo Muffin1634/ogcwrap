@@ -2,6 +2,9 @@
 #ifndef wrap_wpad_h
 #define wrap_wpad_h
 
+#include <gctypes.h>
+#include <wiiuse/wpad.h>
+
 namespace ogcwrap
 {
 	namespace wpad

@@ -2,6 +2,9 @@
 #ifndef wrap_video_h
 #define wrap_video_h
 
+#include <gctypes.h>
+#include <ogc/video.h>
+
 #include "video/video_td.hpp"
 
 namespace ogcwrap
