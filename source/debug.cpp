@@ -2,15 +2,7 @@
  * prereqs
  */
 
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef signed int s32;
-
-extern "C"
-{
-	void DEBUG_Init(s32, s32);
-	void _break(void);
-}
+#include "wrapinclude.hpp"
 
 /*******************************************************************************
  * function forward declarations
@@ -28,7 +20,7 @@ namespace ogcwrap
 		};
 
 		// library management
-		void init(u8, u16);
+		void init(debug_device_type_t, u16);
 
 		// breakpoint
 		void breakpt(void);
@@ -47,10 +39,12 @@ namespace ogcwrap
  */
 
 void ogcwrap::debug::init(debug_device_type_t dev, u16 port)
-	{ DEBUG_Init(decodeDD(dev), port); }
+	{ DEBUG_Init(detail::decodeDD(dev), port); }
 
 void ogcwrap::debug::breakpt(void)
 	{ _break(); }
+
+// ogcwrap::debug::detail
 
 u8 ogcwrap::debug::detail::decodeDD(debug_device_type_t dev)
 	{ return (dev == debug_device_type_t::dev_USBGecko ? 0 : 1); }

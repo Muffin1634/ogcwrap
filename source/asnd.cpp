@@ -2,41 +2,7 @@
  * prereqs
  */
 
-typedef unsigned char u8;
-typedef unsigned int u32;
-typedef signed int s32;
-
-typedef void (*ASNDVoiceCallback)(s32);
-
-extern "C"
-{
-	void ASND_Init(void);
-	void ASND_End(void);
-	int ANote2Freq(int, int, int);
-	void ASND_Pause(s32);
-	s32 ASND_Is_Paused(void);
-	u32 ASND_GetTime(void);
-	u32 ASND_GetSampleCounter(void);
-	u32 ASND_GetSamplesPerTick(void);
-	void ASND_SetTime(u32);
-	void ASND_SetCallback(void (*)(void));
-	s32 ASND_GetAudioRate(void);
-	s32 ASND_SetVoice(s32, s32, s32, s32, void *, s32, s32, s32, ASNDVoiceCallback);
-	s32 ASND_SetInfiniteVoice(s32, s32, s32, s32, void *, s32, s32, s32);
-	s32 ASND_AddVoice(s32, void *, s32);
-	s32 ASND_StopVoice(s32);
-	s32 ASND_PauseVoice(s32, s32);
-	s32 ASND_StatusVoice(s32);
-	s32 ASND_GetFirstUnusedVoice(void);
-	s32 ASND_ChangePitchVoice(s32, s32);
-	s32 ASND_ChangeVolumeVoice(s32, s32, s32);
-	u32 ASND_GetTickCounterVoice(s32);
-	u32 ASND_GetTimerVoice(s32);
-	s32 ASND_TestPointer(s32, void *);
-	s32 ASND_TestVoiceBufferReady(s32);
-	u32 ASND_GetDSP_PercentUse(void);
-	u32 ASND_GetDSP_ProcessTime(void);
-}
+#include "wrapinclude.hpp"
 
 /*******************************************************************************
  * function forward declarations
@@ -61,7 +27,7 @@ namespace ogcwrap
 			VOICEWAITING = 3
 		};
 
-		enum snd_voice_fmt_t
+		enum asnd_voice_fmt_t
 		{
 			MONO_U8,
 			MONO_S8,
@@ -106,8 +72,8 @@ namespace ogcwrap
 		asnd_ret_vals_t pauseVoice(u8);
 		asnd_ret_vals_t stopVoice(u8);
 		asnd_ret_vals_t getVoiceStatus(u8);
-		asnd_ret_vals_t setVoice(u8, snd_voice_fmt_t, u32, u32, void *, u32, u8, u8, ASNDVoiceCallback);
-		asnd_ret_vals_t setInfiniteVoice(u8, snd_voice_fmt_t, u32, u32, void *, u32, u8, u8);
+		asnd_ret_vals_t setVoice(u8, asnd_voice_fmt_t, u32, u32, void *, u32, u8, u8, ASNDVoiceCallback);
+		asnd_ret_vals_t setInfiniteVoice(u8, asnd_voice_fmt_t, u32, u32, void *, u32, u8, u8);
 
 		// testing methods
 		bool testVoiceBufferUsing(u8, void *);
@@ -118,8 +84,10 @@ namespace ogcwrap
 			// other
 			int ANote2Freq(int, int, int);
 
-			// detail
-			u8 decodeSNDVF(snd_voice_fmt_t);
+			// encode (f<-b)
+
+			// decode (f->b)
+			u8 decodeASNDVF(asnd_voice_fmt_t);
 		}
 	}
 }
@@ -129,7 +97,7 @@ namespace ogcwrap
  */
 
 using ogcwrap::asnd::asnd_ret_vals_t;
-using ogcwrap::asnd::snd_voice_fmt_t;
+using ogcwrap::asnd::asnd_voice_fmt_t;
 
 void ogcwrap::asnd::init(void)
 	{ ASND_Init(); }
@@ -228,11 +196,11 @@ asnd_ret_vals_t ogcwrap::asnd::getVoiceStatus(u8 voice)
 	}
 }
 
-asnd_ret_vals_t ogcwrap::asnd::setVoice(u8 voice, snd_voice_fmt_t sampleFormat, u32 pitch, u32 delay, void * samples, u32 sampleSize, u8 left, u8 right, ASNDVoiceCallback cb)
-	{ return (ASND_SetVoice(voice, ogcwrap::asnd::detail::decodeSNDVF(sampleFormat), pitch, delay, samples, sampleSize, left, right, cb) == 0 ? asnd_ret_vals_t::OK : asnd_ret_vals_t::INVALID); }
+asnd_ret_vals_t ogcwrap::asnd::setVoice(u8 voice, asnd_voice_fmt_t sampleFormat, u32 pitch, u32 delay, void * samples, u32 sampleSize, u8 left, u8 right, ASNDVoiceCallback cb)
+	{ return (ASND_SetVoice(voice, ogcwrap::asnd::detail::decodeASNDVF(sampleFormat), pitch, delay, samples, sampleSize, left, right, cb) == 0 ? asnd_ret_vals_t::OK : asnd_ret_vals_t::INVALID); }
 
-asnd_ret_vals_t ogcwrap::asnd::setInfiniteVoice(u8 voice, snd_voice_fmt_t sampleFormat, u32 pitch, u32 delay, void * samples, u32 sampleSize, u8 left, u8 right)
-	{ return (ASND_SetInfiniteVoice(voice, ogcwrap::asnd::detail::decodeSNDVF(sampleFormat), pitch, delay, samples, sampleSize, left, right) == 0 ? asnd_ret_vals_t::OK : asnd_ret_vals_t::INVALID); }
+asnd_ret_vals_t ogcwrap::asnd::setInfiniteVoice(u8 voice, asnd_voice_fmt_t sampleFormat, u32 pitch, u32 delay, void * samples, u32 sampleSize, u8 left, u8 right)
+	{ return (ASND_SetInfiniteVoice(voice, ogcwrap::asnd::detail::decodeASNDVF(sampleFormat), pitch, delay, samples, sampleSize, left, right) == 0 ? asnd_ret_vals_t::OK : asnd_ret_vals_t::INVALID); }
 
 
 bool ogcwrap::asnd::testVoiceBufferUsing(u8 voice, void * buffer)
@@ -247,25 +215,25 @@ int ogcwrap::asnd::detail::ANote2Freq(int note, int freqbase, int notebase)
 	{ return ANote2Freq(note, freqbase, notebase); }
 
 
-u8 ogcwrap::asnd::detail::decodeSNDVF(snd_voice_fmt_t format)
+u8 ogcwrap::asnd::detail::decodeASNDVF(asnd_voice_fmt_t format)
 {
 	switch (format)
 	{
-		case snd_voice_fmt_t::MONO_U8:
+		case asnd_voice_fmt_t::MONO_U8:
 			return 4;
-		case snd_voice_fmt_t::MONO_S8:
+		case asnd_voice_fmt_t::MONO_S8:
 			return 0;
-		case snd_voice_fmt_t::MONO_BE16:
+		case asnd_voice_fmt_t::MONO_BE16:
 			return 1;
-		case snd_voice_fmt_t::MONO_LE16:
+		case asnd_voice_fmt_t::MONO_LE16:
 			return 5;
-		case snd_voice_fmt_t::STEREO_U8:
+		case asnd_voice_fmt_t::STEREO_U8:
 			return 6;
-		case snd_voice_fmt_t::STEREO_S8:
+		case asnd_voice_fmt_t::STEREO_S8:
 			return 2;
-		case snd_voice_fmt_t::STEREO_BE16:
+		case asnd_voice_fmt_t::STEREO_BE16:
 			return 3;
-		case snd_voice_fmt_t::STEREO_LE16:
+		case asnd_voice_fmt_t::STEREO_LE16:
 			return 7;
 
 		default:

@@ -2,73 +2,7 @@
  * prereqs
  */
 
-typedef unsigned char	ubyte;
-typedef unsigned short	uword;
-typedef signed int		s32;
-
-struct					wiimote_t;
-struct					wiimote_listen_t;
-struct					bd_addr;
-
-typedef void (*wii_event_cb)(struct wiimote_t *, s32);
-typedef void (*cmd_blk_cb)(struct wiimote_t *,ubyte *, uword);
-
-
-typedef enum win_bt_stack_t {
-	WIIUSE_STACK_UNKNOWN,
-	WIIUSE_STACK_MS,
-	WIIUSE_STACK_BLUESOLEIL
-} win_bt_stack_t;
-
-typedef enum ir_position_t {
-	WIIUSE_IR_ABOVE,
-	WIIUSE_IR_BELOW
-} ir_position_t;
-
-typedef enum aspect_t {
-	WIIUSE_ASPECT_4_3,
-	WIIUSE_ASPECT_16_9
-} aspect_t;
-
-extern "C"
-{
-	const char * wiiuse_version(void);
-#ifndef GEKKO
-	struct wiimote_t * * wiiuse_init(int);
-#else
-	int wiiuse_register(struct wiimote_listen_t *, struct bd_addr *, struct wiimote_t *(*)(struct bd_addr *));
-	struct wiimote_t * * wiiuse_init(int, wii_event_cb);
-	void wiiuse_sensorbar_enable(int);
-#endif
-	void wiiuse_disconnected(struct wiimote_t *);
-	void wiiuse_cleanup(struct wiimote_t * *, int);
-	void wiiuse_rumble(struct wiimote_t *, int);
-	void wiiuse_toggle_rumble(struct wiimote_t *);
-	void wiiuse_set_leds(struct wiimote_t *, int, cmd_blk_cb);
-	void wiiuse_motion_sensing(struct wiimote_t *, int);
-	int wiiuse_read_data(struct wiimote_t *, ubyte *, unsigned int, unsigned short, cmd_blk_cb);
-	int wiiuse_write_data(struct wiimote_t *, unsigned int, ubyte *, ubyte, cmd_blk_cb);
-	void wiiuse_status(struct wiimote_t *, cmd_blk_cb);
-	struct wiimote_t * wiiuse_get_by_id(struct wiimote_t * *, int, int);
-	int wiiuse_set_flags(struct wiimote_t *, int, int);
-	float wiiuse_set_smooth_alpha(struct wiimote_t *, float);
-	void wiiuse_set_bluetooth_stack(struct wiimote_t * *, int, enum win_bt_stack_t);
-	void wiiuse_resync(struct wiimote_t *);
-	void wiiuse_set_timeout(struct wiimote_t * *, int, ubyte, ubyte);
-	int wiiuse_write_streamdata(struct wiimote_t *, ubyte *, ubyte, cmd_blk_cb);
-	int wiiuse_find(struct wiimote_t * *, int, int);
-	int wiiuse_connect(struct wiimote_t * *, int);
-	void wiiuse_disconnect(struct wiimote_t *);
-	int wiiuse_poll(struct wiimote_t * *, int);
-	void wiiuse_set_ir_mode(struct wiimote_t *);
-	void wiiuse_set_ir(struct wiimote_t *, int);
-	void wiiuse_set_ir_vres(struct wiimote_t *, unsigned int, unsigned int);
-	void wiiuse_set_ir_position(struct wiimote_t *, enum ir_position_t);
-	void wiiuse_set_aspect_ratio(struct wiimote_t *, enum aspect_t);
-	void wiiuse_set_ir_sensitivity(struct wiimote_t *, int);
-	void wiiuse_set_motion_plus(struct wiimote_t *, int);
-	void wiiuse_set_speaker(struct wiimote_t *, int );
-}
+#include "wrapinclude.hpp"
 
 /*******************************************************************************
  * function forward declarations

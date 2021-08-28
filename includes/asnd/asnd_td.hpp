@@ -20,7 +20,7 @@ namespace ogcwrap
 			VOICEWAITING = 4
 		} ASNDReturnValue;
 
-		typedef enum snd_voice_fmt_t
+		typedef enum asnd_voice_fmt_t
 		{
 			MONO_U8,
 			MONO_S8,
@@ -31,11 +31,11 @@ namespace ogcwrap
 			STEREO_S8,
 			STEREO_BE16,
 			STEREO_LE16
-		} VoiceFormat;
+		} ASNDVoiceFormat;
 	}
 }
 
 using ogcwrap::asnd::ASNDReturnValue;
-using ogcwrap::asnd::VoiceFormat;
+using ogcwrap::asnd::ASNDVoiceFormat;
 
 #endif // wrap_asnd_td_h

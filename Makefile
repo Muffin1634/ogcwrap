@@ -34,8 +34,9 @@ OBJFILES			:= $(OBJFILES_C) $(OBJFILES_CPP)
 OBJFILES_NONLIB		:= test.o
 OBJFILES_LIB		:= $(foreach srcf,$(OBJFILES_NONLIB),$(patsubst $(srcf),,$(OBJFILES)))
 
-LD_INCLUDE			:= /c/Users/muffin/Desktop/code/proj/vanilla/libwrap/includes /c/Users/muffin/Desktop/code/sdk/devkitpro/libogc/include
-LD_LIBDIRS			:= ./$(DIRS_LIB) $(DEVKITPRO)/libogc/lib
+INCLUDE				:= includes $(DEVKITPRO)/libogc/include
+
+LD_LIBDIRS			:= ./$(DIRS_LIB) $(DEVKITPRO)/libogc
 LD_LIBS				:= wrap ogc m
 
 #-------------------------------------------------------------------------------
@@ -48,14 +49,14 @@ CFLAGS_STANDARDS	:= -std=c++17
 CFLAGS_WARNINGS		:= -Wall -Wextra -Wno-comment -Wno-cpp
 CFLAGS_OPTIMIZATION	:= -O2
 
-LDFLAGS_INCLUDE		:= $(addprefix -I,$(LD_INCLUDE))
+FLAGS_INCLUDE		:= $(addprefix -I,$(INCLUDE))
 LDFLAGS_LIBDIRS		:= $(addprefix -L,$(LD_LIBDIRS))
 LDFLAGS_LIBS		:= $(addprefix -l,$(LD_LIBS))
 
-CFLAGS				:= $(CFLAGS_STANDARDS) $(CFLAGS_WARNINGS) $(CFLAGS_OPTIMIZATION)
+CFLAGS				:= $(CFLAGS_STANDARDS) $(CFLAGS_WARNINGS) $(CFLAGS_OPTIMIZATION) $(FLAGS_INCLUDE)
 CXXFLAGS			:= $(CFLAGS)
 CPPFLAGS			:=
-LDFLAGS				:= $(LDFLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
+LDFLAGS				:= $(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 
 #-------------------------------------------------------------------------------
 # targets
@@ -71,6 +72,7 @@ load:
 	@cp -vf $(DIRS_LIB)/libwrap.a $(DEVKITPRO)/libogc/lib/wii/libwrap.a
 	@rm -vrf ../libwraptest/lib/local/include/*
 	@cp -vr includes/* ../libwraptest/lib/local/include/
+	@rm -vf ../libwraptest/lib/local/include/wrapinclude.hpp
 
 # clean target
 clean:

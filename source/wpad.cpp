@@ -2,59 +2,7 @@
  * prereqs
  */
 
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned int u32;
-typedef signed short s16;
-typedef signed int s32;
-
-struct WPADData;
-struct WPADEncStatus;
-struct ir_t;
-struct orient_t;
-struct gforce_t;
-struct vec3w_t;
-struct expansion_t;
-
-typedef void (*WPADDataCallback)(s32, const WPADData *);
-typedef void (*WPADShutdownCallback)(s32);
-
-extern "C"
-{
-	s32 WPAD_Init(void);
-	s32 WPAD_ControlSpeaker(s32, s32);
-	s32 WPAD_ReadEvent(s32, WPADData *);
-	s32 WPAD_DroppedEvents(s32);
-	s32 WPAD_Flush(s32);
-	s32 WPAD_ReadPending(s32, WPADDataCallback);
-	s32 WPAD_SetDataFormat(s32, s32);
-	s32 WPAD_SetMotionPlus(s32, u8);
-	s32 WPAD_SetVRes(s32, u32, u32);
-	s32 WPAD_GetStatus(void);
-	s32 WPAD_Probe(s32, u32 *);
-	s32 WPAD_SetEventBufs(s32, WPADData *, u32);
-	s32 WPAD_Disconnect(s32);
-	s32 WPAD_IsSpeakerEnabled(s32);
-	s32 WPAD_SendStreamData(s32, void *, u32);
-	void WPAD_Shutdown(void);
-	void WPAD_SetIdleTimeout(u32);
-	void WPAD_SetPowerButtonCallback(WPADShutdownCallback);
-	void WPAD_SetBatteryDeadCallback(WPADShutdownCallback);
-	s32 WPAD_ScanPads(void);
-	s32 WPAD_Rumble(s32, int);
-	s32 WPAD_SetIdleThresholds(s32, s32, s32, s32, s32, s32, s32);
-	void WPAD_EncodeData(WPADEncStatus *, u32, const s16 *, s32, u8 *);
-	WPADData * WPAD_Data(int);
-	u8 WPAD_BatteryLevel(int);
-	u32 WPAD_ButtonsUp(int);
-	u32 WPAD_ButtonsDown(int);
-	u32 WPAD_ButtonsHeld(int);
-	void WPAD_IR(int, struct ir_t *);
-	void WPAD_Orientation(int, struct orient_t *);
-	void WPAD_GForce(int, struct gforce_t *);
-	void WPAD_Accel(int, struct vec3w_t *);
-	void WPAD_Expansion(int, struct expansion_t *);
-}
+#include "wrapinclude.hpp"
 
 /*******************************************************************************
  * function forward declarations

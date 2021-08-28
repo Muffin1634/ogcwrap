@@ -43,8 +43,8 @@ namespace ogcwrap
 		ASNDReturnValue pauseVoice(u8);
 		ASNDReturnValue stopVoice(u8);
 		ASNDReturnValue getVoiceStatus(u8);
-		ASNDReturnValue setVoice(u8, VoiceFormat, u32, u32, void *, u32, u8, u8, ASNDVoiceCallback);
-		ASNDReturnValue setInfiniteVoice(u8, VoiceFormat, u32, u32, void *, u32, u8, u8);
+		ASNDReturnValue setVoice(u8, ASNDVoiceFormat, u32, u32, void *, u32, u8, u8, ASNDVoiceCallback);
+		ASNDReturnValue setInfiniteVoice(u8, ASNDVoiceFormat, u32, u32, void *, u32, u8, u8);
 
 		// testing methods
 		bool testVoiceBufferUsing(u8, void *);

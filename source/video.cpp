@@ -2,34 +2,7 @@
  * prereqs
  */
 
-typedef unsigned int u32;
-
-struct GXRModeObj;
-
-typedef void (*VIRetraceCallback)(u32);
-typedef void (*VIPositionCallback)(u32, u32);
-
-extern "C"
-{
-	void VIDEO_Init(void);
-	void* VIDEO_GetNextFramebuffer(void);
-	void* VIDEO_GetCurrentFramebuffer(void);
-	void VIDEO_Flush(void);
-	void VIDEO_SetBlack(bool black);
-	u32 VIDEO_GetNextField(void);
-	u32 VIDEO_GetCurrentLine(void);
-	u32 VIDEO_GetCurrentTvMode(void);
-	void VIDEO_Configure(GXRModeObj *rmode);
-	u32 VIDEO_GetFrameBufferSize(GXRModeObj *rmode);
-	void VIDEO_ClearFrameBuffer(GXRModeObj *rmode,void *fb,u32 color);
-	void VIDEO_WaitVSync(void);
-	void VIDEO_SetNextFramebuffer(void *fb);
-	void VIDEO_SetNextRightFramebuffer(void *fb);
-	VIRetraceCallback VIDEO_SetPreRetraceCallback(VIRetraceCallback callback);
-	VIRetraceCallback VIDEO_SetPostRetraceCallback(VIRetraceCallback callback);
-	u32 VIDEO_HaveComponentCable(void);
-	GXRModeObj * VIDEO_GetPreferredMode(GXRModeObj *mode);
-}
+#include "wrapinclude.hpp"
 
 /*******************************************************************************
  * forward function declarations
@@ -76,7 +49,7 @@ namespace ogcwrap
 		bool getComponentCableStatus(void);
 		void * getCurrentFramebuffer(void);
 		void * getNextFramebuffer(void);
-		u32 getFramebufferSize(GXRModeObj *);
+		 u32 getFramebufferSize(GXRModeObj *);
 		u32 getCurrentLine(void);
 		ds_field_pos_t getNextField(void);
 
