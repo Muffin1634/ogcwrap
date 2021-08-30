@@ -34,7 +34,7 @@ OBJFILES			:= $(OBJFILES_C) $(OBJFILES_CPP)
 OBJFILES_NONLIB		:= test.o
 OBJFILES_LIB		:= $(foreach srcf,$(OBJFILES_NONLIB),$(patsubst $(srcf),,$(OBJFILES)))
 
-INCLUDE				:= includes $(DEVKITPRO)/libogc/include
+INCLUDE				:= include $(DEVKITPRO)/libogc/include
 
 LD_LIBDIRS			:= ./$(DIRS_LIB) $(DEVKITPRO)/libogc
 LD_LIBS				:= wrap ogc m
@@ -71,7 +71,7 @@ all:
 load:
 	@cp -vf $(DIRS_LIB)/libwrap.a $(DEVKITPRO)/libogc/lib/wii/libwrap.a
 	@rm -vrf ../libwraptest/lib/local/include/*
-	@cp -vr includes/* ../libwraptest/lib/local/include/
+	@cp -vr include/* ../libwraptest/lib/local/include/
 	@rm -vf ../libwraptest/lib/local/include/wrapinclude.hpp
 
 # clean target
