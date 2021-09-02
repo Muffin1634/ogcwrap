@@ -10,7 +10,16 @@ namespace ogcwrap
 
 		typedef enum gx_vertex_format_t
 		{
+			VF0,
+			VF1,
+			VF2,
+			VF3,
+			VF4,
+			VF5,
+			VF6,
+			VF7,
 
+			MaxVF
 		} VertexFormat;
 
 		typedef enum gx_vertex_attribute_t
@@ -96,7 +105,23 @@ namespace ogcwrap
 
 		typedef enum gx_tev_stage_t
 		{
-			/* values */
+			Stage0,
+			Stage1,
+			Stage2,
+			Stage3,
+			Stage4,
+			Stage5,
+			Stage6,
+			Stage7,
+			Stage8,
+			Stage9,
+			Stage10,
+			Stage11,
+			Stage12,
+			Stage13,
+			Stage14,
+			Stage15,
+			MaxStages
 		} TEVStage;
 
 		typedef enum gx_tev_register_input_t
