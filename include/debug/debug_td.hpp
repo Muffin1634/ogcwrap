@@ -2,16 +2,13 @@
 #ifndef wrap_debug_td_h
 #define wrap_debug_td_h
 
-namespace ogcwrap
+namespace ogcwrap::debug
 {
-	namespace debug
+	typedef enum struct debug_device_type_t
 	{
-		typedef enum debug_device_type_t
-		{
-			dev_USBGecko,
-			dev_BBATCP
-		} DebugDevice;
-	}
+		dev_USBGecko,
+		dev_BBATCP
+	} DebugDevice;
 }
 
 #endif // wrap_debug_td_h

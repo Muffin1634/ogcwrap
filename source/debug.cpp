@@ -8,30 +8,20 @@
  * function forward declarations
  */
 
-namespace ogcwrap
+namespace ogcwrap::debug
 {
-	namespace debug
+	// enum
+	enum struct debug_device_type_t : u8
 	{
-		// enum
-		enum debug_device_type_t
-		{
-			dev_USBGecko,
-			dev_BBATCP
-		};
+		dev_USBGecko,
+		dev_BBATCP
+	};
 
-		// library management
-		void init(debug_device_type_t, u16);
+	// library management
+	void init(debug_device_type_t, u16);
 
-		// breakpoint
-		void breakpt(void);
-
-		// detail namespace
-		namespace detail
-		{
-			// decoding (f->b)
-			u8 decodeDD(debug_device_type_t);
-		}
-	}
+	// breakpoint
+	void breakpt(void);
 }
 
 /*******************************************************************************
@@ -39,12 +29,7 @@ namespace ogcwrap
  */
 
 void ogcwrap::debug::init(debug_device_type_t dev, u16 port)
-	{ DEBUG_Init(detail::decodeDD(dev), port); }
+	{ DEBUG_Init(dev, port); }
 
 void ogcwrap::debug::breakpt(void)
 	{ _break(); }
-
-// ogcwrap::debug::detail
-
-u8 ogcwrap::debug::detail::decodeDD(debug_device_type_t dev)
-	{ return (dev == debug_device_type_t::dev_USBGecko ? 0 : 1); }

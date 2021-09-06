@@ -6,16 +6,16 @@ namespace ogcwrap
 {
 	namespace gx
 	{
-		// Framebuffer enums
+		// Framebuffer enum structs
 
-		typedef enum gx_gamma_t
+		typedef enum struct gx_gamma_t
 		{
 			g10,
 			g17,
 			g22
 		} GammaValue;
 
-		typedef enum gx_copy_mode_t
+		typedef enum struct gx_copy_mode_t
 		{
 			Progressive,
 
@@ -23,20 +23,20 @@ namespace ogcwrap
 			InterlacedOdd
 		} EFBCopyMode;
 
-		typedef enum gx_clamp_mode_t
+		typedef enum struct gx_clamp_mode_t
 		{
 			None,
 			Top,
 			Bottom
 		} ClampMode;
 
-		typedef enum gx_next_field_t
+		typedef enum struct gx_next_field_t
 		{
 			InterlacedEven,
 			InterlacedOdd
 		} NextField;
 
-		typedef enum gx_pixel_format_t
+		typedef enum struct gx_pixel_format_t
 		{
 			rgb8z24,
 			rgba6z24,
@@ -44,7 +44,7 @@ namespace ogcwrap
 			rgb565z16
 		} PixelFormat;
 
-		typedef enum gx_z_format_t
+		typedef enum struct gx_z_format_t
 		{
 			Linear,
 			Near,
@@ -52,9 +52,34 @@ namespace ogcwrap
 			Far
 		} CompressedZFormat;
 
-		// Vertex enums
+		// Fog enum struct
 
-		typedef enum gx_vertex_format_t
+		typedef enum struct gx_fog_equation_t
+		{
+			None,
+
+			PerspectiveLinear = 2,
+			PerspectiveExponential = 4,
+			PerspectiveExpSquared,
+			PerspectiveReverseExp,
+			PerspectiveReverseExpSquared,
+
+			OrthographicLinear = 10,
+			OrthographicExponential = 12,
+			OrthographicExpSquared,
+			OrthographicReverseExp,
+			OrthographicReverseExpSquared,
+
+			Linear = PerspectiveLinear,
+			Exponential = PerspectiveExponential,
+			ExpSquared = PerspectiveExpSquared,
+			ReverseExp = PerspectiveReverseExp,
+			ReverseExpSquared = PerspectiveReverseExpSquared
+		} FogEquation;
+
+		// Vertex enum structs
+
+		typedef enum struct gx_vertex_format_t
 		{
 			Format0,
 			Format1,
@@ -68,7 +93,7 @@ namespace ogcwrap
 			MaxVF
 		} VertexFormat;
 
-		typedef enum gx_vertex_attribute_t
+		typedef enum struct gx_vertex_attribute_t
 		{
 			Position,
 			Normal,
@@ -76,7 +101,7 @@ namespace ogcwrap
 			TexCoord
 		} VertexAttribute;
 
-		typedef enum gx_vertex_component_type_t
+		typedef enum struct gx_vertex_component_type_t
 		{
 			posXY,
 			posXYZ,
@@ -92,7 +117,7 @@ namespace ogcwrap
 			texST
 		} VertexComponentType;
 
-		typedef enum gx_vertex_component_format_t
+		typedef enum struct gx_vertex_component_format_t
 		{
 			u8,
 			s8,
@@ -108,7 +133,7 @@ namespace ogcwrap
 			rgba8
 		} VertexComponentFormat;
 
-		typedef enum gx_vertex_descriptor_t
+		typedef enum struct gx_vertex_descriptor_t
 		{
 			None,
 			Direct,
@@ -116,9 +141,9 @@ namespace ogcwrap
 			Index16
 		} VertexDescriptor;
 
-		// Color enums
+		// Color enum structs
 
-		typedef enum gx_color_channel_t
+		typedef enum struct gx_color_channel_t
 		{
 			Color0,
 			Color1,
@@ -135,23 +160,23 @@ namespace ogcwrap
 			Cnull = 255
 		} ColorChannel;
 
-		typedef enum gx_diffuse_function_t
+		typedef enum struct gx_diffuse_function_t
 		{
 			None,
 			Signed,
 			Clamp
 		} DiffuseFunction;
 
-		typedef enum gx_attenuation_function_t
+		typedef enum struct gx_attenuation_function_t
 		{
-			Specular,
-			Spot,
-			None
+			None = 2,
+			Specular = 0,
+			Spot
 		} AttenuationFunction;
 
-		// Texture enums
+		// Texture enum structs
 
-		typedef enum gx_texture_coordinate_index_t
+		typedef enum struct gx_texture_coordinate_index_t
 		{
 			TexCoord0,
 			TexCoord1,
@@ -166,7 +191,7 @@ namespace ogcwrap
 			TexCoordNull = 255
 		} TexcoordIndex;
 
-		typedef enum gx_texture_coordinate_generation_type_t
+		typedef enum struct gx_texture_coordinate_generation_type_t
 		{
 			Mtx2x4,
 			Mtx3x4,
@@ -183,7 +208,7 @@ namespace ogcwrap
 			SRTG
 		} TexcoordGenType;
 
-		typedef enum gx_texture_coordinate_source_t
+		typedef enum struct gx_texture_coordinate_source_t
 		{
 			Texture0,
 			Texture1,
@@ -197,27 +222,78 @@ namespace ogcwrap
 			TexCoord0
 		} TexcoordSource;
 
-		typedef enum gx_texture_matrix_index_t
+		typedef enum struct gx_texture_matrix_index_t
 		{
-			/* values */
+			TexMtxIdentity = 60,
+
+			TexMtx0 = 30,
+			TexMtx1 = 33,
+			TexMtx2 = 36,
+			TexMtx3 = 39,
+			TexMtx4 = 42,
+			TexMtx5 = 45,
+			TexMtx6 = 48,
+			TexMtx7 = 51,
+			TexMtx8 = 54,
+			TexMtx9 = 57
 		} TextureMatrixIndex;
 
-		typedef enum gx_post_transform_matrix_index_t
+		typedef enum struct gx_post_transform_matrix_index_t
 		{
-			/* values */
+			PTFMtxIdentity = 125,
+
+			PTFMtx0 = 64,
+			PTFMtx1 = 67,
+			PTFMtx2 = 70,
+			PTFMtx3 = 73,
+			PTFMtx4 = 76,
+			PTFMtx5 = 79,
+			PTFMtx6 = 82,
+			PTFMtx7 = 85,
+			PTFMtx8 = 88,
+			PTFMtx9 = 91,
+			PTFMtx10 = 94,
+			PTFMtx11 = 97,
+			PTFMtx12 = 100,
+			PTFMtx13 = 103,
+			PTFMtx14 = 106,
+			PTFMtx15 = 109,
+			PTFMtx16 = 112,
+			PTFMtx17 = 115,
+			PTFMtx18 = 118,
+			PTFMtx19 = 121
 		} PTFMatrixIndex;
 
-		typedef enum gx_texture_format_t
+		typedef enum struct gx_texture_format_t
 		{
-			/* values */
+			i4, // intensity
+			i8,
+			ia4, // intensity alpha
+			ia8,
+			rgb565,
+			rgb5a3,
+			rgba8,
+
+			Palette4 = 8,
+			Palette8,
+			Palette14,
+
+			Compressed = 14
 		} TextureFormat;
 
-		typedef enum gx_comparison_t
+		typedef enum struct gx_comparison_t
 		{
-			/* values */
+			Never,
+			Less,
+			LEqual = 3,
+			NEqual = 5,
+			Equal = 2,
+			GEqual = 6,
+			Greater = 4,
+			Always = 7
 		} ComparisonType;
 
-		typedef enum gx_z_texture_operator_t
+		typedef enum struct gx_z_texture_operator_t
 		{
 			Disable,
 			Add,
@@ -226,54 +302,100 @@ namespace ogcwrap
 			MaxZTOp
 		} ZTextureOperator;
 
-		typedef enum gx_z_texture_format_t
+		typedef enum struct gx_z_texture_format_t
 		{
-			/* values */
+			z8 = 17,
+			z16 = 19,
+			z24x8 = 22
 		} ZTextureFormat;
 
-		typedef enum gx_z_buffer_time_t
+		typedef enum struct gx_z_buffer_time_t
 		{
-			/* values */
+			BeforeTexturing = 1,
+			AfterTexturing = 0
 		} ZBufferTime;
 
-		typedef enum gx_texture_cache_size_t
+		typedef enum struct gx_texture_cache_size_t
 		{
-			/* values */
+			NoCache = 3,
+
+			Cache32K = 0,
+			Cache128K,
+			Cache512K
 		} TextureCacheSize;
 
-		typedef enum gx_texture_size_t
+		typedef enum struct gx_tlut_index_t
 		{
-			/* values */
-		} TextureSize;
+			TLUT0,
+			TLUT1,
+			TLUT2,
+			TLUT3,
+			TLUT4,
+			TLUT5,
+			TLUT6,
+			TLUT7,
+			TLUT8,
+			TLUT9,
+			TLUT10,
+			TLUT11,
+			TLUT12,
+			TLUT13,
+			TLUT14,
+			TLUT15,
 
-		typedef enum gx_tlut_index_t
-		{
-			/* values */
+			BigTLUT0,
+			BigTLUT1,
+			BigTLUT2,
+			BigTLUT3
 		} TLUTIndex;
 
-		typedef enum gx_tlut_entry_format_t
+		typedef enum struct gx_tlut_entry_format_t
 		{
-			/* values */
+			ia8, // intensity alpha
+			rgb565,
+			rgb5a3
+
 		} TLUTEntryFormat;
 
-		typedef enum gx_texture_map_index_t
+		typedef enum struct gx_texture_map_index_t
 		{
-			/* values */
+			TexMap0,
+			TexMap1,
+			TexMap2,
+			TexMap3,
+			TexMap4,
+			TexMap5,
+			TexMap6,
+			TexMap7,
+
+			MaxTexMap,
+			TexMapNull = 255,
+			TexMapDisable,
 		} TextureMapIndex;
 
-		typedef enum gx_texture_filter_t
+		typedef enum struct gx_texture_filter_t
 		{
-			/* values */
+			Near,
+			Linear,
+
+			NearMipNear,
+			NearMipLinear,
+			LinearMipNear,
+			LinearMipLinear
 		} TextureFilter;
 
-		typedef enum gx_max_anisotropic_filter_t
+		typedef enum struct gx_max_anisotropic_filter_t
 		{
-			/* values */
+			Aniso1,
+			Aniso2,
+			Aniso4,
+
+			MaxAniso
 		} MaxAnisoFilter;
 
-		// TEV enums
+		// TEV enum structs
 
-		typedef enum gx_tev_stage_t
+		typedef enum struct gx_tev_stage_t
 		{
 			Stage0,
 			Stage1,
@@ -294,108 +416,299 @@ namespace ogcwrap
 			MaxStages
 		} TEVStage;
 
-		typedef enum gx_tev_combiner_equation_t
+		typedef enum struct gx_tev_combiner_equation_t
 		{
-			/* values */
-		} TEVCombinerOp;
+			Modulate,
+			Decal,
+			Blend,
+			Replace,
+			PassClear
+		} TEVCombinerEquation;
 
-		typedef enum gx_tev_register_t
+		typedef enum struct gx_tev_register_t
 		{
-			/* values */
+			RegPrev,
+			Reg0,
+			Reg1,
+			Reg2,
+
+			MaxTEVReg
 		} TEVRegister;
 
-		typedef enum gx_tev_register_input_t
+		typedef enum struct gx_tev_register_input_t
 		{
-			/* values */
+			ColorPrev,
+			ColorTex = 8,
+			ColorRaster = 10,
+			Color0 = 2,
+			Color1 = 4,
+			Color2 = 6,
+
+			AlphaPrev = 1,
+			AlphaTex = 9,
+			AlphaRaster = 11,
+			Alpha0 = 3,
+			Alpha1 = 5,
+			Alpha2 = 7,
+
+			Constant = 14,
+
+			Zero = 15,
+			Half = 13,
+			One = 12
 		} TEVRegisterInput;
 
-		typedef enum gx_tev_operation_t
+		typedef enum struct gx_tev_combiner_operator_t
 		{
-			/* values */
-		} TEVOperation;
+			Add,
+			Sub,
 
-		typedef enum gx_tev_bias_t
+			CompareR8Equal = 9,
+			CompareR8Greater = 8,
+			CompareGR16Equal = 11,
+			CompareGR16Greater = 10,
+			CompareBGR24Equal = 13,
+			CompareBGR24Greater = 12,
+			CompareRGB8Equal = 15,
+			CompareRGB8Greater = 14,
+			CompareA8Equal = CompareRGB8Equal,
+			CompareA8Greater = CompareRGB8Greater
+		} TEVCombinerOperator;
+
+		typedef enum struct gx_tev_bias_t
 		{
-			/* values */
+			MinusHalfBias = 2,
+			ZeroBias = 0
+			PlusHalfBias,
+
+			MaxTEVBias = 3
 		} TEVBias;
 
-		typedef enum gx_tev_scale_t
+		typedef enum struct gx_tev_scale_t
 		{
-			/* values */
+			ScaleHalf = 3,
+			Scale1 = 0,
+			Scale2,
+			Scale4,
+
+			MaxTEVScale = 4
 		} TEVScale;
 
-		typedef enum gx_alpha_operation_t
+		typedef enum struct gx_alpha_operation_t
 		{
-			/* values */
+			AlphaAnd,
+			AlphaOr,
+			AlphaXOr,
+			AlphaXNor,
+
+			MaxAlphaOp
 		} AlphaOperation;
 
-		typedef enum gx_tev_constant_register_t
+		typedef enum struct gx_tev_constant_color_selection_t
 		{
-			/* values */
-		} TEVKonstRegister;
+			ConstEighth = 7,
+			ConstQuarter = 6,
+			ConstThreeEighths = 5,
+			ConstHalf = 4,
+			ConstFiveEighths = 3,
+			ConstThreeQuarters = 2,
+			ConstSevenEighths = 1,
+			ConstOne = 0,
 
-		typedef enum gx_tev_swap_table_index_t
+			Reg0 = 12,
+			Reg0R = 16,
+			Reg0G = 20,
+			Reg0B = 24,
+			Reg0A = 28,
+
+			Reg1 = 13,
+			Reg1R = 17,
+			Reg1G = 21,
+			Reg1B = 25,
+			Reg1A = 29,
+
+			Reg2 = 14,
+			Reg2R = 18,
+			Reg2G = 22,
+			Reg2B = 26,
+			Reg2A = 30,
+
+			Reg3 = 15,
+			Reg3R = 19,
+			Reg3G = 23,
+			Reg3B = 25,
+			Reg3A = 31
+		} TEVKonstColorSelection;
+
+		typedef enum struct gx_tev_constant_alpha_selection_t
 		{
-			/* values */
+			ConstEighth = 7,
+			ConstQuarter = 6,
+			ConstThreeEighths = 5,
+			ConstHalf = 4,
+			ConstFiveEighths = 3,
+			ConstThreeQuarters = 2,
+			ConstSevenEighths = 1,
+			ConstOne = 0,
+
+			Reg0R = 16,
+			Reg0G = 20,
+			Reg0B = 24,
+			Reg0A = 28,
+
+			Reg1R = 17,
+			Reg1G = 21,
+			Reg1B = 25,
+			Reg1A = 29,
+
+			Reg2R = 18,
+			Reg2G = 22,
+			Reg2B = 26,
+			Reg2A = 30,
+
+			Reg3R = 19,
+			Reg3G = 23,
+			Reg3B = 25,
+			Reg3A = 31
+		} TEVKonstAlphaSelection;
+
+		typedef enum struct gx_tev_swap_table_index_t
+		{
+			SwapTable0,
+			SwapTable1,
+			SwapTable2,
+			SwapTable3,
+
+			MaxSwapTable
 		} TEVSwapTableIndex;
 
 		// indirect textures, as a subset
 
-		typedef enum gx_indirect_texture_stage_t
+		typedef enum struct gx_indirect_texture_stage_t
 		{
-			/* values */
+			IndirectStage0,
+			IndirectStage1,
+			IndirectStage2,
+			IndirectStage3,
+
+			MaxIndirectStage
 		} IndirectTextureStage;
 
-		typedef enum gx_indirect_texture_format_t
+		typedef enum struct gx_indirect_texture_format_t
 		{
-			/* values */
+			Off3Bump5 = 3, // is this how this shit works?
+			Off4Bump4 = 2,
+			Off5Bump5 = 1,
+			Off8Bump8 = 0, // definitely how this works
+
+			MaxIndirectFormat = 4
 		} IndirectTextureFormat;
 
-		typedef enum gx_indirect_texture_bias_t
+		typedef enum struct gx_indirect_texture_bias_t
 		{
-			/* values */
+			BiasNone,
+
+			BiasS,
+			BiasT,
+			BiasU = 4,
+
+			BiasST = 3,
+			BiasSU = 5,
+			BiasTU,
+			BiasSTU,
+
+			MaxIndirectBias
 		} IndirectTextureBias;
 
-		typedef enum gx_indirect_texture_matrix_t
+		typedef enum struct gx_indirect_texture_matrix_t
 		{
-			/* values */
+			MatrixNone,
+
+			Matrix0,
+			Matrix1,
+			Matrix2,
+
+			SMatrix0 = 5,
+			SMatrix1,
+			SMatrix2,
+
+			TMatrix0 = 9,
+			TMatrix1,
+			TMatrix2
 		} IndirectTextureMatrix;
 
-		typedef enum gx_indirect_texture_wrap_t
+		typedef enum struct gx_indirect_texture_wrap_t
 		{
-			/* values */
+			WrapNone,
+
+			Wrap256,
+			Wrap128,
+			Wrap64,
+			Wrap32,
+			Wrap16,
+			Wrap0,
+
+			MaxIndirectWrap
 		} IndirectTextureWrap;
 
-		typedef enum gx_indirect_texture_alpha_bump_t
+		typedef enum struct gx_indirect_texture_alpha_bump_t
 		{
-			/* values */
+			BumpOff,
+
+			BumpS,
+			BumpT,
+			BumpU,
+
+			MaxIndirectBump
 		} IndirectTextureAlphaBump;
 
-		typedef enum gx_indirect_texture_scale_t
+		typedef enum struct gx_indirect_texture_scale_t
 		{
-			/* values */
+			Scale1,
+			Scale2,
+			Scale4,
+			Scale8,
+			Scale16,
+			Scale32,
+			Scale64,
+			Scale128,
+			Scale256,
+
+			MaxIndirectScale
 		} IndirectTextureScale;
 
 		// lights
 
-		typedef enum gx_light_index_t
+		typedef enum struct gx_light_index_t
 		{
-			/* values */
+			LightNone,
+
+			Light0,
+			Light1,
+			Light2,
+			Light3,
+			Light4,
+			Light5,
+			Light6,
+			Light7,
+
+			MaxLight = 256
 		} LightIndex;
 
-		typedef enum gx_light_object_index_t
+		typedef enum struct gx_spot_illumination_function_t
 		{
-			/* values */
-		} LightObjectIndex;
-
-		typedef enum gx_spot_illumination_function_t
-		{
-			/* values */
+			Off,
+			Flat,
+			Cosine,
+			CosSquared,
+			Sharp,
+			Ring1,
+			Ring2
 		} SpotIlluminationFunction;
 
-		// matrix enums
+		// matrix enum structs
 
-		typedef enum gx_projection_type_t
+		typedef enum struct gx_projection_type_t
 		{
 			Perspective,
 
@@ -405,56 +718,172 @@ namespace ogcwrap
 
 		// other
 
-		typedef enum gx_texture_offset_value_t
+		typedef enum struct gx_texture_offset_value_t
 		{
-			/* values */
+			Zero,
+			Sixteenth,
+			Eighth,
+			Fourth,
+			Half,
+			One,
+
+			MaxOffset
 		} TextureOffsetValue;
 
-		typedef enum gx_blend_mode_t
+		typedef enum struct gx_blend_mode_t
 		{
-			/* values */
+			None,
+			Equation,
+			Logic,
+			Subtract,
+
+			MaxBlend
 		} BlendMode;
 
-		typedef enum gx_blend_control_t
+		typedef enum struct gx_blend_control_t
 		{
-			/* values */
+			Zero,
+			One,
+			SourceColor,
+			InverseSourceColor,
+			SourceAlpha,
+			InverseSourceAlpha,
+			DestColor = SourceColor,
+			InverseDestColor = InverseSourceColor,
+			DestAlpha = 6,
+			InverseDestAlpha
 		} BlendControl;
 
-		typedef enum gx_logic_operation_t
+		typedef enum struct gx_logic_operation_t
 		{
-			/* values */
+			Clear,
+			Set = 15,
+
+			Source = 3,
+			InvertSource = 12
+			Dest = 5,
+			InvertDest = 10,
+
+			Or = 7,
+			InverseOr = 13,
+			ReverseOr = 11,
+			NOr = 8,
+
+			XOr = 6,
+			XNor = 9,
+
+			And = 1,
+			InverseAnd = 4,
+			ReverseAnd = 2,
+			NAnd = 14,
 		} LogicalOperation;
 
-		typedef enum gx_culling_mode_t
+		typedef enum struct gx_culling_mode_t
 		{
-			/* values */
+			CullNone,
+			CullFront,
+			CullBack,
+			CullBoth
 		} CullingMode;
 
-		typedef enum gx_alpha_read_mode_t
+		typedef enum struct gx_alpha_read_mode_t
 		{
-			/* values */
+			Read00,
+			ReadFF,
+			ReadRealValue
 		} AlphaReadMode;
 
 		// metrics
 
-		typedef enum gx_performance_counter_0_metric_t
+		typedef enum struct gx_performance_counter_0_metric_t
 		{
-			/* values */
+			Vertices,
+			ClipVertex,
+			ClipClocks,
+			XFWaitIn,
+			XFWaitOut,
+			XFTransformClocks,
+			XFLightClocks,
+			XFBottomClocks,
+			XFRegisterLoadClocks,
+			XFRegisterReadClocks,
+			ClipRatio,
+			Triangles,
+			TrianglesCulled,
+			TrianglesPassed,
+			TrianglesScissored,
+			Triangles0Tex,
+			Triangles1Tex,
+			Triangles2Tex,
+			Triangles3Tex,
+			Triangles4Tex,
+			Triangles5Tex,
+			Triangles6Tex,
+			Triangles7Tex,
+			Triangles0Clr,
+			Triangles1Clr,
+			Triangles2Clr,
+			Quad0Coverage,
+			QuadNon0Coverage,
+			Quad1Coverage,
+			Quad2Coverage,
+			Quad3Coverage,
+			Quad4Coverage,
+			AverageQuadCount,
+			Clocks,
+
+			NoMetric // can also be used to reset
 		} PerfCounter0Metric;
 
-		typedef enum gx_performance_counter_1_metric_t
+		typedef enum struct gx_performance_counter_1_metric_t
 		{
-			/* values */
+			Texels,
+			TXIdle,
+			TXRegisterClocks,
+			TXMemStall,
+			TCCheck1_2,
+			TCCheck3_4,
+			TCCheck5_6,
+			TCCheck7_8,
+			TCMiss,
+			VCElemQFull,
+			VCMissQFull,
+			VCMEMREQFull,
+			VCStatus7,
+			VCMissRepFull,
+			VCStreamBufferLow,
+			VCAllStalls,
+			Vertices,
+			FifoReq,
+			CallReq,
+			VCMissReq,
+			CPAllReq,
+			Clocks,
+
+			NoMetric // can also be used to reset
 		} PerfCounter1Metric;
 
-		typedef enum gx_vertex_cache_metric_t
+		typedef enum struct gx_vertex_cache_metric_t
 		{
-			/* values */
+			Positions,
+			Normals,
+			Color0,
+			Color1,
+			Texture0,
+			Texture1,
+			Texture2,
+			Texture3,
+			Texture4,
+			Texture5,
+			Texture6,
+			Texture7,
+
+			All = 15
 		} VertexCacheMetric;
 
 		// drawing
 
-		typedef enum gx_primitive_t
+		typedef enum struct gx_primitive_t
 		{
 			Points = 184,
 

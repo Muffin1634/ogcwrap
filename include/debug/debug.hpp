@@ -7,16 +7,13 @@
 
 #include "debug/debug_td.hpp"
 
-namespace ogcwrap
+namespace ogcwrap::debug
 {
-	namespace debug
-	{
-		// library management
-		void init(DebugDevice, u16);
+	// library management
+	void init(DebugDevice, u16);
 
-		// breakpoint
-		void breakpt(void);
-	}
+	// breakpoint
+	void breakpt(void);
 }
 
 #endif // wrap_debug_h

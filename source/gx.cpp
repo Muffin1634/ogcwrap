@@ -78,7 +78,8 @@ namespace ogcwrap
 		void clearBoundingBox(void);
 
 		// fog
-		void setFog(gx_fog_type_t, f32, f32, f32, f32, GXColor);
+		void setFog(gx_fog_equation_t, f32, f32, f32, f32, GXColor);
+		void setFogColor(GXColor);
 		void setFogRangeAdjustment(GXFogAdjTbl *, u16, Mtx44 *);
 
 		// vertex management
@@ -109,8 +110,8 @@ namespace ogcwrap
 		void setZTexture(gx_z_texture_operator_t, gx_z_texture_format_t, u32);
 		void setZCompLoc(gx_z_buffer_time_t);
 
-		void initTextureCacheRegion(GXTexRegion *, bool, void *, gx_texture_cache_size_t, void *, gx_texture_size_t);
-		void initTexturePreloadRegion(GXTexRegion *, u8, gx_texture_cache_size_t, u8, gx_texture_size_t);
+		void initTextureCacheRegion(GXTexRegion *, bool, void *, gx_texture_cache_size_t, void *, gx_texture_cache_size_t);
+		void initTexturePreloadRegion(GXTexRegion *, void *, u32, void *, u32);
 
 		void initTextureObject(GXTexObj *, void *, u16, u16, gx_texture_format_t, gx_clamp_mode_t, gx_clamp_mode_t, bool);
 		void initTextureObjectColorIndex(GXTexObj *, void *, u16, u16, gx_texture_format_t, gx_clamp_mode_t, gx_clamp_mode_t, bool, gx_tlut_index_t);
@@ -152,18 +153,18 @@ namespace ogcwrap
 		// texture environment management
 		void setTEVStageCount(u8);
 		void setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_generation_type_t, gx_texture_map_index_t, gx_color_channel_t);
-		void setTEVOp(gx_tev_stage_t, gx_tev_combiner_operation_t);
-		void setTEVColor(gx_tev_register_t, GXColor);			// cast to GXColor    to avoid ambiguity
-		void setTEVColor(gx_tev_register_t, GXColorS10);		// cast to GXColorS10 to avoid ambiguity
+		void setTEVOp(gx_tev_stage_t, gx_tev_combiner_equation_t);
+		void setTEVColor(gx_tev_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
+		void setTEVColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
 		void setTEVColorIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t);
 		void setTEVAlphaIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t);
-		void setTEVColorOp(gx_tev_stage_t, gx_tev_operation_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t);
-		void setTEVAlphaOp(gx_tev_stage_t, gx_tev_operation_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t);
+		void setTEVColorOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t);
+		void setTEVAlphaOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t);
 		void setTEVAlphaCompare(gx_comparison_t, u8, gx_alpha_operation_t, gx_comparison_t, u8);
-		void setTEVKColor(gx_tev_constant_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
-		void setTEVKColor(gx_tev_constant_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
-		void seleEVTevKColor(gx_tev_stage_t, gx_tev_constant_register_t);
-		void seleEVTevKAlpha(gx_tev_stage_t, gx_tev_constant_register_t);
+		void setTEVKColor(gx_tev_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
+		void setTEVKColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
+		void selectTEVKColor(gx_tev_stage_t, gx_tev_constant_color_selection_t);
+		void selectTEVKAlpha(gx_tev_stage_t, gx_tev_constant_alpha_selection_t);
 		void setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t);
 		void setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t);
 
@@ -181,7 +182,7 @@ namespace ogcwrap
 
 		// light management
 		void loadLightObject(GXLightObj *, gx_light_index_t);
-		void loadLightObjectIndex(gx_light_object_index_t, gx_light_index_t);
+		void loadLightObjectIndex(u32, gx_light_index_t);
 
 		void setLightShininess(GXLightObj *, f32);
 		void setLightPosition(GXLightObj *, f32, f32, f32);
@@ -205,9 +206,17 @@ namespace ogcwrap
 		void setLightSpot(GXLightObj *, f32, gx_spot_illumination_function_t);
 
 		// matrices
+		void matrixIndex(u8 index);
 		void setCurrentMatrix(u32);
+
 		void loadProjectionMatrix(Mtx44, gx_projection_type_t);
-		void matrixIndex(u8);
+		void loadPosMtxImm(Mtx, u32 pnidx);
+		void loadPosMtxIdx(u16 mtxidx, u32);
+		void loadNrmMtxImm(Mtx, u32);
+		void loadNrmMtxImm3x3(Mtx33, u32);
+		void loadNrmMtxIdx3x3(u16, u32);
+		void loadTexMtxImm(Mtx, u32, u8 type);
+		void loadTexMtxIdx(u16, u32, u8);
 
 		// arrays
 		void setArray(gx_vertex_attribute_t, void *, u8);
