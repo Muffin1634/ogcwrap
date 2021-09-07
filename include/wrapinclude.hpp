@@ -3,7 +3,6 @@
 #define wrap_include_h
 
 // libogc
-#define GEKKO
 #define HW_RVL
 #include <gctypes.h>
 #include <gccore.h>
@@ -12,6 +11,7 @@
 #include <debug.h>
 
 // wiiuse/wpad
+#define GEKKO
 #include <wiiuse/wiiuse.h>
 #include <wiiuse/wpad.h>
 
@@ -24,5 +24,14 @@
 
 // aesndlib
 #include <aesndlib.h>
+
+// gu
+
+// gx
+
+// cache
+
+// macros
+#define cast(srcval, dsttyp)	((srcval)(dsttyp))
 
 #endif // wrap_include_h

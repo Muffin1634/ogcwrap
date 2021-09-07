@@ -11,25 +11,25 @@
 namespace ogcwrap::debug
 {
 	// enum
-	enum struct debug_device_type_t : u8
+	enum struct debug_device_t : u8
 	{
 		dev_USBGecko,
 		dev_BBATCP
 	};
 
 	// library management
-	void init(debug_device_type_t, u16);
+	void init(debug_device_t, u16);
 
 	// breakpoint
-	void breakpt(void);
+	void _breakpt(void);
 }
 
 /*******************************************************************************
  * functions
  */
 
-void ogcwrap::debug::init(debug_device_type_t dev, u16 port)
-	{ DEBUG_Init(dev, port); }
+void ogcwrap::debug::init(debug_device_t dev, u16 port)
+	{ DEBUG_Init(cast(s32, dev), port); }
 
-void ogcwrap::debug::breakpt(void)
+void ogcwrap::debug::_breakpt(void)
 	{ _break(); }

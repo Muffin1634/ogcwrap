@@ -3,9 +3,6 @@
 .SUFFIXES:
 .SECONDARY:
 
-# mark phony targets
-.PHONY: all load clean debug
-
 #-------------------------------------------------------------------------------
 # directories and files
 
@@ -61,11 +58,16 @@ LDFLAGS				:= $(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 #-------------------------------------------------------------------------------
 # targets
 
+# mark phony targets
+.PHONY: all load clean debug doxygen
+
 # default target
 all:
 	@make --no-print-dir libwrap.a
 	@echo
 	@make --no-print-dir load
+	@echo
+	@make --no-print-dir doxygen
 
 # load target
 load:
@@ -89,6 +91,10 @@ debug:
 	@echo OBJFILES: $(OBJFILES)
 	@echo OBJFILES_LIB: $(OBJFILES_LIB)
 	@echo $(addprefix $(DIRS_BUILD)/,$(OBJFILES_LIB))
+
+# doxygen target
+doxygen:
+	@doxygen
 
 #-------------------------------------------------------------------------------
 # generic source-to-object rules
