@@ -1,15 +1,13 @@
-# intermediates
-!build/*.o
-
-# other
+# ignore most everything on this branch
+bin/
+build/
+include/
+lib/
 other/
-!other/readme.md
-
-# sublime-specific
+source/
 sublime/
+Makefile
 
-# doxygen documentation
-doxygen/
-
-# but not the error log
-# !doxygen/doxyerror.log
+# except for the Doxyfile and the Doxygen folder
+!Doxyfile
+!doxygen/
