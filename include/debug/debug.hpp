@@ -16,12 +16,24 @@ namespace ogcwrap::debug
 	void _breakpt(void);
 }
 
+/* enable the user to write _breakpt instead of debug::_breakpt() or ogcwrap::debug::_breakpt() to reduce name size and
+ * increase the effectiveness of the underscore since it will be at the beginning of the function name to better
+ * indicate that it is a debugging function
+ */
+using ogcwrap::debug::_breakpt;
+
 #endif // wrap_debug_h
 /*! \file debug.hpp <debug/debug.hpp>
  *  \brief Header file for the wrapper of the debugging stub included in libOGC.
  *
  *  This header contains functions in the <CODE>ogcwrap::debug</CODE> namespace for intializing the debug stub and
  *  inserting breakpoints into your code.
+ *
+ *  <!--
+ *  	there is intentionally no line between the endif and this block. this is to remove that newline from the
+ *  	resulting source code that is generated. otherwise it looks weird. i am not going to be the person making it
+ *  	look weird.
+ *  -->
  */
 
 /*! \namespace ogcwrap::debug
@@ -45,8 +57,9 @@ namespace ogcwrap::debug
 /*! \fn void ogcwrap::debug::_breakpt(void)
  *  \brief Inserts a breakpoint into your code.
  *
- *  This function inserts a breakpoint into your code to let the debugging stub know that it should halt operation and
- *  pass control to the debugger for debugging. You may use this function wherever you like.
+ *  This function inserts a breakpoint into your code to let the debugging stub know that it when it reaches this
+ *  function, it should halt operation of the program and pass control to the debugger for debugging. You may use this
+ *  function wherever you like.
  *
  *  \return none
  */

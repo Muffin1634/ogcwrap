@@ -12,53 +12,53 @@ namespace ogcwrap::gx
 {
 	// Framebuffer enum structs
 
-	typedef enum struct gx_gamma_t
+	enum struct gx_gamma_t
 	{
 		g10,
 		g17,
 		g22
-	} GammaValue;
+	};
 
-	typedef enum struct gx_copy_mode_t
+	enum struct gx_copy_mode_t
 	{
 		Progressive,
 
 		InterlacedEven = 2,
 		InterlacedOdd
-	} EFBCopyMode;
+	};
 
-	typedef enum struct gx_clamp_mode_t
+	enum struct gx_clamp_mode_t
 	{
 		None,
 		Top,
 		Bottom
-	} ClampMode;
+	};
 
-	typedef enum struct gx_next_field_t
+	enum struct gx_next_field_t
 	{
 		InterlacedEven,
 		InterlacedOdd
-	} NextField;
+	};
 
-	typedef enum struct gx_pixel_format_t
+	enum struct gx_pixel_format_t
 	{
 		rgb8z24,
 		rgba6z24,
 
 		rgb565z16
-	} PixelFormat;
+	};
 
-	typedef enum struct gx_z_format_t
+	enum struct gx_z_format_t
 	{
 		Linear,
 		Near,
 		Mid,
 		Far
-	} CompressedZFormat;
+	};
 
 	// Fog enum struct
 
-	typedef enum struct gx_fog_equation_t
+	enum struct gx_fog_equation_t
 	{
 		None,
 
@@ -79,11 +79,11 @@ namespace ogcwrap::gx
 		ExpSquared = PerspectiveExpSquared,
 		ReverseExp = PerspectiveReverseExp,
 		ReverseExpSquared = PerspectiveReverseExpSquared
-	} FogEquation;
+	};
 
 	// Vertex enum structs
 
-	typedef enum struct gx_vertex_format_t
+	enum struct gx_vertex_format_t
 	{
 		Format0,
 		Format1,
@@ -95,17 +95,17 @@ namespace ogcwrap::gx
 		Format7,
 
 		MaxVF
-	} VertexFormat;
+	};
 
-	typedef enum struct gx_vertex_attribute_t
+	enum struct gx_vertex_attribute_t
 	{
 		Position,
 		Normal,
 		Color,
 		TexCoord
-	} VertexAttribute;
+	};
 
-	typedef enum struct gx_vertex_component_type_t
+	enum struct gx_vertex_component_type_t
 	{
 		posXY,
 		posXYZ,
@@ -119,9 +119,9 @@ namespace ogcwrap::gx
 
 		texS = 0,
 		texST
-	} VertexComponentType;
+	};
 
-	typedef enum struct gx_vertex_component_format_t
+	enum struct gx_vertex_component_format_t
 	{
 		u8,
 		s8,
@@ -135,19 +135,19 @@ namespace ogcwrap::gx
 		rgba4,
 		rgba6,
 		rgba8
-	} VertexComponentFormat;
+	};
 
-	typedef enum struct gx_vertex_descriptor_t
+	enum struct gx_vertex_descriptor_t
 	{
 		None,
 		Direct,
 		Index8,
 		Index16
-	} VertexDescriptor;
+	};
 
 	// Color enum structs
 
-	typedef enum struct gx_color_channel_t
+	enum struct gx_color_channel_t
 	{
 		Color0,
 		Color1,
@@ -162,25 +162,25 @@ namespace ogcwrap::gx
 		Abump,
 		AbumpN,
 		Cnull = 255
-	} ColorChannel;
+	};
 
-	typedef enum struct gx_diffuse_function_t
+	enum struct gx_diffuse_function_t
 	{
 		None,
 		Signed,
 		Clamp
-	} DiffuseFunction;
+	};
 
-	typedef enum struct gx_attenuation_function_t
+	enum struct gx_attenuation_function_t
 	{
 		None = 2,
 		Specular = 0,
 		Spot
-	} AttenuationFunction;
+	};
 
 	// Texture enum structs
 
-	typedef enum struct gx_texture_coordinate_index_t
+	enum struct gx_texture_coordinate_index_t
 	{
 		TexCoord0,
 		TexCoord1,
@@ -193,9 +193,9 @@ namespace ogcwrap::gx
 
 		MaxTexCoord,
 		TexCoordNull = 255
-	} TexcoordIndex;
+	};
 
-	typedef enum struct gx_texture_coordinate_generation_type_t
+	enum struct gx_texture_coordinate_generation_type_t
 	{
 		Mtx2x4,
 		Mtx3x4,
@@ -210,9 +210,9 @@ namespace ogcwrap::gx
 		Bump7,
 
 		SRTG
-	} TexcoordGenType;
+	};
 
-	typedef enum struct gx_texture_coordinate_source_t
+	enum struct gx_texture_coordinate_source_t
 	{
 		Texture0,
 		Texture1,
@@ -224,9 +224,9 @@ namespace ogcwrap::gx
 		Texture7,
 
 		TexCoord0
-	} TexcoordSource;
+	};
 
-	typedef enum struct gx_texture_matrix_index_t
+	enum struct gx_texture_matrix_index_t
 	{
 		TexMtxIdentity = 60,
 
@@ -240,9 +240,9 @@ namespace ogcwrap::gx
 		TexMtx7 = 51,
 		TexMtx8 = 54,
 		TexMtx9 = 57
-	} TextureMatrixIndex;
+	};
 
-	typedef enum struct gx_post_transform_matrix_index_t
+	enum struct gx_post_transform_matrix_index_t
 	{
 		PTFMtxIdentity = 125,
 
@@ -266,9 +266,9 @@ namespace ogcwrap::gx
 		PTFMtx17 = 115,
 		PTFMtx18 = 118,
 		PTFMtx19 = 121
-	} PTFMatrixIndex;
+	};
 
-	typedef enum struct gx_texture_format_t
+	enum struct gx_texture_format_t
 	{
 		i4, // intensity
 		i8,
@@ -283,9 +283,9 @@ namespace ogcwrap::gx
 		Palette14,
 
 		Compressed = 14
-	} TextureFormat;
+	};
 
-	typedef enum struct gx_comparison_t
+	enum struct gx_comparison_t
 	{
 		Never,
 		Less,
@@ -295,40 +295,40 @@ namespace ogcwrap::gx
 		GEqual = 6,
 		Greater = 4,
 		Always = 7
-	} ComparisonType;
+	};
 
-	typedef enum struct gx_z_texture_operator_t
+	enum struct gx_z_texture_operator_t
 	{
 		Disable,
 		Add,
 		Replace,
 
 		MaxZTOp
-	} ZTextureOperator;
+	};
 
-	typedef enum struct gx_z_texture_format_t
+	enum struct gx_z_texture_format_t
 	{
 		z8 = 17,
 		z16 = 19,
 		z24x8 = 22
-	} ZTextureFormat;
+	};
 
-	typedef enum struct gx_z_buffer_time_t
+	enum struct gx_z_buffer_time_t
 	{
 		BeforeTexturing = 1,
 		AfterTexturing = 0
-	} ZBufferTime;
+	};
 
-	typedef enum struct gx_texture_cache_size_t
+	enum struct gx_texture_cache_size_t
 	{
 		NoCache = 3,
 
 		Cache32K = 0,
 		Cache128K,
 		Cache512K
-	} TextureCacheSize;
+	};
 
-	typedef enum struct gx_tlut_index_t
+	enum struct gx_tlut_index_t
 	{
 		TLUT0,
 		TLUT1,
@@ -351,17 +351,17 @@ namespace ogcwrap::gx
 		BigTLUT1,
 		BigTLUT2,
 		BigTLUT3
-	} TLUTIndex;
+	};
 
-	typedef enum struct gx_tlut_entry_format_t
+	enum struct gx_tlut_entry_format_t
 	{
 		ia8, // intensity alpha
 		rgb565,
 		rgb5a3
 
-	} TLUTEntryFormat;
+	};
 
-	typedef enum struct gx_texture_map_index_t
+	enum struct gx_texture_map_index_t
 	{
 		TexMap0,
 		TexMap1,
@@ -375,9 +375,9 @@ namespace ogcwrap::gx
 		MaxTexMap,
 		TexMapNull = 255,
 		TexMapDisable,
-	} TextureMapIndex;
+	};
 
-	typedef enum struct gx_texture_filter_t
+	enum struct gx_texture_filter_t
 	{
 		Near,
 		Linear,
@@ -386,20 +386,20 @@ namespace ogcwrap::gx
 		NearMipLinear,
 		LinearMipNear,
 		LinearMipLinear
-	} TextureFilter;
+	};
 
-	typedef enum struct gx_max_anisotropic_filter_t
+	enum struct gx_max_anisotropic_filter_t
 	{
 		Aniso1,
 		Aniso2,
 		Aniso4,
 
 		MaxAniso
-	} MaxAnisoFilter;
+	};
 
 	// TEV enum structs
 
-	typedef enum struct gx_tev_stage_t
+	enum struct gx_tev_stage_t
 	{
 		Stage0,
 		Stage1,
@@ -418,18 +418,18 @@ namespace ogcwrap::gx
 		Stage14,
 		Stage15,
 		MaxStages
-	} TEVStage;
+	};
 
-	typedef enum struct gx_tev_combiner_equation_t
+	enum struct gx_tev_combiner_equation_t
 	{
 		Modulate,
 		Decal,
 		Blend,
 		Replace,
 		PassClear
-	} TEVCombinerEquation;
+	};
 
-	typedef enum struct gx_tev_register_t
+	enum struct gx_tev_register_t
 	{
 		RegPrev,
 		Reg0,
@@ -437,9 +437,9 @@ namespace ogcwrap::gx
 		Reg2,
 
 		MaxTEVReg
-	} TEVRegister;
+	};
 
-	typedef enum struct gx_tev_register_input_t
+	enum struct gx_tev_register_input_t
 	{
 		ColorPrev,
 		ColorTex = 8,
@@ -460,9 +460,9 @@ namespace ogcwrap::gx
 		Zero = 15,
 		Half = 13,
 		One = 12
-	} TEVRegisterInput;
+	};
 
-	typedef enum struct gx_tev_combiner_operator_t
+	enum struct gx_tev_combiner_operator_t
 	{
 		Add,
 		Sub,
@@ -477,18 +477,18 @@ namespace ogcwrap::gx
 		CompareRGB8Greater = 14,
 		CompareA8Equal = CompareRGB8Equal,
 		CompareA8Greater = CompareRGB8Greater
-	} TEVCombinerOperator;
+	};
 
-	typedef enum struct gx_tev_bias_t
+	enum struct gx_tev_bias_t
 	{
 		MinusHalfBias = 2,
 		ZeroBias = 0
 		PlusHalfBias,
 
 		MaxTEVBias = 3
-	} TEVBias;
+	};
 
-	typedef enum struct gx_tev_scale_t
+	enum struct gx_tev_scale_t
 	{
 		ScaleHalf = 3,
 		Scale1 = 0,
@@ -496,9 +496,9 @@ namespace ogcwrap::gx
 		Scale4,
 
 		MaxTEVScale = 4
-	} TEVScale;
+	};
 
-	typedef enum struct gx_alpha_operation_t
+	enum struct gx_alpha_operation_t
 	{
 		AlphaAnd,
 		AlphaOr,
@@ -506,9 +506,9 @@ namespace ogcwrap::gx
 		AlphaXNor,
 
 		MaxAlphaOp
-	} AlphaOperation;
+	};
 
-	typedef enum struct gx_tev_constant_color_selection_t
+	enum struct gx_tev_constant_color_selection_t
 	{
 		ConstEighth = 7,
 		ConstQuarter = 6,
@@ -542,9 +542,9 @@ namespace ogcwrap::gx
 		Reg3G = 23,
 		Reg3B = 25,
 		Reg3A = 31
-	} TEVKonstColorSelection;
+	};
 
-	typedef enum struct gx_tev_constant_alpha_selection_t
+	enum struct gx_tev_constant_alpha_selection_t
 	{
 		ConstEighth = 7,
 		ConstQuarter = 6,
@@ -574,9 +574,9 @@ namespace ogcwrap::gx
 		Reg3G = 23,
 		Reg3B = 25,
 		Reg3A = 31
-	} TEVKonstAlphaSelection;
+	};
 
-	typedef enum struct gx_tev_swap_table_index_t
+	enum struct gx_tev_swap_table_index_t
 	{
 		SwapTable0,
 		SwapTable1,
@@ -584,11 +584,11 @@ namespace ogcwrap::gx
 		SwapTable3,
 
 		MaxSwapTable
-	} TEVSwapTableIndex;
+	};
 
 	// indirect textures, as a subset
 
-	typedef enum struct gx_indirect_texture_stage_t
+	enum struct gx_indirect_texture_stage_t
 	{
 		IndirectStage0,
 		IndirectStage1,
@@ -596,9 +596,9 @@ namespace ogcwrap::gx
 		IndirectStage3,
 
 		MaxIndirectStage
-	} IndirectTextureStage;
+	};
 
-	typedef enum struct gx_indirect_texture_format_t
+	enum struct gx_indirect_texture_format_t
 	{
 		Off3Bump5 = 3, // is this how this shit works?
 		Off4Bump4 = 2,
@@ -606,9 +606,9 @@ namespace ogcwrap::gx
 		Off8Bump8 = 0, // definitely how this works
 
 		MaxIndirectFormat = 4
-	} IndirectTextureFormat;
+	};
 
-	typedef enum struct gx_indirect_texture_bias_t
+	enum struct gx_indirect_texture_bias_t
 	{
 		BiasNone,
 
@@ -622,9 +622,9 @@ namespace ogcwrap::gx
 		BiasSTU,
 
 		MaxIndirectBias
-	} IndirectTextureBias;
+	};
 
-	typedef enum struct gx_indirect_texture_matrix_t
+	enum struct gx_indirect_texture_matrix_t
 	{
 		MatrixNone,
 
@@ -639,9 +639,9 @@ namespace ogcwrap::gx
 		TMatrix0 = 9,
 		TMatrix1,
 		TMatrix2
-	} IndirectTextureMatrix;
+	};
 
-	typedef enum struct gx_indirect_texture_wrap_t
+	enum struct gx_indirect_texture_wrap_t
 	{
 		WrapNone,
 
@@ -653,9 +653,9 @@ namespace ogcwrap::gx
 		Wrap0,
 
 		MaxIndirectWrap
-	} IndirectTextureWrap;
+	};
 
-	typedef enum struct gx_indirect_texture_alpha_bump_t
+	enum struct gx_indirect_texture_alpha_bump_t
 	{
 		BumpOff,
 
@@ -664,9 +664,9 @@ namespace ogcwrap::gx
 		BumpU,
 
 		MaxIndirectBump
-	} IndirectTextureAlphaBump;
+	};
 
-	typedef enum struct gx_indirect_texture_scale_t
+	enum struct gx_indirect_texture_scale_t
 	{
 		Scale1,
 		Scale2,
@@ -679,11 +679,11 @@ namespace ogcwrap::gx
 		Scale256,
 
 		MaxIndirectScale
-	} IndirectTextureScale;
+	};
 
 	// lights
 
-	typedef enum struct gx_light_index_t
+	enum struct gx_light_index_t
 	{
 		LightNone,
 
@@ -697,9 +697,9 @@ namespace ogcwrap::gx
 		Light7,
 
 		MaxLight = 256
-	} LightIndex;
+	};
 
-	typedef enum struct gx_spot_illumination_function_t
+	enum struct gx_spot_illumination_function_t
 	{
 		Off,
 		Flat,
@@ -708,21 +708,21 @@ namespace ogcwrap::gx
 		Sharp,
 		Ring1,
 		Ring2
-	} SpotIlluminationFunction;
+	};
 
 	// matrix enum structs
 
-	typedef enum struct gx_projection_type_t
+	enum struct gx_projection_type_t
 	{
 		Perspective,
 
 		Orthographic,
 		Frustum = Orthographic
-	} ProjectionMatrixType;
+	};
 
 	// other
 
-	typedef enum struct gx_texture_offset_value_t
+	enum struct gx_texture_offset_value_t
 	{
 		Zero,
 		Sixteenth,
@@ -732,9 +732,9 @@ namespace ogcwrap::gx
 		One,
 
 		MaxOffset
-	} TextureOffsetValue;
+	};
 
-	typedef enum struct gx_blend_mode_t
+	enum struct gx_blend_mode_t
 	{
 		None,
 		Equation,
@@ -742,9 +742,9 @@ namespace ogcwrap::gx
 		Subtract,
 
 		MaxBlend
-	} BlendMode;
+	};
 
-	typedef enum struct gx_blend_control_t
+	enum struct gx_blend_control_t
 	{
 		Zero,
 		One,
@@ -756,9 +756,9 @@ namespace ogcwrap::gx
 		InverseDestColor = InverseSourceColor,
 		DestAlpha = 6,
 		InverseDestAlpha
-	} BlendControl;
+	};
 
-	typedef enum struct gx_logic_operation_t
+	enum struct gx_logic_operation_t
 	{
 		Clear,
 		Set = 15,
@@ -780,26 +780,26 @@ namespace ogcwrap::gx
 		InverseAnd = 4,
 		ReverseAnd = 2,
 		NAnd = 14,
-	} LogicalOperation;
+	};
 
-	typedef enum struct gx_culling_mode_t
+	enum struct gx_culling_mode_t
 	{
 		CullNone,
 		CullFront,
 		CullBack,
 		CullBoth
-	} CullingMode;
+	};
 
-	typedef enum struct gx_alpha_read_mode_t
+	enum struct gx_alpha_read_mode_t
 	{
 		Read00,
 		ReadFF,
 		ReadRealValue
-	} AlphaReadMode;
+	};
 
 	// metrics
 
-	typedef enum struct gx_performance_counter_0_metric_t
+	enum struct gx_performance_counter_0_metric_t
 	{
 		Vertices,
 		ClipVertex,
@@ -837,9 +837,9 @@ namespace ogcwrap::gx
 		Clocks,
 
 		NoMetric // can also be used to reset
-	} PerfCounter0Metric;
+	};
 
-	typedef enum struct gx_performance_counter_1_metric_t
+	enum struct gx_performance_counter_1_metric_t
 	{
 		Texels,
 		TXIdle,
@@ -865,9 +865,9 @@ namespace ogcwrap::gx
 		Clocks,
 
 		NoMetric // can also be used to reset
-	} PerfCounter1Metric;
+	};
 
-	typedef enum struct gx_vertex_cache_metric_t
+	enum struct gx_vertex_cache_metric_t
 	{
 		Positions,
 		Normals,
@@ -883,11 +883,11 @@ namespace ogcwrap::gx
 		Texture7,
 
 		All = 15
-	} VertexCacheMetric;
+	};
 
 	// drawing
 
-	typedef enum struct gx_primitive_t
+	enum struct gx_primitive_t
 	{
 		Points = 184,
 
@@ -899,7 +899,7 @@ namespace ogcwrap::gx
 		TriangleFan = 160,
 
 		Quads = 128
-	} GXPrimitive;
+	};
 
 	// library management
 	GXFifoObj * init(void *, u32);
@@ -926,7 +926,7 @@ namespace ogcwrap::gx
 	void getCPUFifo(GXFifoObj *);
 	void getGPUFifo(GXFifoObj *);
 
-	void flush(void);
+	void flushCPUFifo(void);
 
 	// framebuffer management
 	f32 getYScaleFactor(u16, u16);
@@ -1269,3 +1269,42 @@ GXTexRegionCallback ogcwrap::gx::setTexRegionCallback(GXTexRegionCallback cb)
 
 GXTlutRegionCallback ogcwrap::gx::setTLUTRegionCallback(GXTlutRegionCallback cb)
 	{ return GX_SetTlutRegionCallback(cb); }
+
+void ogcwrap::gx::setFifoBase(GXFifoObj * fifo, void * base_addr, u32 size)
+	{ GX_InitFifoBase(fifo, base_addr, size); }
+
+void ogcwrap::gx::setFifoLimits(GXFifoObj * fifo, u32 high, u32 low)
+	{ GX_InitFifoLimits(fifo, high, low); }
+
+void ogcwrap::gx::setFifoPtrs(GXFifoObj * fifo, void * readptr, void * writeptr)
+	{ GX_InitFifoPtrs(fifo, readptr, writeptr); }
+
+void ogcwrap::gx::setCPUFifo(GXFifoObj * fifo)
+	{ GX_SetCPUFifo(fifo); }
+
+void ogcwrap::gx::setGPUFifo(GXFifoObj * fifo)
+	{ GX_SetGPFifo(fifo); }
+
+void * ogcwrap::gx::getFifoBase(GXFifoObj * fifo)
+	{ return GX_GetFifoBase(fifo); }
+
+u32 ogcwrap::gx::getFifoCacheLineCount(GXFifoObj * fifo)
+	{ return GX_GetFifoCount(fifo); }
+
+u32 ogcwrap::gx::getFifoSize(GXFifoObj * fifo)
+	{ return GX_GetFifoSize(fifo); }
+
+u8 ogcwrap::gx::getFifoWrap(GXFifoObj * fifo)
+	{ return GX_GetFifoWrap(fifo); }
+
+void ogcwrap::gx::getFifoPtrs(GXFifoObj * fifo, void * * readptr, void * * writeptr)
+	{ GX_GetFifoPtrs(fifo, readptr, writeptr); }
+
+void ogcwrap::gx::getCPUFifo(GXFifoObj * fifo)
+	{ GX_GetCPUFifo(fifo); }
+
+void ogcwrap::gx::getGPUFifo(GXFifoObj * fifo)
+	{ GX_GetGPFifo(fifo); }
+
+void ogcwrap::gx::flushCPUFifo(void)
+	{ GX_Flush(); }

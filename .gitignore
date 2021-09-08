@@ -11,5 +11,5 @@ sublime/
 # doxygen documentation
 doxygen/
 
-# but not the config file
-!Doxyfile
+# but not the error log
+!doxygen/doxyerror.log
