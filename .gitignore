@@ -1,15 +1,6 @@
 # intermediates
 !build/*.o
 
-# other
-other/
-!other/readme.md
-
-# sublime-specific
-sublime/
-
 # doxygen documentation
 doxygen/
-
-# but not the error log
-# !doxygen/doxyerror.log
+Doxyfile
