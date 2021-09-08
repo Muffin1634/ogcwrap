@@ -101,7 +101,7 @@ debug:
 # doxygen target
 doxygen:
 	@echo Compiling doxygen
-	@doxygen
+	@cd doxygen/src && doxygen ../../Doxyfile
 
 #-------------------------------------------------------------------------------
 # generic source-to-object rules

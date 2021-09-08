@@ -38,34 +38,34 @@ namespace ogcwrap::gx
 	void flushCPUFifo(void);
 
 	// framebuffer management
-	f32 getYScaleFactor(u16, u16);
-	u32 setDisplayCopyYScale(f32);
-	u32 setDisplayCopyYScale(u16, u16);
-	void setDisplayCopySource(u16, u16, u16, u16);
-	void setDisplayCopyDest(u16, u16);
-	void setDisplayCopyGamma(gx_gamma_t);
-	void setDisplayCopyFrame2Field(gx_copy_mode_t);
-	void setCopyClamp(gx_clamp_mode_t);
-	void setCopyFilter(bool, u8[12][2], bool, u8[7]);
-	void setCopyClear(GXColor, u32);
-	void copyDisplay(void *, bool);
+	f32 getYScaleFactor(u16 efbHeight, u16 xfbHeight);
+	u32 setDisplayCopyYScale(f32 scale);
+	u32 setDisplayCopyYScale(u16 efbHeight, u16 xfbHeight);
+	void setDisplayCopySource(u16 left, u16 top, u16 width, u16 height);
+	void setDisplayCopyDest(u16 width, u16 height);
+	void setDisplayCopyGamma(gx_gamma_t gamma);
+	void setDisplayCopyFrame2Field(gx_copy_mode_t copymode);
+	void setCopyClamp(gx_clamp_mode_t clampmode);
+	void setCopyFilter(bool antialias, u8 samplepattern[12][2], bool vf, u8 vfilter[7]);
+	void setCopyClear(GXColor color, u32 z);
+	void copyDisplay(void * dest, bool clear);
 
-	void setViewport(f32, f32, f32, f32, f32, f32);
-	void setViewportJitter(f32, f32, f32, f32, f32, f32, gx_next_field_t);
-	void adjustForOverscan(GXRModeObj *, GXRModeObj *, u16, u16);
-	void setScissor(u16, u16, u16, u16);
-	void setScissorBoxOffset(s16, s16);
-	void setColorUpdate(bool);
-	void setColorUpdate(bool, bool);
-	void setAlphaUpdate(bool);
-	void setPixelFormat(gx_pixel_format_t, gx_z_format_t);
-	void setDestAlpha(bool, u8);
-	void setFieldMask(bool, bool);
-	void setFieldMode(bool, bool);
+	void setViewport(f32 left, f32 top, f32 width, f32 height, f32 near, f32 far);
+	void setViewportJitter(f32 left, f32 top, f32 width, f32 height, f32 near, f32 far, gx_next_field_t next);
+	void adjustForOverscan(GXRModeObj * rm_in, GXRModeObj * rm_out, u16 htrim, u16 vtrim);
+	void setScissor(u16 top, u16 left, u16 width, u16 height);
+	void setScissorBoxOffset(s16 xOffset, s16 yOffset);
+	void setColorUpdate(bool enable);
+	void setColorUpdate(bool color_enable, bool alpha_enable);
+	void setAlphaUpdate(bool enable);
+	void setPixelFormat(gx_pixel_format_t pixelfmt, gx_z_format_t zfmt);
+	void setDestAlpha(bool enable, u8 alpha);
+	void setFieldMask(bool even, bool odd);
+	void setFieldMode(bool field, bool half_aspect);
 
-	void setTextureCopySource(u16, u16, u16, u16);
-	void setTextureCopyDest(u16, u16, gx_texture_format_t);
-	void copyTexture(void *, bool);
+	void setTextureCopySource(u16 top, u16 left, u16 width, u16 height);
+	void setTextureCopyDest(u16 width, u16 height, gx_texture_format_t format, bool mipmap);
+	void copyTexture(void * dest, bool clear);
 
 	// frame management
 	void abortFrame(void);
@@ -76,17 +76,25 @@ namespace ogcwrap::gx
 	void clearBoundingBox(void);
 
 	// fog
-	void setFog(gx_fog_equation_t, f32, f32, f32, f32, GXColor);
-	void setFogColor(GXColor);
-	void setFogRangeAdjustment(GXFogAdjTbl *, u16, Mtx44 *);
+	void setFog(gx_fog_equation_t equation, f32 startZ, f32 endZ, f32 nearZ, f32 farZ, GXColor color);
+	void setFogColor(GXColor color);
+	void setFogRangeAdjustment(bool enable, u16 center, GXFogAdjTbl * table);
 
 	// vertex management
 	void invalidateVertexCache(void);
 	void clearVertexDescriptors(void);
-	void setVertexAttributeFormat(gx_vertex_format_t, gx_vertex_attribute_t, gx_vertex_component_type_t, gx_vertex_component_format_t, u8);
-	void setVertexAttributeFormatList(gx_vertex_format_t, GXVtxAttrFmt *);
-	void setVertexDescriptor(gx_vertex_attribute_t, gx_vertex_descriptor_t);
-	void setVertexDescriptorList(GXVtxDesc *);
+
+	void setVertexAttributeFormat(gx_vertex_format_t format, gx_vertex_attribute_t attr, gx_vertex_component_type_t comptype, gx_vertex_component_format_t compfmt, u8 fracbits);
+	void setVertexAttributeFormatList(gx_vertex_format_t format, GXVtxAttrFmt * attrlist);
+	void setVertexDescriptor(gx_vertex_attribute_t attr, gx_vertex_descriptor_t type);
+	void setVertexDescriptorList(GXVtxDesc * desc);
+
+//  void getVertexAttributeFormat();
+//  void getVertexAttributeFormatList();
+//  void getVertexDescriptor();
+	void getVertexDescriptorList(GXVtxDesc * desclist);
+
+	void setArray(gx_vertex_attribute_t attr, void * array, u8 stride);
 
 	// color management
 	void setChannelCount(u8);
@@ -95,7 +103,7 @@ namespace ogcwrap::gx
 	void setColorChannelMaterial(gx_color_channel_t, GXColor);
 
 	// texture management
-	void setNumTexGens(u8);
+	void setTexGenCount(u8);
 	void setTexCoordGen(gx_texture_coordinate_index_t, gx_texture_coordinate_generation_type_t, gx_texture_coordinate_source_t, gx_texture_matrix_index_t, bool = false, gx_post_transform_matrix_index_t = (gx_post_transform_matrix_index_t)0);
 	void setTexCoordScale(gx_texture_coordinate_index_t, bool, u16 = 1, u16 = 1);
 	void setTexCoordBias(gx_texture_coordinate_index_t, bool, bool);
@@ -215,9 +223,6 @@ namespace ogcwrap::gx
 	void loadNrmMtxIdx3x3(u16, u32);
 	void loadTexMtxImm(Mtx, u32, u8 type);
 	void loadTexMtxIdx(u16, u32, u8);
-
-	// arrays
-	void setArray(gx_vertex_attribute_t, void *, u8);
 
 	// breakpoint
 	void enableBreakPoint(void *);

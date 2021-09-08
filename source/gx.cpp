@@ -955,7 +955,7 @@ namespace ogcwrap::gx
 	void setFieldMode(bool, bool);
 
 	void setTextureCopySource(u16, u16, u16, u16);
-	void setTextureCopyDest(u16, u16, gx_texture_format_t);
+	void setTextureCopyDest(u16, u16, gx_texture_format_t bool); //m1
 	void copyTexture(void *, bool);
 
 	// frame management
@@ -969,15 +969,20 @@ namespace ogcwrap::gx
 	// fog
 	void setFog(gx_fog_equation_t, f32, f32, f32, f32, GXColor);
 	void setFogColor(GXColor);
-	void setFogRangeAdjustment(GXFogAdjTbl *, u16, Mtx44 *);
+	void setFogRangeAdjustment(bool, u16, GXFogAdjTbl *); //m2??
 
 	// vertex management
 	void invalidateVertexCache(void);
 	void clearVertexDescriptors(void);
+//  void getVertexAttributeFormat();
+//  void getVertexAttributeFormatList();
+//  void getVertexDescriptor();
+	void getVertexDescriptorList(GXVtxDesc *);
 	void setVertexAttributeFormat(gx_vertex_format_t, gx_vertex_attribute_t, gx_vertex_component_type_t, gx_vertex_component_format_t, u8);
 	void setVertexAttributeFormatList(gx_vertex_format_t, GXVtxAttrFmt *);
 	void setVertexDescriptor(gx_vertex_attribute_t, gx_vertex_descriptor_t);
 	void setVertexDescriptorList(GXVtxDesc *);
+	void setArray(gx_vertex_attribute_t, void *, u8);
 
 	// color management
 	void setChannelCount(u8);
@@ -986,7 +991,7 @@ namespace ogcwrap::gx
 	void setColorChannelMaterial(gx_color_channel_t, GXColor);
 
 	// texture management
-	void setNumTexGens(u8);
+	void setTexGenCount(u8);
 	void setTexCoordGen(gx_texture_coordinate_index_t, gx_texture_coordinate_generation_type_t, gx_texture_coordinate_source_t, gx_texture_matrix_index_t, bool = false, gx_post_transform_matrix_index_t = (gx_post_transform_matrix_index_t)0);
 	void setTexCoordScale(gx_texture_coordinate_index_t, bool, u16 = 1, u16 = 1);
 	void setTexCoordBias(gx_texture_coordinate_index_t, bool, bool);
@@ -1106,9 +1111,6 @@ namespace ogcwrap::gx
 	void loadNrmMtxIdx3x3(u16, u32);
 	void loadTexMtxImm(Mtx, u32, u8 type);
 	void loadTexMtxIdx(u16, u32, u8);
-
-	// arrays
-	void setArray(gx_vertex_attribute_t, void *, u8);
 
 	// breakpoint
 	void enableBreakPoint(void *);
@@ -1250,8 +1252,6 @@ namespace ogcwrap::gx
  * functions
  */
 
-
-
 GXFifoObj * ogcwrap::gx::init(void * base_addr, u32 size)
 	{ return GX_Init(base_addr, size); }
 
@@ -1308,3 +1308,161 @@ void ogcwrap::gx::getGPUFifo(GXFifoObj * fifo)
 
 void ogcwrap::gx::flushCPUFifo(void)
 	{ GX_Flush(); }
+
+f32 ogcwrap::gx::getYScaleFactor(u16 efbHeight, u16 xfbHeight)
+	{ return GX_GetYScaleFactor(efbHeight, xfbHeight); }
+
+u32 ogcwrap::gx::setDisplayCopyYScale(f32 scale)
+	{ return GX_SetDispCopyYScale(scale); }
+
+u32 ogcwrap::gx::setDisplayCopyYScale(u16 efbHeight, xfbHeight)
+	{ return GX_SetDispCopyYScale(GX_GetYScaleFactor(efbheight, xbheight)); }
+
+void ogcwrap::gx::setDisplayCopySource(u16 left, u16 top, u16 width, u16 height)
+	{ GX_SetDispCopySrc(left, top, width, height); }
+
+void ogcwrap::gx::setDisplayCopyDest(u16 width, u16 height)
+	{ GX_SetDispCopyDst(width, height); }
+
+void ogcwrap::gx::setDisplayCopyGamma(gx_gamma_t gamma)
+	{ GX_SetDispCopyGamma(mcast(u8, gamma)); }
+
+void ogcwrap::gx::setDisplayCopyFrame2Field(gx_copy_mode_t mode)
+	{ GX_SetDispCopyFrame2Field(mcast(u8, mode)); }
+
+void ogcwrap::gx::setCopyClamp(gx_clamp_mode_t mode)
+	{ GX_SetCopyClamp(mcast(u8, mode)); }
+
+void ogcwrap::gx::setCopyFilter(bool aa_status, u8 samplepattern[12][2], bool vf_status, u8 vfilter[7])
+	{ GX_SetCopyFilter(aa_status, samplepattern, vf_status, vfilter); }
+
+void ogcwrap::gx::setCopyClear(GXColor color, u32 z)
+	{ GX_SetCopyClear(color, z); }
+
+void ogcwrap::gx::copyDisplay(void * dest, bool clear)
+	{ GX_CopyDisp(dest, clear); }
+
+void ogcwrap::gx::setViewport(f32 left, f32 top, f32 width, f32 height, f32 near, f32 far)
+	{ GX_SetViewport(left, top, width, height, near, far); }
+
+void ogcwrap::gx::setViewportJitter(f32 left, f32 top, f32 width, f32 height, f32 near, f32 far, gx_next_field_t next)
+	{ GX_SetViewportJitter(left, top, width, height, near, far, mcast(u32, next)); }
+
+void ogcwrap::gx::adjustForOverscan(GXRModeObj * rm_in, GXRModeObj * rm_out, u16 htrim, u16 vtrim)
+	{ GX_AdjustForOverscan(rm_in, rm_out, htim, vtrim); }
+
+void ogcwrap::gx::setScissor(u16 top, u16 left, u16 width, u16 height)
+	{ GX_SetScissor(top, left, width, height); }
+
+void ogcwrap::gx::setScissorBoxOffset(s16 xOffset, s16 yOffset)
+	{ GX_SetScissorBoxOffset(xOffset, yOffset); }
+
+void ogcwrap::gx::setColorUpdate(bool enable)
+	{ GX_SetColorUpdate(enable); }
+
+void ogcwrap::gx::setColorUpdate(bool color_enable, bool alpha_enable)
+{
+	GX_SetColorUpdate(color_enable);
+	GX_SetAlphaUpdate(alpha_enable);
+}
+
+void ogcwrap::gx::setAlphaUpdate(bool enable)
+	{ GX_SetAlphaUpdate(enable); }
+
+void ogcwrap::gx::setPixelFormat(gx_pixel_format_t pixelfmt, gx_z_format_t zfmt)
+	{ GX_SetPixelFmt(mcast(u8, pixelfmt), mcast(u8, zfmt)); }
+
+void ogcwrap::gx::setDestAlpha(bool enable, u8 alpha)
+	{ GX_SetDstAlpha(enable, alpha); }
+
+void ogcwrap::gx::setFieldMask(bool even, bool odd)
+	{ GX_SetFieldMask(even, odd); }
+
+void ogcwrap::gx::setFieldMode(bool field, bool half_aspect)
+	{ GX_SetFieldMode(field, half_aspect); }
+
+void ogcwrap::gx::setTextureCopySource(u16 left, u16 top, u16 width, u16 height)
+	{ GX_SetTexCopySrc(left, top, width, height); }
+
+void ogcwrap::gx::setTextureCopyDest(u16 width, u16 height, gx_texture_format_t format, bool mipmap)
+	{ GX_SetTexCopyDst(width, height, mcast(u32, format), mipmap); }
+
+void ogcwrap::gx::copyTexture(void * dest, bool clear)
+	{ GX_CopyTex(dest, clear); }
+
+void ogcwrap::gx::abortFrame(void)
+	{ GX_AbortFrame(); }
+
+u16 ogcwrap::gx::getDrawDone(void)
+	{ return GX_GetDrawDone(); }
+
+void ogcwrap::gx::setDrawDone(void)
+	{ GX_SetDrawDone(); }
+
+void ogcwrap::gx::waitDrawDone(void)
+	{ GX_WaitDrawDone(); }
+
+void ogcwrap::gx::syncPixelMode(void)
+	{ GX_SyncPixelMode(); }
+
+void ogcwrap::gx::clearBoundingBox(void)
+	{ GX_ClearBoundingBox(); }
+
+void ogcwrap::gx::setFog(gx_fog_equation_t equation, f32 start, f32 end, f32 near, f32 far, GXColor color)
+	{ GX_SetFog(mcast(equation, start, end, near, far, color)); }
+
+void ogcwrap::gx::setFogColor(GXColor color)
+	{ GX_SetFogColor(color); }
+
+void ogcwrap::gx::setFogRangeAdjustment(bool enable, u16 center, GXFogAdjTbl * table)
+	{ GX_SetFogRangeAdj(enable, center, table); }
+
+void ogcwrap::gx::invalidateVertexCache(void)
+	{ GX_InvVtxCache(); }
+
+void ogcwrap::gx::clearVertexDescriptors(void)
+	{ GX_ClearVtxDesc(); }
+
+void ogcwrap::gx::setVertexAttributeFormat(gx_vertex_format_t format, gx_vertex_attribute_t attr, gx_vertex_component_type_t comptype, gx_vertex_component_format_t compfmt, u8 fraction_bits)
+	{ GX_SetVtxAttrFmt(mcast(u8, format), mcast(u32, attr), mcast(u32, comptype), mcast(u32, compfmt), fraction_bits); }
+
+void ogcwrap::gx::setVertexAttributeFormatList(gx_vertex_format_t format, GXVtxAttrFmt * attrlist)
+	{ GX_SetVtxAttrFmtv(mcast(u8, format), attrlist); }
+
+void ogcwrap::gx::setVertexDescriptor(gx_vertex_attribute_t attr, gx_vertex_descriptor_t type)
+	{ GX_SetVtxDesc(mcast(u8, attr), mcast(u8,type)); }
+
+void ogcwrap::gx::setVertexDescriptorList(GXVtxDesc * desclist)
+	{ GX_SetVtxDescv(desc_list); }
+
+/*
+void ogcwrap::gx::getVertexAttributeFormat()
+	{}
+*/
+
+/*
+void ogcwrap::gx::getVertexAttributeFormatList()
+	{}
+*/
+
+/*
+void ogcwrap::gx::getVertexDescriptor()
+	{}
+*/
+
+void ogcwrap::gx::getVertexDescriptorList(GXVtxDesc * desclist)
+	{ GX_GetVtxDescv(attrlist); }
+void ogcwrap::gx::setArray(gx_vertex_attribute_t attr, void * array, u8 stride)
+	{ GX_SetArray(mcast(u8, attr), array, stride); }
+
+void ogcwrap::gx::setChannelCount(u8 count)
+	{ GX_SetChanCount(count); }
+
+void ogcwrap::gx::setColorChannelControl(gx_color_channel_t channel, bool light_enable, GXColor ambient, GXColor material, u8 lights, gx_diffuse_function_t diff, gx_attenuation_function_t attn)
+	{ GX_SetChanCtrl(mcast(s32, channel), light_enable, ambient, material, lights, mcast(u8, diff), mcast(u8, attn)); }
+
+void ogcwrap::gx::setColorChannelAmbient(gx_color_channel_t channel, GXColor color)
+	{ GX_SetChanAmbColor(mcast(s32, channel), color); }
+
+void ogcwrap::gx::setColorChannelMaterial(gx_color_channel_t channel, GXColor color)
+	{ GX_SetChanMatColor(mcast(s32, channel), color); }

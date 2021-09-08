@@ -32,6 +32,6 @@
 // cache
 
 // macros
-#define cast(srcval, dsttyp)	((srcval)(dsttyp))
+#define mcast(type, val)	((type)(val))
 
 #endif // wrap_include_h
