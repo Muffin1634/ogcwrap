@@ -21,21 +21,21 @@ namespace ogcwrap::gx
 	GXTlutRegionCallback setTLUTRegionCallback(GXTlutRegionCallback cb);
 
 	// fifo
-	void setFifoBase(GXFifoObj *, void *, u32);
-	void setFifoLimits(GXFifoObj *, u32, u32);
-	void setFifoPtrs(GXFifoObj *, void *, void *);
-	void setCPUFifo(GXFifoObj *);
-	void setGPUFifo(GXFifoObj *);
+	void setFifoBase(GXFifoObj * fifo, void * base_addr, u32 size);
+	void setFifoLimits(GXFifoObj * fifo, u32 high, u32 low);
+	void setFifoPtrs(GXFifoObj * fifo, void * readptr, void * writeptr);
+	void setCPUFifo(GXFifoObj * fifo);
+	void setGPUFifo(GXFifoObj * fifo);
 
-	void * getFifoBase(GXFifoObj *);
-	u32 getFifoCacheLineCount(GXFifoObj *);
-	u32 getFifoSize(GXFifoObj *);
-	u8 getFifoWrap(GXFifoObj *);
-	void getFifoPtrs(GXFifoObj *, void * *, void * *);
-	void getCPUFifo(GXFifoObj *);
-	void getGPUFifo(GXFifoObj *);
+	void * getFifoBase(GXFifoObj * fifo);
+	u32 getFifoCacheLineCount(GXFifoObj * fifo);
+	u32 getFifoSize(GXFifoObj * fifo);
+	u8 getFifoWrap(GXFifoObj * fifo);
+	void getFifoPtrs(GXFifoObj * fifo, void * * readptr, void * * writeptr);
+	void getCPUFifo(GXFifoObj * fifo);
+	void getGPUFifo(GXFifoObj * fifo);
 
-	void flush(void);
+	void flushCPUFifo(void);
 
 	// framebuffer management
 	f32 getYScaleFactor(u16, u16);

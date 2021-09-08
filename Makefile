@@ -17,6 +17,7 @@ export PREFIX		:= powerpc-eabi-
 DIRS_SOURCE			:= source
 DIRS_BUILD			:= build
 DIRS_LIB			:= lib
+DIRS_DOXYGEN		:= doxygen
 
 # build list of source files by extension
 SRCFILES_C			:= $(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(CURDIR)/$(dir)/*.c)))
@@ -28,8 +29,8 @@ OBJFILES_C			:= $(SRCFILES_C:.c=.o)
 OBJFILES_CPP		:= $(SRCFILES_CPP:.cpp=.o)
 OBJFILES			:= $(OBJFILES_C) $(OBJFILES_CPP)
 
-OBJFILES_NONLIB		:= test.o
-OBJFILES_LIB		:= $(foreach srcf,$(OBJFILES_NONLIB),$(patsubst $(srcf),,$(OBJFILES)))
+OBJFILES_EXCLUDE	:= gx.o
+OBJFILES_FINAL		:= $(foreach name,$(OBJFILES_EXCLUDE),$(subst $(name),,$(OBJFILES)))
 
 INCLUDE				:= include $(DEVKITPRO)/libogc/include
 
@@ -59,15 +60,19 @@ LDFLAGS				:= $(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 # targets
 
 # mark phony targets
-.PHONY: all load clean debug doxygen
+.PHONY: all build load clean debug doxygen
 
 # default target
 all:
+	@make --no-print-dir build
+	@echo
+	@make --no-print-dir doxygen
+
+# build target
+build:
 	@make --no-print-dir libwrap.a
 	@echo
 	@make --no-print-dir load
-	@echo
-	@make --no-print-dir doxygen
 
 # load target
 load:
@@ -79,8 +84,9 @@ load:
 # clean target
 clean:
 	@echo cleaning...
-	@rm -f $(DIRS_BUILD)/*
-	@rm -f $(DIRS_LIB)/*
+	@rm -vf $(DIRS_BUILD)/*
+	@rm -vf $(DIRS_LIB)/*
+	@rm -vrf $(DIRS_DOXYGEN)/*
 	@echo clean successful
 
 # actual debug target
@@ -94,6 +100,7 @@ debug:
 
 # doxygen target
 doxygen:
+	@echo Compiling doxygen
 	@doxygen
 
 #-------------------------------------------------------------------------------
@@ -109,13 +116,13 @@ doxygen:
 
 #-------------------------------------------------------------------------------
 # explicit rules
-test.elf: test.o
-	@$(LD) $(OBJFILES) -o $@ $(LDFLAGS)
-
 libwrap.a: $(OBJFILES)
 	@echo building static library archive $@
-	@$(AR) -rvlsf $(DIRS_LIB)/libwrap.a $(addprefix $(DIRS_BUILD)/,$(OBJFILES_LIB))
+	@$(AR) -rvlsf $(DIRS_LIB)/libwrap.a $(addprefix $(DIRS_BUILD)/,$(OBJFILES_FINAL))
 	@echo done building archive
+
+gx.o: gx.cpp # manual skip
+	@true
 
 #-------------------------------------------------------------------------------
 # list of implicit rules

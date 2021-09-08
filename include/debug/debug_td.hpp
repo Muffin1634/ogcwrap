@@ -2,17 +2,16 @@
 #ifndef wrap_debug_td_h
 #define wrap_debug_td_h
 
-typedef unsigned char u8;
+#include <gctypes.h>
 
 namespace ogcwrap::debug
 {
-	enum struct debug_device_t : u8
+	// enum
+	typedef enum struct debug_device_t : u8
 	{
 		dev_USBGecko,
 		dev_BBATCP
-	};
-
-	typedef debug_device_t DebugDevice;
+	} DebugDevice;
 }
 
 #endif // wrap_debug_td_h
@@ -20,14 +19,21 @@ namespace ogcwrap::debug
  *  \brief Header file containing typedefs of enum structs for <CODE>\<debug/debug.hpp\></CODE>.
  *
  *  This header contains enums in the <CODE>ogcwrap::debug</CODE> namespace for use with its functions.
- */
-
-/*! \namespace ogcwrap::debug
- *  \brief Namespace containing enums and functions related to the debugging stub included in libOGC.
- */
-
-/*! \typedef enum struct ogcwrap::debug::debug_device_t : u8 ogcwrap::debug::DebugDevice
- *  \brief Typedef of internal enum
  *
- *  further details
+ *  \namespace ogcwrap::debug
+ *  \brief Namespace containing enums and functions related to the debugging stub included in libOGC.
+ *
+ *  \warning The debugging stub does not currently work at this time. This documentation is only included for the
+ *           purposes of completely documenting the wrapper. Do not use this namespace's functions; you will get linker
+ *           errors as the original functions are not currently included in libOGC.
+ */
+
+/*! \enum ogcwrap::debug::debug_device_t
+ *  \brief Enum to choose which device to use the debugger with.
+ *
+ *  \var ogcwrap::debug::debug_device_t::dev_USBGecko
+ *  \brief Use the USB Gecko to interface with the debugger.
+ *
+ *  \var ogcwrap::debug::debug_device_t::dev_BBATCP
+ *  \brief Use BBA-TCP       to interface with the debugger.
  */

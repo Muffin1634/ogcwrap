@@ -3,6 +3,7 @@
  */
 
 #include "wrapinclude.hpp"
+#include "debug/debug_td.hpp"
 
 /*******************************************************************************
  * function forward declarations
@@ -10,13 +11,6 @@
 
 namespace ogcwrap::debug
 {
-	// enum
-	enum struct debug_device_t : u8
-	{
-		dev_USBGecko,
-		dev_BBATCP
-	};
-
 	// library management
 	void init(debug_device_t, u16);
 
