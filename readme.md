@@ -2,7 +2,6 @@
 
 todo:
 
-	[ ] a. finish gx implementation
 	[x] b. finish gu doxygen
 	[x] c1. find a way to make source code, doxygen, and inclusion work together in debug header
 	[.] c2. then refactor all the other headers

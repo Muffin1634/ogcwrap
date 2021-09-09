@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['frustum_0',['frustum',['../d3/d52/a00023.html#a9e32aaff6784cf9cf0a37c9da38ca6d5',1,'ogcwrap::gu']]]
+  ['clearframebuffer_0',['clearFramebuffer',['../d1/d6e/a00073.html#a8c9ec83be56a4d87b46878488fa52f71',1,'ogcwrap::video']]]
 ];
