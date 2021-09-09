@@ -3,80 +3,51 @@
  */
 
 #include "wrapinclude.hpp"
+#include "aesnd/aesnd_td.hpp"
 
 /*******************************************************************************
  * function forward declarations
  */
 
-namespace ogcwrap
+namespace ogcwrap::aesnd
 {
-	namespace aesnd
-	{
-		// enums
-		enum aesnd_voice_fmt_t
-		{
-			MONO_U8,
-			MONO_S8,
-			MONO_U16,
-			MONO_S16,
+	// library management
+	void init(void);
+	void deinit(void);
+	void play(void);
+	void pause(void);
 
-			STEREO_U8,
-			STEREO_S8,
-			STEREO_U16,
-			STEREO_S16
-		};
+	// gethods
+	u32 getDSPProcessTime(void);
+	f32 getDSPProcessUsage(void);
 
-		// library management
-		void init(void);
-		void reinit(void);
-		void play(void);
-		void pause(void);
+	// sethods
+	AESNDAudioCallback setAudioCallback(AESNDAudioCallback);
+	AESNDVoiceCallback setVoiceCallback(AESNDPB *, AESNDVoiceCallback);
 
-		// gethods
-		u32 getDSPProcessTime(void);
-		f32 getDSPProcessUsage(void);
-
-		// sethods
-		AESNDAudioCallback setAudioCallback(AESNDAudioCallback);
-		AESNDVoiceCallback setVoiceCallback(AESNDPB *, AESNDVoiceCallback);
-
-		// voice manipulation methods
-		AESNDPB * allocateVoice(AESNDVoiceCallback cb);
-		void freeVoice(AESNDPB *);
-		void setVoiceStopStatus(AESNDPB *, bool);
-		void setVoiceMuteStatus(AESNDPB *, bool);
-		void setVoiceLoopStatus(AESNDPB *, bool);
-		void setVoiceStreamStatus(AESNDPB *, bool);
-		void setVoiceFormat(AESNDPB *, aesnd_voice_fmt_t);
-		void setVoiceFrequency(AESNDPB *, f32);
-		void setVoiceVolume(AESNDPB *, u16, u16);
-		void setVoiceDelay(AESNDPB *, u32);
-		void setVoiceBuffer(AESNDPB *, const void *, u32);
-		void playVoice(AESNDPB *, aesnd_voice_fmt_t, const void *, u32, f32, u32, bool);
-
-		// detail
-		namespace detail
-		{
-			// encode (f<-b)
-
-			// decode (f->b)
-			u32 decodeAESNDVF(aesnd_voice_fmt_t);
-		}
-	}
+	// voice manipulation methods
+	AESNDPB * allocateVoice(AESNDVoiceCallback);
+	void freeVoice(AESNDPB *);
+	void setVoiceStopStatus(AESNDPB *, bool);
+	void setVoiceMuteStatus(AESNDPB *, bool);
+	void setVoiceLoopStatus(AESNDPB *, bool);
+	void setVoiceStreamStatus(AESNDPB *, bool);
+	void setVoiceFormat(AESNDPB *, aesnd_voice_format_t);
+	void setVoiceFrequency(AESNDPB *, f32);
+	void setVoiceVolume(AESNDPB *, u16, u16);
+	void setVoiceDelay(AESNDPB *, u32);
+	void setVoiceBuffer(AESNDPB *, const void *, u32);
+	void playVoice(AESNDPB *, aesnd_voice_format_t, const void *, u32, f32, u32, bool);
 }
 
 /*******************************************************************************
  * functions
  */
 
-using ogcwrap::aesnd::aesnd_voice_fmt_t;
-
-using namespace ogcwrap::aesnd::detail;
-
 void ogcwrap::aesnd::init(void)
 	{ AESND_Init(); }
 
-void ogcwrap::aesnd::reinit(void)
+void ogcwrap::aesnd::deinit(void)
 	{ AESND_Reset(); }
 
 void ogcwrap::aesnd::play(void)
@@ -115,8 +86,8 @@ void ogcwrap::aesnd::setVoiceLoopStatus(AESNDPB * voice, bool status)
 void ogcwrap::aesnd::setVoiceStreamStatus(AESNDPB * voice, bool status)
 	{ AESND_SetVoiceStream(voice, status); }
 
-void ogcwrap::aesnd::setVoiceFormat(AESNDPB * voice, aesnd_voice_fmt_t format)
-	{ AESND_SetVoiceFormat(voice, detail::decodeAESNDVF(format)); }
+void ogcwrap::aesnd::setVoiceFormat(AESNDPB * voice, aesnd_voice_format_t format)
+	{ AESND_SetVoiceFormat(voice, mcast(u32, format)); }
 
 void ogcwrap::aesnd::setVoiceFrequency(AESNDPB * voice, f32 freq)
 	{ AESND_SetVoiceFrequency(voice, freq); }
@@ -130,33 +101,5 @@ void ogcwrap::aesnd::setVoiceDelay(AESNDPB * voice, u32 delay)
 void ogcwrap::aesnd::setVoiceBuffer(AESNDPB * voice, const void * buffer, u32 size)
 	{ AESND_SetVoiceBuffer(voice, buffer, size); }
 
-void ogcwrap::aesnd::playVoice(AESNDPB * voice, aesnd_voice_fmt_t format, const void * buffer, u32 size, f32 freq, u32 delay, bool statusLoop)
-	{ AESND_PlayVoice(voice, detail::decodeAESNDVF(format), buffer, size, freq, delay, statusLoop); }
-
-// ogcwrap::aesnd::detail
-
-u32 ogcwrap::aesnd::detail::decodeAESNDVF(aesnd_voice_fmt_t format)
-{
-	switch (format)
-	{
-		case aesnd_voice_fmt_t::MONO_U8:
-			return 4;
-		case aesnd_voice_fmt_t::MONO_S8:
-			return 0;
-		case aesnd_voice_fmt_t::MONO_U16:
-			return 6;
-		case aesnd_voice_fmt_t::MONO_S16:
-			return 2;
-		case aesnd_voice_fmt_t::STEREO_U8:
-			return 5;
-		case aesnd_voice_fmt_t::STEREO_S8:
-			return 1;
-		case aesnd_voice_fmt_t::STEREO_U16:
-			return 7;
-		case aesnd_voice_fmt_t::STEREO_S16:
-			return 3;
-
-		default:
-			return -1;
-	}
-}
+void ogcwrap::aesnd::playVoice(AESNDPB * voice, aesnd_voice_format_t format, const void * buffer, u32 size, f32 freq, u32 delay, bool statusLoop)
+	{ AESND_PlayVoice(voice, mcast(u32, format), buffer, size, freq, delay, statusLoop); }

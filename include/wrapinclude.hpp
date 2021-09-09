@@ -31,6 +31,10 @@
 
 // cache
 
+// console
+
+// wiilaunch
+
 // macros
 #define mcast(type, val)	((type)(val))
 

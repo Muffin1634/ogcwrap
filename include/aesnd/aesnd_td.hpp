@@ -2,25 +2,20 @@
 #ifndef wrap_aesnd_td_h
 #define wrap_aesnd_td_h
 
-namespace ogcwrap
+namespace ogcwrap::aesnd
 {
-	namespace aesnd
+	typedef enum struct aesnd_voice_format_t
 	{
-		typedef enum aesnd_voice_format_t
-		{
-			MONO_U8,
-			MONO_S8,
-			MONO_U16,
-			MONO_S16,
+		MonoU8		= 4,
+		MonoS8		= 0,
+		MonoU16		= 6,
+		MonoS16		= 2,
 
-			STEREO_U8,
-			STEREO_S8,
-			STEREO_U16,
-			STEREO_S16
-		} AESNDVoiceFormat;
-	}
+		StereoU8	= 5,
+		StereoS8	= 1,
+		StereoU16	= 7,
+		StereoS16	= 3
+	} AESNDVoiceFormat;
 }
-
-using ogcwrap::aesnd::AESNDVoiceFormat;
 
 #endif // wrap_aesnd_td_h
