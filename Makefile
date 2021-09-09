@@ -102,6 +102,10 @@ debug:
 doxygen:
 	@echo Compiling doxygen
 	@cd doxygen/src && doxygen ../../Doxyfile
+	@make --no-print-dir doxygen_save
+
+doxygen_save:
+	@cp -vrf doxygen/doxygen/html/* ../../../docs/muffin/libwrap/
 
 #-------------------------------------------------------------------------------
 # generic source-to-object rules

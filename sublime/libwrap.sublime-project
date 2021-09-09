@@ -42,6 +42,10 @@
 					"shell_cmd": "make doxygen"
 				},
 				{
+					"name": "Save Doxygen",
+					"shell_cmd": "make doxygen_save"
+				},
+				{
 					"name": "Open Doxywizard",
 					"shell_cmd": "doxywizard"
 				}
