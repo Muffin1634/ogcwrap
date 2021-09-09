@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['s16_0',['s16',['../d4/d8c/a00035.html#ad3c589cfe24812b25178373fb178fc2e',1,'ogctypes.h']]],
-  ['s32_1',['s32',['../d4/d8c/a00035.html#ae156694b2c31f94e37ff9683a1205175',1,'ogctypes.h']]],
-  ['s64_2',['s64',['../d4/d8c/a00035.html#a4ef059b47a2028baa8c7909ef1b55776',1,'ogctypes.h']]],
-  ['s8_3',['s8',['../d4/d8c/a00035.html#a92c993df0009777ef4b55f8301f4f9f6',1,'ogctypes.h']]],
-  ['sfp16_4',['sfp16',['../d4/d8c/a00035.html#aff6e486e1e8410fbe2a0345de395329e',1,'ogctypes.h']]],
-  ['sfp32_5',['sfp32',['../d4/d8c/a00035.html#ab98f5d7503f1fc7695f642ab7e3a1c62',1,'ogctypes.h']]]
+  ['lightfrustum_0',['lightFrustum',['../d6/d5b/a00026.html#ae0dcae1723f860e12285fc3ee3612885',1,'ogcwrap::gu']]],
+  ['lightorthographic_1',['lightOrthographic',['../d6/d5b/a00026.html#a2ffd8590fce3600fd3f2295265744e3b',1,'ogcwrap::gu']]],
+  ['lightperspective_2',['lightPerspective',['../d6/d5b/a00026.html#a906cd906553dd1d5847d7aa357423ce6',1,'ogcwrap::gu']]],
+  ['lookat_3',['lookAt',['../d6/d5b/a00026.html#a9d71a803e7a5d79dc2077e26572bca46',1,'ogcwrap::gu']]]
 ];

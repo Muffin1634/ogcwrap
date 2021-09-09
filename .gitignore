@@ -5,8 +5,6 @@ include/
 lib/
 other/
 source/
-sublime/
-Makefile
 
 # except for the Doxyfile and the Doxygen folder
 !Doxyfile

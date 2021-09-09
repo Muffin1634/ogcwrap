@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['orthographic_0',['orthographic',['../d3/d52/a00023.html#a34264044c838278f20639c7e0e5f7406',1,'ogcwrap::gu']]]
+  ['init_0',['init',['../da/d24/a00068.html#acc72f4aa88d1bcf49da585cba3417690',1,'ogcwrap::debug::init()'],['../d1/d6e/a00073.html#a5db23c22110b4ceeaeb72c47f347ff2a',1,'ogcwrap::video::init()']]]
 ];

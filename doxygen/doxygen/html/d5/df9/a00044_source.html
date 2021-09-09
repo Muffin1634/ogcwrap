@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libwrap: video/video.hpp Source File</title>
+<title>libwrap: system/system_td.hpp Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -83,61 +83,54 @@ $(document).ready(function(){initNavTree('d5/df9/a00044_source.html','../../'); 
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">video.hpp</div></div>
+  <div class="headertitle"><div class="title">system_td.hpp</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef wrap_video_h</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define wrap_video_h</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef wrap_system_td_h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define wrap_system_td_h</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;gctypes.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;ogc/video.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;video/video_td.hpp&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>ogcwrap</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">namespace </span>video</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="comment">// library management</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="../../df/d5f/a00064.html#acc72f4aa88d1bcf49da585cba3417690">init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">// gethods</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        GXRModeObj * getPreferredRMode(GXRModeObj *);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        TVMode getTVMode(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordtype">bool</span> getComponentCableStatus(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordtype">void</span> * getCurrentFramebuffer(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordtype">void</span> * getNextFramebuffer(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_typedef" href="../../d4/d8c/a00035.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> getFramebufferSize(GXRModeObj *);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_typedef" href="../../d4/d8c/a00035.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> getCurrentLine(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_typedef" href="../../d4/d8c/a00035.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> getNextField(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">// sethods</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordtype">void</span> setConfiguration(GXRModeObj *);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        VIRetraceCallback setTraceCallback(RetraceTime, VIRetraceCallback);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordtype">void</span> setNextFramebuffer(<span class="keywordtype">void</span> *);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">void</span> setNextRightFramebuffer(<span class="keywordtype">void</span> *);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">void</span> setBlackoutStatus(<span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span>ogcwrap</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">namespace </span>system</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keyword">typedef</span> <span class="keyword">enum</span> sys_language_t</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>            English,</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>            German,</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            French,</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            Spanish,</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            Italian,</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            Dutch</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        } SystemLanguage;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">typedef</span> <span class="keyword">enum</span> sys_audio_mode_t</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            Mono,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            Stereo</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        } SystemAudioMode;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">typedef</span> <span class="keyword">enum</span> sys_video_mode_t</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            NTSC,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            PAL,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            MPAL</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        } SystemVideoMode;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="comment">// write methods</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">void</span> clearFramebuffer(GXRModeObj *, <span class="keywordtype">void</span> *, <a class="code hl_typedef" href="../../d4/d8c/a00035.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">void</span> flush(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">using</span> ogcwrap::system::SystemLanguage;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">using</span> ogcwrap::system::SystemAudioMode;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">using</span> ogcwrap::system::SystemVideoMode;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// other</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">void</span> waitVSync(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif </span><span class="comment">// wrap_video_h</span></div>
-<div class="ttc" id="aa00035_html_a0f96c2dca5406affb1ae89c21384ade4"><div class="ttname"><a href="../../d4/d8c/a00035.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a></div><div class="ttdeci">unsigned int u32</div><div class="ttdoc">unsigned 32 bit integer</div><div class="ttdef"><b>Definition:</b> ogctypes.h:9</div></div>
-<div class="ttc" id="aa00064_html_acc72f4aa88d1bcf49da585cba3417690"><div class="ttname"><a href="../../df/d5f/a00064.html#acc72f4aa88d1bcf49da585cba3417690">ogcwrap::debug::init</a></div><div class="ttdeci">void init(DebugDevice dev, u16 port)</div><div class="ttdoc">Initializes the debugging stub and allows you to use _breakpt() throughout your code to create breakp...</div></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif </span><span class="comment">// wrap_system_td_h</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_597f6a792ff7cba98dd4f9f2210b5255.html">video</a></li><li class="navelem"><b>video.hpp</b></li>
-    <li class="footer">Generated on Wed Sep 8 2021 14:08:24 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="navelem"><a class="el" href="../../dir_e8522150b400a43ebfdbd1fed060b8e2.html">system</a></li><li class="navelem"><b>system_td.hpp</b></li>
+    <li class="footer">Generated on Wed Sep 8 2021 20:18:40 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

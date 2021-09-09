@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['lightfrustum_0',['lightFrustum',['../d3/d52/a00023.html#ae0dcae1723f860e12285fc3ee3612885',1,'ogcwrap::gu']]],
-  ['lightorthographic_1',['lightOrthographic',['../d3/d52/a00023.html#a2ffd8590fce3600fd3f2295265744e3b',1,'ogcwrap::gu']]],
-  ['lightperspective_2',['lightPerspective',['../d3/d52/a00023.html#a906cd906553dd1d5847d7aa357423ce6',1,'ogcwrap::gu']]],
-  ['lookat_3',['lookAt',['../d3/d52/a00023.html#a9d71a803e7a5d79dc2077e26572bca46',1,'ogcwrap::gu']]]
+  ['getcomponentcablestatus_0',['getComponentCableStatus',['../d1/d6e/a00073.html#aa7d0ebcafe4a336093f1d16caf59ebe9',1,'ogcwrap::video']]],
+  ['getcurrentframebuffer_1',['getCurrentFramebuffer',['../d1/d6e/a00073.html#a2320bb601913dbd808c2fd664cce3266',1,'ogcwrap::video']]],
+  ['getcurrentline_2',['getCurrentLine',['../d1/d6e/a00073.html#a6bbfbe256398d200207c638978f082a5',1,'ogcwrap::video']]],
+  ['getframebuffersize_3',['getFramebufferSize',['../d1/d6e/a00073.html#a29149138ec4b17800edc9496beb22de6',1,'ogcwrap::video']]],
+  ['getnextfield_4',['getNextField',['../d1/d6e/a00073.html#a698b16c0456b7cdc6507cbfefdf35519',1,'ogcwrap::video']]],
+  ['getnextframebuffer_5',['getNextFramebuffer',['../d1/d6e/a00073.html#afb3ab3a9e32461d7f6f2b8f49a12ec3d',1,'ogcwrap::video']]],
+  ['getpreferredrmode_6',['getPreferredRMode',['../d1/d6e/a00073.html#a6adbf406350ce7ee25e27f70747c9c59',1,'ogcwrap::video']]],
+  ['gettvmode_7',['getTVMode',['../d1/d6e/a00073.html#a5ea6fd8d3ba59b29cbd92b213f2f357d',1,'ogcwrap::video']]]
 ];
