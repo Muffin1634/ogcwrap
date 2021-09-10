@@ -2,37 +2,42 @@
 #ifndef wrap_system_td_h
 #define wrap_system_td_h
 
-namespace ogcwrap
+namespace ogcwrap::system
 {
-	namespace system
+	typedef enum struct sys_reset_mode_t
 	{
-		typedef enum sys_language_t
-		{
-			English,
-			German,
-			French,
-			Spanish,
-			Italian,
-			Dutch
-		} SystemLanguage;
+		PowerOff		= 4,
+		PowerOffIdle	= 6,
+		PowerOffStandby	= 5,
+		Shutdown		= 2,
 
-		typedef enum sys_audio_mode_t
-		{
-			Mono,
-			Stereo
-		} SystemAudioMode;
+		Restart			= 0,
+		HotReset,
+		ReturnToMenu	= 3
+	} SystemResetMode;
 
-		typedef enum sys_video_mode_t
-		{
-			NTSC,
-			PAL,
-			MPAL
-		} SystemVideoMode;
-	}
+	typedef enum struct sys_language_t
+	{
+		English,
+		German,
+		French,
+		Spanish,
+		Italian,
+		Dutch
+	} SystemLanguage;
+
+	typedef enum struct sys_audio_mode_t
+	{
+		Mono,
+		Stereo
+	} SystemAudioMode;
+
+	typedef enum struct sys_video_mode_t
+	{
+		NTSC,
+		PAL,
+		MPAL
+	} SystemVideoMode;
 }
-
-using ogcwrap::system::SystemLanguage;
-using ogcwrap::system::SystemAudioMode;
-using ogcwrap::system::SystemVideoMode;
 
 #endif // wrap_system_td_h

@@ -3,6 +3,7 @@
  */
 
 #include "wrapinclude.hpp"
+#include "system/system_td.hpp"
 
 /*******************************************************************************
  * function forward declarations
@@ -12,33 +13,8 @@ namespace ogcwrap
 {
 	namespace system
 	{
-		// enums
-
-		enum sys_language_t
-		{
-			English,
-			German,
-			French,
-			Spanish,
-			Italian,
-			Dutch
-		};
-
-		enum sys_audio_mode_t
-		{
-			Mono,
-			Stereo
-		};
-
-		enum sys_video_mode_t
-		{
-			NTSC,
-			PAL,
-			MPAL
-		};
-
-		// management
-		void reset(s32, u32, u32);
+		// library management
+		void reset(sys_reset_mode_t);
 
 		// gethods
 		u32 getHollywoodRevision(void);
@@ -112,16 +88,6 @@ namespace ogcwrap
 			 * it is already called by something else so here it is in detail
 			 */
 			void init(void);
-
-			// encode (f<-b)
-			sys_language_t encodeL(u8);
-			sys_audio_mode_t encodeAM(u8);
-			sys_video_mode_t encodeVM(u8);
-
-			// decode (f->b)
-			u8 decodeL(sys_language_t);
-			u8 decodeAM(sys_audio_mode_t);
-			u8 decodeVM(sys_video_mode_t);
 		}
 	}
 
@@ -148,8 +114,8 @@ using ogcwrap::system::sys_video_mode_t;
 
 using namespace ogcwrap::system::detail;
 
-void ogcwrap::system::reset(s32 reset, u32 resetcode, u32 forcemenu)
-	{ SYS_ResetSystem(reset, resetcode, forcemenu); }
+void ogcwrap::system::reset(sys_reset_mode_t mode)
+	{ SYS_ResetSystem(mcast(s32, mode), 0, 0); }
 
 u32 ogcwrap::system::getHollywoodRevision(void)
 	{ return SYS_GetHollywoodRevision(); }
@@ -164,19 +130,19 @@ s8 ogcwrap::system::getDisplayOffsetH(void)
 	{ return SYS_GetDisplayOffsetH(); }
 
 bool ogcwrap::system::getEuRGB60(void)
-	{ return (SYS_GetEuRGB60() == 1 ? true : false); }
+	{ return SYS_GetEuRGB60(); }
 
 sys_language_t ogcwrap::system::getLanguage(void)
-	{ return detail::encodeL(SYS_GetLanguage()); }
+	{ return mcast(sys_language_t, SYS_GetLanguage()); }
 
 bool ogcwrap::system::getProgressiveScanStatus(void)
-	{ return (SYS_GetProgressiveScan() == 1 ? true : false); }
+	{ return SYS_GetProgressiveScan(); }
 
 sys_audio_mode_t ogcwrap::system::getAudioMode(void)
-	{ return detail::encodeAM(SYS_GetSoundMode()); }
+	{ return mcast(sys_audio_mode_t, SYS_GetSoundMode()); }
 
 sys_video_mode_t ogcwrap::system::getVideoMode(void)
-	{ return detail::encodeVM(SYS_GetVideoMode()); }
+	{ return mcast(sys_video_mode_t, SYS_GetVideoMode()); }
 
 u16 ogcwrap::system::getWirelessID(u32 channel)
 	{ return SYS_GetWirelessID(channel); }
@@ -218,19 +184,19 @@ void ogcwrap::system::setDisplayOffsetH(s8 offset)
 	{ SYS_SetDisplayOffsetH(offset); }
 
 void ogcwrap::system::setEuRGB60(bool status)
-	{ SYS_SetEuRGB60(((u8)(status))); }
+	{ SYS_SetEuRGB60(status); }
 
 void ogcwrap::system::setLanguage(sys_language_t lang)
-	{ SYS_SetLanguage(detail::decodeL(lang)); }
+	{ SYS_SetLanguage(mcast(u8, lang)); }
 
 void ogcwrap::system::setProgressiveScan(bool status)
 	{ SYS_SetProgressiveScan(status); }
 
 void ogcwrap::system::setAudioMode(sys_audio_mode_t mode)
-	{ SYS_SetSoundMode(detail::decodeAM(mode)); }
+	{ SYS_SetSoundMode(mcast(u8, mode)); }
 
 void ogcwrap::system::setVideoMode(sys_video_mode_t mode)
-	{ SYS_SetVideoMode(detail::decodeVM(mode)); }
+	{ SYS_SetVideoMode(mcast(u8, mode)); }
 
 void ogcwrap::system::setWirelessID(u32 channel, u16 id)
 	{ SYS_SetWirelessID(channel, id); }
@@ -250,8 +216,8 @@ void ogcwrap::system::setArena2Low(void * newval)
 void ogcwrap::system::setArena2High(void * newval)
 	{ SYS_SetArena2Hi(newval); }
 
-void ogcwrap::system::setFiber(u32 a0, u32 a1, u32 a2, u32 a3, u32 pc, u32 newsp)
-	{ SYS_SwitchFiber(a0, a1, a2, a3, pc, newsp); }
+void ogcwrap::system::setFiber(u32 arg0, u32 arg1, u32 arg2, u32 arg3, u32 pc, u32 newsp)
+	{ SYS_SwitchFiber(arg0, arg1, arg2, arg3, pc, newsp); }
 
 void * ogcwrap::system::allocateFramebuffer(GXRModeObj * rmode)
 	{ return SYS_AllocateFramebuffer(rmode); }
@@ -272,19 +238,19 @@ void ogcwrap::system::dumpPMC(void)
 	{ SYS_DumpPMC(); }
 
 bool ogcwrap::system::createAlarm(syswd_t * alarm)
-	{ return (SYS_CreateAlarm(alarm) == 0 ? true : false); }
+	{ return ~SYS_CreateAlarm(alarm); }
 
 bool ogcwrap::system::removeAlarm(syswd_t alarm)
-	{ return (SYS_RemoveAlarm(alarm) == 0 ? true : false); }
+	{ return ~SYS_RemoveAlarm(alarm); }
 
 bool ogcwrap::system::setAlarm(syswd_t alarm, const timespec * time, alarmcallback cb, void * cbArgs)
-	{ return (SYS_SetAlarm(alarm, time, cb, cbArgs) == 0 ? true : false); }
+	{ return ~SYS_SetAlarm(alarm, time, cb, cbArgs); }
 
 bool ogcwrap::system::setPeriodicAlarm(syswd_t alarm, const timespec * time, const timespec * period, alarmcallback cb, void * cbArgs)
-	{ return (SYS_SetPeriodicAlarm(alarm, time, period, cb, cbArgs) == 0 ? true : false); }
+	{ return ~SYS_SetPeriodicAlarm(alarm, time, period, cb, cbArgs); }
 
 bool ogcwrap::system::cancelAlarm(syswd_t alarm)
-	{ return (SYS_CancelAlarm(alarm) == 0 ? true : false); }
+	{ return ~SYS_CancelAlarm(alarm); }
 
 u32 ogcwrap::system::initFont(sys_fontheader * font)
 	{ return SYS_InitFont(font); }
@@ -292,7 +258,7 @@ u32 ogcwrap::system::initFont(sys_fontheader * font)
 u32 ogcwrap::system::getFontEncoding(void)
 	{ return SYS_GetFontEncoding(); }
 
-void ogcwrap::system::getFontTexture(s32 c, void * * image, s32 * posX, s32 *posY, s32 * width)
+void ogcwrap::system::getFontTexture(s32 c, void * * image, s32 * posX, s32 * posY, s32 * width)
 	{ SYS_GetFontTexture(c, image, posX, posY, width); }
 
 void ogcwrap::system::getFontTexel(s32 c, void * image, s32 pos, s32 stride, s32 * width)
@@ -303,6 +269,11 @@ void ogcwrap::system::registerResetFunction(sys_resetinfo * info)
 
 void ogcwrap::system::unregisterResetFunction(sys_resetinfo * info)
 	{ SYS_UnregisterResetFunc(info); }
+
+// ogcwrap::system::detail
+
+void ogcwrap::system::detail::init(void)
+	{ SYS_Init(); }
 
 // ogcwrap:::memcast
 
@@ -326,106 +297,3 @@ void * ogcwrap::memcast::K1_Physical(u32 addr)
 
 void * ogcwrap::memcast::K1_K0(u32 addr)
 	{ return ((void *)(addr - 0x40000000)); }
-
-// ogcwrap::system::detail
-
-void ogcwrap::system::detail::init(void)
-	{ SYS_Init(); }
-
-sys_language_t ogcwrap::system::detail::encodeL(u8 lang)
-{
-	switch (lang)
-	{
-		case 0: // English
-			return sys_language_t::English;
-		case 1: // German
-			return sys_language_t::German;
-		case 2: // rench
-			return sys_language_t::French;
-		case 3: // Spanish
-			return sys_language_t::Spanish;
-		case 4: // Italian
-			return sys_language_t::Italian;
-		case 5: // Dutch
-			return sys_language_t::Dutch;
-		default:
-			return sys_language_t::English;
-	}
-}
-
-sys_audio_mode_t ogcwrap::system::detail::encodeAM(u8 amode)
-{
-	switch (amode)
-	{
-		case 0: // Mono
-			return sys_audio_mode_t::Mono;
-		case 1: // Stereo
-			return sys_audio_mode_t::Stereo;
-		default:
-			return sys_audio_mode_t::Mono;
-
-	}
-}
-sys_video_mode_t ogcwrap::system::detail::encodeVM(u8 vmode)
-{
-	switch (vmode)
-	{
-		case 0: // NTSC
-			return sys_video_mode_t::NTSC;
-		case 1: // PAL
-			return sys_video_mode_t::PAL;
-		case 2: // MPAL
-			return sys_video_mode_t::MPAL;
-		default:
-			return sys_video_mode_t::NTSC;
-	}
-}
-
-u8 ogcwrap::system::detail::decodeL(sys_language_t lang)
-{
-	switch (lang)
-	{
-		case sys_language_t::English:
-			return 0;
-		case sys_language_t::German:
-			return 1;
-		case sys_language_t::French:
-			return 2;
-		case sys_language_t::Spanish:
-			return 3;
-		case sys_language_t::Italian:
-			return 4;
-		case sys_language_t::Dutch:
-			return 5;
-		default:
-			return 0;
-	}
-}
-
-u8 ogcwrap::system::detail::decodeAM(sys_audio_mode_t amode)
-{
-	switch (amode)
-	{
-		case sys_audio_mode_t::Mono:
-			return 0;
-		case sys_audio_mode_t::Stereo:
-			return 1;
-		default:
-			return 0;
-	}
-}
-
-u8 ogcwrap::system::detail::decodeVM(sys_video_mode_t vmode)
-{
-	switch (vmode)
-	{
-		case sys_video_mode_t::NTSC:
-			return 0;
-		case sys_video_mode_t::PAL:
-			return 1;
-		case sys_video_mode_t::MPAL:
-			return 2;
-		default:
-			return 0;
-	}
-}

@@ -4,6 +4,9 @@
 
 #include <gctypes.h>
 #include <ogc/consol.h>
+#include <ogc/gx_struct.h>
+
+// #include "console/console_td.hpp"
 
 namespace ogcwrap::console
 {

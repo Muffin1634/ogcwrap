@@ -13,7 +13,7 @@ namespace ogcwrap
 	namespace system
 	{
 		// management
-		void reset(s32, u32, u32);
+		void reset(SystemResetMode mode);
 
 		// gethods
 		u32 getHollywoodRevision(void);
@@ -25,7 +25,7 @@ namespace ogcwrap
 		bool getProgressiveScanStatus(void);
 		SystemAudioMode getAudioMode(void);
 		SystemVideoMode getVideoMode(void);
-		u16 getWirelessID(u32);
+		u16 getWirelessID(u32 channel);
 		u16 getGBSMode(void);
 		void * getArena1Low(void);
 		void * getArena1High(void);
@@ -36,61 +36,66 @@ namespace ogcwrap
 		u32 getResetButtonStatus(void);
 
 		// sethods
-		resetcallback setResetCallback(resetcallback);
-		powercallback setPowerCallback(powercallback);
-		void setCounterBias(u32);
-		void setDisplayOffsetH(s8);
-		void setEuRGB60(bool);
-		void setLanguage(SystemLanguage);
-		void setProgressiveScan(bool);
-		void setAudioMode(SystemAudioMode);
-		void setVideoMode(SystemVideoMode);
-		void setWirelessID(u32, u16);
-		void setGBSMode(u16);
-		void setArena1Low(void *);
-		void setArena1High(void *);
-		void setArena2Low(void *);
-		void setArena2High(void *);
-		void setFiber(u32, u32, u32, u32, u32, u32);
+		resetcallback setResetCallback(resetcallback cb);
+		powercallback setPowerCallback(powercallback cb);
+		void setCounterBias(u32 bias);
+		void setDisplayOffsetH(s8 offset);
+		void setEuRGB60(bool status);
+		void setLanguage(SystemLanguage lang);
+		void setProgressiveScan(bool status);
+		void setAudioMode(SystemAudioMode mode);
+		void setVideoMode(SystemVideoMode mode);
+		void setWirelessID(u32 channel, u16 id);
+		void setGBSMode(u16 mode);
+		void setArena1Low(void * newval);
+		void setArena1High(void * newval);
+		void setArena2Low(void * newval);
+		void setArena2High(void * newval);
+		void setFiber(u32 arg0, u32 arg1, u32 arg2, u32 arg3, u32 pc, u32 newsp);
 
 		// miscellaneous
-		void * allocateFramebuffer(GXRModeObj *);
-		void protectRange(u32, void *, u32, u32);
+		void * allocateFramebuffer(GXRModeObj * rmode);
+		void protectRange(u32 channel, void * addr, u32 bytes, u32 ctrl);
 
 		// pmc
-		void startPMC(u32, u32);
+		void startPMC(u32 mcr0, u32 mcr1);
 		void stopPMC(void);
 		void resetPMC(void);
 		void dumpPMC(void);
 
 		// alarm
-		bool createAlarm(syswd_t *);
-		bool removeAlarm(syswd_t);
-		bool setAlarm(syswd_t, const timespec *, alarmcallback, void *);
-		bool setPeriodicAlarm(syswd_t, const timespec *, const timespec *, alarmcallback, void *);
-		bool cancelAlarm(syswd_t);
+		bool createAlarm(syswd_t * alarm);
+		bool removeAlarm(syswd_t alarm);
+		bool setAlarm(syswd_t alarm, const timespec * time, alarmcallback cb, void * cbArgs);
+		bool setPeriodicAlarm(syswd_t alarm, const timespec * time, const timespec * period, alarmcallback cb, void * cbArgs);
+		bool cancelAlarm(syswd_t alarm);
 
 		// font
-		u32 initFont(sys_fontheader *);
+		u32 initFont(sys_fontheader * font);
 		u32 getFontEncoding(void);
-		void getFontTexture(s32, void * *, s32 *, s32 *, s32 *);
-		void getFontTexel(s32, void *, s32, s32, s32 *);
+		void getFontTexture(s32 c, void * * image, s32 * posX, s32 * posY, s32 * width);
+		void getFontTexel(s32 c, void * image, s32 pos, s32 stride, s32 * width);
 
 		// reset function
-		void registerResetFunction(sys_resetinfo *);
-		void unregisterResetFunction(sys_resetinfo *);
+		void registerResetFunction(sys_resetinfo * info);
+		void unregisterResetFunction(sys_resetinfo * info);
+
+		namespace detail
+		{
+			void init(void);
+		}
 	}
 
 	namespace memcast
 	{
 		// src addr -> dest addr
-		void * Virtual_Physical(u32);
-		void * Physical_K0(u32);
-		void * Physical_K1(u32);
-		void * K0_Physical(u32);
-		void * K0_K1(u32);
-		void * K1_Physical(u32);
-		void * K1_K0(u32);
+		void * Virtual_Physical(u32 addr);
+		void * Physical_K0(u32 addr);
+		void * Physical_K1(u32 addr);
+		void * K0_Physical(u32 addr);
+		void * K0_K1(u32 addr);
+		void * K1_Physical(u32 addr);
+		void * K1_K0(u32 addr);
 	}
 }
 

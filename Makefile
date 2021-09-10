@@ -129,7 +129,7 @@ doxygen:
 		   $(CPPFLAGS) \
 		   $(CXXFLAGS)
 
-%.cpp: %.hpp
+%.cpp: %.hpp %_td.hpp
 
 #-------------------------------------------------------------------------------
 # explicit rules
