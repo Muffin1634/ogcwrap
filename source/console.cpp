@@ -32,7 +32,7 @@ void ogcwrap::console::init(void * fb, u16 xStart, u16 yStart, u16 xRes, u16 yRe
 	{ CON_Init(fb, xStart, yStart, xRes, yRes, lineStride); }
 
 s32 ogcwrap::console::initEx(GXRModeObj * rmode, u16 xStart, u16 yStart, u16 xRes, u16 yRes)
-	{ CON_InitEx(rmode, xStart, yStart, xRes, yRes); }
+	{ return CON_InitEx(rmode, xStart, yStart, xRes, yRes); }
 
 void ogcwrap::console::getMetrics(u8 * rows, u8 * cols)
 {
@@ -46,12 +46,12 @@ void ogcwrap::console::getMetrics(u8 * rows, u8 * cols)
 
 void ogcwrap::console::getPosition(u8 * row, u8 * col)
 {
-	int * rowptr, colptr;
+	int * rowptr, * colptr;
 
 	CON_GetPosition(colptr, rowptr);
 
-	*rows = mcast(u8, *rowptr);
-	*cols = mcast(u8, *rowptr);
+	*row = mcast(u8, *rowptr);
+	*col = mcast(u8, *rowptr);
 }
 
 void ogcwrap::console::enableGecko(u8 port, bool safe)

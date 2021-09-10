@@ -30,7 +30,7 @@ OBJFILES_CPP		:= $(SRCFILES_CPP:.cpp=.o)
 OBJFILES			:= $(OBJFILES_C) $(OBJFILES_CPP)
 
 OBJFILES_EXCLUDE	:= gx.o
-OBJFILES_FINAL		:= $(foreach name,$(OBJFILES_EXCLUDE),$(subst $(name),,$(OBJFILES)))
+OBJFILES_FINAL		:= $(filter-out $(OBJFILES_EXCLUDE),$(OBJFILES))
 
 INCLUDE				:= include $(DEVKITPRO)/libogc/include
 
@@ -44,7 +44,7 @@ CXX					:= $(DEVKITPPC)/bin/$(PREFIX)g++.exe
 AR					:= $(DEVKITPPC)/bin/$(PREFIX)ar.exe
 
 CFLAGS_STANDARDS	:= -std=c++17
-CFLAGS_WARNINGS		:= -Wall -Wextra -Wno-comment -Wno-cpp
+CFLAGS_WARNINGS		:= -Wall -Wextra -Wno-comment -Wno-cpp -Wno-uninitialized
 CFLAGS_OPTIMIZATION	:= -O2
 
 FLAGS_INCLUDE		:= $(addprefix -I,$(INCLUDE))
@@ -60,26 +60,29 @@ LDFLAGS				:= $(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 # targets
 
 # mark phony targets
-.PHONY: all build load clean debug doxygen
+.PHONY: all compile build load clean debug doxygen
 
 # default target
-all:
-	@make --no-print-dir build
-	@echo
-	@make --no-print-dir doxygen
+all: compile doxygen
+
+# compile target
+compile: build load
 
 # build target
-build:
-	@make --no-print-dir libwrap.a
-	@echo
-	@make --no-print-dir load
+build: $(DIRS_LIB)/libwrap.a
 
 # load target
 load:
-	@cp -vf $(DIRS_LIB)/libwrap.a $(DEVKITPRO)/libogc/lib/wii/libwrap.a
-	@rm -vrf ../libwraptest/lib/local/include/*
-	@cp -vr include/* ../libwraptest/lib/local/include/
-	@rm -vf ../libwraptest/lib/local/include/wrapinclude.hpp
+	@cp -vf \
+		$(DIRS_LIB)/libwrap.a \
+		$(DEVKITPRO)/libogc/lib/wii/libwrap.a
+	@rm -vrf \
+		../libwraptest/lib/local/include/*
+	@cp -vr \
+		include/* \
+		../libwraptest/lib/local/include/
+	@rm -vf \
+		../libwraptest/lib/local/include/wrapinclude.hpp
 
 # clean target
 clean:
@@ -95,34 +98,34 @@ debug:
 	@echo CURDIR: $(CURDIR)
 	@echo SRCFILES: $(SRCFILES)
 	@echo OBJFILES: $(OBJFILES)
-	@echo OBJFILES_LIB: $(OBJFILES_LIB)
-	@echo $(addprefix $(DIRS_BUILD)/,$(OBJFILES_LIB))
+	@echo OBJFILES_FINAL: $(OBJFILES_FINAL)
+	@echo $(DIRS_BUILD)/$(OBJFILES_FINAL)
 
 # doxygen target
 doxygen:
 	@echo Compiling doxygen
-	@cd doxygen/src && doxygen ../../Doxyfile
+	@cd doxygen/src && \
+	doxygen ../../Doxyfile
 
 #-------------------------------------------------------------------------------
 # generic source-to-object rules
-%.o: %.cpp
+$(DIRS_BUILD)/%.o: $(DIRS_SOURCE)/%.cpp
 	@echo compiling C++ file $@
-	@$(CXX) -c $(DIRS_SOURCE)/$< -o $(DIRS_BUILD)/$@ $(CPPFLAGS) $(CXXFLAGS)
-
-%.c:
-	@true
-%.cpp:
-	@true
+	@$(CXX) \
+		-c $(DIRS_SOURCE)/$(notdir $<) \
+		-o $(DIRS_BUILD)/$(notdir $@) \
+		   $(CPPFLAGS) \
+		   $(CXXFLAGS)
 
 #-------------------------------------------------------------------------------
 # explicit rules
-libwrap.a: $(OBJFILES)
+$(DIRS_LIB)/libwrap.a: $(addprefix $(DIRS_BUILD)/,$(OBJFILES_FINAL))
 	@echo building static library archive $@
-	@$(AR) -rvlsf $(DIRS_LIB)/libwrap.a $(addprefix $(DIRS_BUILD)/,$(OBJFILES_FINAL))
+	@$(AR) \
+		-rvlsf \
+		$(DIRS_LIB)/libwrap.a \
+		$(addprefix $(DIRS_BUILD)/,$(OBJFILES_FINAL))
 	@echo done building archive
-
-gx.o: gx.cpp # manual skip
-	@true
 
 #-------------------------------------------------------------------------------
 # list of implicit rules

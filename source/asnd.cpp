@@ -56,6 +56,8 @@ namespace ogcwrap::asnd
  * functions
  */
 
+using ogcwrap::asnd::asnd_ret_vals_t;
+
 void ogcwrap::asnd::init(void)
 	{ ASND_Init(); }
 
@@ -120,7 +122,7 @@ asnd_ret_vals_t ogcwrap::asnd::stopVoice(u8 voice)
 	{ return mcast(asnd_ret_vals_t, ASND_StopVoice(voice)); }
 
 asnd_ret_vals_t ogcwrap::asnd::getVoiceStatus(u8 voice)
-	{ return mcast(asnd_ret_vals_t, (ASND_StatusVoice(voice) == -1 ? -3) + 2); }
+	{ return mcast(asnd_ret_vals_t, ASND_StatusVoice(voice) + 2); }
 
 asnd_ret_vals_t ogcwrap::asnd::setVoice(u8 voice, asnd_voice_fmt_t sampleFormat, u32 pitch, u32 delay, void * samples, u32 sampleSize, u8 left, u8 right, ASNDVoiceCallback cb)
 	{ return mcast(asnd_ret_vals_t, ASND_SetVoice(voice, mcast(s32, sampleFormat), pitch, delay, samples, sampleSize, left, right, cb)); }

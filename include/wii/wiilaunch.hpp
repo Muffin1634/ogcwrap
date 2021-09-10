@@ -27,7 +27,7 @@ namespace ogcwrap::wii
 
 /*  notes
  *
- *  1. For valid arguments to returnToSettingsPage(), see lines 53-59 of <ogcwiilaunch.h>:
+ *  1. For valid arguments to returnToSettingsPage(), see lines 53-59 of <ogc/wiilaunch.h>:
  *
  *  #define SETTINGS_CALENDAR	"Calendar/Calendar_index.html"
  *  #define SETTINGS_DISPLAY	"Display/Display_index.html"
