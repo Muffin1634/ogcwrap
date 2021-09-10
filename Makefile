@@ -15,13 +15,14 @@ export PREFIX		:= powerpc-eabi-
 
 # directories
 DIRS_SOURCE			:= source
+DIRS_INCLUDE		:= include
 DIRS_BUILD			:= build
 DIRS_LIB			:= lib
 DIRS_DOXYGEN		:= doxygen
 
 # build list of source files by extension
-SRCFILES_C			:= $(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(CURDIR)/$(dir)/*.c)))
-SRCFILES_CPP		:= $(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(CURDIR)/$(dir)/*.cpp)))
+SRCFILES_C			:= $(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(dir)/*.c)))
+SRCFILES_CPP		:= $(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(dir)/*.cpp)))
 SRCFILES			:= $(SRCFILES_C) $(SRCFILES_CPP)
 
 # build list of object files by extension
@@ -29,16 +30,26 @@ OBJFILES_C			:= $(SRCFILES_C:.c=.o)
 OBJFILES_CPP		:= $(SRCFILES_CPP:.cpp=.o)
 OBJFILES			:= $(OBJFILES_C) $(OBJFILES_CPP)
 
-OBJFILES_EXCLUDE	:= gx.o
-OBJFILES_FINAL		:= $(filter-out $(OBJFILES_EXCLUDE),$(OBJFILES))
+OBJFILES_EXCLUDE	:= gx
+OBJFILES_FINAL		:= $(filter-out $(OBJFILES_EXCLUDE).o,$(OBJFILES))
 
-INCLUDE				:= include $(DEVKITPRO)/libogc/include
+INCLUDE				:= $(DIRS_INCLUDE) $(DEVKITPRO)/libogc/include
 
 LD_LIBDIRS			:= ./$(DIRS_LIB) $(DEVKITPRO)/libogc
 LD_LIBS				:= wrap ogc m
 
+VPATH				:= $(DIRS_LIB) $(DIRS_BUILD) $(DIRS_SOURCE) $(DIRS_INCLUDE) \
+						$(foreach \
+							dir,\
+							$(DIRS_INCLUDE),\
+							$(filter-out \
+								$(wildcard */*.*),\
+								$(wildcard $(dir)/*)\
+							)\
+						)
+
 #-------------------------------------------------------------------------------
-# compiler and archiver + options
+# compiler and archiver + flags
 CC					:= $(DEVKITPPC)/bin/$(PREFIX)gcc.exe
 CXX					:= $(DEVKITPPC)/bin/$(PREFIX)g++.exe
 AR					:= $(DEVKITPPC)/bin/$(PREFIX)ar.exe
@@ -66,23 +77,24 @@ LDFLAGS				:= $(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 all: compile doxygen
 
 # compile target
-compile: build load
+compile: $(DIRS_LIB)/libwrap.a load
 
 # build target
-build: $(DIRS_LIB)/libwrap.a
 
 # load target
 load:
-	@cp -vf \
+	@cp -vrf \
 		$(DIRS_LIB)/libwrap.a \
 		$(DEVKITPRO)/libogc/lib/wii/libwrap.a
 	@rm -vrf \
 		../libwraptest/lib/local/include/*
-	@cp -vr \
+	@cp -vrf \
 		include/* \
 		../libwraptest/lib/local/include/
-	@rm -vf \
-		../libwraptest/lib/local/include/wrapinclude.hpp
+	@rm -vrf \
+		../libwraptest/lib/local/include/wrapinclude.hpp \
+		../libwraptest/lib/local/include/debug \
+		../libwraptest/lib/local/include/gx
 
 # clean target
 clean:
@@ -99,7 +111,7 @@ debug:
 	@echo SRCFILES: $(SRCFILES)
 	@echo OBJFILES: $(OBJFILES)
 	@echo OBJFILES_FINAL: $(OBJFILES_FINAL)
-	@echo $(DIRS_BUILD)/$(OBJFILES_FINAL)
+	@echo VPATH: $(VPATH)
 
 # doxygen target
 doxygen:
@@ -108,8 +120,8 @@ doxygen:
 	doxygen ../../Doxyfile
 
 #-------------------------------------------------------------------------------
-# generic source-to-object rules
-$(DIRS_BUILD)/%.o: $(DIRS_SOURCE)/%.cpp
+# generic header+source-to-object rules
+%.o: %.cpp
 	@echo compiling C++ file $@
 	@$(CXX) \
 		-c $(DIRS_SOURCE)/$(notdir $<) \
@@ -117,9 +129,11 @@ $(DIRS_BUILD)/%.o: $(DIRS_SOURCE)/%.cpp
 		   $(CPPFLAGS) \
 		   $(CXXFLAGS)
 
+%.cpp: %.hpp
+
 #-------------------------------------------------------------------------------
 # explicit rules
-$(DIRS_LIB)/libwrap.a: $(addprefix $(DIRS_BUILD)/,$(OBJFILES_FINAL))
+libwrap.a: $(OBJFILES_FINAL)
 	@echo building static library archive $@
 	@$(AR) \
 		-rvlsf \

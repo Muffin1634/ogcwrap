@@ -21,7 +21,7 @@
 				},
 				{
 					"name": "Build Library",
-					"shell_cmd": "make -d build"
+					"shell_cmd": "make libwrap.a"
 				},
 				{
 					"name": "Load Library into Test Project",

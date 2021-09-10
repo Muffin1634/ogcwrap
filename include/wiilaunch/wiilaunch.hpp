@@ -1,13 +1,13 @@
 #pragma once
-#ifndef wrap_wii_h
-#define wrap_wii_h
+#ifndef wrap_wiilaunch_h
+#define wrap_wiilaunch_h
 
 #include <gctypes.h>
 #include <ogc/wiilaunch.h>
 
-#include "wii/wiilaunch_td.hpp"
+#include "wiilaunch/wiilaunch_td.hpp"
 
-namespace ogcwrap::wii
+namespace ogcwrap::wiilaunch
 {
 	// library management
 	ReturnValue init(void);
@@ -23,7 +23,7 @@ namespace ogcwrap::wii
 	ReturnValue openURL(const char * url);
 }
 
-#endif // wrap_wii_h
+#endif // wrap_wiilaunch_h
 
 /*  notes
  *

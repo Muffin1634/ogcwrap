@@ -2,8 +2,6 @@
 #ifndef wrap_asnd_td_h
 #define wrap_asnd_td_h
 
-#warning test
-
 namespace ogcwrap::asnd
 {
 	typedef enum struct asnd_ret_vals_t
