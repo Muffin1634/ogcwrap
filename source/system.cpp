@@ -108,12 +108,6 @@ namespace ogcwrap
  * functions
  */
 
-using ogcwrap::system::sys_language_t;
-using ogcwrap::system::sys_audio_mode_t;
-using ogcwrap::system::sys_video_mode_t;
-
-using namespace ogcwrap::system::detail;
-
 void ogcwrap::system::reset(sys_reset_mode_t mode)
 	{ SYS_ResetSystem(mcast(s32, mode), 0, 0); }
 

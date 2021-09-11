@@ -1,6 +1,9 @@
 # intermediates
 !build/*.o
 
+# sublime
+sublime/libwrap.sublime-workspace
+
 # doxygen documentation
 doxygen/
 Doxyfile
