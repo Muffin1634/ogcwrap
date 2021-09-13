@@ -17,7 +17,11 @@
 				// make and friends
 				{
 					"name": "Build Library and Load",
+<<<<<<< HEAD
 					"shell_cmd": "make build"
+=======
+					"shell_cmd": "make deploy"
+>>>>>>> master
 				},
 				{
 					"name": "Build Library",
@@ -42,10 +46,13 @@
 					"shell_cmd": "make doxygen"
 				},
 				{
+<<<<<<< HEAD
 					"name": "Save Doxygen",
 					"shell_cmd": "make doxygen_save"
 				},
 				{
+=======
+>>>>>>> master
 					"name": "Open Doxywizard",
 					"shell_cmd": "doxywizard"
 				}

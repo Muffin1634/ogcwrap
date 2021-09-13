@@ -7,38 +7,35 @@
 
 #include "aesnd/aesnd_td.hpp"
 
-namespace ogcwrap
+namespace ogcwrap::aesnd
 {
-	namespace aesnd
-	{
-		// library management
-		void init(void);
-		void reinit(void);
-		void play(void);
-		void pause(void);
+	// library management
+	void init(void);
+	void deinit(void);
+	void play(void);
+	void pause(void);
 
-		// gethods
-		u32 getDSPProcessTime(void);
-		f32 getDSPProcessUsage(void);
+	// gethods
+	u32 getDSPProcessTime(void);
+	f32 getDSPProcessUsage(void);
 
-		// sethods
-		AESNDAudioCallback setAudioCallback(AESNDAudioCallback);
-		AESNDAudioCallback setVoiceCallback(AESNDPB *,AESNDAudioCallback);
+	// sethods
+	AESNDAudioCallback setAudioCallback(AESNDAudioCallback cb);
+	AESNDVoiceCallback setVoiceCallback(AESNDPB * voice, AESNDVoiceCallback cb);
 
-		// voice manipulation methods
-		AESNDPB * allocateVoice(AESNDVoiceCallback cb);
-		void freeVoice(AESNDPB *);
-		void setVoiceStopStatus(AESNDPB *, bool);
-		void setVoiceMuteStatus(AESNDPB *, bool);
-		void setVoiceLoopStatus(AESNDPB *, bool);
-		void setVoiceStreamStatus(AESNDPB *, bool);
-		void setVoiceFormat(AESNDPB *, aesnd_voice_format_t);
-		void setVoiceFrequency(AESNDPB *, f32);
-		void setVoiceVolume(AESNDPB *, u16, u16);
-		void setVoiceDelay(AESNDPB *, u32);
-		void setVoiceBuffer(AESNDPB *, const void *, u32);
-		void playVoice(AESNDPB *, aesnd_voice_format_t, const void *, u32, f32, u32, bool);
-	}
+	// voice manipulation methods
+	AESNDPB * allocateVoice(AESNDVoiceCallback cb);
+	void freeVoice(AESNDPB * voice);
+	void setVoiceStopStatus(AESNDPB * voice, bool status);
+	void setVoiceMuteStatus(AESNDPB * voice, bool status);
+	void setVoiceLoopStatus(AESNDPB * voice, bool status);
+	void setVoiceStreamStatus(AESNDPB * voice, bool status);
+	void setVoiceFormat(AESNDPB * voice, aesnd_voice_format_t format);
+	void setVoiceFrequency(AESNDPB * voice, f32 freq);
+	void setVoiceVolume(AESNDPB * voice, u16 left, u16 right);
+	void setVoiceDelay(AESNDPB * voice, u32 delay);
+	void setVoiceBuffer(AESNDPB * voice, const void * buffer, u32 size);
+	void playVoice(AESNDPB * voice, aesnd_voice_format_t format, const void * buffer, u32 size, f32 freq, u32 delay, bool statusLoop);
 }
 
 #endif // wrap_aesnd_h

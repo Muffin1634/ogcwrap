@@ -2,40 +2,34 @@
 #ifndef wrap_asnd_td_h
 #define wrap_asnd_td_h
 
-namespace ogcwrap
+namespace ogcwrap::asnd
 {
-	namespace asnd
+	typedef enum struct asnd_ret_vals_t
 	{
-		typedef enum asnd_ret_vals_t
-		{
-			OK = 0,
+		OK,
 
-			INVALID = -1,
-			NOTAVOICE = -2,
+		Invalid			= -1,
+		NotAVoice		= -2,
 
-			VOICEBUSY = 1,
+		VoiceBusy		= 1,
 
-			VOICEUNUSED = 2,
-			VOICEWORKING = 3,
-			VOICEWAITING = 4
-		} ASNDReturnValue;
+		VoiceUnused,
+		VoiceWorking,
+		VoiceWaiting
+	} ASNDReturnValue;
 
-		typedef enum asnd_voice_fmt_t
-		{
-			MONO_U8,
-			MONO_S8,
-			MONO_BE16,
-			MONO_LE16,
+	typedef enum struct asnd_voice_fmt_t
+	{
+		MonoU8			= 4,
+		MonoS8			= 0,
+		MonoBE16,
+		MonoLE16		= 5,
 
-			STEREO_U8,
-			STEREO_S8,
-			STEREO_BE16,
-			STEREO_LE16
-		} ASNDVoiceFormat;
-	}
+		StereoU8,
+		StereoS8		= 2,
+		StereoBE16,
+		StereoLE16		= 7
+	} ASNDVoiceFormat;
 }
-
-using ogcwrap::asnd::ASNDReturnValue;
-using ogcwrap::asnd::ASNDVoiceFormat;
 
 #endif // wrap_asnd_td_h

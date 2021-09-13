@@ -21,17 +21,17 @@ namespace ogcwrap::cache
 
 			// invalidation methods
 			void invalidateCache(void);
-			void invalidateRange(void *, u32);
+			void invalidateRange(void * start_addr, u32 length);
 
 			// synchronized version
-			void flushRange(void *, u32);
-			void storeRange(void *, u32);
-			void zeroRange(void *, u32);
-			void touchRange(void *, u32);
+			void flushRange(void * start_addr, u32 length);
+			void storeRange(void * start_addr, u32 length);
+			void zeroRange(void * start_addr, u32 length);
+			void touchRange(void * start_addr, u32 length);
 
 			// asynchronized version
-			void flushRangeAsync(void *, u32);
-			void storeRangeAsync(void *, u32);
+			void flushRangeAsync(void * start_addr, u32 length);
+			void storeRangeAsync(void * start_addr, u32 length);
 		}
 
 		namespace instruction
@@ -47,8 +47,8 @@ namespace ogcwrap::cache
 
 			// invalidation methods
 			void invalidateCache(void);
-			void invalidateBlock(void *);
-			void invalidateRange(void *, u32);
+			void invalidateBlock(void * start_addr);
+			void invalidateRange(void * start_addr, u32 length);
 		}
 	}
 
@@ -61,23 +61,23 @@ namespace ogcwrap::cache
 		void * getBase(void);
 
 		// block functions
-		void loadBlocks(void *, void *, u32);
-		void storeBlocks(void *, void *, u32);
+		void loadBlocks(void * src_addr, void * dst_addr, u32 length);
+		void storeBlocks(void * src_addr, void * dst_addr, u32 length);
 
 		// data functions
-		u32 loadData(void *, void *, u32);
-		u32 storeData(void *, void *, u32);
+		u32 loadData(void * src_addr, void * dst_addr, u32 length);
+		u32 storeData(void * src_addr, void * dst_addr, u32 length);
 
 		// queue functions
-		u32 waitInQueue(u32);
+		u32 waitInQueue(u32 length);
 		u32 getQueueLength(void);
 		void flushQueue(void);
 
 		// allocation functions
-		void allocate(void *, u32);
-		void allocateNoInvalidate(void *, u32);
-		void allocateOneTag(bool, void *);
-		void allocateTags(bool, void *, u32);
+		void allocate(void * start_addr, u32 length);
+		void allocateNoInvalidate(void * start_addr, u32 length);
+		void allocateOneTag(bool arg0, void * arg1);
+		void allocateTags(bool arg0, void * arg, u32 arg2);
 	}
 }
 
