@@ -36,6 +36,6 @@
 // wiilaunch
 
 // macros
-#define mcast(type, val)	((type)(val))
+#define mcast(type, val)	(type)(val)
 
 #endif // wrap_include_h

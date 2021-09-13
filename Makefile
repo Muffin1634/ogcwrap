@@ -77,7 +77,7 @@ LDFLAGS					:=	$(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 # targets
 
 # mark phony targets
-.PHONY: all deploy load clean debug doxygen libwrap.a
+.PHONY: all deploy load clean debug doxygen
 
 # default target
 all: deploy doxygen
