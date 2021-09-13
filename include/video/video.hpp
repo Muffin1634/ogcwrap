@@ -21,7 +21,7 @@ namespace ogcwrap::video
 	void * getNextFramebuffer(void);
 	u32 getFramebufferSize(GXRModeObj * rmode);
 	u32 getCurrentLine(void);
-	u32 getNextField(void);
+	DSFieldPos getNextField(void);
 
 	// sethods
 	void setConfiguration(GXRModeObj * rmode);
