@@ -4,6 +4,7 @@
 
 #include <gctypes.h>
 #include <ogc/video.h>
+#include <ogc/gx_struct.h>
 
 #include "video/video_td.hpp"
 
@@ -24,7 +25,7 @@ namespace ogcwrap::video
 
 	// sethods
 	void setConfiguration(GXRModeObj * rmode);
-	VIRetraceCallback setRetraceCallback(RetraceTime time, VIRetraceCallback cb);
+	VIRetraceCallback setRetraceCallback(RetraceTime rtime, VIRetraceCallback cb);
 	void setNextFramebuffer(void * fb);
 	void setNextRightFramebuffer(void * fb);
 	void setBlackoutStatus(bool status);

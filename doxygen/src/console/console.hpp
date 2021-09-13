@@ -4,6 +4,7 @@
 
 #include <gctypes.h>
 #include <ogc/consol.h>
+#include <ogc/gx_struct.h>
 
 namespace ogcwrap::console
 {
