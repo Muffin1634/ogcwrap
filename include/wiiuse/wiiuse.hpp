@@ -5,57 +5,59 @@
 #include <gctypes.h>
 #include <wiiuse/wiiuse.h>
 
-namespace ogcwrap
+namespace ogcwrap::wiiuse
 {
-	namespace wiiuse
-	{
-		// library management
-		const char * version(void);
-		struct wiimote_t * * init(int);
-		struct wiimote_t * * init(int, wii_event_cb);
+	// library management
+//	const char * version(void);
+	#ifndef GEKKO
+		wiimote_t * * init(u8 number);
+	#else
+		wiimote_t * * init(u8 number, wii_event_cb cb);
 
-		// wiimote handling
-		int registerWM(struct wiimote_listen_t *, struct bd_addr *, struct wiimote_t * (*)(struct bd_addr *));
-		void cleanupWM(struct wiimote_t * *, int);
+	// wiimote handling
+		int registerWM(wiimote_listen_t * wml, bd_addr * bdaddr, wiimote_t * (*assign_cb)(bd_addr *));
+	#endif
+//	void cleanupWM(wiimote_t * *, int);
 
-		// bluetooth handling
-		int findWM(struct wiimote_t * *, int, int);
-		int connectWM(struct wiimote_t * *, int);
-		void resyncWM(struct wiimote_t *);
-		void disconnectWM(struct wiimote_t *);
+	// bluetooth handling
+//	int findWM(wiimote_t * *, int, int);
+//	int connectWM(wiimote_t * *, int);
+//	void resyncWM(wiimote_t *);
+	void disconnectWM(wiimote_t * wm);
 
-		// gethods
-		struct wiimote_t * getWMByID(struct wiimote_t * *, int, int);
-		void getStatus(struct wiimote_t *, cmd_blk_cb);
+	// gethods
+//	wiimote_t * getWMByID(wiimote_t * *, int, int);
+	void getStatus(wiimote_t * wm, cmd_blk_cb cb);
 
-		// sethods
-		void setLEDs(struct wiimote_t *, int, cmd_blk_cb);
-		void setRumbleStatus(struct wiimote_t *, bool);
-		void setSensorBarStatus(bool);
-		int setFlags(struct wiimote_t *, int, int);
-		float setSmoothingAlpha(struct wiimote_t *, float);
-		void setBluetoothStack(struct wiimote_t * *, int, enum win_bt_stack_t);
-		void setTimeout(struct wiimote_t * *, int, ubyte, ubyte);
-		void setMotionStatus(struct wiimote_t *, bool);
-		void setMotionPlusStatus(struct wiimote_t *, bool);
-		void setSpeakerStatus(struct wiimote_t *, bool);
-		void setAspectRatio(struct wiimote_t *, enum aspect_t);
-		void setIRStatus(struct wiimote_t *, bool);
-		void setIRPosition(struct wiimote_t *, enum ir_position_t);
-		void setIRVRes(struct wiimote_t *, unsigned int, unsigned int);
-		void setIRSensitivity(struct wiimote_t *, int);
-		void setIRMode(struct wiimote_t *);
+	// sethods
+	void setLEDs(wiimote_t * wm, u8 leds, cmd_blk_cb cb);
+	void setRumbleStatus(wiimote_t * wm, bool status);
+	#ifndef GEKKO
+		void setSensorBarStatus(bool status);
+	#endif
+	u32 setFlags(wiimote_t * wm, u32 enabledFlags, u32 disabledFlags);
+//	float setSmoothingAlpha(wiimote_t *, float);
+//	void setBluetoothStack(wiimote_t * *, int, win_bt_stack_t);
+//	void setTimeout(wiimote_t * *, int, ubyte, ubyte);
+	void setMotionStatus(wiimote_t * wm, bool status);
+	void setMotionPlusStatus(wiimote_t * wm, bool status);
+	void setSpeakerStatus(wiimote_t * wm, bool status);
+	void setAspectRatio(wiimote_t * wm, ScreenAspectRatio aspect);
+	void setIRStatus(wiimote_t * wm, bool status);
+	void setIRPosition(wiimote_t * wm, IRBarPosition position);
+	void setIRVRes(wiimote_t * wm, u32 xRes, u32 yRes);
+	void setIRSensitivity(wiimote_t * wm, u8 sens);
+	void setIRMode(wiimote_t * wm);
 
-		void toggleRumbleStatus(struct wiimote_t *);
+	void toggleRumbleStatus(wiimote_t * wm);
 
-		// read methods
-		int readData(struct wiimote_t *, ubyte *, unsigned int, unsigned short, cmd_blk_cb);
-		int pollWM(struct wiimote_t * *, int);
+	// read methods
+	bool readData(wiimote_t * wm, ubyte * buffer, u32 offset, u16 length, cmd_blk_cb cb);
+//	int pollWM(wiimote_t * *, int);
 
-		// write methods
-		int writeData(struct wiimote_t *, unsigned int, ubyte *, ubyte, cmd_blk_cb);
-		int writeStreamData(struct wiimote_t *, ubyte *, ubyte, cmd_blk_cb);
-	}
+	// write methods
+	bool writeData(wiimote_t * wm, u32 address, u8 * data, u8 length, cmd_blk_cb cb);
+	bool writeStreamData(wiimote_t * wm, u8 * data, u8 length, cmd_blk_cb cb);
 }
 
 #endif // wrap_wiiuse_h

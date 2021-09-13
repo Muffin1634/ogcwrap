@@ -17,7 +17,7 @@
 				// make and friends
 				{
 					"name": "Build Library and Load",
-					"shell_cmd": "make compile"
+					"shell_cmd": "make deploy"
 				},
 				{
 					"name": "Build Library",

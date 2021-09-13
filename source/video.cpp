@@ -3,70 +3,40 @@
  */
 
 #include "wrapinclude.hpp"
+#include "video/video_td.hpp"
 
 /*******************************************************************************
  * forward function declarations
  */
 
-namespace ogcwrap
+namespace ogcwrap::video
 {
-	namespace video
-	{
-		// enums
-		enum tv_mode_t
-		{
-			TVM_ERROR = -1,
+	// library management
+	void init(void);
 
-			NTSC,
-			PAL,
-			MPAL,
-			EuRGB60,
+	// gethods
+	GXRModeObj * getPreferredRMode(GXRModeObj *);
+	tv_mode_t getTVMode(void);
+	bool getComponentCableStatus(void);
+	void * getCurrentFramebuffer(void);
+	void * getNextFramebuffer(void);
+	 u32 getFramebufferSize(GXRModeObj *);
+	u32 getCurrentLine(void);
+	ds_field_pos_t getNextField(void);
 
-			DEBUG_NTSC,
-			DEBUG_PAL
-		};
+	// sethods
+	void setConfiguration(GXRModeObj *);
+	VIRetraceCallback setTraceCallback(enum retrace_time_t, VIRetraceCallback);
+	void setNextFramebuffer(void *);
+	void setNextRightFramebuffer(void *);
+	void setBlackoutStatus(bool);
 
-		enum retrace_time_t
-		{
-			PreRetrace,
-			PostRetrace
-		};
+	// write methods
+	void clearFramebuffer(GXRModeObj *, void *, u32);
+	void flush(void);
 
-		enum ds_field_pos_t
-		{
-			DSFP_ERROR = -1,
-
-			TopField = 1,
-			BottomField = 0
-		};
-
-		// library management
-		void init(void);
-
-		// gethods
-		GXRModeObj * getPreferredRMode(GXRModeObj *);
-		tv_mode_t getTVMode(void);
-		bool getComponentCableStatus(void);
-		void * getCurrentFramebuffer(void);
-		void * getNextFramebuffer(void);
-		 u32 getFramebufferSize(GXRModeObj *);
-		u32 getCurrentLine(void);
-		ds_field_pos_t getNextField(void);
-
-		// sethods
-		void setConfiguration(GXRModeObj *);
-		VIRetraceCallback setTraceCallback(enum retrace_time_t, VIRetraceCallback);
-		void setNextFramebuffer(void *);
-		void setNextRightFramebuffer(void *);
-		void setBlackoutStatus(bool);
-
-		// write methods
-		void clearFramebuffer(GXRModeObj *, void *, u32);
-		void flush(void);
-
-		// other
-		void waitVSync(void);
-	}
+	// other
+	void waitVSync(void);
 }
 
 /*******************************************************************************
@@ -74,7 +44,6 @@ namespace ogcwrap
  */
 
 using ogcwrap::video::tv_mode_t;
-using ogcwrap::video::retrace_time_t;
 using ogcwrap::video::ds_field_pos_t;
 
 void ogcwrap::video::init(void)
@@ -84,25 +53,7 @@ GXRModeObj * ogcwrap::video::getPreferredRMode(GXRModeObj * rmode)
 	{ return VIDEO_GetPreferredMode(rmode); }
 
 tv_mode_t ogcwrap::video::getTVMode(void)
-{
-	switch (VIDEO_GetCurrentTvMode())
-	{
-		case 0: // NTSC
-			return tv_mode_t::NTSC;
-		case 1: // PAL
-			return tv_mode_t::PAL;
-		case 2: // MPAL
-			return tv_mode_t::MPAL;
-		case 5: // EuRGB60
-			return tv_mode_t::EuRGB60;
-		case 3: // DEBUG_NTSC
-			return tv_mode_t::DEBUG_NTSC;
-		case 4: // DEBUG_PAL
-			return tv_mode_t::DEBUG_PAL;
-		default:
-			return tv_mode_t::TVM_ERROR;
-	}
-}
+	{ return mcast(tv_mode_t, VIDEO_GetCurrentTvMode()); }
 
 bool ogcwrap::video::getComponentCableStatus(void)
 	{ return VIDEO_HaveComponentCable(); }
@@ -120,17 +71,7 @@ u32 ogcwrap::video::getCurrentLine(void)
 	{ return VIDEO_GetCurrentLine(); }
 
 ds_field_pos_t ogcwrap::video::getNextField(void)
-{
-	switch (VIDEO_GetNextField())
-	{
-		case 1:
-			return ds_field_pos_t::TopField;
-		case 0:
-			return ds_field_pos_t::BottomField;
-		default:
-			return ds_field_pos_t::DSFP_ERROR;
-	}
-}
+	{ return mcast(ds_field_pos_t, VIDEO_GetNextField()); }
 
 void ogcwrap::video::setConfiguration(GXRModeObj * rmode)
 	{ VIDEO_Configure(rmode); }

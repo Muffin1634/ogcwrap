@@ -7,77 +7,83 @@
 # directories and files
 
 # sdk directories (environment)
-export DEVKITPRO	:= /home/muffin/Desktop/code/sdk/devkitpro
-export DEVKITPPC	:= $(DEVKITPRO)/devkitPPC
+export DEVKITPRO		:=	/home/muffin/Desktop/code/sdk/devkitpro
+export DEVKITPPC		:=	$(DEVKITPRO)/devkitPPC
 
 # file prefix (environment)
-export PREFIX		:= powerpc-eabi-
+export PREFIX			:=	powerpc-eabi-
 
 # directories
-DIRS_SOURCE			:= source
-DIRS_INCLUDE		:= include
-DIRS_BUILD			:= build
-DIRS_LIB			:= lib
-DIRS_DOXYGEN		:= doxygen
+DIRS_SOURCE				:=	source
+DIRS_INCLUDE			:=	include
+DIRS_BUILD				:=	build
+DIRS_LIB				:=	lib
+DIRS_DOXYGEN			:=	doxygen
 
 # build list of source files by extension
-SRCFILES_C			:= $(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(dir)/*.c)))
-SRCFILES_CPP		:= $(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(dir)/*.cpp)))
-SRCFILES			:= $(SRCFILES_C) $(SRCFILES_CPP)
+SRCFILES_C				:=	$(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(dir)/*.c)))
+SRCFILES_CPP			:=	$(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(dir)/*.cpp)))
+SRCFILES				:=	$(SRCFILES_C) $(SRCFILES_CPP)
 
 # build list of object files by extension
-OBJFILES_C			:= $(SRCFILES_C:.c=.o)
-OBJFILES_CPP		:= $(SRCFILES_CPP:.cpp=.o)
-OBJFILES			:= $(OBJFILES_C) $(OBJFILES_CPP)
+OBJFILES_C				:=	$(SRCFILES_C:.c=.o)
+OBJFILES_CPP			:=	$(SRCFILES_CPP:.cpp=.o)
+OBJFILES				:=	$(OBJFILES_C) $(OBJFILES_CPP)
 
-OBJFILES_EXCLUDE	:= gx
-OBJFILES_FINAL		:= $(filter-out $(OBJFILES_EXCLUDE).o,$(OBJFILES))
+OBJFILES_EXCLUDE		:=	gx
+OBJFILES_FINAL			:=	$(filter-out $(OBJFILES_EXCLUDE).o,$(OBJFILES))
 
-INCLUDE				:= $(DIRS_INCLUDE) $(DEVKITPRO)/libogc/include
+INCLUDE_LOCAL			:=	$(DIRS_INCLUDE)
+INCLUDE_SYSTEM			:=	$(DEVKITPRO)/libogc/include
 
-LD_LIBDIRS			:= ./$(DIRS_LIB) $(DEVKITPRO)/libogc
-LD_LIBS				:= wrap ogc m
+LD_LIBDIRS				:=	$(DIRS_LIB) $(DEVKITPRO)/libogc
+LD_LIBS					:=	wrap ogc m
 
-VPATH				:= $(DIRS_LIB) $(DIRS_BUILD) $(DIRS_SOURCE) $(DIRS_INCLUDE) \
-						$(foreach \
-							dir,\
-							$(DIRS_INCLUDE),\
-							$(filter-out \
-								$(wildcard */*.*),\
+VPATH					:=	$(DIRS_LIB) $(DIRS_BUILD) $(DIRS_SOURCE) $(DIRS_INCLUDE) \
+							$(foreach \
+								dir,\
+								$(DIRS_INCLUDE),\
+								$(filter-out \
+									$(wildcard */*.*),\
 								$(wildcard $(dir)/*)\
-							)\
-						)
+								)\
+							)
 
 #-------------------------------------------------------------------------------
 # compiler and archiver + flags
-CC					:= $(DEVKITPPC)/bin/$(PREFIX)gcc.exe
-CXX					:= $(DEVKITPPC)/bin/$(PREFIX)g++.exe
-AR					:= $(DEVKITPPC)/bin/$(PREFIX)ar.exe
+CC						:=	$(DEVKITPPC)/bin/$(PREFIX)gcc.exe
+CXX						:=	$(DEVKITPPC)/bin/$(PREFIX)g++.exe
+AR						:=	$(DEVKITPPC)/bin/$(PREFIX)ar.exe
 
-CFLAGS_STANDARDS	:= -std=c++17
-CFLAGS_WARNINGS		:= -Wall -Wextra -Wno-comment -Wno-cpp -Wno-uninitialized
-CFLAGS_OPTIMIZATION	:= -O2
+FLAGS_INCLUDE			:=	$(addprefix -I,$(INCLUDE_LOCAL)) \
+							$(addprefix -I,$(INCLUDE_SYSTEM))
 
-FLAGS_INCLUDE		:= $(addprefix -I,$(INCLUDE))
-LDFLAGS_LIBDIRS		:= $(addprefix -L,$(LD_LIBDIRS))
-LDFLAGS_LIBS		:= $(addprefix -l,$(LD_LIBS))
+CFLAGS_STANDARDS		:=	-std=c++17
+CFLAGS_WARNINGS			:=	-Wall -Wextra -Wno-comment -Wno-cpp -Wno-uninitialized
 
-CFLAGS				:= $(CFLAGS_STANDARDS) $(CFLAGS_WARNINGS) $(CFLAGS_OPTIMIZATION) $(FLAGS_INCLUDE)
-CXXFLAGS			:= $(CFLAGS)
-CPPFLAGS			:=
-LDFLAGS				:= $(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
+CXXFLAGS_DEBUG			:=	-save-temps
+
+CPPFLAGS_OPTIMIZATION	:=	-O2 -ftabstop=4
+
+LDFLAGS_LIBDIRS			:=	$(addprefix -L,$(LD_LIBDIRS))
+LDFLAGS_LIBS			:=	$(addprefix -l,$(LD_LIBS))
+
+CFLAGS					:=	$(CFLAGS_STANDARDS) $(CFLAGS_WARNINGS) $(CFLAGS_OPTIMIZATION) $(FLAGS_INCLUDE)
+CXXFLAGS				:=	$(CFLAGS) $(CXXFLAGS_DEBUG)
+CPPFLAGS				:=	$(CPPFLAGS_OPTIMIZATION)
+LDFLAGS					:=	$(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 
 #-------------------------------------------------------------------------------
 # targets
 
 # mark phony targets
-.PHONY: all compile build load clean debug doxygen
+.PHONY: all deploy load clean debug doxygen libwrap.a
 
 # default target
-all: compile doxygen
+all: deploy doxygen
 
-# compile target
-compile: $(DIRS_LIB)/libwrap.a load
+# deploy target
+deploy: libwrap.a load
 
 # build target
 
@@ -99,9 +105,10 @@ load:
 # clean target
 clean:
 	@echo cleaning...
-	@rm -vf $(DIRS_BUILD)/*
-	@rm -vf $(DIRS_LIB)/*
-	@rm -vrf $(DIRS_DOXYGEN)/*
+	@rm -vrf \
+		$(DIRS_BUILD)/* \
+		$(DIRS_LIB)/* \
+		$(DIRS_DOXYGEN)/*
 	@echo clean successful
 
 # actual debug target
@@ -120,8 +127,9 @@ doxygen:
 	doxygen ../../Doxyfile
 
 #-------------------------------------------------------------------------------
-# generic header+source-to-object rules
-%.o: %.cpp
+# generic (header+source)->object->archive rules
+
+%.o: %.cpp %.hpp
 	@echo compiling C++ file $@
 	@$(CXX) \
 		-c $(DIRS_SOURCE)/$(notdir $<) \
@@ -129,17 +137,33 @@ doxygen:
 		   $(CPPFLAGS) \
 		   $(CXXFLAGS)
 
-%.cpp: %.hpp %_td.hpp
-
-#-------------------------------------------------------------------------------
-# explicit rules
 libwrap.a: $(OBJFILES_FINAL)
 	@echo building static library archive $@
 	@$(AR) \
 		-rvlsf \
-		$(DIRS_LIB)/libwrap.a \
+		$(DIRS_LIB)/$@ \
 		$(addprefix $(DIRS_BUILD)/,$(OBJFILES_FINAL))
 	@echo done building archive
+
+#-------------------------------------------------------------------------------
+# explicit rules
+
+# .PHONY: wrapinclude.hpp
+
+# wrapinclude.hpp:
+# 	@$(CXX) \
+# 		-E include/$(notdir $@)
+# 		-o include/$(notdir $@.gch)
+# 		   $(CFLAGS) \
+# 		   $(CPPFLAGS)
+
+# wiiuse.o: wiiuse.cpp # act as .ii with .gch
+# 	@echo compiling C++ file $@
+# 	@$(CXX) -v \
+# 		-c $(DIRS_SOURCE)/$(notdir $<) \
+# 		-o $(DIRS_BUILD)/$(notdir $@) \
+# 		   $(CXXFLAGS) -Winvalid-pch \
+# 		   $(CPPFLAGS) -fdirectives-only
 
 #-------------------------------------------------------------------------------
 # list of implicit rules

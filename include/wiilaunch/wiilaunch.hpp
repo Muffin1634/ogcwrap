@@ -10,17 +10,17 @@
 namespace ogcwrap::wiilaunch
 {
 	// library management
-	ReturnValue init(void);
+	WLReturnValue init(void);
 
 	// return functions
-	ReturnValue returnToMenu(void);
-	ReturnValue returnToSettings(void);
-	ReturnValue returnToSettingsPage(const char * page); // note 1
+	WLReturnValue returnToMenu(void);
+	WLReturnValue returnToSettings(void);
+	WLReturnValue returnToSettingsPage(const char * page); // note 1
 
 	// launch functions
-	ReturnValue launchTitle(u64 titleID);
-//	ReturnValue launchTitleWithArgs(u64 titleID, int launchcode, ...) // note 2
-	ReturnValue openURL(const char * url);
+	WLReturnValue launchTitle(u64 titleID);
+//	WLReturnValue launchTitleWithArgs(u64 titleID, int launchcode, ...) // note 2
+	WLReturnValue openURL(const char * url);
 }
 
 #endif // wrap_wiilaunch_h

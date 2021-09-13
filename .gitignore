@@ -1,4 +1,5 @@
 # intermediates
+build/
 !build/*.o
 
 # sublime

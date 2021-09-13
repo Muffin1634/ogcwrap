@@ -65,12 +65,12 @@ namespace ogcwrap::cache
 		void storeBlocks(void * src_addr, void * dst_addr, u32 length);
 
 		// data functions
-		u32 length loadData(void * src_addr, void * dst_addr, u32 length);
-		u32 length storeData(void * src_addr, void * dst_addr, u32 length);
+		u32 loadData(void * src_addr, void * dst_addr, u32 length);
+		u32 storeData(void * src_addr, void * dst_addr, u32 length);
 
 		// queue functions
-		u32 length waitInQueue(u32 length);
-		u32 length getQueueLength(void);
+		u32 waitInQueue(u32 length);
+		u32 getQueueLength(void);
 		void flushQueue(void);
 
 		// allocation functions

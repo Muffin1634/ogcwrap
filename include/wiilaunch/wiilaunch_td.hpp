@@ -13,7 +13,7 @@ namespace ogcwrap::wiilaunch
 		BadChecksum	= -0x9003,
 		Install		= -0x9004,
 		TooBig		= -0x9005
-	} WIIReturnValue;
+	} WLReturnValue;
 }
 
 #endif // wrap_wiilaunch_td_h
