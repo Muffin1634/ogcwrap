@@ -25,7 +25,7 @@ namespace ogcwrap::gu
 
 #endif // wrap_gu_h
 /*! \file gu.hpp <gu/gu.hpp>
- *  \brief Header file for wrapper of the libOGC gu/matrix subsystem.
+ *  \brief Header file for the wrapper of the libOGC gu/matrix subsystem.
  *
  *  This header contains functions in the <CODE>ogcwrap::gu</CODE> namespace for creating projection matrices, light
  *  projection matrices, and for manipulating the camera.
@@ -33,7 +33,7 @@ namespace ogcwrap::gu
  *  \warning This wrapper of libOGC's gu subsystem does not include the math functions; use the related <CODE>gxmath</CODE>
  *           library for an update of those functions.
  *
- *  <!----------------------------------------------------------------------------------------------------------------->
+ *  <!-- ----------------------------------------------------------------------------------------------------------- -->
  *
  *  \namespace ogcwrap::gu
  *  \brief Namespace containing functions related to the libOGC gu/matrix subsystem.

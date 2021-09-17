@@ -10,7 +10,7 @@ var a00050 =
     [ "getCurrentLine", "d5/de0/a00050.html#a6bbfbe256398d200207c638978f082a5", null ],
     [ "getNextField", "d5/de0/a00050.html#a698b16c0456b7cdc6507cbfefdf35519", null ],
     [ "setConfiguration", "d5/de0/a00050.html#accdff77e4dc1dd6f2bf26b67f9fa1623", null ],
-    [ "setRetraceCallback", "d5/de0/a00050.html#a3f6196b0616c11edc5388686f622fc2f", null ],
+    [ "setRetraceCallback", "d5/de0/a00050.html#af951dea243e1474d28d32d4e7bd6daa5", null ],
     [ "setNextFramebuffer", "d5/de0/a00050.html#a735c0812a021e34d8f115ec1248c55e0", null ],
     [ "setNextRightFramebuffer", "d5/de0/a00050.html#abdf65825ac353b921e970439ee8c6ed8", null ],
     [ "setBlackoutStatus", "d5/de0/a00050.html#a565317815f3136b1081d309f86473349", null ],

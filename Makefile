@@ -123,16 +123,8 @@ debug:
 # doxygen target
 doxygen:
 	@echo Compiling doxygen
-<<<<<<< HEAD
 	@cd doxygen/src && doxygen ../../Doxyfile
-	@make --no-print-dir doxygen_save
-
-doxygen_save:
 	@cp -vrf doxygen/doxygen/html/* ../../../docs/muffin/libwrap/
-=======
-	@cd doxygen/src && \
-	doxygen ../../Doxyfile
->>>>>>> master
 
 #-------------------------------------------------------------------------------
 # generic (header+source)->object->archive rules

@@ -2,6 +2,10 @@
 #ifndef ogctypes_h
 #define ogctypes_h
 
+// fundamental
+
+typedef bool bool;
+
 // integers
 
 typedef unsigned char				u8;
@@ -45,11 +49,14 @@ typedef s32							sfp32;
  *
  *  \note This header file does not actually exist; do not go looking for it. These typedefs are already provided in
  *        libOGC.
- *
- *  <!-- ----------------------------------------------------------------------------------------------------------- -->
- *
- *  \typedef unsigned char u8
- *  \brief unsigned 8  bit integer
+ */
+
+/*! \typedef bool bool
+ *  \brief boolean that can hold a value of <CODE>true</CODE> or <CODE>false</CODE>.
+ */
+
+/*! \typedef unsigned char u8
+ *  \brief unsigned  8 bit integer
  *
  *  \typedef unsigned short u16
  *  \brief unsigned 16 bit integer
@@ -63,7 +70,7 @@ typedef s32							sfp32;
  *  <!-- ----------------------------------------------------------------------------------------------------------- -->
  *
  *  \typedef signed char s8
- *  \brief signed 8  bit integer
+ *  \brief signed  8 bit integer
  *
  *  \typedef signed short s16
  *  \brief signed 16 bit integer
@@ -77,7 +84,7 @@ typedef s32							sfp32;
  *  <!-- --> <!-- -------------------------------------------------------------------------------------------------- -->
  *
  *  \typedef volatile unsigned char vu8
- *  \brief volatile unsigned 8  bit integer
+ *  \brief volatile unsigned  8 bit integer
  *
  *  \typedef volatile unsigned short vu16
  *  \brief volatile unsigned 16 bit integer
@@ -91,7 +98,7 @@ typedef s32							sfp32;
  *  <!-- ----------------------------------------------------------------------------------------------------------- -->
  *
  *  \typedef volatile signed char vs8
- *  \brief volatile signed 8  bit integer
+ *  \brief volatile signed  8 bit integer
  *
  *  \typedef volatile signed short vs16
  *  \brief volatile signed 16 bit integer

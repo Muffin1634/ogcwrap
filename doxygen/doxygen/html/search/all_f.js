@@ -1,5 +1,29 @@
 var searchData=
 [
-  ['topfield_0',['TopField',['../db/df8/a00076.html#a2db48d4a7c1bc15f7814275ed000c48da3bbc9746fde9eb2c546b1a4cbe4fe597',1,'ogcwrap::video']]],
-  ['tvmode_1',['TVMode',['../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789',1,'ogcwrap::video']]]
+  ['s16_0',['s16',['../d8/d41/a00038.html#ad3c589cfe24812b25178373fb178fc2e',1,'ogctypes.h']]],
+  ['s32_1',['s32',['../d8/d41/a00038.html#ae156694b2c31f94e37ff9683a1205175',1,'ogctypes.h']]],
+  ['s64_2',['s64',['../d8/d41/a00038.html#a4ef059b47a2028baa8c7909ef1b55776',1,'ogctypes.h']]],
+  ['s8_3',['s8',['../d8/d41/a00038.html#a92c993df0009777ef4b55f8301f4f9f6',1,'ogctypes.h']]],
+  ['setaudiocallback_4',['setAudioCallback',['../d9/da5/a00075.html#a5138b4a1f6323693c0642692fde24e22',1,'ogcwrap::aesnd']]],
+  ['setblackoutstatus_5',['setBlackoutStatus',['../db/dab/a00089.html#a565317815f3136b1081d309f86473349',1,'ogcwrap::video']]],
+  ['setconfiguration_6',['setConfiguration',['../db/dab/a00089.html#accdff77e4dc1dd6f2bf26b67f9fa1623',1,'ogcwrap::video']]],
+  ['setnextframebuffer_7',['setNextFramebuffer',['../db/dab/a00089.html#a735c0812a021e34d8f115ec1248c55e0',1,'ogcwrap::video']]],
+  ['setnextrightframebuffer_8',['setNextRightFramebuffer',['../db/dab/a00089.html#abdf65825ac353b921e970439ee8c6ed8',1,'ogcwrap::video']]],
+  ['setretracecallback_9',['setRetraceCallback',['../db/dab/a00089.html#af951dea243e1474d28d32d4e7bd6daa5',1,'ogcwrap::video']]],
+  ['setvoicebuffer_10',['setVoiceBuffer',['../d9/da5/a00075.html#a1f6829812b335eaadc66a112e7b55f9e',1,'ogcwrap::aesnd']]],
+  ['setvoicecallback_11',['setVoiceCallback',['../d9/da5/a00075.html#aaf493c0158514bd9c65df48d964a04fb',1,'ogcwrap::aesnd']]],
+  ['setvoicedelay_12',['setVoiceDelay',['../d9/da5/a00075.html#abdd7fc772ff69b1f82f01dbdc6a30b8f',1,'ogcwrap::aesnd']]],
+  ['setvoiceformat_13',['setVoiceFormat',['../d9/da5/a00075.html#a5485900fee49fb0a4fc2b410a706cae9',1,'ogcwrap::aesnd']]],
+  ['setvoicefrequency_14',['setVoiceFrequency',['../d9/da5/a00075.html#afcae2467165c185a505973b6b855c925',1,'ogcwrap::aesnd']]],
+  ['setvoiceloopstatus_15',['setVoiceLoopStatus',['../d9/da5/a00075.html#aeb667571621963c7a582b67f09eb329c',1,'ogcwrap::aesnd']]],
+  ['setvoicemutestatus_16',['setVoiceMuteStatus',['../d9/da5/a00075.html#a3183b3adba0861e21f0a451b78640c9a',1,'ogcwrap::aesnd']]],
+  ['setvoicestopstatus_17',['setVoiceStopStatus',['../d9/da5/a00075.html#aba385264a7040291f81d09feef13f913',1,'ogcwrap::aesnd']]],
+  ['setvoicestreamstatus_18',['setVoiceStreamStatus',['../d9/da5/a00075.html#ae43f298d6e820c4a228c94f7c68812ee',1,'ogcwrap::aesnd']]],
+  ['setvoicevolume_19',['setVoiceVolume',['../d9/da5/a00075.html#a643c069dccbc1258c83edec21fb2b137',1,'ogcwrap::aesnd']]],
+  ['sfp16_20',['sfp16',['../d8/d41/a00038.html#aff6e486e1e8410fbe2a0345de395329e',1,'ogctypes.h']]],
+  ['sfp32_21',['sfp32',['../d8/d41/a00038.html#ab98f5d7503f1fc7695f642ab7e3a1c62',1,'ogctypes.h']]],
+  ['stereos16_22',['StereoS16',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2abd481be8da6de08601d7c14690153060',1,'ogcwrap::aesnd']]],
+  ['stereos8_23',['StereoS8',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2aebc62ae73b10bca4f917538471793225',1,'ogcwrap::aesnd']]],
+  ['stereou16_24',['StereoU16',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2a5b960bb4e93087903f30b373d0dadbff',1,'ogcwrap::aesnd']]],
+  ['stereou8_25',['StereoU8',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2a90c3d01f10b394193a487bb6688352d3',1,'ogcwrap::aesnd']]]
 ];

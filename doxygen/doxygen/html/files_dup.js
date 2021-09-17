@@ -9,6 +9,7 @@ var files_dup =
     [ "gx", "dir_db76a050bd928d5d9581c80bdec38e38.html", "dir_db76a050bd928d5d9581c80bdec38e38" ],
     [ "system", "dir_e8522150b400a43ebfdbd1fed060b8e2.html", "dir_e8522150b400a43ebfdbd1fed060b8e2" ],
     [ "video", "dir_597f6a792ff7cba98dd4f9f2210b5255.html", "dir_597f6a792ff7cba98dd4f9f2210b5255" ],
+    [ "wiilaunch", "dir_c05cc09a9b22a7a58ec04ce0a4cd35f0.html", "dir_c05cc09a9b22a7a58ec04ce0a4cd35f0" ],
     [ "wiiuse", "dir_459679caf8f19561c264503455296c8b.html", "dir_459679caf8f19561c264503455296c8b" ],
     [ "wpad", "dir_b37ca98d74b3404c0e01b5fa8fcfc9ae.html", "dir_b37ca98d74b3404c0e01b5fa8fcfc9ae" ],
     [ "libwrap.hpp", "d4/d8c/a00035_source.html", null ],

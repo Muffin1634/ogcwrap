@@ -90,50 +90,48 @@ $(document).ready(function(){initNavTree('da/d45/a00011_source.html','../../'); 
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef wrap_asnd_td_h</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define wrap_asnd_td_h</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span>ogcwrap</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span>ogcwrap::asnd</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">namespace </span>asnd</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">typedef</span> <span class="keyword">enum struct</span> asnd_ret_vals_t</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keyword">typedef</span> <span class="keyword">enum</span> asnd_ret_vals_t</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>            OK = 0,</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            INVALID = -1,</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            NOTAVOICE = -2,</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        OK,</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        Invalid         = -1,</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        NotAVoice       = -2,</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        VoiceBusy       = 1,</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            VOICEBUSY = 1,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            VOICEUNUSED = 2,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            VOICEWORKING = 3,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            VOICEWAITING = 4</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        } ASNDReturnValue;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">typedef</span> <span class="keyword">enum</span> asnd_voice_fmt_t</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            MONO_U8,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            MONO_S8,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            MONO_BE16,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            MONO_LE16,</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            STEREO_U8,</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            STEREO_S8,</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            STEREO_BE16,</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            STEREO_LE16</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        } ASNDVoiceFormat;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">using</span> ogcwrap::asnd::ASNDReturnValue;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">using</span> ogcwrap::asnd::ASNDVoiceFormat;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">// wrap_asnd_td_h</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        VoiceUnused,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        VoiceWorking,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        VoiceWaiting</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    } ASNDReturnValue;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">typedef</span> <span class="keyword">enum struct</span> asnd_voice_fmt_t</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_enumvalue" href="../../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2ac0baf4fd37b6d9885129283f5bf49f06">MonoU8</a>          = 4,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_enumvalue" href="../../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2a1b047b9e5579ade91c8583684e80c310">MonoS8</a>          = 0,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        MonoBE16,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        MonoLE16        = 5,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_enumvalue" href="../../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2a90c3d01f10b394193a487bb6688352d3">StereoU8</a>,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_enumvalue" href="../../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2aebc62ae73b10bca4f917538471793225">StereoS8</a>        = 2,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        StereoBE16,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        StereoLE16      = 7</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    } ASNDVoiceFormat;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif </span><span class="comment">// wrap_asnd_td_h</span></div>
+<div class="ttc" id="aa00075_html_a34a663527d97232b26c1fd4c52d584b2a1b047b9e5579ade91c8583684e80c310"><div class="ttname"><a href="../../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2a1b047b9e5579ade91c8583684e80c310">ogcwrap::aesnd::AESNDVoiceFormat::MonoS8</a></div><div class="ttdeci">@ MonoS8</div><div class="ttdoc">Specifies that the PCM samples are in mono and that they have signed 8-bit values.</div></div>
+<div class="ttc" id="aa00075_html_a34a663527d97232b26c1fd4c52d584b2a90c3d01f10b394193a487bb6688352d3"><div class="ttname"><a href="../../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2a90c3d01f10b394193a487bb6688352d3">ogcwrap::aesnd::AESNDVoiceFormat::StereoU8</a></div><div class="ttdeci">@ StereoU8</div><div class="ttdoc">Specifies that the PCM samples have two sound channels (stereo) and that they have unsigned 8-bit val...</div></div>
+<div class="ttc" id="aa00075_html_a34a663527d97232b26c1fd4c52d584b2ac0baf4fd37b6d9885129283f5bf49f06"><div class="ttname"><a href="../../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2ac0baf4fd37b6d9885129283f5bf49f06">ogcwrap::aesnd::AESNDVoiceFormat::MonoU8</a></div><div class="ttdeci">@ MonoU8</div><div class="ttdoc">Specifies that the PCM samples only have one sound channel (mono) and that they have unsigned 8-bit v...</div></div>
+<div class="ttc" id="aa00075_html_a34a663527d97232b26c1fd4c52d584b2aebc62ae73b10bca4f917538471793225"><div class="ttname"><a href="../../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2aebc62ae73b10bca4f917538471793225">ogcwrap::aesnd::AESNDVoiceFormat::StereoS8</a></div><div class="ttdeci">@ StereoS8</div><div class="ttdoc">Specifies that the PCM samples are in stereo and that they have signed 8-bit values.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_2d3a392acf27748e03406e23e8463fcd.html">asnd</a></li><li class="navelem"><b>asnd_td.hpp</b></li>
-    <li class="footer">Generated on Thu Sep 9 2021 09:01:40 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Tue Sep 14 2021 15:40:42 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

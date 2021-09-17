@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['clearframebuffer_0',['clearFramebuffer',['../db/df8/a00076.html#a8c9ec83be56a4d87b46878488fa52f71',1,'ogcwrap::video']]]
+  ['allocatevoice_0',['allocateVoice',['../d9/da5/a00075.html#a1b25a718480bdf5c23f2208b10a31872',1,'ogcwrap::aesnd']]]
 ];

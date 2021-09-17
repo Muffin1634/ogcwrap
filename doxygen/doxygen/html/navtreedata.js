@@ -46,7 +46,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"d0/d89/a00071.html"
+"d0/d89/a00071_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

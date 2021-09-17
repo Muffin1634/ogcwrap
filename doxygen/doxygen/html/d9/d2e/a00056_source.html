@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libwrap: wiiuse/wiiuse.hpp Source File</title>
+<title>libwrap: wiilaunch/wiilaunch.hpp Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -83,77 +83,61 @@ $(document).ready(function(){initNavTree('d9/d2e/a00056_source.html','../../'); 
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">wiiuse.hpp</div></div>
+  <div class="headertitle"><div class="title">wiilaunch.hpp</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef wrap_wiiuse_h</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define wrap_wiiuse_h</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef wrap_wiilaunch_h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define wrap_wiilaunch_h</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;gctypes.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;wiiuse/wiiuse.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;ogc/wiilaunch.h&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span>ogcwrap</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">namespace </span>wiiuse</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="comment">// library management</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> * version(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">struct </span>wiimote_t * * init(<span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keyword">struct </span>wiimote_t * * init(<span class="keywordtype">int</span>, wii_event_cb);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">// wiimote handling</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordtype">int</span> registerWM(<span class="keyword">struct</span> wiimote_listen_t *, <span class="keyword">struct</span> bd_addr *, <span class="keyword">struct</span> wiimote_t * (*)(<span class="keyword">struct</span> bd_addr *));</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordtype">void</span> cleanupWM(<span class="keyword">struct</span> wiimote_t * *, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="comment">// bluetooth handling</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordtype">int</span> findWM(<span class="keyword">struct</span> wiimote_t * *, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordtype">int</span> connectWM(<span class="keyword">struct</span> wiimote_t * *, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordtype">void</span> resyncWM(<span class="keyword">struct</span> wiimote_t *);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordtype">void</span> disconnectWM(<span class="keyword">struct</span> wiimote_t *);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">// gethods</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">struct </span>wiimote_t * getWMByID(<span class="keyword">struct</span> wiimote_t * *, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">void</span> getStatus(<span class="keyword">struct</span> wiimote_t *, cmd_blk_cb);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="comment">// sethods</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">void</span> setLEDs(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">int</span>, cmd_blk_cb);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">void</span> setRumbleStatus(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">void</span> setSensorBarStatus(<span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">int</span> setFlags(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">float</span> setSmoothingAlpha(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">float</span>);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">void</span> setBluetoothStack(<span class="keyword">struct</span> wiimote_t * *, <span class="keywordtype">int</span>, <span class="keyword">enum</span> win_bt_stack_t);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">void</span> setTimeout(<span class="keyword">struct</span> wiimote_t * *, <span class="keywordtype">int</span>, ubyte, ubyte);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">void</span> setMotionStatus(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">void</span> setMotionPlusStatus(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">void</span> setSpeakerStatus(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">void</span> setAspectRatio(<span class="keyword">struct</span> wiimote_t *, <span class="keyword">enum</span> aspect_t);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordtype">void</span> setIRStatus(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">void</span> setIRPosition(<span class="keyword">struct</span> wiimote_t *, <span class="keyword">enum</span> ir_position_t);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">void</span> setIRVRes(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> setIRSensitivity(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">void</span> setIRMode(<span class="keyword">struct</span> wiimote_t *);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordtype">void</span> toggleRumbleStatus(<span class="keyword">struct</span> wiimote_t *);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="comment">// read methods</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordtype">int</span> readData(<span class="keyword">struct</span> wiimote_t *, ubyte *, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>, cmd_blk_cb);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordtype">int</span> pollWM(<span class="keyword">struct</span> wiimote_t * *, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="comment">// write methods</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">int</span> writeData(<span class="keyword">struct</span> wiimote_t *, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, ubyte *, ubyte, cmd_blk_cb);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">int</span> writeStreamData(<span class="keyword">struct</span> wiimote_t *, ubyte *, ubyte, cmd_blk_cb);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif </span><span class="comment">// wrap_wiiuse_h</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;wiilaunch/wiilaunch_td.hpp&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>ogcwrap::wiilaunch</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// library management</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    WLReturnValue <a class="code hl_function" href="../../d9/da5/a00075.html#a3dc0df14ba36065ce2f75270c4884806">init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// return functions</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    WLReturnValue returnToMenu(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    WLReturnValue returnToSettings(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    WLReturnValue returnToSettingsPage(<span class="keyword">const</span> <span class="keywordtype">char</span> * page); <span class="comment">// note 1</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">// launch functions</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    WLReturnValue launchTitle(<a class="code hl_typedef" href="../../d8/d41/a00038.html#aaac9d43a8f08b50122c561411bd42eff">u64</a> titleID);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">//  WLReturnValue launchTitleWithArgs(u64 titleID, int launchcode, ...) // note 2</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    WLReturnValue openURL(<span class="keyword">const</span> <span class="keywordtype">char</span> * url);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif </span><span class="comment">// wrap_wiilaunch_h</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/*  notes</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> *  1. For valid arguments to returnToSettingsPage(), see lines 53-59 of &lt;ogc/wiilaunch.h&gt;:</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> *  #define SETTINGS_CALENDAR   &quot;Calendar/Calendar_index.html&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> *  #define SETTINGS_DISPLAY    &quot;Display/Display_index.html&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> *  #define SETTINGS_SOUND      &quot;Sound/Sound_index.html&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> *  #define SETTINGS_PARENTAL   &quot;Parental_Control/Parental_Control_index.html&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> *  #define SETTINGS_INTERNET   &quot;Internet/Internet_index.html&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> *  #define SETTINGS_WC24       &quot;WiiConnect24/Wiiconnect24_index.html&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> *  #define SETTINGS_UPDATE     &quot;Update/Update_index.html&quot;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> *  2. Due to certain circumstances regarding variadic arguments of functions, launchTitleWithArgs() cannot be wrapped.</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> *  Please use the original.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"> */</span></div>
+<div class="ttc" id="aa00038_html_aaac9d43a8f08b50122c561411bd42eff"><div class="ttname"><a href="../../d8/d41/a00038.html#aaac9d43a8f08b50122c561411bd42eff">u64</a></div><div class="ttdeci">unsigned long u64</div><div class="ttdoc">unsigned 64 bit integer</div><div class="ttdef"><b>Definition:</b> ogctypes.h:14</div></div>
+<div class="ttc" id="aa00075_html_a3dc0df14ba36065ce2f75270c4884806"><div class="ttname"><a href="../../d9/da5/a00075.html#a3dc0df14ba36065ce2f75270c4884806">ogcwrap::aesnd::init</a></div><div class="ttdeci">void init(void)</div><div class="ttdoc">Initializes the AESND subsystem.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_459679caf8f19561c264503455296c8b.html">wiiuse</a></li><li class="navelem"><b>wiiuse.hpp</b></li>
-    <li class="footer">Generated on Thu Sep 9 2021 09:01:40 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="navelem"><a class="el" href="../../dir_c05cc09a9b22a7a58ec04ce0a4cd35f0.html">wiilaunch</a></li><li class="navelem"><b>wiilaunch.hpp</b></li>
+    <li class="footer">Generated on Tue Sep 14 2021 15:40:42 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

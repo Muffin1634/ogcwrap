@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['libogcwrap_20documentation_0',['libogcwrap Documentation',['../index.html',1,'']]],
-  ['lightfrustum_1',['lightFrustum',['../d6/d5b/a00026.html#ae0dcae1723f860e12285fc3ee3612885',1,'ogcwrap::gu']]],
-  ['lightorthographic_2',['lightOrthographic',['../d6/d5b/a00026.html#a2ffd8590fce3600fd3f2295265744e3b',1,'ogcwrap::gu']]],
-  ['lightperspective_3',['lightPerspective',['../d6/d5b/a00026.html#a906cd906553dd1d5847d7aa357423ce6',1,'ogcwrap::gu']]],
-  ['lookat_4',['lookAt',['../d6/d5b/a00026.html#a9d71a803e7a5d79dc2077e26572bca46',1,'ogcwrap::gu']]]
+  ['init_0',['init',['../d9/da5/a00075.html#a3dc0df14ba36065ce2f75270c4884806',1,'ogcwrap::aesnd::init()'],['../d2/d1f/a00083.html#acc72f4aa88d1bcf49da585cba3417690',1,'ogcwrap::debug::init()'],['../db/dab/a00089.html#a5db23c22110b4ceeaeb72c47f347ff2a',1,'ogcwrap::video::init()']]]
 ];
