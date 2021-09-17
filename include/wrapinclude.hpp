@@ -28,6 +28,7 @@
 // gu
 
 // gx
+#include <ogc/lwp.h>
 
 // cache
 
