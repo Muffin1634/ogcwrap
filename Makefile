@@ -30,8 +30,8 @@ OBJFILES_C				:=	$(SRCFILES_C:.c=.o)
 OBJFILES_CPP			:=	$(SRCFILES_CPP:.cpp=.o)
 OBJFILES				:=	$(OBJFILES_C) $(OBJFILES_CPP)
 
-OBJFILES_EXCLUDE		:=	gx
-OBJFILES_FINAL			:=	$(filter-out $(OBJFILES_EXCLUDE).o,$(OBJFILES))
+OBJFILES_EXCLUDE		:=	debug gx
+OBJFILES_FINAL			:=	$(filter-out $(foreach file,$(OBJFILES_EXCLUDE),$(file).o),$(OBJFILES))
 
 INCLUDE_LOCAL			:=	$(DIRS_INCLUDE)
 INCLUDE_SYSTEM			:=	$(DEVKITPRO)/libogc/include
@@ -77,7 +77,7 @@ LDFLAGS					:=	$(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 # targets
 
 # mark phony targets
-.PHONY: all deploy load clean debug doxygen
+.PHONY: all deploy rebuild load clean debug doxygen
 
 # default target
 all: deploy doxygen
@@ -86,6 +86,13 @@ all: deploy doxygen
 deploy: libwrap.a load
 
 # build target
+# build: libwrap.a
+
+# rebuild target
+rebuild:
+	@make rebuilding library
+	@make --no-print-dir clean
+	@make --no-print-dir libwrap.a
 
 # load target
 load:
@@ -99,8 +106,7 @@ load:
 		../libwraptest/lib/local/include/
 	@rm -vrf \
 		../libwraptest/lib/local/include/wrapinclude.hpp \
-		../libwraptest/lib/local/include/debug \
-		../libwraptest/lib/local/include/gx
+		$(addprefix ../libwraptest/lib/local/include/,$(OBJFILES_EXCLUDE))
 
 # clean target
 clean:
@@ -114,6 +120,7 @@ clean:
 # actual debug target
 debug:
 	@echo debug build target
+	@echo
 	@echo CURDIR: $(CURDIR)
 	@echo SRCFILES: $(SRCFILES)
 	@echo OBJFILES: $(OBJFILES)

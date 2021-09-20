@@ -24,6 +24,10 @@
 					"shell_cmd": "make libwrap.a"
 				},
 				{
+					"name": "Rebuild Library",
+					"shell_cmd": "make rebuild"
+				},
+				{
 					"name": "Load Library into Test Project",
 					"shell_cmd": "make load"
 				},
