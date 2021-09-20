@@ -3,7 +3,9 @@ build/
 !build/*.o
 
 # sublime
-sublime/libwrap.sublime-workspace
+# sublime/libwrap.sublime-workspace
+sublime/
+!sublime/libwrap.sublime-project
 
 # doxygen documentation
 doxygen/

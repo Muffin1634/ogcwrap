@@ -238,6 +238,8 @@ namespace ogcwrap::gx
 
 	typedef enum struct gx_post_transform_matrix_index_t
 	{
+		STCG1, // used in ::setCoordTexGen()
+
 		PTFMtxIdentity = 125,
 
 		PTFMtx0 = 64,
@@ -321,6 +323,13 @@ namespace ogcwrap::gx
 		Cache128K,
 		Cache512K
 	} TextureCacheSize;
+
+	typedef enum struct gx_wrap_mode_t
+	{
+		Clamp,
+		Repeat,
+		Mirror
+	} WrapMode;
 
 	typedef enum struct gx_tlut_index_t
 	{

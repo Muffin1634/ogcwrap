@@ -97,42 +97,42 @@ namespace ogcwrap::gx
 	void setArray(gx_vertex_attribute_t attr, void * array, u8 stride);
 
 	// color management
-	void setChannelCount(u8);
-	void setColorChannelControl(gx_color_channel_t, bool, GXColor, GXColor, u8, gx_diffuse_function_t, gx_attenuation_function_t);
-	void setColorChannelAmbient(gx_color_channel_t, GXColor);
-	void setColorChannelMaterial(gx_color_channel_t, GXColor);
+	void setChannelCount(u8 count);
+	void setColorChannelControl(gx_color_channel_t channel, bool light_enable, GXColor ambient, GXColor material, u8 lights, gx_diffuse_function_t diff, gx_attenuation_function_t attn);
+	void setColorChannelAmbient(gx_color_channel_t channel, GXColor color);
+	void setColorChannelMaterial(gx_color_channel_t channel, GXColor color);
 
 	// texture management
-	void setTexGenCount(u8);
-	void setTexCoordGen(gx_texture_coordinate_index_t, gx_texture_coordinate_generation_type_t, gx_texture_coordinate_source_t, gx_texture_matrix_index_t, bool = false, gx_post_transform_matrix_index_t = (gx_post_transform_matrix_index_t)0);
-	void setTexCoordScale(gx_texture_coordinate_index_t, bool, u16 = 1, u16 = 1);
-	void setTexCoordBias(gx_texture_coordinate_index_t, bool, bool);
-	void setTexCoordCylWrap(u8, bool, bool);
-	void setTextureOffsetStatus(gx_texture_coordinate_index_t, bool, bool);
+	void setTexGenCount(u8 count);
+	void setTexCoordGen(gx_texture_coordinate_index_t coordindex, gx_texture_coordinate_generation_type_t type, gx_texture_coordinate_source_t source, gx_texture_matrix_index_t index, bool normalize = false, gx_post_transform_matrix_index_t ptfindex = mcast(gx_post_transform_matrix_index_t, 0));
+	void setTexCoordScale(gx_texture_coordinate_index_t coordindex, bool autoscale, u16 scaleS = 1, u16 scaleT = 1);
+	void setTexCoordBias(gx_texture_coordinate_index_t coordindex, bool biasS, bool biasT);
+	void setTexCoordCylWrap(u8 texcoord, bool s_enable, bool t_enable);
+	void setTextureOffsetStatus(gx_texture_coordinate_index_t coordindex, bool lineStatus, bool pointStatus);
 
-	u32 getTextureBufferSize(u16, u16, gx_texture_format_t, bool, u8);
+	u32 getTextureBufferSize(u16 width, u16 height, gx_texture_format_t format, bool mipmapStatus, u8 maxLOD);
 
-	void setZMode(bool, gx_comparison_t, bool);
-	void setZTexture(gx_z_texture_operator_t, gx_z_texture_format_t, u32);
-	void setZCompLoc(gx_z_buffer_time_t);
+	void setZMode(bool comparisonEnable, gx_comparison_t comparison, bool bufferUpdate);
+	void setZTexture(gx_z_texture_operator_t op, gx_z_texture_format_t format, u32 bias);
+	void setZCompLoc(gx_z_buffer_time_t time);
 
-	void initTextureCacheRegion(GXTexRegion *, bool, void *, gx_texture_cache_size_t, void *, gx_texture_cache_size_t);
-	void initTexturePreloadRegion(GXTexRegion *, void *, u32, void *, u32);
+	void initTextureCacheRegion(GXTexRegion * region, bool is32bitmip, void * texmemEven, gx_texture_cache_size_t sizeEven, void * texmemOdd, gx_texture_cache_size_t sizeOdd);
+	void initTexturePreloadRegion(GXTexRegion * region, void * texmemEven, u32 sizeEven, void * texmemOdd, u32 sizeOdd);
 
-	void initTextureObject(GXTexObj *, void *, u16, u16, gx_texture_format_t, gx_clamp_mode_t, gx_clamp_mode_t, bool);
-	void initTextureObjectColorIndex(GXTexObj *, void *, u16, u16, gx_texture_format_t, gx_clamp_mode_t, gx_clamp_mode_t, bool, gx_tlut_index_t);
-	void initTLUTObj(GXTlutObj *, void *, gx_tlut_entry_format_t, u16);
-	void initTLUTRegion(GXTlutRegion *, void *, u8);
+	void initTextureObject(GXTexObj * obj, void * imagebuf, u16 width, u16 height, gx_texture_format_t format, gx_wrap_mode_t wrapS, gx_wrap_mode_t wrapT, bool trilinear);
+	void initTextureObjectColorIndex(GXTexObj * obj, void * imagebuf, u16 width, u16 height, gx_texture_format_t format, gx_wrap_mode_t wrapS, gx_wrap_mode_t wrapT, bool mipmap, gx_tlut_index_t tlut);
+	void initTLUTObj(GXTlutObj * obj, void * LUTaddr, gx_tlut_entry_format_t format, u16 entries);
+	void initTLUTRegion(GXTlutRegion * region, void * addr, u8 size);
 
-	void preloadTexture(GXTexObj *, GXTexRegion *);
-	void loadTextureObject(GXTexObj *, gx_texture_map_index_t);
-	void loadTLUT(GXTlutObj *, gx_tlut_index_t);
-	void loadPreloadedTextureObject(GXTexObj *, GXTexRegion *, gx_texture_map_index_t);
+	void preloadTexture(GXTexObj * obj, GXTexRegion * region);
+	void loadTextureObject(GXTexObj * obj, gx_texture_map_index_t index);
+	void loadTLUT(GXTlutObj * tlut, gx_tlut_index_t index);
+	void loadPreloadedTextureObject(GXTexObj * obj, GXTexRegion * region, gx_texture_map_index_t index);
 
 	void setTextureObjectData(GXTexObj *, void *);
 	void setTextureObjectUserData(GXTexObj *, void *);
 	void setTextureObjectTLUT(GXTexObj *, gx_tlut_index_t);
-	void setTextureObjectWrap(GXTexObj *, gx_clamp_mode_t, gx_clamp_mode_t);
+	void setTextureObjectWrap(GXTexObj *, gx_wrap_mode_t, gx_wrap_mode_t);
 	void setTextureObjectLOD(GXTexObj *, gx_texture_filter_t, gx_texture_filter_t, f32, f32, f32, bool, bool, gx_max_anisotropic_filter_t);
 	void setTextureObjectLODFilter(GXTexObj *, gx_texture_filter_t, gx_texture_filter_t);
 	void setTextureObjectLODMin(GXTexObj *, f32);
