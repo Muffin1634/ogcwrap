@@ -3,6 +3,32 @@ C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox:9: warni
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox:13: warning: multiple use of section label 'Wrapper' while adding section, (first occurrence: C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox, line 5)
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox:15: warning: multiple use of section label 'Wrapper' while adding section, (first occurrence: C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox, line 5)
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox:17: warning: multiple use of section label 'Wrapper' while adding section, (first occurrence: C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox, line 5)
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:17: warning: Member getTime(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:18: warning: Member getSoundPlayStatus(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:19: warning: Member getNoteFreq(int note, int freqbase, int notebase) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:20: warning: Member getSampleRate(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:21: warning: Member getSampleCount(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:22: warning: Member getSampleRateTick(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:23: warning: Member getFirstUnusedVoice(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:24: warning: Member getVoiceTicks(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:25: warning: Member getVoiceTime(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:26: warning: Member getDSPPercentUse(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:27: warning: Member getDSPProcessTime(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:30: warning: Member setTime(u32 time) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:31: warning: Member setCallback(void(*cb)(void)) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:34: warning: Member playSound(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:35: warning: Member pauseSound(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:38: warning: Member addVoice(u8 voice, void *samples, u32 samplesize) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:39: warning: Member playVoice(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:40: warning: Member pauseVoice(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:41: warning: Member stopVoice(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:42: warning: Member getVoiceStatus(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:43: warning: Member setVoice(u8 voice, ASNDVoiceFormat format, u32 pitch, u32 delay, void *samples, u32 samplesize, u8 left, u8 right, ASNDVoiceCallback cb) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:44: warning: Member setInfiniteVoice(u8 voice, ASNDVoiceFormat format, u32 patch, u32 delay, void *samples, u32 samplesize, u8 left, u8 right) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:45: warning: Member setVoiceVolume(u8 voice, u8 left, u8 right) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:46: warning: Member setVoicePitch(u8 voice, u32 pitch) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:49: warning: Member testVoiceBufferUsing(u8 voice, void *buffer) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:50: warning: Member testVoiceBufferReady(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:12: warning: Member init(void *fb, u16 xStart, u16 yStart, u16 xRes, u16 yRes, u32 stride) (function) of namespace ogcwrap::console is not documented.
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:13: warning: Member initEx(GXRModeObj *rmode, u16 xStart, u16 yStart, u16 xRes, u16 yRes) (function) of namespace ogcwrap::console is not documented.
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:16: warning: Member getMetrics(u8 *rows, u8 *cols) (function) of namespace ogcwrap::console is not documented.
@@ -12,6 +38,32 @@ C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hp
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/aesnd/aesnd.hpp:227: warning: argument 'status' of command @param is not found in the argument list of ogcwrap::aesnd::playVoice(AESNDPB *voice, AESNDVoiceFormat format, const void *buffer, u32 size, f32 freq, u32 delay, bool statusLoop)
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/aesnd/aesnd.hpp:38: warning: The following parameter of ogcwrap::aesnd::playVoice(AESNDPB *voice, AESNDVoiceFormat format, const void *buffer, u32 size, f32 freq, u32 delay, bool statusLoop) is not documented:
   parameter 'statusLoop'
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:17: warning: Member getTime(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:18: warning: Member getSoundPlayStatus(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:19: warning: Member getNoteFreq(int note, int freqbase, int notebase) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:20: warning: Member getSampleRate(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:21: warning: Member getSampleCount(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:22: warning: Member getSampleRateTick(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:23: warning: Member getFirstUnusedVoice(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:24: warning: Member getVoiceTicks(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:25: warning: Member getVoiceTime(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:26: warning: Member getDSPPercentUse(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:27: warning: Member getDSPProcessTime(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:30: warning: Member setTime(u32 time) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:31: warning: Member setCallback(void(*cb)(void)) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:34: warning: Member playSound(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:35: warning: Member pauseSound(void) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:38: warning: Member addVoice(u8 voice, void *samples, u32 samplesize) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:39: warning: Member playVoice(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:40: warning: Member pauseVoice(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:41: warning: Member stopVoice(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:42: warning: Member getVoiceStatus(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:43: warning: Member setVoice(u8 voice, ASNDVoiceFormat format, u32 pitch, u32 delay, void *samples, u32 samplesize, u8 left, u8 right, ASNDVoiceCallback cb) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:44: warning: Member setInfiniteVoice(u8 voice, ASNDVoiceFormat format, u32 patch, u32 delay, void *samples, u32 samplesize, u8 left, u8 right) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:45: warning: Member setVoiceVolume(u8 voice, u8 left, u8 right) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:46: warning: Member setVoicePitch(u8 voice, u32 pitch) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:49: warning: Member testVoiceBufferUsing(u8 voice, void *buffer) (function) of namespace ogcwrap::asnd is not documented.
+C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:50: warning: Member testVoiceBufferReady(u8 voice) (function) of namespace ogcwrap::asnd is not documented.
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:12: warning: Member init(void *fb, u16 xStart, u16 yStart, u16 xRes, u16 yRes, u32 stride) (function) of namespace ogcwrap::console is not documented.
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:13: warning: Member initEx(GXRModeObj *rmode, u16 xStart, u16 yStart, u16 xRes, u16 yRes) (function) of namespace ogcwrap::console is not documented.
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:16: warning: Member getMetrics(u8 *rows, u8 *cols) (function) of namespace ogcwrap::console is not documented.

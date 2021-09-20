@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libwrap: ogcwrap::video Namespace Reference</title>
+<title>libwrap: ogcwrap::asnd Namespace Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -86,97 +86,135 @@ $(document).ready(function(){initNavTree('db/df8/a00076.html','../../'); initRes
   <div class="summary">
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">ogcwrap::video Namespace Reference</div></div>
+  <div class="headertitle"><div class="title">ogcwrap::asnd Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Namespace containing enums and functions related to the video subsystem in libOGC.  
+<p>Namespace containing enums and functions related to the Accelerated SouND subsystem in libOGC.  
 <a href="../../db/df8/a00076.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a62e129bb1f1eb6e9598795a85d4f3789"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789">TVMode</a> { <br />
-&#160;&#160;<a class="el" href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789a4b38da225171e1781308c764b6b3b172">NTSC</a>
-, <a class="el" href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789acf4f483867e0c770dda73062a492b370">PAL</a>
-, <a class="el" href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789a0cd549cd10d247ffc6f3d8a6810cd228">MPAL</a>
-, <a class="el" href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789a4e4e6dfc6150858b812a47995a50c523">EuRGB60</a>
+<tr class="memitem:a091ce676daff4262a642b9923f90409d"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ASNDReturnValue</a> : s8 { <br />
+&#160;&#160;<a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409dae0aa021e21dddbd6d8cecec71e9cf564">OK</a>
+, <a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409da4bbb8f967da6d1a610596d7257179c2b">Invalid</a>
+, <b>NotAVoice</b>
+, <b>VoiceBusy</b>
 , <br />
-&#160;&#160;<a class="el" href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789abd7d77429e2021d48ed895e656fbfddb">DEBUG_NTSC</a>
-, <a class="el" href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789a0650430b2ba0eccd8545596844a92c53">DEBUG_PAL</a>
+&#160;&#160;<b>VoiceUnused</b>
+, <b>VoiceWorking</b>
+, <b>VoiceWaiting</b>
 <br />
  }</td></tr>
-<tr class="memdesc:a62e129bb1f1eb6e9598795a85d4f3789"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum to specify which video standard the Wii should use.  <a href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789">More...</a><br /></td></tr>
-<tr class="separator:a62e129bb1f1eb6e9598795a85d4f3789"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae874fc3b1507013b721002ebeb64deac"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#ae874fc3b1507013b721002ebeb64deac">RetraceTime</a> { <a class="el" href="../../db/df8/a00076.html#ae874fc3b1507013b721002ebeb64deaca45bc3eab16585d09fa0e1bd46dc6531f">PreRetrace</a>
-, <a class="el" href="../../db/df8/a00076.html#ae874fc3b1507013b721002ebeb64deacaf9d4dde69c83e13482b55f421fc38b23">PostRetrace</a>
+<tr class="memdesc:a091ce676daff4262a642b9923f90409d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum to specify common return values of ASND functions.  <a href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">More...</a><br /></td></tr>
+<tr class="separator:a091ce676daff4262a642b9923f90409d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52ec1b93a84dfd70e615ad3de7c3f1f4"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4">ASNDVoiceFormat</a> : u8 { <br />
+&#160;&#160;<a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4ac0baf4fd37b6d9885129283f5bf49f06">MonoU8</a>
+, <a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4a1b047b9e5579ade91c8583684e80c310">MonoS8</a>
+, <a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4a58b176d046af16ea7135e7de2bc204e8">MonoBE16</a>
+, <a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4ab1cabdd1b82698aa1aa2576773a351dc">MonoLE16</a>
+, <br />
+&#160;&#160;<a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4a90c3d01f10b394193a487bb6688352d3">StereoU8</a>
+, <a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4aebc62ae73b10bca4f917538471793225">StereoS8</a>
+, <a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4a1f95597822a5fa6de5ab22bab6480c61">StereoBE16</a>
+, <a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4aee65b12840d5516fb7500ac443370ba0">StereoLE16</a>
+<br />
  }</td></tr>
-<tr class="memdesc:ae874fc3b1507013b721002ebeb64deac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum specifying whether the <code>VIRetraceCallback</code> should be called before or after the retrace.  <a href="../../db/df8/a00076.html#ae874fc3b1507013b721002ebeb64deac">More...</a><br /></td></tr>
-<tr class="separator:ae874fc3b1507013b721002ebeb64deac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2db48d4a7c1bc15f7814275ed000c48d"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a2db48d4a7c1bc15f7814275ed000c48d">DSFieldPos</a> { <a class="el" href="../../db/df8/a00076.html#a2db48d4a7c1bc15f7814275ed000c48da3bbc9746fde9eb2c546b1a4cbe4fe597">TopField</a> = 1
-, <a class="el" href="../../db/df8/a00076.html#a2db48d4a7c1bc15f7814275ed000c48da4eccb409b6e22e3902fcfbc52b7afb0e">BottomField</a> = 0
- }</td></tr>
-<tr class="memdesc:a2db48d4a7c1bc15f7814275ed000c48d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum specifying which field of the DS is next to be drawn.  <a href="../../db/df8/a00076.html#a2db48d4a7c1bc15f7814275ed000c48d">More...</a><br /></td></tr>
-<tr class="separator:a2db48d4a7c1bc15f7814275ed000c48d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a52ec1b93a84dfd70e615ad3de7c3f1f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum to specify the format of PCM samples that the DSP will use.  <a href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4">More...</a><br /></td></tr>
+<tr class="separator:a52ec1b93a84dfd70e615ad3de7c3f1f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5db23c22110b4ceeaeb72c47f347ff2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a5db23c22110b4ceeaeb72c47f347ff2a">init</a> (void)</td></tr>
-<tr class="memdesc:a5db23c22110b4ceeaeb72c47f347ff2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the video subsystem.  <a href="../../db/df8/a00076.html#a5db23c22110b4ceeaeb72c47f347ff2a">More...</a><br /></td></tr>
-<tr class="separator:a5db23c22110b4ceeaeb72c47f347ff2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6adbf406350ce7ee25e27f70747c9c59"><td class="memItemLeft" align="right" valign="top">GXRModeObj *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a6adbf406350ce7ee25e27f70747c9c59">getPreferredRMode</a> (GXRModeObj *rmode)</td></tr>
-<tr class="memdesc:a6adbf406350ce7ee25e27f70747c9c59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the preferred render mode of the Wii, based on region and other things.  <a href="../../db/df8/a00076.html#a6adbf406350ce7ee25e27f70747c9c59">More...</a><br /></td></tr>
-<tr class="separator:a6adbf406350ce7ee25e27f70747c9c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ea6fd8d3ba59b29cbd92b213f2f357d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789">TVMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a5ea6fd8d3ba59b29cbd92b213f2f357d">getTVMode</a> (void)</td></tr>
-<tr class="memdesc:a5ea6fd8d3ba59b29cbd92b213f2f357d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the video standard currently being used by the Wii.  <a href="../../db/df8/a00076.html#a5ea6fd8d3ba59b29cbd92b213f2f357d">More...</a><br /></td></tr>
-<tr class="separator:a5ea6fd8d3ba59b29cbd92b213f2f357d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7d0ebcafe4a336093f1d16caf59ebe9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#aa7d0ebcafe4a336093f1d16caf59ebe9">getComponentCableStatus</a> (void)</td></tr>
-<tr class="memdesc:aa7d0ebcafe4a336093f1d16caf59ebe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is a component cable connected to the Wii.  <a href="../../db/df8/a00076.html#aa7d0ebcafe4a336093f1d16caf59ebe9">More...</a><br /></td></tr>
-<tr class="separator:aa7d0ebcafe4a336093f1d16caf59ebe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2320bb601913dbd808c2fd664cce3266"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a2320bb601913dbd808c2fd664cce3266">getCurrentFramebuffer</a> (void)</td></tr>
-<tr class="memdesc:a2320bb601913dbd808c2fd664cce3266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a <code>void *</code> to the current framebuffer.  <a href="../../db/df8/a00076.html#a2320bb601913dbd808c2fd664cce3266">More...</a><br /></td></tr>
-<tr class="separator:a2320bb601913dbd808c2fd664cce3266"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb3ab3a9e32461d7f6f2b8f49a12ec3d"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#afb3ab3a9e32461d7f6f2b8f49a12ec3d">getNextFramebuffer</a> (void)</td></tr>
-<tr class="memdesc:afb3ab3a9e32461d7f6f2b8f49a12ec3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a <code>void *</code> to the next framebuffer.  <a href="../../db/df8/a00076.html#afb3ab3a9e32461d7f6f2b8f49a12ec3d">More...</a><br /></td></tr>
-<tr class="separator:afb3ab3a9e32461d7f6f2b8f49a12ec3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29149138ec4b17800edc9496beb22de6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a29149138ec4b17800edc9496beb22de6">getFramebufferSize</a> (GXRModeObj *rmode)</td></tr>
-<tr class="memdesc:a29149138ec4b17800edc9496beb22de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates a framebuffer's necessary size based on the render mode given.  <a href="../../db/df8/a00076.html#a29149138ec4b17800edc9496beb22de6">More...</a><br /></td></tr>
-<tr class="separator:a29149138ec4b17800edc9496beb22de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bbfbe256398d200207c638978f082a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a6bbfbe256398d200207c638978f082a5">getCurrentLine</a> (void)</td></tr>
-<tr class="memdesc:a6bbfbe256398d200207c638978f082a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current video line.  <a href="../../db/df8/a00076.html#a6bbfbe256398d200207c638978f082a5">More...</a><br /></td></tr>
-<tr class="separator:a6bbfbe256398d200207c638978f082a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a698b16c0456b7cdc6507cbfefdf35519"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/df8/a00076.html#a2db48d4a7c1bc15f7814275ed000c48d">DSFieldPos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a698b16c0456b7cdc6507cbfefdf35519">getNextField</a> (void)</td></tr>
-<tr class="memdesc:a698b16c0456b7cdc6507cbfefdf35519"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the next field to draw in DS mode.  <a href="../../db/df8/a00076.html#a698b16c0456b7cdc6507cbfefdf35519">More...</a><br /></td></tr>
-<tr class="separator:a698b16c0456b7cdc6507cbfefdf35519"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accdff77e4dc1dd6f2bf26b67f9fa1623"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#accdff77e4dc1dd6f2bf26b67f9fa1623">setConfiguration</a> (GXRModeObj *rmode)</td></tr>
-<tr class="memdesc:accdff77e4dc1dd6f2bf26b67f9fa1623"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the configuration of the video subsystem based on the given render mode's configuration.  <a href="../../db/df8/a00076.html#accdff77e4dc1dd6f2bf26b67f9fa1623">More...</a><br /></td></tr>
-<tr class="separator:accdff77e4dc1dd6f2bf26b67f9fa1623"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f6196b0616c11edc5388686f622fc2f"><td class="memItemLeft" align="right" valign="top">VIRetraceCallback&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a3f6196b0616c11edc5388686f622fc2f">setRetraceCallback</a> (<a class="el" href="../../db/df8/a00076.html#ae874fc3b1507013b721002ebeb64deac">RetraceTime</a> time, VIRetraceCallback cb)</td></tr>
-<tr class="memdesc:a3f6196b0616c11edc5388686f622fc2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the handler for either pre-retrace or post-retrace interrupts.  <a href="../../db/df8/a00076.html#a3f6196b0616c11edc5388686f622fc2f">More...</a><br /></td></tr>
-<tr class="separator:a3f6196b0616c11edc5388686f622fc2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a735c0812a021e34d8f115ec1248c55e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a735c0812a021e34d8f115ec1248c55e0">setNextFramebuffer</a> (void *fb)</td></tr>
-<tr class="memdesc:a735c0812a021e34d8f115ec1248c55e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the next framebuffer to be used.  <a href="../../db/df8/a00076.html#a735c0812a021e34d8f115ec1248c55e0">More...</a><br /></td></tr>
-<tr class="separator:a735c0812a021e34d8f115ec1248c55e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdf65825ac353b921e970439ee8c6ed8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#abdf65825ac353b921e970439ee8c6ed8">setNextRightFramebuffer</a> (void *fb)</td></tr>
-<tr class="memdesc:abdf65825ac353b921e970439ee8c6ed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the next right framebuffer.  <a href="../../db/df8/a00076.html#abdf65825ac353b921e970439ee8c6ed8">More...</a><br /></td></tr>
-<tr class="separator:abdf65825ac353b921e970439ee8c6ed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a565317815f3136b1081d309f86473349"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a565317815f3136b1081d309f86473349">setBlackoutStatus</a> (bool status)</td></tr>
-<tr class="memdesc:a565317815f3136b1081d309f86473349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable the blacking out of the subsystem.  <a href="../../db/df8/a00076.html#a565317815f3136b1081d309f86473349">More...</a><br /></td></tr>
-<tr class="separator:a565317815f3136b1081d309f86473349"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c9ec83be56a4d87b46878488fa52f71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a8c9ec83be56a4d87b46878488fa52f71">clearFramebuffer</a> (GXRModeObj *rmode, void *fb, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> color)</td></tr>
-<tr class="memdesc:a8c9ec83be56a4d87b46878488fa52f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the given framebuffer <code>fb</code> to a single color <code>color</code> based on settings from <code>rmode</code>.  <a href="../../db/df8/a00076.html#a8c9ec83be56a4d87b46878488fa52f71">More...</a><br /></td></tr>
-<tr class="separator:a8c9ec83be56a4d87b46878488fa52f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63afd0b0d03778e5fc3caada693b717d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a63afd0b0d03778e5fc3caada693b717d">flush</a> (void)</td></tr>
-<tr class="memdesc:a63afd0b0d03778e5fc3caada693b717d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes the registers of the video subsystem.  <a href="../../db/df8/a00076.html#a63afd0b0d03778e5fc3caada693b717d">More...</a><br /></td></tr>
-<tr class="separator:a63afd0b0d03778e5fc3caada693b717d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f7d537b0f69edae643b4f24ff92e4ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a6f7d537b0f69edae643b4f24ff92e4ca">waitVSync</a> (void)</td></tr>
-<tr class="memdesc:a6f7d537b0f69edae643b4f24ff92e4ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the next vertical retrace.  <a href="../../db/df8/a00076.html#a6f7d537b0f69edae643b4f24ff92e4ca">More...</a><br /></td></tr>
-<tr class="separator:a6f7d537b0f69edae643b4f24ff92e4ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a474d07692651c56223c750c59e409d80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a474d07692651c56223c750c59e409d80">init</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="memdesc:a474d07692651c56223c750c59e409d80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the ASND subsystem.  <a href="../../db/df8/a00076.html#a474d07692651c56223c750c59e409d80">More...</a><br /></td></tr>
+<tr class="separator:a474d07692651c56223c750c59e409d80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fbd12670defddd65d353af89b874314"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/df8/a00076.html#a1fbd12670defddd65d353af89b874314">deinit</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="memdesc:a1fbd12670defddd65d353af89b874314"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts the ASND subsystem down.  <a href="../../db/df8/a00076.html#a1fbd12670defddd65d353af89b874314">More...</a><br /></td></tr>
+<tr class="separator:a1fbd12670defddd65d353af89b874314"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8c32a7d4b5ea2be0e2e5aea53820062"><td class="memItemLeft" align="right" valign="top"><a id="ab8c32a7d4b5ea2be0e2e5aea53820062" name="ab8c32a7d4b5ea2be0e2e5aea53820062"></a>
+<a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getTime</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="separator:ab8c32a7d4b5ea2be0e2e5aea53820062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89e69e62d2390b32013d3a52d1710400"><td class="memItemLeft" align="right" valign="top"><a id="a89e69e62d2390b32013d3a52d1710400" name="a89e69e62d2390b32013d3a52d1710400"></a>
+<a class="el" href="../../d8/d41/a00038.html#a3b5a99ce2a4fb6dc207d32e39df29f3b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getSoundPlayStatus</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="separator:a89e69e62d2390b32013d3a52d1710400"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86e84e3d8f002b88deb662225030a088"><td class="memItemLeft" align="right" valign="top"><a id="a86e84e3d8f002b88deb662225030a088" name="a86e84e3d8f002b88deb662225030a088"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getNoteFreq</b> (int note, int freqbase, int notebase)</td></tr>
+<tr class="separator:a86e84e3d8f002b88deb662225030a088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a9bcabf908cdbb89dededd67a7efd6d"><td class="memItemLeft" align="right" valign="top"><a id="a4a9bcabf908cdbb89dededd67a7efd6d" name="a4a9bcabf908cdbb89dededd67a7efd6d"></a>
+<a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getSampleRate</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="separator:a4a9bcabf908cdbb89dededd67a7efd6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e1b2b4d0d46694312d3726d9e698d05"><td class="memItemLeft" align="right" valign="top"><a id="a3e1b2b4d0d46694312d3726d9e698d05" name="a3e1b2b4d0d46694312d3726d9e698d05"></a>
+<a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getSampleCount</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="separator:a3e1b2b4d0d46694312d3726d9e698d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a171fdd3b639353eaefa5f770e25a1125"><td class="memItemLeft" align="right" valign="top"><a id="a171fdd3b639353eaefa5f770e25a1125" name="a171fdd3b639353eaefa5f770e25a1125"></a>
+<a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getSampleRateTick</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="separator:a171fdd3b639353eaefa5f770e25a1125"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7496de4aec6e87b64b21003b88ca0e1"><td class="memItemLeft" align="right" valign="top"><a id="aa7496de4aec6e87b64b21003b88ca0e1" name="aa7496de4aec6e87b64b21003b88ca0e1"></a>
+<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getFirstUnusedVoice</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="separator:aa7496de4aec6e87b64b21003b88ca0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab66007e4b0fc5a86b628e5b679bd7840"><td class="memItemLeft" align="right" valign="top"><a id="ab66007e4b0fc5a86b628e5b679bd7840" name="ab66007e4b0fc5a86b628e5b679bd7840"></a>
+<a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getVoiceTicks</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice)</td></tr>
+<tr class="separator:ab66007e4b0fc5a86b628e5b679bd7840"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67d5ec8ddf8d93fd63dc5254646be9df"><td class="memItemLeft" align="right" valign="top"><a id="a67d5ec8ddf8d93fd63dc5254646be9df" name="a67d5ec8ddf8d93fd63dc5254646be9df"></a>
+<a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getVoiceTime</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice)</td></tr>
+<tr class="separator:a67d5ec8ddf8d93fd63dc5254646be9df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc3a014ced66d7d787b3f9a6d45ea1c2"><td class="memItemLeft" align="right" valign="top"><a id="abc3a014ced66d7d787b3f9a6d45ea1c2" name="abc3a014ced66d7d787b3f9a6d45ea1c2"></a>
+<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getDSPPercentUse</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="separator:abc3a014ced66d7d787b3f9a6d45ea1c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4bf6b4322feb0790ee0f2e4b603b24f"><td class="memItemLeft" align="right" valign="top"><a id="ae4bf6b4322feb0790ee0f2e4b603b24f" name="ae4bf6b4322feb0790ee0f2e4b603b24f"></a>
+<a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getDSPProcessTime</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="separator:ae4bf6b4322feb0790ee0f2e4b603b24f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f4c326a4426e5c4f3f2d6b93ae12505"><td class="memItemLeft" align="right" valign="top"><a id="a4f4c326a4426e5c4f3f2d6b93ae12505" name="a4f4c326a4426e5c4f3f2d6b93ae12505"></a>
+<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>setTime</b> (<a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> time)</td></tr>
+<tr class="separator:a4f4c326a4426e5c4f3f2d6b93ae12505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdc5699c6d782b61e6e0911aebfa5e01"><td class="memItemLeft" align="right" valign="top"><a id="acdc5699c6d782b61e6e0911aebfa5e01" name="acdc5699c6d782b61e6e0911aebfa5e01"></a>
+<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>setCallback</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>(*cb)(<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>))</td></tr>
+<tr class="separator:acdc5699c6d782b61e6e0911aebfa5e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab07d9bf0d09aefc0e2b2a76de50c98ab"><td class="memItemLeft" align="right" valign="top"><a id="ab07d9bf0d09aefc0e2b2a76de50c98ab" name="ab07d9bf0d09aefc0e2b2a76de50c98ab"></a>
+<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>playSound</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="separator:ab07d9bf0d09aefc0e2b2a76de50c98ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad491f2c80be960326acc8036ee245c6e"><td class="memItemLeft" align="right" valign="top"><a id="ad491f2c80be960326acc8036ee245c6e" name="ad491f2c80be960326acc8036ee245c6e"></a>
+<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pauseSound</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="separator:ad491f2c80be960326acc8036ee245c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbdb836718f1a0ca52dd07cf863a943f"><td class="memItemLeft" align="right" valign="top"><a id="abbdb836718f1a0ca52dd07cf863a943f" name="abbdb836718f1a0ca52dd07cf863a943f"></a>
+<a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ASNDReturnValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>addVoice</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice, <a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *samples, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> samplesize)</td></tr>
+<tr class="separator:abbdb836718f1a0ca52dd07cf863a943f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41bf3bd39835e5666deb50f04bb9858f"><td class="memItemLeft" align="right" valign="top"><a id="a41bf3bd39835e5666deb50f04bb9858f" name="a41bf3bd39835e5666deb50f04bb9858f"></a>
+<a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ASNDReturnValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>playVoice</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice)</td></tr>
+<tr class="separator:a41bf3bd39835e5666deb50f04bb9858f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2159c2c44649dd1f419ce10f6995364b"><td class="memItemLeft" align="right" valign="top"><a id="a2159c2c44649dd1f419ce10f6995364b" name="a2159c2c44649dd1f419ce10f6995364b"></a>
+<a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ASNDReturnValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pauseVoice</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice)</td></tr>
+<tr class="separator:a2159c2c44649dd1f419ce10f6995364b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff942c1f2e4105a46323b6cb53bd6e9e"><td class="memItemLeft" align="right" valign="top"><a id="aff942c1f2e4105a46323b6cb53bd6e9e" name="aff942c1f2e4105a46323b6cb53bd6e9e"></a>
+<a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ASNDReturnValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>stopVoice</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice)</td></tr>
+<tr class="separator:aff942c1f2e4105a46323b6cb53bd6e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae600b6e306c26f74775ef8b20e3fb200"><td class="memItemLeft" align="right" valign="top"><a id="ae600b6e306c26f74775ef8b20e3fb200" name="ae600b6e306c26f74775ef8b20e3fb200"></a>
+<a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ASNDReturnValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getVoiceStatus</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice)</td></tr>
+<tr class="separator:ae600b6e306c26f74775ef8b20e3fb200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b33b133dfbc766a6a115060c99e2fae"><td class="memItemLeft" align="right" valign="top"><a id="a0b33b133dfbc766a6a115060c99e2fae" name="a0b33b133dfbc766a6a115060c99e2fae"></a>
+<a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ASNDReturnValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>setVoice</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice, <a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4">ASNDVoiceFormat</a> format, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> pitch, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> delay, <a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *samples, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> samplesize, <a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> left, <a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> right, ASNDVoiceCallback cb)</td></tr>
+<tr class="separator:a0b33b133dfbc766a6a115060c99e2fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14e202e7a6d83dd5bcc648bbda96fb92"><td class="memItemLeft" align="right" valign="top"><a id="a14e202e7a6d83dd5bcc648bbda96fb92" name="a14e202e7a6d83dd5bcc648bbda96fb92"></a>
+<a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ASNDReturnValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>setInfiniteVoice</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice, <a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4">ASNDVoiceFormat</a> format, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> patch, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> delay, <a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *samples, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> samplesize, <a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> left, <a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> right)</td></tr>
+<tr class="separator:a14e202e7a6d83dd5bcc648bbda96fb92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11215d67c11c623ec6ca9320dd85af1d"><td class="memItemLeft" align="right" valign="top"><a id="a11215d67c11c623ec6ca9320dd85af1d" name="a11215d67c11c623ec6ca9320dd85af1d"></a>
+<a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ASNDReturnValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>setVoiceVolume</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice, <a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> left, <a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> right)</td></tr>
+<tr class="separator:a11215d67c11c623ec6ca9320dd85af1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f10b63941b9e599853e0d922f3b0b3"><td class="memItemLeft" align="right" valign="top"><a id="a87f10b63941b9e599853e0d922f3b0b3" name="a87f10b63941b9e599853e0d922f3b0b3"></a>
+<a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ASNDReturnValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>setVoicePitch</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> pitch)</td></tr>
+<tr class="separator:a87f10b63941b9e599853e0d922f3b0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a622651d642f09d1fbefeabaa7cf453a5"><td class="memItemLeft" align="right" valign="top"><a id="a622651d642f09d1fbefeabaa7cf453a5" name="a622651d642f09d1fbefeabaa7cf453a5"></a>
+<a class="el" href="../../d8/d41/a00038.html#a3b5a99ce2a4fb6dc207d32e39df29f3b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><b>testVoiceBufferUsing</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice, <a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *buffer)</td></tr>
+<tr class="separator:a622651d642f09d1fbefeabaa7cf453a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a783c293185ec3de7acb30afb0c5f7297"><td class="memItemLeft" align="right" valign="top"><a id="a783c293185ec3de7acb30afb0c5f7297" name="a783c293185ec3de7acb30afb0c5f7297"></a>
+<a class="el" href="../../d8/d41/a00038.html#a3b5a99ce2a4fb6dc207d32e39df29f3b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><b>testVoiceBufferReady</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> voice)</td></tr>
+<tr class="separator:a783c293185ec3de7acb30afb0c5f7297"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Namespace containing enums and functions related to the video subsystem in libOGC. </p>
+<div class="textblock"><p >Namespace containing enums and functions related to the Accelerated SouND subsystem in libOGC. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a62e129bb1f1eb6e9598795a85d4f3789" name="a62e129bb1f1eb6e9598795a85d4f3789"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62e129bb1f1eb6e9598795a85d4f3789">&#9670;&nbsp;</a></span>TVMode</h2>
+<a id="a091ce676daff4262a642b9923f90409d" name="a091ce676daff4262a642b9923f90409d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a091ce676daff4262a642b9923f90409d">&#9670;&nbsp;</a></span>ASNDReturnValue</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -185,7 +223,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum struct <a class="el" href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789">ogcwrap::video::TVMode</a></td>
+          <td class="memname">enum struct <a class="el" href="../../db/df8/a00076.html#a091ce676daff4262a642b9923f90409d">ogcwrap::asnd::ASNDReturnValue</a> : <a class="el" href="../../d8/d41/a00038.html#a92c993df0009777ef4b55f8301f4f9f6">s8</a></td>
         </tr>
       </table>
   </td>
@@ -195,30 +233,18 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Enum to specify which video standard the Wii should use. </p>
+<p>Enum to specify common return values of ASND functions. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a62e129bb1f1eb6e9598795a85d4f3789a4b38da225171e1781308c764b6b3b172" name="a62e129bb1f1eb6e9598795a85d4f3789a4b38da225171e1781308c764b6b3b172"></a>NTSC&#160;</td><td class="fielddoc"><p >Use the NTSC standard found in North America and Japan. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a091ce676daff4262a642b9923f90409dae0aa021e21dddbd6d8cecec71e9cf564" name="a091ce676daff4262a642b9923f90409dae0aa021e21dddbd6d8cecec71e9cf564"></a>OK&#160;</td><td class="fielddoc"><p >This return value is used to indicate that a function was successful. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a62e129bb1f1eb6e9598795a85d4f3789acf4f483867e0c770dda73062a492b370" name="a62e129bb1f1eb6e9598795a85d4f3789acf4f483867e0c770dda73062a492b370"></a>PAL&#160;</td><td class="fielddoc"><p >Use the PAL standard found in European countries. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a62e129bb1f1eb6e9598795a85d4f3789a0cd549cd10d247ffc6f3d8a6810cd228" name="a62e129bb1f1eb6e9598795a85d4f3789a0cd549cd10d247ffc6f3d8a6810cd228"></a>MPAL&#160;</td><td class="fielddoc"><p >Use the MPAL standard found in Brazil. </p>
-<p >It is somewhat similar to the NTSC standard. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a62e129bb1f1eb6e9598795a85d4f3789a4e4e6dfc6150858b812a47995a50c523" name="a62e129bb1f1eb6e9598795a85d4f3789a4e4e6dfc6150858b812a47995a50c523"></a>EuRGB60&#160;</td><td class="fielddoc"><p >Use the EuRGB60 standard found in European countries. </p>
-<p >Using 480 lines and runnning at 60Hz, this format has the same aspect ratio and timing as the NTSC standard. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a62e129bb1f1eb6e9598795a85d4f3789abd7d77429e2021d48ed895e656fbfddb" name="a62e129bb1f1eb6e9598795a85d4f3789abd7d77429e2021d48ed895e656fbfddb"></a>DEBUG_NTSC&#160;</td><td class="fielddoc"><p >Use the DEBUG_NTSC standard, for use with North America and Japan. </p>
-<dl class="section note"><dt>Note</dt><dd>A special decoder is needed to use this standard. </dd></dl>
-</td></tr>
-<tr><td class="fieldname"><a id="a62e129bb1f1eb6e9598795a85d4f3789a0650430b2ba0eccd8545596844a92c53" name="a62e129bb1f1eb6e9598795a85d4f3789a0650430b2ba0eccd8545596844a92c53"></a>DEBUG_PAL&#160;</td><td class="fielddoc"><p >Use the DEBUG_PAL standard, for use with European countries. </p>
-<dl class="section note"><dt>Note</dt><dd>A special decoder is needed to use this standard. </dd></dl>
+<tr><td class="fieldname"><a id="a091ce676daff4262a642b9923f90409da4bbb8f967da6d1a610596d7257179c2b" name="a091ce676daff4262a642b9923f90409da4bbb8f967da6d1a610596d7257179c2b"></a>Invalid&#160;</td><td class="fielddoc"><p >This return value is used to indicate that an input to a function is invalid. </p>
 </td></tr>
 </table>
 
 </div>
 </div>
-<a id="ae874fc3b1507013b721002ebeb64deac" name="ae874fc3b1507013b721002ebeb64deac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae874fc3b1507013b721002ebeb64deac">&#9670;&nbsp;</a></span>RetraceTime</h2>
+<a id="a52ec1b93a84dfd70e615ad3de7c3f1f4" name="a52ec1b93a84dfd70e615ad3de7c3f1f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52ec1b93a84dfd70e615ad3de7c3f1f4">&#9670;&nbsp;</a></span>ASNDVoiceFormat</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -227,7 +253,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum struct <a class="el" href="../../db/df8/a00076.html#ae874fc3b1507013b721002ebeb64deac">ogcwrap::video::RetraceTime</a></td>
+          <td class="memname">enum struct <a class="el" href="../../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4">ogcwrap::asnd::ASNDVoiceFormat</a> : <a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a></td>
         </tr>
       </table>
   </td>
@@ -237,479 +263,67 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Enum specifying whether the <code>VIRetraceCallback</code> should be called before or after the retrace. </p>
+<p>Enum to specify the format of PCM samples that the DSP will use. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae874fc3b1507013b721002ebeb64deaca45bc3eab16585d09fa0e1bd46dc6531f" name="ae874fc3b1507013b721002ebeb64deaca45bc3eab16585d09fa0e1bd46dc6531f"></a>PreRetrace&#160;</td><td class="fielddoc"><p >Specify that the <code>VIRetraceCallback</code> should be called <em>before</em> the retrace occurs. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a52ec1b93a84dfd70e615ad3de7c3f1f4ac0baf4fd37b6d9885129283f5bf49f06" name="a52ec1b93a84dfd70e615ad3de7c3f1f4ac0baf4fd37b6d9885129283f5bf49f06"></a>MonoU8&#160;</td><td class="fielddoc"><p >Specifies that the PCM samples only have one sound channel (mono) and that they have unsigned 8-bit values. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ae874fc3b1507013b721002ebeb64deacaf9d4dde69c83e13482b55f421fc38b23" name="ae874fc3b1507013b721002ebeb64deacaf9d4dde69c83e13482b55f421fc38b23"></a>PostRetrace&#160;</td><td class="fielddoc"><p >Specify that the <code>VIRetraceCallback</code> should be called <em>after</em> the retrace occurs. </p>
+<tr><td class="fieldname"><a id="a52ec1b93a84dfd70e615ad3de7c3f1f4a1b047b9e5579ade91c8583684e80c310" name="a52ec1b93a84dfd70e615ad3de7c3f1f4a1b047b9e5579ade91c8583684e80c310"></a>MonoS8&#160;</td><td class="fielddoc"><p >Specifies that the PCM samples are in mono and that they have signed 8-bit values. </p>
 </td></tr>
-</table>
-
-</div>
-</div>
-<a id="a2db48d4a7c1bc15f7814275ed000c48d" name="a2db48d4a7c1bc15f7814275ed000c48d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2db48d4a7c1bc15f7814275ed000c48d">&#9670;&nbsp;</a></span>DSFieldPos</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum struct <a class="el" href="../../db/df8/a00076.html#a2db48d4a7c1bc15f7814275ed000c48d">ogcwrap::video::DSFieldPos</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Enum specifying which field of the DS is next to be drawn. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2db48d4a7c1bc15f7814275ed000c48da3bbc9746fde9eb2c546b1a4cbe4fe597" name="a2db48d4a7c1bc15f7814275ed000c48da3bbc9746fde9eb2c546b1a4cbe4fe597"></a>TopField&#160;</td><td class="fielddoc"><p >The top field of the DS will be drawn next. </p>
+<tr><td class="fieldname"><a id="a52ec1b93a84dfd70e615ad3de7c3f1f4a58b176d046af16ea7135e7de2bc204e8" name="a52ec1b93a84dfd70e615ad3de7c3f1f4a58b176d046af16ea7135e7de2bc204e8"></a>MonoBE16&#160;</td><td class="fielddoc"><p >Specifies that the PCM samples are in mono and that they have unsigned big-endian 16-bit values. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2db48d4a7c1bc15f7814275ed000c48da4eccb409b6e22e3902fcfbc52b7afb0e" name="a2db48d4a7c1bc15f7814275ed000c48da4eccb409b6e22e3902fcfbc52b7afb0e"></a>BottomField&#160;</td><td class="fielddoc"><p >The bottom field of the DS field will be drawn next. </p>
-<p >This field has a touchscreen available. </p>
+<tr><td class="fieldname"><a id="a52ec1b93a84dfd70e615ad3de7c3f1f4ab1cabdd1b82698aa1aa2576773a351dc" name="a52ec1b93a84dfd70e615ad3de7c3f1f4ab1cabdd1b82698aa1aa2576773a351dc"></a>MonoLE16&#160;</td><td class="fielddoc"><p >Specifies that the PCM samples are in mono and that they have unsigned little-endian 16-bit values. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52ec1b93a84dfd70e615ad3de7c3f1f4a90c3d01f10b394193a487bb6688352d3" name="a52ec1b93a84dfd70e615ad3de7c3f1f4a90c3d01f10b394193a487bb6688352d3"></a>StereoU8&#160;</td><td class="fielddoc"><p >Specifies that the PCM samples have two sound channels (stereo) and that they have unsigned 8-bit values. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52ec1b93a84dfd70e615ad3de7c3f1f4aebc62ae73b10bca4f917538471793225" name="a52ec1b93a84dfd70e615ad3de7c3f1f4aebc62ae73b10bca4f917538471793225"></a>StereoS8&#160;</td><td class="fielddoc"><p >Specifies that the PCM samples are in stereo and that they have signed 8-bit values. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52ec1b93a84dfd70e615ad3de7c3f1f4a1f95597822a5fa6de5ab22bab6480c61" name="a52ec1b93a84dfd70e615ad3de7c3f1f4a1f95597822a5fa6de5ab22bab6480c61"></a>StereoBE16&#160;</td><td class="fielddoc"><p >Specifies that the PCM samples are in stereo and that they have unsigned big-endian 16-bit values. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52ec1b93a84dfd70e615ad3de7c3f1f4aee65b12840d5516fb7500ac443370ba0" name="a52ec1b93a84dfd70e615ad3de7c3f1f4aee65b12840d5516fb7500ac443370ba0"></a>StereoLE16&#160;</td><td class="fielddoc"><p >Specifies that the PCM samples are in stereo and that they have unsigned little-endian 16-bit values. </p>
 </td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a5db23c22110b4ceeaeb72c47f347ff2a" name="a5db23c22110b4ceeaeb72c47f347ff2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5db23c22110b4ceeaeb72c47f347ff2a">&#9670;&nbsp;</a></span>init()</h2>
+<a id="a474d07692651c56223c750c59e409d80" name="a474d07692651c56223c750c59e409d80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a474d07692651c56223c750c59e409d80">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ogcwrap::video::init </td>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::asnd::init </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes the video subsystem. </p>
+<p>Initializes the ASND subsystem. </p>
 <dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
 
 </div>
 </div>
-<a id="a6adbf406350ce7ee25e27f70747c9c59" name="a6adbf406350ce7ee25e27f70747c9c59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6adbf406350ce7ee25e27f70747c9c59">&#9670;&nbsp;</a></span>getPreferredRMode()</h2>
+<a id="a1fbd12670defddd65d353af89b874314" name="a1fbd12670defddd65d353af89b874314"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fbd12670defddd65d353af89b874314">&#9670;&nbsp;</a></span>deinit()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GXRModeObj * ogcwrap::video::getPreferredRMode </td>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::asnd::deinit </td>
           <td>(</td>
-          <td class="paramtype">GXRModeObj *&#160;</td>
-          <td class="paramname"><em>rmode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the preferred render mode of the Wii, based on region and other things. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">rmode</td><td>unknown</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A GXRModeObj with the preferred render mode of the Wii. </dd></dl>
-
-</div>
-</div>
-<a id="a5ea6fd8d3ba59b29cbd92b213f2f357d" name="a5ea6fd8d3ba59b29cbd92b213f2f357d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ea6fd8d3ba59b29cbd92b213f2f357d">&#9670;&nbsp;</a></span>getTVMode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/df8/a00076.html#a62e129bb1f1eb6e9598795a85d4f3789">TVMode</a> ogcwrap::video::getTVMode </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the video standard currently being used by the Wii. </p>
-<dl class="section return"><dt>Returns</dt><dd>The TVMode currently being used by the Wii. </dd></dl>
-
-</div>
-</div>
-<a id="aa7d0ebcafe4a336093f1d16caf59ebe9" name="aa7d0ebcafe4a336093f1d16caf59ebe9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7d0ebcafe4a336093f1d16caf59ebe9">&#9670;&nbsp;</a></span>getComponentCableStatus()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ogcwrap::video::getComponentCableStatus </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Checks if there is a component cable connected to the Wii. </p>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if there is a connected component cable, <code>false</code> otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="a2320bb601913dbd808c2fd664cce3266" name="a2320bb601913dbd808c2fd664cce3266"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2320bb601913dbd808c2fd664cce3266">&#9670;&nbsp;</a></span>getCurrentFramebuffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void * ogcwrap::video::getCurrentFramebuffer </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets a <code>void *</code> to the current framebuffer. </p>
-<dl class="section return"><dt>Returns</dt><dd>A <code>void *</code> to the current framebuffer. </dd></dl>
-
-</div>
-</div>
-<a id="afb3ab3a9e32461d7f6f2b8f49a12ec3d" name="afb3ab3a9e32461d7f6f2b8f49a12ec3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb3ab3a9e32461d7f6f2b8f49a12ec3d">&#9670;&nbsp;</a></span>getNextFramebuffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void * ogcwrap::video::getNextFramebuffer </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets a <code>void *</code> to the next framebuffer. </p>
-<dl class="section return"><dt>Returns</dt><dd>A <code>void *</code> to the next framebuffer. </dd></dl>
-
-</div>
-</div>
-<a id="a29149138ec4b17800edc9496beb22de6" name="a29149138ec4b17800edc9496beb22de6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29149138ec4b17800edc9496beb22de6">&#9670;&nbsp;</a></span>getFramebufferSize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> ogcwrap::video::getFramebufferSize </td>
-          <td>(</td>
-          <td class="paramtype">GXRModeObj *&#160;</td>
-          <td class="paramname"><em>rmode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Calculates a framebuffer's necessary size based on the render mode given. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">rmode</td><td>The render mode to calculate the size with.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The necessary size of the render mode's framebuffer, in bytes. </dd></dl>
-
-</div>
-</div>
-<a id="a6bbfbe256398d200207c638978f082a5" name="a6bbfbe256398d200207c638978f082a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bbfbe256398d200207c638978f082a5">&#9670;&nbsp;</a></span>getCurrentLine()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> ogcwrap::video::getCurrentLine </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the current video line. </p>
-<dl class="section return"><dt>Returns</dt><dd>The current line. </dd></dl>
-
-</div>
-</div>
-<a id="a698b16c0456b7cdc6507cbfefdf35519" name="a698b16c0456b7cdc6507cbfefdf35519"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a698b16c0456b7cdc6507cbfefdf35519">&#9670;&nbsp;</a></span>getNextField()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/df8/a00076.html#a2db48d4a7c1bc15f7814275ed000c48d">DSFieldPos</a> ogcwrap::video::getNextField </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the next field to draw in DS mode. </p>
-<dl class="section return"><dt>Returns</dt><dd>A DSFieldPos with the next field to be rendered. </dd></dl>
-
-</div>
-</div>
-<a id="accdff77e4dc1dd6f2bf26b67f9fa1623" name="accdff77e4dc1dd6f2bf26b67f9fa1623"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accdff77e4dc1dd6f2bf26b67f9fa1623">&#9670;&nbsp;</a></span>setConfiguration()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ogcwrap::video::setConfiguration </td>
-          <td>(</td>
-          <td class="paramtype">GXRModeObj *&#160;</td>
-          <td class="paramname"><em>rmode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the configuration of the video subsystem based on the given render mode's configuration. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">rmode</td><td>The render mode to use to configure the video subsystem with.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
-
-</div>
-</div>
-<a id="a3f6196b0616c11edc5388686f622fc2f" name="a3f6196b0616c11edc5388686f622fc2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f6196b0616c11edc5388686f622fc2f">&#9670;&nbsp;</a></span>setRetraceCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">VIRetraceCallback ogcwrap::video::setRetraceCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/df8/a00076.html#ae874fc3b1507013b721002ebeb64deac">RetraceTime</a>&#160;</td>
-          <td class="paramname"><em>time</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">VIRetraceCallback&#160;</td>
-          <td class="paramname"><em>cb</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the handler for either pre-retrace or post-retrace interrupts. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">time</td><td>The time to assign the handler to. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cb</td><td>The new handler to assign.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The old VIRetraceCallback. </dd></dl>
-
-</div>
-</div>
-<a id="a735c0812a021e34d8f115ec1248c55e0" name="a735c0812a021e34d8f115ec1248c55e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a735c0812a021e34d8f115ec1248c55e0">&#9670;&nbsp;</a></span>setNextFramebuffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ogcwrap::video::setNextFramebuffer </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>fb</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the next framebuffer to be used. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">fb</td><td>A <code>void *</code> to the next framebuffer.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
-
-</div>
-</div>
-<a id="abdf65825ac353b921e970439ee8c6ed8" name="abdf65825ac353b921e970439ee8c6ed8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abdf65825ac353b921e970439ee8c6ed8">&#9670;&nbsp;</a></span>setNextRightFramebuffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ogcwrap::video::setNextRightFramebuffer </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>fb</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the next right framebuffer. </p>
-<p >An example of a use of the right framebuffer would be for 3D Gloves.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">fb</td><td>A <code>void *</code> to the next right framebuffer.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
-
-</div>
-</div>
-<a id="a565317815f3136b1081d309f86473349" name="a565317815f3136b1081d309f86473349"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a565317815f3136b1081d309f86473349">&#9670;&nbsp;</a></span>setBlackoutStatus()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ogcwrap::video::setBlackoutStatus </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>status</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Enable or disable the blacking out of the subsystem. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">status</td><td><code>true</code> to enable the blackout; <code>false</code> otherwise.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
-
-</div>
-</div>
-<a id="a8c9ec83be56a4d87b46878488fa52f71" name="a8c9ec83be56a4d87b46878488fa52f71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c9ec83be56a4d87b46878488fa52f71">&#9670;&nbsp;</a></span>clearFramebuffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ogcwrap::video::clearFramebuffer </td>
-          <td>(</td>
-          <td class="paramtype">GXRModeObj *&#160;</td>
-          <td class="paramname"><em>rmode</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>fb</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td>
-          <td class="paramname"><em>color</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Clears the given framebuffer <code>fb</code> to a single color <code>color</code> based on settings from <code>rmode</code>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">rmode</td><td>The render mode to take settings from. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">fb</td><td>The framebuffer to clear. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">color</td><td>The color to clear the framebuffer to, specified in YUYUV format.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
-
-</div>
-</div>
-<a id="a63afd0b0d03778e5fc3caada693b717d" name="a63afd0b0d03778e5fc3caada693b717d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63afd0b0d03778e5fc3caada693b717d">&#9670;&nbsp;</a></span>flush()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ogcwrap::video::flush </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Flushes the registers of the video subsystem. </p>
-<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
-
-</div>
-</div>
-<a id="a6f7d537b0f69edae643b4f24ff92e4ca" name="a6f7d537b0f69edae643b4f24ff92e4ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f7d537b0f69edae643b4f24ff92e4ca">&#9670;&nbsp;</a></span>waitVSync()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ogcwrap::video::waitVSync </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Waits for the next vertical retrace. </p>
+<p>Shuts the ASND subsystem down. </p>
 <dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
 
 </div>
@@ -719,8 +333,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>ogcwrap</b></li><li class="navelem"><a class="el" href="../../db/df8/a00076.html">video</a></li>
-    <li class="footer">Generated on Thu Sep 9 2021 09:01:40 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="navelem"><b>ogcwrap</b></li><li class="navelem"><a class="el" href="../../db/df8/a00076.html">asnd</a></li>
+    <li class="footer">Generated on Sun Sep 19 2021 23:37:06 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

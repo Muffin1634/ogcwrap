@@ -51,3 +51,28 @@ namespace ogcwrap::asnd
 }
 
 #endif // wrap_asnd_h
+/*! \file asnd.hpp <asnd/asnd.hpp>
+ *  \brief Header file for the wrapper of the Accelerated SouND subsystem.
+ *
+ *  This header contains functions in the <CODE>ogcwrap::asnd</CODE> namespace for initializing the ASND subsystem,
+ *  managing and gathering statistics from tho Digital Sound Processor (DSP), managing individual voices, and testing
+ *  sample buffers.
+ *
+ *  <!-- ----------------------------------------------------------------------------------------------------------- -->
+ *
+ *  \namespace ogcwrap::asnd
+ *  \brief Namespace containing enums and functions related to the Accelerated SouND subsystem in libOGC.
+ *
+ */
+
+/*! \fn void ogcwrap::asnd::init(void)
+ *  \brief Initializes the ASND subsystem.
+ *
+ *  \return none
+ */
+
+/*! \fn void ogcwrap::asnd::deinit(void)
+ *  \brief Shuts the ASND subsystem down.
+ *
+ *  \return none
+ */

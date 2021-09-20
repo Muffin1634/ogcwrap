@@ -4,6 +4,7 @@
 
 // fundamental
 
+typedef void void;
 typedef bool bool;
 
 // integers
@@ -51,7 +52,10 @@ typedef s32							sfp32;
  *        libOGC.
  */
 
-/*! \typedef bool bool
+/*! \typedef void void
+ *  \brief as a return type, no return, or as a pointer type, a generic pointer
+ *
+ *  \typedef bool bool
  *  \brief boolean that can hold a value of <CODE>true</CODE> or <CODE>false</CODE>.
  */
 

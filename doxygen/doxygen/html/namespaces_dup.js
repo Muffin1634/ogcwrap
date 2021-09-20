@@ -33,6 +33,29 @@ var namespaces_dup =
         [ "setVoiceBuffer", "d9/da5/a00075.html#a1f6829812b335eaadc66a112e7b55f9e", null ],
         [ "playVoice", "d9/da5/a00075.html#a95a7fa4c8920ea26605f00adaa73bf82", null ]
       ] ],
+      [ "asnd", "db/df8/a00076.html", [
+        [ "ASNDReturnValue", "db/df8/a00076.html#a091ce676daff4262a642b9923f90409d", [
+          [ "OK", "db/df8/a00076.html#a091ce676daff4262a642b9923f90409dae0aa021e21dddbd6d8cecec71e9cf564", null ],
+          [ "Invalid", "db/df8/a00076.html#a091ce676daff4262a642b9923f90409da4bbb8f967da6d1a610596d7257179c2b", null ],
+          [ "NotAVoice", "db/df8/a00076.html#a091ce676daff4262a642b9923f90409da11cd5947a11d9c0fce2ad6ca97a9856e", null ],
+          [ "VoiceBusy", "db/df8/a00076.html#a091ce676daff4262a642b9923f90409da8eef81966423bb9d0b7eaeb30a510df0", null ],
+          [ "VoiceUnused", "db/df8/a00076.html#a091ce676daff4262a642b9923f90409daf6be9e31e5b6d021d0de90d2920ea844", null ],
+          [ "VoiceWorking", "db/df8/a00076.html#a091ce676daff4262a642b9923f90409daef9cee958b73075617832d5249378e0b", null ],
+          [ "VoiceWaiting", "db/df8/a00076.html#a091ce676daff4262a642b9923f90409da3e1eff545b11a9b02c4831b2568c04b0", null ]
+        ] ],
+        [ "ASNDVoiceFormat", "db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4", [
+          [ "MonoU8", "db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4ac0baf4fd37b6d9885129283f5bf49f06", null ],
+          [ "MonoS8", "db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4a1b047b9e5579ade91c8583684e80c310", null ],
+          [ "MonoBE16", "db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4a58b176d046af16ea7135e7de2bc204e8", null ],
+          [ "MonoLE16", "db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4ab1cabdd1b82698aa1aa2576773a351dc", null ],
+          [ "StereoU8", "db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4a90c3d01f10b394193a487bb6688352d3", null ],
+          [ "StereoS8", "db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4aebc62ae73b10bca4f917538471793225", null ],
+          [ "StereoBE16", "db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4a1f95597822a5fa6de5ab22bab6480c61", null ],
+          [ "StereoLE16", "db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4aee65b12840d5516fb7500ac443370ba0", null ]
+        ] ],
+        [ "init", "db/df8/a00076.html#a474d07692651c56223c750c59e409d80", null ],
+        [ "deinit", "db/df8/a00076.html#a1fbd12670defddd65d353af89b874314", null ]
+      ] ],
       [ "console", "d4/d63/a00082.html", null ],
       [ "debug", "d2/d1f/a00083.html", [
         [ "DebugDevice", "d2/d1f/a00083.html#a415a9e6a183eae7e61bfdfa1afa48dca", [

@@ -22,8 +22,10 @@ var searchData=
   ['setvoicevolume_19',['setVoiceVolume',['../d9/da5/a00075.html#a643c069dccbc1258c83edec21fb2b137',1,'ogcwrap::aesnd']]],
   ['sfp16_20',['sfp16',['../d8/d41/a00038.html#aff6e486e1e8410fbe2a0345de395329e',1,'ogctypes.h']]],
   ['sfp32_21',['sfp32',['../d8/d41/a00038.html#ab98f5d7503f1fc7695f642ab7e3a1c62',1,'ogctypes.h']]],
-  ['stereos16_22',['StereoS16',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2abd481be8da6de08601d7c14690153060',1,'ogcwrap::aesnd']]],
-  ['stereos8_23',['StereoS8',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2aebc62ae73b10bca4f917538471793225',1,'ogcwrap::aesnd']]],
-  ['stereou16_24',['StereoU16',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2a5b960bb4e93087903f30b373d0dadbff',1,'ogcwrap::aesnd']]],
-  ['stereou8_25',['StereoU8',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2a90c3d01f10b394193a487bb6688352d3',1,'ogcwrap::aesnd']]]
+  ['stereobe16_22',['StereoBE16',['../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4a1f95597822a5fa6de5ab22bab6480c61',1,'ogcwrap::asnd']]],
+  ['stereole16_23',['StereoLE16',['../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4aee65b12840d5516fb7500ac443370ba0',1,'ogcwrap::asnd']]],
+  ['stereos16_24',['StereoS16',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2abd481be8da6de08601d7c14690153060',1,'ogcwrap::aesnd']]],
+  ['stereos8_25',['StereoS8',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2aebc62ae73b10bca4f917538471793225',1,'ogcwrap::aesnd::StereoS8()'],['../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4aebc62ae73b10bca4f917538471793225',1,'ogcwrap::asnd::StereoS8()']]],
+  ['stereou16_26',['StereoU16',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2a5b960bb4e93087903f30b373d0dadbff',1,'ogcwrap::aesnd']]],
+  ['stereou8_27',['StereoU8',['../d9/da5/a00075.html#a34a663527d97232b26c1fd4c52d584b2a90c3d01f10b394193a487bb6688352d3',1,'ogcwrap::aesnd::StereoU8()'],['../db/df8/a00076.html#a52ec1b93a84dfd70e615ad3de7c3f1f4a90c3d01f10b394193a487bb6688352d3',1,'ogcwrap::asnd::StereoU8()']]]
 ];

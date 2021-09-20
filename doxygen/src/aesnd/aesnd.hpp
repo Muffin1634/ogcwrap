@@ -48,7 +48,7 @@ namespace ogcwrap::aesnd
  *  <!-- ----------------------------------------------------------------------------------------------------------- -->
  *
  *  \namespace ogcwrap::aesnd
- *  \brief Namespace containing enums and functions related to the Accelerated (Extended?) SouND subsystem.
+ *  \brief Namespace containing enums and functions related to the Accelerated (Extended?) SouND subsystem in libOGC.
  *
  */
 

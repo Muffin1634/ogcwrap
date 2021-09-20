@@ -6,15 +6,15 @@ namespace ogcwrap::aesnd
 {
 	enum struct AESNDVoiceFormat : u8
 	{
-		MonoU8		= 4,
-		MonoS8		= 0,
-		MonoU16		= 6,
-		MonoS16		= 2,
+		MonoU8,
+		MonoS8,
+		MonoU16,
+		MonoS16,
 
-		StereoU8	= 5,
-		StereoS8	= 1,
-		StereoU16	= 7,
-		StereoS16	= 3
+		StereoU8,
+		StereoS8,
+		StereoU16,
+		StereoS16
 	};
 }
 
@@ -27,7 +27,7 @@ namespace ogcwrap::aesnd
  *  <!-- ----------------------------------------------------------------------------------------------------------- -->
  *
  *  \namespace ogcwrap::aesnd
- *  \brief Namespace containing enums and functions related to the Accelerated (Extended?) SouND subsystem.
+ *  \brief Namespace containing enums and functions related to the Accelerated (Extended?) SouND subsystem in libOGC.
  *
  */
 

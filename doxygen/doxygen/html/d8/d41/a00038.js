@@ -1,5 +1,6 @@
 var a00038 =
 [
+    [ "void", "d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733", null ],
     [ "bool", "d8/d41/a00038.html#a3b5a99ce2a4fb6dc207d32e39df29f3b", null ],
     [ "u8", "d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d", null ],
     [ "u16", "d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86", null ],
