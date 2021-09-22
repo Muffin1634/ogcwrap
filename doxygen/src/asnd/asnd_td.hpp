@@ -55,6 +55,21 @@ namespace ogcwrap::asnd
  *
  *  \var ogcwrap::asnd::ASNDReturnValue::Invalid
  *  \brief This return value is used to indicate that an input to a function is invalid.
+ *
+ *  \var ogcwrap::asnd::ASNDReturnValue::NotAVoice
+ *  \brief This return value is used to indicate that the voice number given is invalid.
+ *
+ *  \var ogcwrap::asnd::ASNDReturnValue::VoiceBusy
+ *  \brief This return value is used to indicate that a voice is busy.
+ *
+ *  \var ogcwrap::asnd::ASNDReturnValue::VoiceUnused
+ *  \brief This return value is used to indicate that a voice is currently unused and is ready to be used.
+ *
+ *  \var ogcwrap::asnd::ASNDReturnValue::VoiceWorking
+ *  \brief This return value is used to indicate that a voice is working on playing samples.
+ *
+ *  \var ogcwrap::asnd::ASNDReturnValue::VoiceWaiting
+ *  \brief This return value is used to indicate that a voice is waiting for (more samples?).
  */
 
 /*! \enum ogcwrap::asnd::ASNDVoiceFormat
