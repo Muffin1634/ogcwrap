@@ -636,8 +636,27 @@ void ogcwrap::gx::initTextureObject(GXTexObj *			obj,
 				  trilinear);
 }
 
-void ogcwrap::gx::initTextureObjectColorIndex(GXTexObj * obj, void * imagebuf, u16 width, u16 height, gx_texture_format_t format, gx_wrap_mode_t wrapS, gx_wrap_mode_t wrapT, bool mipmap, gx_tlut_index_t tlut)
-	{ GX_InitTexObjCI(obj, imagebuf, widt, height, mcast(u8, format), mcast(u8, wrapS), mcast(u8, wrapT), mipmap, mcast(u32, tlut)); }
+void ogcwrap::gx::initTextureObjectColorIndex(
+	GXTexObj *			obj,
+	void *				imagebuf,
+	u16					width,
+	u16					height,
+	gx_texture_format_t	format,
+	gx_wrap_mode_t		wrapS,
+	gx_wrap_mode_t		wrapT,
+	bool				mipmap,
+	gx_tlut_index_t		tlut)
+{
+	GX_InitTexObjCI(obj,
+					imagebuf,
+					width,
+					height,
+					mcast(u8, format),
+					mcast(u8, wrapS),
+					mcast(u8, wrapT),
+					mipmap,
+					mcast(u32, tlut));
+}
 
 void ogcwrap::gx::initTLUTObj(GXTlutObj * tlut, void * addr, gx_tlut_entry_format_t format, u16 entries)
 	{ GX_InitTlutObj(tlut, addr, mcast(u8, format), entries); }
@@ -657,32 +676,85 @@ void ogcwrap::gx::loadTLUT(GXTlutObj * tlut, gx_tlut_index_t index)
 void ogcwrap::gx::loadPreloadedTextureObject(GXTexObj * obj, GXTexRegion * region, gx_texture_map_index_t index)
 	{ GX_LoadTexObjPreloaded(obj, region, mcast(u8, index)); }
 
-void setTextureObjectData(GXTexObj *, void *);
-void setTextureObjectUserData(GXTexObj *, void *);
-void setTextureObjectTLUT(GXTexObj *, gx_tlut_index_t);
-void setTextureObjectWrap(GXTexObj *, gx_clamp_mode_t, gx_clamp_mode_t);
-void setTextureObjectLOD(GXTexObj *, gx_texture_filter_t, gx_texture_filter_t, f32, f32, f32, bool, bool, gx_max_anisotropic_filter_t);
-void setTextureObjectLODFilter(GXTexObj *, gx_texture_filter_t, gx_texture_filter_t);
-void setTextureObjectLODMin(GXTexObj *, f32);
-void setTextureObjectLODMax(GXTexObj *, f32);
-void setTextureObjectLODBias(GXTexObj *, f32);
-void setTextureObjectLODBiasClamp(GXTexObj *, bool);
-void setTextureObjectLODEdge(GXTexObj *, bool);
-void setTextureObjectLODMaxAniso(GXTexObj *, gx_max_anisotropic_filter_t);
+void ogcwrap::gx::setTextureObjectData(GXTexObj * obj, void * imagebuf)
+	{ GX_InitTexObjData(obj, imagebuf); }
 
-void getTextureObjectAll(GXTexObj *, void * *, u8 *, u8 *, u8 *, u8 *, u16 *, u16 *);
-void * getTextureObjectUserData(GXTexObj *);
-void * getTextureObjectData(GXTexObj *);
-u32 getTextureObjectFormat(GXTexObj *);
-u32 getTextureObjectMipmap(GXTexObj *);
-u8 getTextureObjectWrapS(GXTexObj *);
-u8 getTextureObjectWrapT(GXTexObj *);
-u16 getTextureObjectHeight(GXTexObj *);
-u16 getTextureObjectWidth(GXTexObj *);
+void ogcwrap::gx::setTextureObjectUserData(GXTexObj * obj, void * data)
+	{ GX_InitTexObjUserData(obj, data); }
 
-void invalidateTextureRegion(GXTexRegion *);
-void invalidateAllTextures(void);
-void texModeSync(void);
+void ogcwrap::gx::setTextureObjectTLUT(GXTexObj * obj, gx_tlut_index_t tlut)
+	{ GX_InitTexObjTlut(obj, tlut); }
+
+void ogcwrap::gx::setTextureObjectWrap(GXTexObj * obj, gx_wrap_mode_t wrapS, gx_wrap_mode_t wrapT)
+	{ GX_InitTexObjWrapMode(obj, mcast(u8, wrapS), mcast(u8, wrapT)); }
+
+void ogcwrap::gx::setTextureObjectLOD(GXTexObj * obj, gx_texture_filter_t miniFilter, gx_texture_filter_t magniFilter, f32 minLOD, f32 maxLOD, f32 bias, bool clamp, bool edgeLOD, gx_max_anisotropic_filter_t maxaniso)
+{
+	GX_InitTexObjFilterMode(obj, mcast(u8, miniFilter), mcast(u8, magniFilter));
+	GX_InitTexObjMinLOD(obj, minLOD);
+	GX_InitTexObjMaxLOD(obj, maxLOD);
+	GX_InitTexObjLODBias(obj, bias);
+	GX_InitTexObjBiasClamp(obj, clamp);
+	GX_InitTexObjLODEdge(obj, edgeLOD);
+	GX_InitTexObjLODMaxAniso(obj, mcast(u8, maxaniso));
+}
+
+void ogcwrap::gx::setTextureObjectLODFilter(GXTexObj * obj, gx_texture_filter_t miniFilter, gx_texture_filter_t magniFilter)
+	{ GX_InitTexObjFilterMode(obj, mcast(u8, miniFilter), mcast(u8, magniFilter)); }
+
+void ogcwrap::gx::setTextureObjectLODMin(GXTexObj * obj, f32 minLOD)
+	{ GX_InitTexObjMinLOD(obj, minLOD); }
+
+void ogcwrap::gx::setTextureObjectLODMax(GXTexObj * obj, f32 maxLOD)
+	{ GX_InitTexObjMaxLOD(obj, maxLOD); }
+
+void ogcwrap::gx::setTextureObjectLODBias(GXTexObj * obj, f32 bias)
+	{ GX_InitTexObjLODBias(obj, bias); }
+
+void ogcwrap::gx::setTextureObjectLODBiasClamp(GXTexObj * obj, bool clamp)
+	{ GX_InitTexObjBiasClamp(obj, clamp); }
+
+void ogcwrap::gx::setTextureObjectLODEdge(GXTexObj * obj, bool edgeLOD)
+	{ GX_InitTexObjLODEdge(obj, edgeLOD); }
+
+void ogcwrap::gx::setTextureObjectLODMaxAniso(GXTexObj * obj, gx_max_anisotropic_filter_t maxaniso)
+	{ GX_InitTexObjLODMaxAniso(obj, mcast(u8, maxaniso)); }
+
+void getTextureObjectAll(GXTexObj * obj, void * * imagebuf, u16 * width, u16 * height, u8 * format, u8 * wrapS, u8 * wrapT, u8 * mipmap)
+	{ GX_GetTexObjAll(obj, imagebuf, width, height, format, wrapS, wrapT, mipmap); }
+
+void * getTextureObjectData(GXTexObj * obj)
+	{ return GX_GetTexObjData(obj); }
+
+void * getTextureObjectUserData(GXTexObj * obj)
+	{ return GX_GetTexObjUserData(obj); }
+
+u16 getTextureObjectWidth(GXTexObj * obj)
+	{ return GX_GetTexObjWidth(obj); }
+
+u16 getTextureObjectHeight(GXTexObj * obj)
+	{ return GX_GetTexObjHeight(obj); }
+
+u32 getTextureObjectFormat(GXTexObj * obj)
+	{ return GX_GetTexObjFormat(obj); }
+
+u8 getTextureObjectWrapS(GXTexObj * obj)
+	{ return GX_GetTexObjWrapS(obj); }
+
+u8 getTextureObjectWrapT(GXTexObj * obj)
+	{ return GX_GetTexObjWrapT(obj); }
+
+u32 getTextureObjectMipmap(GXTexObj * obj)
+	{ return GX_GetTexObjMipmap(obj); }
+
+void ogcwrap::gx::invalidateTextureRegion(GXTexRegion * region)
+	{ GX_InvalidateTexRegion(region); }
+
+void ogcwrap::gx::invalidateAllTextures(void)
+	{ GX_InvalidateTexAll(); }
+
+void ogcwrap::gx::texModeSync(void)
+	{ GX_TexModeSync(); }
 
 void setTEVStageCount(u8);
 void setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_generation_type_t, gx_texture_map_index_t, gx_color_channel_t);

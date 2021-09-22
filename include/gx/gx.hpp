@@ -129,30 +129,30 @@ namespace ogcwrap::gx
 	void loadTLUT(GXTlutObj * tlut, gx_tlut_index_t index);
 	void loadPreloadedTextureObject(GXTexObj * obj, GXTexRegion * region, gx_texture_map_index_t index);
 
-	void setTextureObjectData(GXTexObj *, void *);
-	void setTextureObjectUserData(GXTexObj *, void *);
-	void setTextureObjectTLUT(GXTexObj *, gx_tlut_index_t);
-	void setTextureObjectWrap(GXTexObj *, gx_wrap_mode_t, gx_wrap_mode_t);
-	void setTextureObjectLOD(GXTexObj *, gx_texture_filter_t, gx_texture_filter_t, f32, f32, f32, bool, bool, gx_max_anisotropic_filter_t);
-	void setTextureObjectLODFilter(GXTexObj *, gx_texture_filter_t, gx_texture_filter_t);
-	void setTextureObjectLODMin(GXTexObj *, f32);
-	void setTextureObjectLODMax(GXTexObj *, f32);
-	void setTextureObjectLODBias(GXTexObj *, f32);
-	void setTextureObjectLODBiasClamp(GXTexObj *, bool);
-	void setTextureObjectLODEdge(GXTexObj *, bool);
-	void setTextureObjectLODMaxAniso(GXTexObj *, gx_max_anisotropic_filter_t);
+	void setTextureObjectData(GXTexObj * obj, void * imagebuf);
+	void setTextureObjectUserData(GXTexObj * obj, void * data);
+	void setTextureObjectTLUT(GXTexObj * obj, gx_tlut_index_t tlut);
+	void setTextureObjectWrap(GXTexObj * obj, gx_wrap_mode_t, gx_wrap_mode_t);
+	void setTextureObjectLOD(GXTexObj * obj, gx_texture_filter_t miniFilter, gx_texture_filter_t magniFilter, f32 minLOD, f32 maxLOD, f32 bias, bool clamp, bool edgeLOD, gx_max_anisotropic_filter_t maxaniso);
+	void setTextureObjectLODFilter(GXTexObj * obj, gx_texture_filter_t miniFilter, gx_texture_filter_t magniFilter);
+	void setTextureObjectLODMin(GXTexObj * obj, f32 minLOD);
+	void setTextureObjectLODMax(GXTexObj * obj, f32 maxLOD);
+	void setTextureObjectLODBias(GXTexObj * obj, f32 bias);
+	void setTextureObjectLODBiasClamp(GXTexObj * obj, bool clamp);
+	void setTextureObjectLODEdge(GXTexObj * obj, bool edgeLOD);
+	void setTextureObjectLODMaxAniso(GXTexObj * obj, gx_max_anisotropic_filter_t maxaniso);
 
-	void getTextureObjectAll(GXTexObj *, void * *, u8 *, u8 *, u8 *, u8 *, u16 *, u16 *);
-	void * getTextureObjectUserData(GXTexObj *);
-	void * getTextureObjectData(GXTexObj *);
-	u32 getTextureObjectFormat(GXTexObj *);
-	u32 getTextureObjectMipmap(GXTexObj *);
-	u8 getTextureObjectWrapS(GXTexObj *);
-	u8 getTextureObjectWrapT(GXTexObj *);
-	u16 getTextureObjectHeight(GXTexObj *);
-	u16 getTextureObjectWidth(GXTexObj *);
+	void getTextureObjectAll(GXTexObj * obj, void * * imagebuf, u16 * width, u16 * height, u8 * format, u8 * wrapS, u8 * wrapT, u8 * mipmap);
+	void * getTextureObjectData(GXTexObj * obj);
+	void * getTextureObjectUserData(GXTexObj * obj);
+	u16 getTextureObjectWidth(GXTexObj * obj);
+	u16 getTextureObjectHeight(GXTexObj * obj);
+	u32 getTextureObjectFormat(GXTexObj * obj);
+	u8 getTextureObjectWrapS(GXTexObj * obj);
+	u8 getTextureObjectWrapT(GXTexObj * obj);
+	u32 getTextureObjectMipmap(GXTexObj * obj);
 
-	void invalidateTextureRegion(GXTexRegion *);
+	void invalidateTextureRegion(GXTexRegion * region);
 	void invalidateAllTextures(void);
 	void texModeSync(void);
 
