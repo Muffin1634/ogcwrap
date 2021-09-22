@@ -25,7 +25,9 @@
 var NAVTREE =
 [
   [ "libwrap", "index.html", [
-    [ "libogcwrap Documentation", "index.html", null ],
+    [ "libogcwrap Documentation", "index.html", [
+      [ "Wrapper", "index.html#Wrapper", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
