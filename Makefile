@@ -105,10 +105,7 @@ load:
 # clean target
 clean:
 	@echo cleaning...
-	@rm -vrf \
-		$(DIRS_BUILD)/* \
-		$(DIRS_LIB)/* \
-		$(DIRS_DOXYGEN)/*
+	@rm -vrf $(DIRS_DOXYGEN)/doxygen/*
 	@echo clean successful
 
 # actual debug target
