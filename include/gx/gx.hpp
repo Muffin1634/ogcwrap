@@ -174,10 +174,10 @@ namespace ogcwrap::gx
 	void setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t);
 	void setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t);
 
-	void setTEVDirect(gx_tev_stage_t);
-	void setTEVIndirect(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_format_t, gx_indirect_texture_bias_t, gx_indirect_texture_matrix_t, gx_indirect_texture_wrap_t, gx_indirect_texture_wrap_t, bool, bool, gx_indirect_texture_alpha_bump_t);
-	void setTEVIndirectTile(gx_tev_stage_t, gx_indirect_texture_stage_t, u16, u16, u16, u16, gx_indirect_texture_format_t, gx_indirect_texture_matrix_t, gx_indirect_texture_bias_t, gx_indirect_texture_alpha_bump_t);
-	void setTEVIndirectRepeat(gx_tev_stage_t);
+	void setTEVDirect(gx_tev_stage_t stage);
+	void setTEVIndirect(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_format_t format, gx_indirect_texture_bias_t bias, gx_indirect_texture_matrix_t mtx, gx_indirect_texture_wrap_t wrapS, gx_indirect_texture_wrap_t wrapT, bool addprev, bool modtc_mipmap, gx_indirect_texture_alpha_bump_t bump);
+	void setTEVIndirectTile(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, u16 width, u16 height, u16 repeatX, u16 repeatY, gx_indirect_texture_format_t format, gx_indirect_texture_matrix_t mtx, gx_indirect_texture_bias_t bias, gx_indirect_texture_alpha_bump_t bump);
+	void setTEVIndirectRepeat(gx_tev_stage_t stage);
 
 	void setIndirectStageCount(u8);
 	void setIndirectTextureOrder(gx_indirect_texture_stage_t, gx_texture_coordinate_index_t, gx_texture_map_index_t);
@@ -187,8 +187,8 @@ namespace ogcwrap::gx
 	void setIndirectTextureBumpXYZ(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_matrix_t);
 
 	// light management
-	void loadLightObject(GXLightObj *, gx_light_index_t);
-	void loadLightObjectIndex(u32, gx_light_index_t);
+	void loadLightObject(GXLightObj * light, gx_light_index_t index);
+	void loadLightObjectIndex(u32 lightelement, gx_light_index_t index);
 
 	void setLightShininess(GXLightObj *, f32);
 	void setLightPosition(GXLightObj *, f32, f32, f32);

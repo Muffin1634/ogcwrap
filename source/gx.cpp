@@ -720,31 +720,31 @@ void ogcwrap::gx::setTextureObjectLODEdge(GXTexObj * obj, bool edgeLOD)
 void ogcwrap::gx::setTextureObjectLODMaxAniso(GXTexObj * obj, gx_max_anisotropic_filter_t maxaniso)
 	{ GX_InitTexObjLODMaxAniso(obj, mcast(u8, maxaniso)); }
 
-void getTextureObjectAll(GXTexObj * obj, void * * imagebuf, u16 * width, u16 * height, u8 * format, u8 * wrapS, u8 * wrapT, u8 * mipmap)
+void ogcwrap::gx::getTextureObjectAll(GXTexObj * obj, void * * imagebuf, u16 * width, u16 * height, u8 * format, u8 * wrapS, u8 * wrapT, u8 * mipmap)
 	{ GX_GetTexObjAll(obj, imagebuf, width, height, format, wrapS, wrapT, mipmap); }
 
-void * getTextureObjectData(GXTexObj * obj)
+void * ogcwrap::gx::getTextureObjectData(GXTexObj * obj)
 	{ return GX_GetTexObjData(obj); }
 
-void * getTextureObjectUserData(GXTexObj * obj)
+void * ogcwrap::gx::getTextureObjectUserData(GXTexObj * obj)
 	{ return GX_GetTexObjUserData(obj); }
 
-u16 getTextureObjectWidth(GXTexObj * obj)
+u16 ogcwrap::gx::getTextureObjectWidth(GXTexObj * obj)
 	{ return GX_GetTexObjWidth(obj); }
 
-u16 getTextureObjectHeight(GXTexObj * obj)
+u16 ogcwrap::gx::getTextureObjectHeight(GXTexObj * obj)
 	{ return GX_GetTexObjHeight(obj); }
 
-u32 getTextureObjectFormat(GXTexObj * obj)
+u32 ogcwrap::gx::getTextureObjectFormat(GXTexObj * obj)
 	{ return GX_GetTexObjFormat(obj); }
 
-u8 getTextureObjectWrapS(GXTexObj * obj)
+u8 ogcwrap::gx::getTextureObjectWrapS(GXTexObj * obj)
 	{ return GX_GetTexObjWrapS(obj); }
 
-u8 getTextureObjectWrapT(GXTexObj * obj)
+u8 ogcwrap::gx::getTextureObjectWrapT(GXTexObj * obj)
 	{ return GX_GetTexObjWrapT(obj); }
 
-u32 getTextureObjectMipmap(GXTexObj * obj)
+u32 ogcwrap::gx::getTextureObjectMipmap(GXTexObj * obj)
 	{ return GX_GetTexObjMipmap(obj); }
 
 void ogcwrap::gx::invalidateTextureRegion(GXTexRegion * region)
@@ -773,20 +773,83 @@ void selectTEVKAlpha(gx_tev_stage_t, gx_tev_constant_alpha_selection_t);
 void setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t);
 void setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t);
 
-void setTEVDirect(gx_tev_stage_t);
-void setTEVIndirect(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_format_t, gx_indirect_texture_bias_t, gx_indirect_texture_matrix_t, gx_indirect_texture_wrap_t, gx_indirect_texture_wrap_t, bool, bool, gx_indirect_texture_alpha_bump_t);
-void setTEVIndirectTile(gx_tev_stage_t, gx_indirect_texture_stage_t, u16, u16, u16, u16, gx_indirect_texture_format_t, gx_indirect_texture_matrix_t, gx_indirect_texture_bias_t, gx_indirect_texture_alpha_bump_t);
-void setTEVIndirectRepeat(gx_tev_stage_t);
+void ogcwrap::gx::setTEVDirect(gx_tev_stage_t stage)
+	{ GX_SetTevDirect(mcast(u8, stage)); }
 
-void setIndirectStageCount(u8);
-void setIndirectTextureOrder(gx_indirect_texture_stage_t, gx_texture_coordinate_index_t, gx_texture_map_index_t);
-void setIndirectTextureCoordScale(gx_indirect_texture_stage_t, gx_indirect_texture_scale_t, gx_indirect_texture_scale_t);
-void setIndirectTextureMatrix(gx_indirect_texture_matrix_t, Mtx23 *, s8);
-void setIndirectTextureBumpST(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_matrix_t);
-void setIndirectTextureBumpXYZ(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_matrix_t);
+void ogcwrap::gx::setTEVIndirect(gx_tev_stage_t						stage,
+								 gx_indirect_texture_stage_t		indstage,
+								 gx_indirect_texture_format_t		format,
+								 gx_indirect_texture_bias_t			bias,
+								 gx_indirect_texture_matrix_t		mtx,
+								 gx_indirect_texture_wrap_t			wrapS,
+								 gx_indirect_texture_wrap_t			wrapT,
+								 bool								addprev,
+								 bool								modtc_mipmap,
+								 gx_indirect_texture_alpha_bump_t	bump)
+{
+	GX_SetTevIndirect(mcast(u8, stage),
+					  mcast(u8, indstage),
+					  mcast(u8, format),
+					  mcast(u8, bias),
+					  mcast(u8, mtx),
+					  mcast(u8, wrapS),
+					  mcast(u8, wrapT),
+					  addprev,
+					  modtc_mipmap,
+					  mcast(u8, bump));
+}
 
-void loadLightObject(GXLightObj *, gx_light_index_t);
-void loadLightObjectIndex(u32, gx_light_index_t);
+void ogcwrap::gx::setTEVIndirectTile(
+	gx_tev_stage_t						stage,
+	gx_indirect_texture_stage_t			indstage,
+	u16									width,
+	u16									height,
+	u16									repeatX,
+	u16									repeatY,
+	gx_indirect_texture_format_t		format,
+	gx_indirect_texture_matrix_t		mtx,
+	gx_indirect_texture_bias_t			bias,
+	gx_indirect_texture_alpha_bump_t	bump)
+{
+	GX_SetTevIndTile(
+		mcast(u8, stage),
+		mcast(u8, indstage),
+		width,
+		height,
+		spacingX,
+		spacingY,
+		mcast(u8, format),
+		mcast(u8, mtx),
+		mcast(u8, bias),
+		mcast(u8, bump));
+}
+
+void ogcwrap::gx::setTEVIndirectRepeat(gx_tev_stage_t stage)
+	{ GX_SetTevIndRepeat(mcast(u8, stage)); }
+
+void ogcwrap::gx::setIndirectStageCount(u8 count)
+	{ GX_SetNumIndStages(count); }
+
+void ogcwrap::gx::setIndirectTextureOrder(gx_indirect_texture_stage_t indstage, gx_texture_coordinate_index_t coordindex, gx_texture_map_index_t mapindex)
+	{ GX_SetIndTexOrder(mcast(u8, indstage), mcast(u8, coordindex), mcast(u8, mapindex)); }
+
+void ogcwrap::gx::setIndirectTextureCoordScale(gx_indirect_texture_stage_t indstage, gx_indirect_texture_scale_t indscaleS, gx_indirect_texture_scale_t indscaleT)
+	{ GX_SetIndTexCoordScale(mcast(u8, indstage), mcast(u8, indscaleS), mcast(u8, indscaleT)); }
+
+void ogcwrap::gx::setIndirectTextureMatrix(gx_indirect_texture_matrix_t indmtx, Mtx23 * offset, s8 scaleExp)
+	{ GX_SetIndTexMatrix(mcast(u8, indmtx), *offset, scaleExp); }
+
+void ogcwrap::gx::setIndirectTextureBumpST(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx)
+	{ GX_SetTevIndBumpST(mcast(u8, stage), mcast(u8, indstage), mcast(u8, indmtx)); }
+
+void ogcwrap::gx::setIndirectTextureBumpXYZ(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx)
+	{ GX_SetTevIndBumpXYZ(mcast(u8, stage), mcast(u8, indstage), mcast(u8, indmtx)); }
+
+void ogcwrap::gx::loadLightObject(GXLightObj * light, gx_light_index_t index)
+	{ GX_LoadLightObj(light, mcast(u8, index)); }
+
+void ogcwrap::gx::loadLightObjectIndex(u32 lightelement, gx_light_index_t index)
+	{ GX_LoadLightObjIdx(lightelement, mcast(u8, index)); }
 
 void setLightShininess(GXLightObj *, f32);
 void setLightPosition(GXLightObj *, f32, f32, f32);
