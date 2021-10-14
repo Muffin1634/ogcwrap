@@ -179,12 +179,12 @@ namespace ogcwrap::gx
 	void setTEVIndirectTile(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, u16 width, u16 height, u16 repeatX, u16 repeatY, gx_indirect_texture_format_t format, gx_indirect_texture_matrix_t mtx, gx_indirect_texture_bias_t bias, gx_indirect_texture_alpha_bump_t bump);
 	void setTEVIndirectRepeat(gx_tev_stage_t stage);
 
-	void setIndirectStageCount(u8);
-	void setIndirectTextureOrder(gx_indirect_texture_stage_t, gx_texture_coordinate_index_t, gx_texture_map_index_t);
-	void setIndirectTextureCoordScale(gx_indirect_texture_stage_t, gx_indirect_texture_scale_t, gx_indirect_texture_scale_t);
-	void setIndirectTextureMatrix(gx_indirect_texture_matrix_t, Mtx23 *, s8);
-	void setIndirectTextureBumpST(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_matrix_t);
-	void setIndirectTextureBumpXYZ(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_matrix_t);
+	void setIndirectStageCount(u8 count);
+	void setIndirectTextureOrder(gx_indirect_texture_stage_t indstage, gx_texture_coordinate_index_t coordindex, gx_texture_map_index_t mapindex);
+	void setIndirectTextureCoordScale(gx_indirect_texture_stage_t indstage, gx_indirect_texture_scale_t indscaleS, gx_indirect_texture_scale_t indscaleT);
+	void setIndirectTextureMatrix(gx_indirect_texture_matrix_t indmtx, Mtx23 * offset, s8 scaleExp);
+	void setIndirectTextureBumpST(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx);
+	void setIndirectTextureBumpXYZ(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx);
 
 	// light management
 	void loadLightObject(GXLightObj * light, gx_light_index_t index);

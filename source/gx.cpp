@@ -356,6 +356,14 @@ namespace ogcwrap::gx
 		void texcoord(s16, s16);
 		void texcoord(f32, f32);
 	}
+
+	namespace detail
+	{
+		GetVtxAttr(gx_vertex_format_t * format);
+		GetVtxAttrv(gx_vertex_format_t * fmtlist);
+
+		GetVtxDesc(GXVtxDesc * desc);
+	}
 }
 
 /*******************************************************************************
@@ -556,12 +564,13 @@ void ogcwrap::gx::getVertexAttributeFormatList()
 */
 
 /*
-void ogcwrap::gx::getVertexDescriptor()
-	{}
+void ogcwrap::gx::getVertexDescriptor(GXVtxDesc * desc)
+	{ ogcwrap::gx::detail::GetVtxDesc(desc); }
 */
 
 void ogcwrap::gx::getVertexDescriptorList(GXVtxDesc * desclist)
-	{ GX_GetVtxDescv(attrlist); }
+	{ GX_GetVtxDescv(desclist); }
+
 void ogcwrap::gx::setArray(gx_vertex_attribute_t attr, void * array, u8 stride)
 	{ GX_SetArray(mcast(u8, attr), array, stride); }
 
@@ -756,22 +765,24 @@ void ogcwrap::gx::invalidateAllTextures(void)
 void ogcwrap::gx::texModeSync(void)
 	{ GX_TexModeSync(); }
 
-void setTEVStageCount(u8);
-void setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_generation_type_t, gx_texture_map_index_t, gx_color_channel_t);
-void setTEVOp(gx_tev_stage_t, gx_tev_combiner_equation_t);
-void setTEVColor(gx_tev_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
-void setTEVColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
-void setTEVColorIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t);
-void setTEVAlphaIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t);
-void setTEVColorOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t);
-void setTEVAlphaOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t);
-void setTEVAlphaCompare(gx_comparison_t, u8, gx_alpha_operation_t, gx_comparison_t, u8);
-void setTEVKColor(gx_tev_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
-void setTEVKColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
-void selectTEVKColor(gx_tev_stage_t, gx_tev_constant_color_selection_t);
-void selectTEVKAlpha(gx_tev_stage_t, gx_tev_constant_alpha_selection_t);
-void setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t);
-void setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t);
+void ogcwrap::gx::setTEVStageCount(u8 count)
+	{ GX_SetNumTevStages(count); }
+
+void ogcwrap::gx::setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_generation_type_t, gx_texture_map_index_t, gx_color_channel_t)
+void ogcwrap::gx::setTEVOp(gx_tev_stage_t, gx_tev_combiner_equation_t)
+void ogcwrap::gx::setTEVColor(gx_tev_register_t, GXColor)
+void ogcwrap::gx::setTEVColor(gx_tev_register_t, GXColorS10)
+void ogcwrap::gx::setTEVColorIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t)
+void ogcwrap::gx::setTEVAlphaIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t)
+void ogcwrap::gx::setTEVColorOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t)
+void ogcwrap::gx::setTEVAlphaOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t)
+void ogcwrap::gx::setTEVAlphaCompare(gx_comparison_t, u8, gx_alpha_operation_t, gx_comparison_t, u8)
+void ogcwrap::gx::setTEVKColor(gx_tev_register_t, GXColor)
+void ogcwrap::gx::setTEVKColor(gx_tev_register_t, GXColorS10)
+void ogcwrap::gx::selectTEVKColor(gx_tev_stage_t, gx_tev_constant_color_selection_t)
+void ogcwrap::gx::selectTEVKAlpha(gx_tev_stage_t, gx_tev_constant_alpha_selection_t)
+void ogcwrap::gx::setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t)
+void ogcwrap::gx::setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t)
 
 void ogcwrap::gx::setTEVDirect(gx_tev_stage_t stage)
 	{ GX_SetTevDirect(mcast(u8, stage)); }
@@ -961,3 +972,136 @@ void readXfRasMetric(u32 *, u32 *, u32 *, u32 *);
 void setVCacheMetric(gx_vertex_cache_metric_t);
 void readVCacheMetric(u32 *, u32 *, u32 *);
 void clearVCacheMetric(void);
+
+// namespace detail
+
+// void ogcwrap::gx::detail::GetVtxAttr(gx_vertex_format_t * format)
+// {
+// 	extern __gx_regdef * __gx;
+
+// 	switch (__gx->vcdLo)
+// }
+
+// GetVtxAttr(gx_vertex_format_t * format);
+// GetVtxAttrv(gx_vertex_format_t * fmtlist);
+
+void ogcwrap::gx::detail::GetVtxDesc(GXVtxDesc * desc)
+{
+	// damn near verbatim from libogc
+
+	switch (__gx->vcdLo)
+	{
+		// position matrix index
+		case (1 << 0):
+			desc->attr = GX_VA_PTNMTXIDX;
+			desc->type = (1 << 0);
+			break;
+
+		// texture matrix indices
+		case (1 << 1):
+			desc->attr = GX_VA_TEX0MTXIDX;
+			desc->type = (1 << 1);
+			break;
+		case (1 << 2):
+			desc->attr = GX_VA_TEX1MTXIDX;
+			desc->type = (1 << 2);
+			break;
+		case (1 << 3):
+			desc->attr = GX_VA_TEX2MTXIDX;
+			desc->type = (1 << 3);
+			break;
+		case (1 << 4):
+			desc->attr = GX_VA_TEX3MTXIDX;
+			desc->type = (1 << 4);
+			break;
+		case (1 << 5):
+			desc->attr = GX_VA_TEX4MTXIDX;
+			desc->type = (1 << 5);
+			break;
+		case (1 << 6):
+			desc->attr = GX_VA_TEX5MTXIDX;
+			desc->type = (1 << 6);
+			break;
+		case (1 << 7):
+			desc->attr = GX_VA_TEX6MTXIDX;
+			desc->type = (1 << 7);
+			break;
+		case (1 << 8):
+			desc->attr = GX_VA_TEX7MTXIDX;
+			desc->type = (1 << 8);
+			break;
+
+		// position
+		case (1 << 9):
+		case (1 << 10): [[fallthrough]];
+			desc->attr = GX_VA_POS;
+			desc->type = ((__gx->vcdLo >> 9) & 0b11);
+			break;
+
+		// normals
+		case (1 << 11):
+		case (1 << 12): [[fallthrough]];
+			desc->attr = __gx->vcdNrms == 1 ? GX_VA_NRM : GX_VA_NBT;
+			desc->type = ((__gx->vcdLo >> 11) & 0b11);
+			break;
+
+		// colors
+		case (1 << 13):
+		case (1 << 14): [[fallthrough]];
+			desc->attr = GX_VA_CLR0;
+			desc->type = ((__gx->vcdLo >> 13) & 0b11);
+			break;
+		case (1 << 15):
+		case (1 << 16): [[fallthrough]];
+			desc->attr = GX_VA_CLR1;
+			desc->type = ((__gx->vcdLo >> 15) & 0b11);
+		default: [[fallthrough]];
+			break;
+	}
+
+	switch (__gx->vcdHi)
+	{
+		// textures
+		case (1 << 0):
+		case (1 << 1): [[fallthrough]];
+			desc->attr = GX_VA_TEX0;
+			desc->type = (__gx->vcdHi & 0b11);
+			break;
+		case (1 << 2):
+		case (1 << 3): [[fallthrough]];
+			desc->attr = GX_VA_TEX1;
+			desc->type = ((__gx->vcdHi >> 2) & 0b11);
+			break;
+		case (1 << 4):
+		case (1 << 5): [[fallthrough]];
+			desc->attr = GX_VA_TEX2;
+			desc->type = ((__gx->vcdHi >> 4) & 0b11);
+			break;
+		case (1 << 6):
+		case (1 << 7): [[fallthrough]];
+			desc->attr = GX_VA_TEX3;
+			desc->type = ((__gx->vcdHi >> 6) & 0b11);
+			break;
+		case (1 << 8):
+		case (1 << 9): [[fallthrough]];
+			desc->attr = GX_VA_TEX4;
+			desc->type = ((__gx->vcdHi >> 8) & 0b11);
+			break;
+		case (1 << 10):
+		case (1 << 11): [[fallthrough]];
+			desc->attr = GX_VA_TEX5;
+			desc->type = ((__gx->vcdHi >> 10) & 0b11);
+			break;
+		case (1 << 12):
+		case (1 << 13): [[fallthrough]];
+			desc->attr = GX_VA_TEX6;
+			desc->type = ((__gx->vcdHi >> 12) & 0b11);
+			break;
+		case (1 << 14):
+		case (1 << 15): [[fallthrough]];
+			desc->attr = GX_VA_TEX5;
+			desc->type = ((__gx->vcdHi >> 14) & 0b11);
+		default: [[fallthrough]];
+			break;
+	}
+}
