@@ -8,3 +8,6 @@ sublime/libwrap.sublime-workspace
 # doxygen documentation
 doxygen/
 Doxyfile
+
+# visual studio
+.vs/
