@@ -152,7 +152,7 @@ namespace ogcwrap::gx
 		C0A0,
 		C1A1,
 
-		Czero, // not Color0
+		Czero, // not Color0, but rather the value 0
 		Abump,
 		AbumpN,
 		Cnull = 255
@@ -203,12 +203,21 @@ namespace ogcwrap::gx
 		Bump6,
 		Bump7,
 
-		SRTG
+		SRTG // what is this? i've been stricken by fate
 	} TexcoordGenType;
 
 	typedef enum struct gx_texture_coordinate_source_t
 	{
-		Texture0,
+		Position,
+
+		Normal,
+		Binormal,
+		Tangent
+
+		Color0 = 19,
+		Color1,
+
+		Texture0 = 4,
 		Texture1,
 		Texture2,
 		Texture3,
@@ -217,7 +226,14 @@ namespace ogcwrap::gx
 		Texture6,
 		Texture7,
 
-		TexCoord0
+		TexCoord0,
+		TexCoord1,
+		TexCoord2,
+		TexCoord3,
+		TexCoord4,
+		TexCoord5,
+		TexCoord6,
+		TexCoord7
 	} TexcoordSource;
 
 	typedef enum struct gx_texture_matrix_index_t
@@ -238,7 +254,7 @@ namespace ogcwrap::gx
 
 	typedef enum struct gx_post_transform_matrix_index_t
 	{
-		STCG1, // used in ::setCoordTexGen()
+		STCG1, // used in gx::setCoordTexGen(), you never use this manually
 
 		PTFMtxIdentity = 125,
 
@@ -361,7 +377,6 @@ namespace ogcwrap::gx
 		ia8, // intensity alpha
 		rgb565,
 		rgb5a3
-
 	} TLUTEntryFormat;
 
 	typedef enum struct gx_texture_map_index_t
@@ -420,6 +435,7 @@ namespace ogcwrap::gx
 		Stage13,
 		Stage14,
 		Stage15,
+
 		MaxStages
 	} TEVStage;
 

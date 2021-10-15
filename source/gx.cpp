@@ -86,7 +86,7 @@ namespace ogcwrap::gx
 	void clearVertexDescriptors(void);
 //  void getVertexAttributeFormat();
 //  void getVertexAttributeFormatList();
-//  void getVertexDescriptor();
+	void getVertexDescriptor(GXVtxDesc *);
 	void getVertexDescriptorList(GXVtxDesc *);
 	void setVertexAttributeFormat(gx_vertex_format_t, gx_vertex_attribute_t, gx_vertex_component_type_t, gx_vertex_component_format_t, u8);
 	void setVertexAttributeFormatList(gx_vertex_format_t, GXVtxAttrFmt *);
@@ -156,7 +156,7 @@ namespace ogcwrap::gx
 
 	// texture environment management
 	void setTEVStageCount(u8);
-	void setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_generation_type_t, gx_texture_map_index_t, gx_color_channel_t);
+	void setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_generation_type_t, gx_texture_map_index_t, gx_color_channel_t); //m5
 	void setTEVOp(gx_tev_stage_t, gx_tev_combiner_equation_t);
 	void setTEVColor(gx_tev_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
 	void setTEVColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
@@ -169,8 +169,8 @@ namespace ogcwrap::gx
 	void setTEVKColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
 	void selectTEVKColor(gx_tev_stage_t, gx_tev_constant_color_selection_t);
 	void selectTEVKAlpha(gx_tev_stage_t, gx_tev_constant_alpha_selection_t);
-	void setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t);
-	void setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t);
+	void setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t); //m3
+	void setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t); //m4
 
 	void setTEVDirect(gx_tev_stage_t);
 	void setTEVIndirect(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_format_t, gx_indirect_texture_bias_t, gx_indirect_texture_matrix_t, gx_indirect_texture_wrap_t, gx_indirect_texture_wrap_t, bool, bool, gx_indirect_texture_alpha_bump_t);
@@ -563,10 +563,8 @@ void ogcwrap::gx::getVertexAttributeFormatList()
 	{}
 */
 
-/*
 void ogcwrap::gx::getVertexDescriptor(GXVtxDesc * desc)
 	{ ogcwrap::gx::detail::GetVtxDesc(desc); }
-*/
 
 void ogcwrap::gx::getVertexDescriptorList(GXVtxDesc * desclist)
 	{ GX_GetVtxDescv(desclist); }
@@ -768,21 +766,50 @@ void ogcwrap::gx::texModeSync(void)
 void ogcwrap::gx::setTEVStageCount(u8 count)
 	{ GX_SetNumTevStages(count); }
 
-void ogcwrap::gx::setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_generation_type_t, gx_texture_map_index_t, gx_color_channel_t)
-void ogcwrap::gx::setTEVOp(gx_tev_stage_t, gx_tev_combiner_equation_t)
-void ogcwrap::gx::setTEVColor(gx_tev_register_t, GXColor)
-void ogcwrap::gx::setTEVColor(gx_tev_register_t, GXColorS10)
-void ogcwrap::gx::setTEVColorIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t)
-void ogcwrap::gx::setTEVAlphaIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t)
-void ogcwrap::gx::setTEVColorOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t)
-void ogcwrap::gx::setTEVAlphaOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t)
-void ogcwrap::gx::setTEVAlphaCompare(gx_comparison_t, u8, gx_alpha_operation_t, gx_comparison_t, u8)
-void ogcwrap::gx::setTEVKColor(gx_tev_register_t, GXColor)
-void ogcwrap::gx::setTEVKColor(gx_tev_register_t, GXColorS10)
-void ogcwrap::gx::selectTEVKColor(gx_tev_stage_t, gx_tev_constant_color_selection_t)
-void ogcwrap::gx::selectTEVKAlpha(gx_tev_stage_t, gx_tev_constant_alpha_selection_t)
-void ogcwrap::gx::setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t)
-void ogcwrap::gx::setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t)
+void ogcwrap::gx::setTEVOrder(gx_tev_stage_t stage, gx_texture_coordinate_generation_index_t texcoord, gx_texture_map_index_t texmap, gx_color_channel_t channel)
+	{ GX_SetTevOrder(mcast(u8, stage), mcast(u8, texcoord), mcast(u8, texmap), mcast(u8, channel)); }
+
+void ogcwrap::gx::setTEVOp(gx_tev_stage_t stage, gx_tev_combiner_equation_t tevmode)
+	{ GX_SetTevOp(mcast(u8, stage), mcast(u8, tevmode)); }
+
+void ogcwrap::gx::setTEVColor(gx_tev_register_t tevreg, GXColor color)
+	{ GX_SetTevColor(mcast(u8, tevreg), color); }
+
+void ogcwrap::gx::setTEVColor(gx_tev_register_t tevreg, GXColorS10 color)
+	{ GX_SetTevColorS10(mcast(u8, tevreg), color); }
+
+void ogcwrap::gx::setTEVColorIn(gx_tev_stage_t stage, gx_tev_register_input_t regA, gx_tev_register_input_t regB, gx_tev_register_input_t regC, gx_tev_register_input_t regD)
+	{ GX_SetTevColorIn(mcast(u8, stage), mcast(u8, regA), mcast(u8, regB), mcast(u8, regC), mcast(u8, regD)); }
+
+void ogcwrap::gx::setTEVAlphaIn(gx_tev_stage_t stage, gx_tev_register_input_t regA, gx_tev_register_input_t regB, gx_tev_register_input_t regC, gx_tev_register_input_t regD)
+	{ GX_SetTevAlphaIn(mcast(u8, stage), mcast(u8, regA), mcast(u8, regB), mcast(u8, regC), mcast(u8, regD)); }
+
+void ogcwrap::gx::setTEVColorOp(gx_tev_stage_t stage, gx_tev_combiner_operator_t tevop, gx_tev_bias_t bias, gx_tev_scale_t scale, bool clamp, gx_tev_register_t tevreg)
+	{ GX_SetTevColorOp(mcast(u8, stage), mcast(u8, tevop), mcast(u8, bias), mcast(u8, scale), clamp, tevreg); }
+
+void ogcwrap::gx::setTEVAlphaOp(gx_tev_stage_t stage, gx_tev_combiner_operator_t tevop, gx_tev_bias_t bias, gx_tev_scale_t scale, bool clamp, gx_tev_register_t tevreg)
+	{ GX_SetTevAlphaOp(mcast(u8, stage), mcast(u8, tevop), mcast(u8, bias), mcast(u8, scale), clamp, tevreg); }
+
+void ogcwrap::gx::setTEVAlphaCompare(gx_comparison_t lcomp, u8 lref, gx_alpha_operation_t alphaop, gx_comparison_t rcomp, u8 rref)
+	{ GX_SetAlphaCompare(mcast(u8, lcomp), lref, mcast(u8, alphaop), mcast(u8, rcomp), rref); }
+
+void ogcwrap::gx::setTEVKColor(gx_tev_register_t tevreg, GXColor color)
+	{ GX_SetTevKColor(mcast(u8, tevreg), color); }
+
+void ogcwrap::gx::setTEVKColor(gx_tev_register_t tevreg, GXColorS10 color)
+	{ GX_SetTevKColorS10(mcast(u8, tevreg), color); }
+
+void ogcwrap::gx::selectTEVKColor(gx_tev_stage_t stage, gx_tev_constant_color_selection_t colorsel)
+	{ GX_SetTevKColorSel(mcast(u8, stage), mcast(u8, colorsel)); }
+
+void ogcwrap::gx::selectTEVKAlpha(gx_tev_stage_t stage, gx_tev_constant_alpha_selection_t alphasel)
+	{ GX_SetTevKAlphaSel(mcast(u8, stage), mcast(u8, alphasel)); }
+
+void ogcwrap::gx::setTEVSwapMode(gx_tev_stage_t stage, gx_tev_swap_table_index_t raster, gx_tev_swap_table_index_t texture)
+	{ GX_SetTevSwapMode(mcast(u8, stage), mcast(u8, raster), mcast(u8, texture)); }
+
+void ogcwrap::gx::setTEVSwapModeTable(gx_tev_swap_table_index_t table, gx_tev_color_channel_t red, gx_tev_color_channel_t green, gx_tev_color_channel_t blue, gx_tev_color_channel_t alpha)
+	{ GX_SetTevSwapModeTable(mcast(u8, table), mcast(u8, red), mcast(u8, green), mcast(u8, blue), mcast(u8, alpha)); }
 
 void ogcwrap::gx::setTEVDirect(gx_tev_stage_t stage)
 	{ GX_SetTevDirect(mcast(u8, stage)); }

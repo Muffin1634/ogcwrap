@@ -91,7 +91,7 @@ namespace ogcwrap::gx
 
 //  void getVertexAttributeFormat();
 //  void getVertexAttributeFormatList();
-//  void getVertexDescriptor();
+	void getVertexDescriptor(GXVtxDesc * desc);
 	void getVertexDescriptorList(GXVtxDesc * desclist);
 
 	void setArray(gx_vertex_attribute_t attr, void * array, u8 stride);
@@ -157,21 +157,21 @@ namespace ogcwrap::gx
 	void texModeSync(void);
 
 	// texture environment management
-	void setTEVStageCount(u8);
-	void setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_generation_type_t, gx_texture_map_index_t, gx_color_channel_t);
-	void setTEVOp(gx_tev_stage_t, gx_tev_combiner_equation_t);
-	void setTEVColor(gx_tev_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
-	void setTEVColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
-	void setTEVColorIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t);
-	void setTEVAlphaIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t);
-	void setTEVColorOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t);
-	void setTEVAlphaOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t);
-	void setTEVAlphaCompare(gx_comparison_t, u8, gx_alpha_operation_t, gx_comparison_t, u8);
-	void setTEVKColor(gx_tev_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
-	void setTEVKColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
-	void selectTEVKColor(gx_tev_stage_t, gx_tev_constant_color_selection_t);
-	void selectTEVKAlpha(gx_tev_stage_t, gx_tev_constant_alpha_selection_t);
-	void setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t);
+	void setTEVStageCount(u8 count);
+	void setTEVOrder(gx_tev_stage_t stage, gx_texture_coordinate_generation_index_t texcoord, gx_texture_map_index_t texmap, gx_color_channel_t channel);
+	void setTEVOp(gx_tev_stage_t stage, gx_tev_combiner_equation_t tevmode);
+	void setTEVColor(gx_tev_register_t tevreg, GXColor color);		// cast to GXColor    to avoid ambiguity
+	void setTEVColor(gx_tev_register_t tevreg, GXColorS10 color);	// cast to GXColorS10 to avoid ambiguity
+	void setTEVColorIn(gx_tev_stage_t stage, gx_tev_register_input_t regA, gx_tev_register_input_t regB, gx_tev_register_input_t regC, gx_tev_register_input_t regD);
+	void setTEVAlphaIn(gx_tev_stage_t stage, gx_tev_register_input_t regA, gx_tev_register_input_t regB, gx_tev_register_input_t regC, gx_tev_register_input_t regD);
+	void setTEVColorOp(gx_tev_stage_t stage, gx_tev_combiner_operator_t tevop, gx_tev_bias_t bias, gx_tev_scale_t scale, bool clamp, gx_tev_register_t tevreg);
+	void setTEVAlphaOp(gx_tev_stage_t stage, gx_tev_combiner_operator_t tevop, gx_tev_bias_t bias, gx_tev_scale_t scale, bool clamp, gx_tev_register_t tevreg);
+	void setTEVAlphaCompare(gx_comparison_t lcomp, u8 lref, gx_alpha_operation_t alphaop, gx_comparison_t rcomp, u8 rref);
+	void setTEVKColor(gx_tev_register_t tevreg, GXColor color);		// cast to GXColor    to avoid ambiguity
+	void setTEVKColor(gx_tev_register_t tevreg, GXColorS10 color);	// cast to GXColorS10 to avoid ambiguity
+	void selectTEVKColor(gx_tev_stage_t stage, gx_tev_constant_color_selection_t colorsel);
+	void selectTEVKAlpha(gx_tev_stage_t stage, gx_tev_constant_alpha_selection_t alphasel);
+	void setTEVSwapMode(gx_tev_stage_t stage, gx_tev_swap_table_index_t);
 	void setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t);
 
 	void setTEVDirect(gx_tev_stage_t stage);
