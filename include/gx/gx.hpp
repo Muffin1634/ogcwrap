@@ -210,67 +210,72 @@ namespace ogcwrap::gx
 	void setLightSpot(GXLightObj * light, f32 angle, gx_spot_illumination_function_t spotfn);
 
 	// matrices
-	void matrixIndex(u8 index);
-	void setCurrentMatrix(u32);
+//	void matrixIndex(u8 index);
+	void setCurrentMatrix(gx_position_normal_matrix_index_t index);
 
-	void loadProjectionMatrix(Mtx44, gx_projection_type_t);
-	void loadPosMtxImm(Mtx, u32 pnidx);
-	void loadPosMtxIdx(u16 mtxidx, u32);
-	void loadNrmMtxImm(Mtx, u32);
-	void loadNrmMtxImm3x3(Mtx33, u32);
-	void loadNrmMtxIdx3x3(u16, u32);
-	void loadTexMtxImm(Mtx, u32, u8 type);
-	void loadTexMtxIdx(u16, u32, u8);
+	void loadProjectionMatrix(Mtx44 mtx, gx_projection_type_t);
+	void loadPosMtxImm(Mtx mtx, gx_position_normal_matrix_index_t index);
+	void loadPosMtxIdx(u16 mtxidx, gx_position_normal_matrix_index_t index);
+	void loadNrmMtxImm(Mtx mtx, gx_position_normal_matrix_index_t index);
+	void loadNrmMtxIdx(u16 mtxidx, gx_position_normal_matrix_index_t index);
+	void loadNrmMtxImm3x3(Mtx33 mtx, gx_position_normal_matrix_index_t index);
+	void loadNrmMtxIdx3x3(u16 mtxidx, gx_position_normal_matrix_index_t index);
+	void loadTexMtxImm(Mtx mtx, gx_texture_matrix_index_t index, gx_texture_matrix_type_t type);
+	void loadTexMtxIdx(u16 mtxidx, gx_texture_matrix_index_t index, gx_texture_matrix_type_t type);
 
 	// breakpoint
-	void enableBreakPoint(void *);
+	void enableBreakPoint(void * addr);
 	void disableBreakPoint(void);
 
 	// drawing settings
-	void setLineWidth(u8, gx_texture_offset_value_t);
-	void setPointSize(u8, gx_texture_offset_value_t);
-	void setBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t);
-	void setDitherMode(bool);
-	void setCullingMode(gx_culling_mode_t);
-	void setCoplanarMode(bool);
-	void setClipMode(bool);
+	void setLineWidth(u8 width, gx_texture_offset_value_t texfmt);
+	void setPointSize(u8 width, gx_texture_offset_value_t texfmt);
+	void setBlendMode(gx_blend_mode_t type, gx_blend_control_t sourceFactor, gx_blend_control_t destFactor, gx_logic_operation_t op);
+	void setCullingMode(gx_culling_mode_t mode);
+	void setCoplanarMode(bool enable);
+	void setClipMode(bool enable);
+	void setDitherMode(bool enable);
 
 	// poke/peek
-	void setPokeAlpha(bool);
-	void setPokeColor(bool);
-	void setPokeDither(bool);
+	void setPokeColor(bool enable);
+	void setPokeAlpha(bool enable);
+	void setPokeDither(bool enable);
 
-	void pokeAlphaMode(gx_comparison_t, u8);
-	void pokeBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t);
-	void pokeZMode(bool, gx_comparison_t, bool);
+	void pokeAlphaMode(gx_comparison_t comp, u8 threshold);
+	void pokeBlendMode(gx_blend_mode_t type, gx_blend_control_t sourceFactor, gx_blend_control_t destFactor, gx_logic_operation_t op);
+	void pokeZMode(bool comp, gx_comparison_t compfn, bool update);
 
-	void pokeAlphaRead(gx_alpha_read_mode_t);
+	void pokeAlphaRead(gx_alpha_read_mode_t mode);
+	void pokeDestAlpha(bool enable, u8 constAlpha);
 
-	void pokeDestAlpha(bool, u8);
-	void pokeRGBA(u16, u16, GXColor);
-	void pokeZ(u16, u16, u32);
+	void pokeRGBA(u16 x, u16 y, GXColor color);
+	void pokeZ(u16 x, u16 y, u32 z);
 
-	void peekRGBA(u16, u16, GXColor *);
-	void peekZ(u16, u16, u32 *);
+	void peekRGBA(u16 x, u16 y, GXColor * color);
+	void peekZ(u16 x, u16 y, u32 * z);
 
 	// miscellaneous
-	void setMisc(u32, u32);
+	void setMisc(gx_misc_token_t token, u32 value);
 
+	void getGPStatus(u8 * overHigh, u8 * underLow, u8 * readIdle, u8 * cmdIdle, u8 * breakpt);
 	u32 readClksPerVtx(void);
+
 	u32 getOverflowCount(void);
 	u32 resetOverflowCount(void);
 
 	lwp_t getCurrentThread(void);
 	lwp_t setCurrentThread(void);
-	volatile void * redirectWriteGatherPipe(void *);
+
+	volatile void * redirectWriteGatherPipe(void * tempPipe);
 	void restoreWriteGatherPipe(void);
-	void setGPMetric(gx_performance_counter_0_metric_t, gx_performance_counter_1_metric_t);
-	void readGPMetric(u32 *, u32 *);
+
+	void setGPMetric(gx_performance_counter_0_metric_t pc0metric, gx_performance_counter_1_metric_t pc0metric);
+	void readGPMetric(u32 * pc0metric, u32 * pc0metric);
 	void clearGPMetric(void);
 	void initXfRasMetric(void);
-	void readXfRasMetric(u32 *, u32 *, u32 *, u32 *);
-	void setVCacheMetric(gx_vertex_cache_metric_t);
-	void readVCacheMetric(u32 *, u32 *, u32 *);
+	void readXfRasMetric(u32 * xfWaitIn, u32 * xfWaitOut, u32 * rasBusy, u32 * clocks);
+	void setVCacheMetric(gx_vertex_cache_metric_t vtxMetric);
+	void readVCacheMetric(u32 * check, u32 * miss, u32 * stall);
 	void clearVCacheMetric(void);
 
 	namespace draw

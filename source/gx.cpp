@@ -215,7 +215,7 @@ namespace ogcwrap::gx
 	void loadPosMtxImm(Mtx, u32 pnidx);
 	void loadPosMtxIdx(u16 mtxidx, u32);
 	void loadNrmMtxImm(Mtx, u32);
-//	void loacNrmMtxIdx(u16, u32);
+	void loadNrmMtxIdx(u16, u32);
 	void loadNrmMtxImm3x3(Mtx33, u32);
 	void loadNrmMtxIdx3x3(u16, u32);
 	void loadTexMtxImm(Mtx, u32, u8 type);
@@ -229,14 +229,14 @@ namespace ogcwrap::gx
 	void setLineWidth(u8, gx_texture_offset_value_t);
 	void setPointSize(u8, gx_texture_offset_value_t);
 	void setBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t);
-	void setDitherMode(bool);
 	void setCullingMode(gx_culling_mode_t);
 	void setCoplanarMode(bool);
 	void setClipMode(bool);
+	void setDitherMode(bool);
 
 	// poke/peek
-	void setPokeAlpha(bool);
 	void setPokeColor(bool);
+	void setPokeAlpha(bool);
 	void setPokeDither(bool);
 
 	void pokeAlphaMode(gx_comparison_t, u8);
@@ -244,8 +244,8 @@ namespace ogcwrap::gx
 	void pokeZMode(bool, gx_comparison_t, bool);
 
 	void pokeAlphaRead(gx_alpha_read_mode_t);
-
 	void pokeDestAlpha(bool, u8);
+
 	void pokeRGBA(u16, u16, GXColor);
 	void pokeZ(u16, u16, u32);
 
@@ -255,7 +255,9 @@ namespace ogcwrap::gx
 	// miscellaneous
 	void setMisc(u32, u32);
 
+	void getGPStatus(u8 *, u8 *, u8 *, u8 *, u8 *);
 	u32 readClksPerVtx(void);
+
 	u32 getOverflowCount(void);
 	u32 resetOverflowCount(void);
 
@@ -265,6 +267,7 @@ namespace ogcwrap::gx
 	volatile void * redirectWriteGatherPipe(void *);
 	void restoreWriteGatherPipe(void);
 
+	// metrics
 	void setGPMetric(gx_performance_counter_0_metric_t, gx_performance_counter_1_metric_t);
 	void readGPMetric(u32 *, u32 *);
 	void clearGPMetric(void);
@@ -955,10 +958,8 @@ void ogcwrap::gx::loadPosMtxIdx(u16 mtxidx, gx_position_normal_matrix_index_t in
 void ogcwrap::gx::loadNrmMtxImm(Mtx mtx, gx_position_normal_matrix_index_t index)
 	{ GX_LoadNrmMtxImm(mtx, mcast(u32, index)); }
 
-/*
-void ogcwrap::gx::loadNrmMtxIdx()
-	{}
-*/
+void ogcwrap::gx::loadNrmMtxIdx(u16 mtxidx, gx_position_normal_matrix_index_t index)
+	{ ogcwrap::gx::detail::LoadNrmMtxIdx(mtxidx, index); }
 
 void ogcwrap::gx::loadNrmMtxImm3x3(Mtx33 mtx, gx_position_normal_matrix_index_t index)
 	{ GX_LoadNrmMtxImm3x3(mtx, mcast(u32, index)); }
@@ -978,55 +979,115 @@ void ogcwrap::gx::enableBreakPoint(void * addr)
 void ogcwrap::gx::disableBreakPoint(void)
 	{ GX_DisableBreakPt(); }
 
-void setLineWidth(u8, gx_texture_offset_value_t)
-void setPointSize(u8, gx_texture_offset_value_t)
-void setBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t)
-void setDitherMode(bool)
-void setCullingMode(gx_culling_mode_t)
-void setCoplanarMode(bool)
-void setClipMode(bool)
+void ogcwrap::gx::setLineWidth(u8 width, gx_texture_offset_value_t texfmt)
+	{ GX_SetLineWidth(width, mcast(u8, texfmt)); }
 
-void setPokeAlpha(bool)
-void setPokeColor(bool)
-void setPokeDither(bool)
+void ogcwrap::gx::setPointSize(u8 width, gx_texture_offset_value_t texfmt)
+	{ GX_SetPointSize(width, mcast(u8, texfmt)); }
 
-void pokeAlphaMode(gx_comparison_t, u8)
-void pokeBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t)
+void ogcwrap::gx::setBlendMode(gx_blend_mode_t type, gx_blend_control_t sourceFactor, gx_blend_control_t destFactor, gx_logic_operation_t op)
+	{ GX_SetBlendMode(mcast(u8, type), mcast(u8, sourceFactor), mcast(u8, destFactor), mcast(u8, op)); }
 
-void pokeZMode(bool, gx_comparison_t, bool)
-void pokeAlphaRead(gx_alpha_read_mode_t)
+void ogcwrap::gx::setCullingMode(gx_culling_mode_t mode)
+	{ GX_SetCullMode(mcast(u8, mode)); }
 
-void pokeDestAlpha(bool, u8)
-void pokeRGBA(u16, u16, GXColor)
-void pokeZ(u16, u16, u32)
+void ogcwrap::gx::setCoplanarMode(bool enable)
+	{ GX_SetCoPlanar(enable); }
 
-void peekRGBA(u16, u16, GXColor *)
-void peekZ(u16, u16, u32 *)
+void ogcwrap::gx::setClipMode(bool enable)
+	{ GX_SetClipMode(enable); }
+
+void ogcwrap::gx::setDitherMode(bool enable)
+	{ GX_SetDitherMode(enable); }
+
+void ogcwrap::gx::setPokeColor(bool enable)
+	{ GX_PokeColorUpdate(enable); }
+
+void ogcwrap::gx::setPokeAlpha(bool enable)
+	{ GX_PokeAlphaUpdate(enable); }
+
+void ogcwrap::gx::setPokeDither(bool enable)
+	{ GX_PokeDither(enable); }
+
+void ogcwrap::gx::pokeAlphaMode(gx_comparison_t comp, u8 threshold)
+	{ GX_PokeAlphaMode(mcast(u8, comp), threshold); }
+
+void ogcwrap::gx::pokeBlendMode(gx_blend_mode_t type, gx_blend_control_t sourceFactor, gx_blend_control_t destFactor, gx_logic_operation_t op)
+	{ GX_PokeBlendMode(mcast(u8, type), mcast(u8, sourceFactor), mcast(u8, destFactor), mcast(u8, op)); }
+
+void ogcwrap::gx::pokeZMode(bool comp, gx_comparison_t compfn, bool update)
+	{ GX_PokeZMode(comp, mcast(u8, compfn), update); }
+
+void ogcwrap::gx::pokeAlphaRead(gx_alpha_read_mode_t mode)
+	{ GX_PokeAlphaRead(mcast(u8, mode)); }
+
+void ogcwrap::gx::pokeDestAlpha(bool enable, u8 constAlpha)
+	{ GX_PokeDstAlpha(enable, constAlpha); }
+
+void ogcwrap::gx::pokeRGBA(u16 x, u16 y, GXColor color)
+	{ GX_PokeARGB(x, y, color); }
+
+void ogcwrap::gx::pokeZ(u16 x, u16 y, u32 z)
+	{ GX_PokeZ(x, y, z); }
+
+void ogcwrap::gx::peekRGBA(u16 x, u16 y, GXColor * color)
+	{ GX_PeekARGB(x, y, color); }
+
+void ogcwrap::gx::peekZ(u16 x, u16 y, u32 * z)
+	{ GX_PeekZ(x, y, z); }
 
 void ogcwrap::gx::setMisc(gx_misc_token_t token, u32 value)
 	{ GX_SetMisc(mcast(u32, token), value); }
 
-u32 readClksPerVtx(void)
-u32 getOverflowCount(void)
-u32 resetOverflowCount(void)
-void readBoundingBox(u16 *, u16 *, u16 *, u16 *)
+void ogcwrap::gx::getGPStatus(u8 * overHigh, u8 * underLow, u8 * readIdle, u8 * cmdIdle, u8 * breakpt)
+	{ GX_GetGPStatus(overHigh, underLow, readIdle, cmdIdle, breakpt); }
+
+u32 ogcwrap::gx::readClksPerVtx(void)
+	{ return GX_ReadClksPerVtx(); }
+
+u32 ogcwrap::gx::getOverflowCount(void)
+	{ return GX_GetOverflowCount(); }
+
+u32 ogcwrap::gx::resetOverflowCount(void)
+	{ return GX_ResetOverflowCount(); }
 
 lwp_t getCurrentThread(void)
+	{ return GX_GetCurrentThread(); }
+
 lwp_t setCurrentThread(void)
+	{ return GX_SetCurrentThread(); }
 
-volatile void * redirectWriteGatherPipe(void *)
+volatile void * redirectWriteGatherPipe(void * tempPipe)
+	{ return GX_RedirectWriteGatherPipe(tempPipe); }
+
 void restoreWriteGatherPipe(void)
+	{ GX_RestoreWriteGatherPipe(); }
 
-void setGPMetric(gx_performance_counter_0_metric_t, gx_performance_counter_1_metric_t)
-void readGPMetric(u32 *, u32 *)
+void setGPMetric(gx_performance_counter_0_metric_t pc0metric, gx_performance_counter_1_metric_t pc1metric)
+	{ GX_SetGPMetric(mcast(u32, pc0metric), mcast(u32, pc1metric)); }
+
+void readGPMetric(u32 * pc0metric, u32 * pc1metric)
+	{ GX_ReadGPMetric(pc0metric, pc1metric); }
+
 void clearGPMetric(void)
-void initXfRasMetric(void)
-void readXfRasMetric(u32 *, u32 *, u32 *, u32 *)
-void setVCacheMetric(gx_vertex_cache_metric_t)
-void readVCacheMetric(u32 *, u32 *, u32 *)
-void clearVCacheMetric(void)
+	{ GX_ClearGPMetric(); }
 
-// namespace detail
+void initXfRasMetric(void)
+	{ GX_InitXfRasMetric(); }
+
+void readXfRasMetric(u32 * xfWaitIn, u32 * xfWaitOut, u32 * rasBusy, u32 * clocks)
+	{ GX_ReadXfRasMetric(xfWaitIn, xfWaitOut, rasBusy, clocks); }
+
+void setVCacheMetric(gx_vertex_cache_metric_t vtxMetric)
+	{ GX_SetVCacheMetric(vtxMetric); }
+
+void readVCacheMetric(u32 * check, u32 * miss, u32 * stall)
+	{ GX_ReadVCacheMetric(check, miss, stall); }
+
+void clearVCacheMetric(void)
+	{ GX_ClearVCacheMetric(); }
+
+// namespace ogcwrap::gx::detail
 
 /*
 void ogcwrap::gx::detail::GetVtxAttr(gx_vertex_format_t * format)
@@ -1162,4 +1223,12 @@ void ogcwrap::gx::detail::GetVtxDesc(GXVtxDesc * desc)
 		default: [[fallthrough]];
 			break;
 	}
+}
+
+void ogcwrap::gx::detail::LoadNrmMtxIdx(u16 mtxidx, u32 pnidx)
+{
+	extern union _wgpipe * const wgPipe;
+
+	wgPipe->U8 = 0x28; // is this correct?
+	wgPipe->U32 = (mtxidx << 16) | (1 << 15) | ((1 << 10) | pnidx * 3);
 }
