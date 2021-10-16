@@ -74,6 +74,7 @@ namespace ogcwrap::gx
 	void waitDrawDone(void);
 
 	void syncPixelMode(void);
+	void readBoundingBox(u16 *, u16 *, u16 *, u16 *);
 	void clearBoundingBox(void);
 
 	// fog
@@ -84,8 +85,8 @@ namespace ogcwrap::gx
 	// vertex management
 	void invalidateVertexCache(void);
 	void clearVertexDescriptors(void);
-//  void getVertexAttributeFormat();
-//  void getVertexAttributeFormatList();
+//	void getVertexAttributeFormat();
+//	void getVertexAttributeFormatList();
 	void getVertexDescriptor(GXVtxDesc *);
 	void getVertexDescriptorList(GXVtxDesc *);
 	void setVertexAttributeFormat(gx_vertex_format_t, gx_vertex_attribute_t, gx_vertex_component_type_t, gx_vertex_component_format_t, u8);
@@ -188,7 +189,6 @@ namespace ogcwrap::gx
 	void loadLightObject(GXLightObj *, gx_light_index_t);
 	void loadLightObjectIndex(u32, gx_light_index_t);
 
-	void setLightShininess(GXLightObj *, f32);
 	void setLightPosition(GXLightObj *, f32, f32, f32);
 	void setLightPosition(GXLightObj *, guPos);
 	void setLightDirection(GXLightObj *, f32, f32, f32);
@@ -196,11 +196,9 @@ namespace ogcwrap::gx
 	void setLightColor(GXLightObj *, GXColor);
 	void setLightDistanceAttenuation(GXLightObj *, f32, f32, gx_attenuation_function_t);
 	void setLightAttenuation(GXLightObj *, f32, f32, f32, f32, f32, f32);
-	void setLightAttenuation(GXLightObj *, guVector, guVector);
 	void setLightAttenuationAngle(GXLightObj *, f32, f32, f32);
-	void setLightAttenuationAngle(GXLightObj *, guVector);
 	void setLightAttenuationDistance(GXLightObj *, f32, f32, f32);
-	void setLightAttenuationDistance(GXLightObj *, guVector);
+	void setLightShininess(GXLightObj *, f32);
 
 	void setSpecularDirectionHalfAngle(GXLightObj *, f32, f32, f32, f32, f32, f32);
 	void setSpecularDirectionHalfAngle(GXLightObj *, guVector, guVector);
@@ -210,13 +208,14 @@ namespace ogcwrap::gx
 	void setLightSpot(GXLightObj *, f32, gx_spot_illumination_function_t);
 
 	// matrices
-	void matrixIndex(u8 index);
+//	void matrixIndex(u8 index);
 	void setCurrentMatrix(u32);
 
 	void loadProjectionMatrix(Mtx44, gx_projection_type_t);
 	void loadPosMtxImm(Mtx, u32 pnidx);
 	void loadPosMtxIdx(u16 mtxidx, u32);
 	void loadNrmMtxImm(Mtx, u32);
+//	void loacNrmMtxIdx(u16, u32);
 	void loadNrmMtxImm3x3(Mtx33, u32);
 	void loadNrmMtxIdx3x3(u16, u32);
 	void loadTexMtxImm(Mtx, u32, u8 type);
@@ -259,12 +258,13 @@ namespace ogcwrap::gx
 	u32 readClksPerVtx(void);
 	u32 getOverflowCount(void);
 	u32 resetOverflowCount(void);
-	void readBoundingBox(u16 *, u16 *, u16 *, u16 *);
 
 	lwp_t getCurrentThread(void);
 	lwp_t setCurrentThread(void);
+
 	volatile void * redirectWriteGatherPipe(void *);
 	void restoreWriteGatherPipe(void);
+
 	void setGPMetric(gx_performance_counter_0_metric_t, gx_performance_counter_1_metric_t);
 	void readGPMetric(u32 *, u32 *);
 	void clearGPMetric(void);
@@ -522,6 +522,9 @@ void ogcwrap::gx::waitDrawDone(void)
 
 void ogcwrap::gx::syncPixelMode(void)
 	{ GX_SyncPixelMode(); }
+
+void ogcwrap::gx::readBoundingBox(u16 * top, u16 * bottom, u16 * left, u16 * right)
+	{ GX_ReadBoundingBox(top, bottom, left, right); }
 
 void ogcwrap::gx::clearBoundingBox(void)
 	{ GX_ClearBoundingBox(); }
@@ -837,29 +840,27 @@ void ogcwrap::gx::setTEVIndirect(gx_tev_stage_t						stage,
 					  mcast(u8, bump));
 }
 
-void ogcwrap::gx::setTEVIndirectTile(
-	gx_tev_stage_t						stage,
-	gx_indirect_texture_stage_t			indstage,
-	u16									width,
-	u16									height,
-	u16									repeatX,
-	u16									repeatY,
-	gx_indirect_texture_format_t		format,
-	gx_indirect_texture_matrix_t		mtx,
-	gx_indirect_texture_bias_t			bias,
-	gx_indirect_texture_alpha_bump_t	bump)
+void ogcwrap::gx::setTEVIndirectTile(gx_tev_stage_t						stage,
+									 gx_indirect_texture_stage_t		indstage,
+									 u16								width,
+									 u16								height,
+									 u16								repeatX,
+									 u16								repeatY,
+									 gx_indirect_texture_format_t		format,
+									 gx_indirect_texture_matrix_t		mtx,
+									 gx_indirect_texture_bias_t			bias,
+									 gx_indirect_texture_alpha_bump_t	bump)
 {
-	GX_SetTevIndTile(
-		mcast(u8, stage),
-		mcast(u8, indstage),
-		width,
-		height,
-		spacingX,
-		spacingY,
-		mcast(u8, format),
-		mcast(u8, mtx),
-		mcast(u8, bias),
-		mcast(u8, bump));
+	GX_SetTevIndTile(mcast(u8, stage),
+					 mcast(u8, indstage),
+					 width,
+					 height,
+					 spacingX,
+					 spacingY,
+					 mcast(u8, format),
+					 mcast(u8, mtx),
+					 mcast(u8, bias),
+					 mcast(u8, bump));
 }
 
 void ogcwrap::gx::setTEVIndirectRepeat(gx_tev_stage_t stage)
@@ -889,29 +890,52 @@ void ogcwrap::gx::loadLightObject(GXLightObj * light, gx_light_index_t index)
 void ogcwrap::gx::loadLightObjectIndex(u32 lightelement, gx_light_index_t index)
 	{ GX_LoadLightObjIdx(lightelement, mcast(u8, index)); }
 
-void setLightShininess(GXLightObj *, f32);
-void setLightPosition(GXLightObj *, f32, f32, f32);
-void setLightPosition(GXLightObj *, guPos);
-void setLightDirection(GXLightObj *, f32, f32, f32);
-void setLightDirection(GXLightObj *, guVector);
-void setLightColor(GXLightObj *, GXColor);
-void setLightDistanceAttenuation(GXLightObj *, f32, f32, gx_attenuation_function_t);
-void setLightAttenuation(GXLightObj *, f32, f32, f32, f32, f32, f32);
-void setLightAttenuation(GXLightObj *, guVector, guVector);
-void setLightAttenuationAngle(GXLightObj *, f32, f32, f32);
-void setLightAttenuationAngle(GXLightObj *, guVector);
-void setLightAttenuationDistance(GXLightObj *, f32, f32, f32);
-void setLightAttenuationDistance(GXLightObj *, guVector);
+void ogcwrap::gx::setLightPosition(GXLightObj * light, f32 posX, f32 posY, f32 posZ)
+	{ GX_InitLightPos(light, posX, posY, posZ); }
 
-void setSpecularDirectionHalfAngle(GXLightObj *, f32, f32, f32, f32, f32, f32);
-void setSpecularDirectionHalfAngle(GXLightObj *, guVector, guVector);
-void setSpecularDirection(GXLightObj *, f32, f32, f32);
-void setSpecularDirection(GXLightObj *, guVector);
+void ogcwrap::gx::setLightPosition(GXLightObj * light, guVector position)
+	{ GX_InitLightPos(light, position.x, position.y, position.z); }
 
-void ogcwrap::gx::setLightSpot(GXLightObj * lightobj, f32 angle, gx_spot_illumination_function_t spotfn)
+void ogcwrap::gx::setLightDirection(GXLightObj * light, f32 nrmX, f32 nrmY, f32 nrmZ)
+	{ GX_InitLightDir(light, nrmX, nrmY, nrmZ); }
+
+void ogcwrap::gx::setLightDirection(GXLightObj * light, guVector normal)
+	{ GX_InitLightDir(light, normal.x, normal.y, normal.z); }
+
+void ogcwrap::gx::setLightColor(GXLightObj * light, GXColor color)
+	{ GX_InitLightColor(light, color); }
+
+void ogcwrap::gx::setLightDistanceAttenuation(GXLightObj * light, f32 distance, f32 brightness, gx_attenuation_function_t distfn)
+	{ GX_InitLightDistAttn(light, distance, brightness, mcast(u8, distfn)); }
+
+void ogcwrap::gx::setLightAttenuation(GXLightObj * light, f32 ac1, f32 ac2, f32 ac3, f32 dc1, f32 dc2, f32 dc3)
+	{ GX_InitLightAttn(light, ac1, ac2, ac3, dc1, dc2, dc3); }
+
+void ogcwrap::gx::setLightAttenuationAngle(GXLightObj * light, f32 ac1, f32 ac2, f32 ac3)
+	{ GX_InitLightAttnA(light, ac1, ac2, ac3); }
+
+void ogcwrap::gx::setLightAttenuationDistance(GXLightObj * light, f32 dc1, f32 dc2, f32 dc3)
+	{ GX_InitLightAttnK(light, dc1, dc2, dc3); }
+
+void ogcwrap::gx::setLightShininess(GXLightObj * light, f32 shininess)
+	{ GX_InitLightAttn(light, 0.0f, 0.0f, 0.0f, shininess/2.0f, 0.0f, 1.0f - shininess/2.0f); }
+
+void ogcwrap::gx::setSpecularDirectionHalfAngle(GXLightObj * light, f32 nrmX, f32 nrmY, f32 nrmZ, f32 haX, f32 haY, f32 haZ)
+	{ GX_InitSpecularDirHA(light, nrmX, nrmY, nrmZ, haX, haY, haZ); }
+
+void ogcwrap::gx::setSpecularDirectionHalfAngle(GXLightObj * light, guVector normal, guVector halfangle)
+	{ GX_InitSpecularDirHA(light, normal.x, normal.y, normal.z, halfangle.x, halfangle.y, halfangle.z); }
+
+void ogcwrap::gx::setSpecularDirection(GXLightObj * light, f32 nrmX, f32 nrmY, f32 nrmZ)
+	{ GX_InitSpecularDir(light, nrmX, nrmY, nrmZ); }
+
+void ogcwrap::gx::setSpecularDirection(GXLightObj * light, guVector normal)
+	{ GX_InitSpecularDir(light, normal.x, normal.y, normal.z); }
+
+void ogcwrap::gx::setLightSpot(GXLightObj * light, f32 angle, gx_spot_illumination_function_t spotfn)
 	{ GX_InitLightSpot(lightobj, angle, mcast(u8, spotfn)); }
 
-/*
+/* wait what waS this for?
 void ogcwrap::gx::matrixIndex()
 	{}
 */
@@ -954,67 +978,74 @@ void ogcwrap::gx::enableBreakPoint(void * addr)
 void ogcwrap::gx::disableBreakPoint(void)
 	{ GX_DisableBreakPt(); }
 
-void setLineWidth(u8, gx_texture_offset_value_t);
-void setPointSize(u8, gx_texture_offset_value_t);
-void setBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t);
-void setDitherMode(bool);
-void setCullingMode(gx_culling_mode_t);
-void setCoplanarMode(bool);
-void setClipMode(bool);
+void setLineWidth(u8, gx_texture_offset_value_t)
+void setPointSize(u8, gx_texture_offset_value_t)
+void setBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t)
+void setDitherMode(bool)
+void setCullingMode(gx_culling_mode_t)
+void setCoplanarMode(bool)
+void setClipMode(bool)
 
-void setPokeAlpha(bool);
-void setPokeColor(bool);
-void setPokeDither(bool);
+void setPokeAlpha(bool)
+void setPokeColor(bool)
+void setPokeDither(bool)
 
-void pokeAlphaMode(gx_comparison_t, u8);
-void pokeBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t);
-void pokeZMode(bool, gx_comparison_t, bool);
+void pokeAlphaMode(gx_comparison_t, u8)
+void pokeBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t)
 
-void pokeAlphaRead(gx_alpha_read_mode_t);
+void pokeZMode(bool, gx_comparison_t, bool)
+void pokeAlphaRead(gx_alpha_read_mode_t)
 
-void pokeDestAlpha(bool, u8);
-void pokeRGBA(u16, u16, GXColor);
-void pokeZ(u16, u16, u32);
+void pokeDestAlpha(bool, u8)
+void pokeRGBA(u16, u16, GXColor)
+void pokeZ(u16, u16, u32)
 
-void peekRGBA(u16, u16, GXColor *);
-void peekZ(u16, u16, u32 *);
+void peekRGBA(u16, u16, GXColor *)
+void peekZ(u16, u16, u32 *)
 
 void ogcwrap::gx::setMisc(gx_misc_token_t token, u32 value)
 	{ GX_SetMisc(mcast(u32, token), value); }
 
-u32 readClksPerVtx(void);
-u32 getOverflowCount(void);
-u32 resetOverflowCount(void);
-void readBoundingBox(u16 *, u16 *, u16 *, u16 *);
+u32 readClksPerVtx(void)
+u32 getOverflowCount(void)
+u32 resetOverflowCount(void)
+void readBoundingBox(u16 *, u16 *, u16 *, u16 *)
 
-lwp_t getCurrentThread(void);
-lwp_t setCurrentThread(void);
-volatile void * redirectWriteGatherPipe(void *);
-void restoreWriteGatherPipe(void);
-void setGPMetric(gx_performance_counter_0_metric_t, gx_performance_counter_1_metric_t);
-void readGPMetric(u32 *, u32 *);
-void clearGPMetric(void);
-void initXfRasMetric(void);
-void readXfRasMetric(u32 *, u32 *, u32 *, u32 *);
-void setVCacheMetric(gx_vertex_cache_metric_t);
-void readVCacheMetric(u32 *, u32 *, u32 *);
-void clearVCacheMetric(void);
+lwp_t getCurrentThread(void)
+lwp_t setCurrentThread(void)
+
+volatile void * redirectWriteGatherPipe(void *)
+void restoreWriteGatherPipe(void)
+
+void setGPMetric(gx_performance_counter_0_metric_t, gx_performance_counter_1_metric_t)
+void readGPMetric(u32 *, u32 *)
+void clearGPMetric(void)
+void initXfRasMetric(void)
+void readXfRasMetric(u32 *, u32 *, u32 *, u32 *)
+void setVCacheMetric(gx_vertex_cache_metric_t)
+void readVCacheMetric(u32 *, u32 *, u32 *)
+void clearVCacheMetric(void)
 
 // namespace detail
 
-// void ogcwrap::gx::detail::GetVtxAttr(gx_vertex_format_t * format)
-// {
-// 	extern __gx_regdef * __gx;
+/*
+void ogcwrap::gx::detail::GetVtxAttr(gx_vertex_format_t * format)
+{
+	extern __gx_regdef * __gx;
+}
+*/
 
-// 	switch (__gx->vcdLo)
-// }
-
-// GetVtxAttr(gx_vertex_format_t * format);
-// GetVtxAttrv(gx_vertex_format_t * fmtlist);
+/*
+void ogcwrap::gx::detail::GetVtxAttrv(gx_vertex_format_t * fmtlist)
+{
+	extern __gx_regdef * __gx;
+}
+*/
 
 void ogcwrap::gx::detail::GetVtxDesc(GXVtxDesc * desc)
 {
 	// damn near verbatim from libogc
+	extern __gx_regdef * __gx;
 
 	switch (__gx->vcdLo)
 	{

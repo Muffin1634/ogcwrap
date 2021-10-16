@@ -73,6 +73,7 @@ namespace ogcwrap::gx
 	void waitDrawDone(void);
 
 	void syncPixelMode(void);
+	void readBoundingBox(u16 * top, u16 * bottom, u16 * left, u16 * right);
 	void clearBoundingBox(void);
 
 	// fog
@@ -190,26 +191,23 @@ namespace ogcwrap::gx
 	void loadLightObject(GXLightObj * light, gx_light_index_t index);
 	void loadLightObjectIndex(u32 lightelement, gx_light_index_t index);
 
-	void setLightShininess(GXLightObj *, f32);
-	void setLightPosition(GXLightObj *, f32, f32, f32);
-	void setLightPosition(GXLightObj *, guPos);
-	void setLightDirection(GXLightObj *, f32, f32, f32);
-	void setLightDirection(GXLightObj *, guVector);
-	void setLightColor(GXLightObj *, GXColor);
-	void setLightDistanceAttenuation(GXLightObj *, f32, f32, gx_attenuation_function_t);
-	void setLightAttenuation(GXLightObj *, f32, f32, f32, f32, f32, f32);
-	void setLightAttenuation(GXLightObj *, guVector, guVector);
-	void setLightAttenuationAngle(GXLightObj *, f32, f32, f32);
-	void setLightAttenuationAngle(GXLightObj *, guVector);
-	void setLightAttenuationDistance(GXLightObj *, f32, f32, f32);
-	void setLightAttenuationDistance(GXLightObj *, guVector);
+	void setLightPosition(GXLightObj * light, f32 posX, f32 posY, f32 posZ);
+	void setLightPosition(GXLightObj * light, guVector position);
+	void setLightDirection(GXLightObj * light, f32 nrmX, f32 nrmY, f32 nrmZ);
+	void setLightDirection(GXLightObj * light, guVector normal);
+	void setLightColor(GXLightObj * light, GXColor color);
+	void setLightDistanceAttenuation(GXLightObj * light, f32 distance, f32 brightness, gx_attenuation_function_t distfn);
+	void setLightAttenuation(GXLightObj * light, f32 ac1, f32 ac2, f32 ac3, f32 dc1, f32 dc2, f32 dc3);
+	void setLightAttenuationAngle(GXLightObj * light, f32 ac1, f32 ac2, f32 ac3);
+	void setLightAttenuationDistance(GXLightObj * light, f32 dc1, f32 dc2, f32 dc3);
+	void setLightShininess(GXLightObj * light, f32 shininess);
 
-	void setSpecularDirectionHalfAngle(GXLightObj *, f32, f32, f32, f32, f32, f32);
-	void setSpecularDirectionHalfAngle(GXLightObj *, guVector, guVector);
-	void setSpecularDirection(GXLightObj *, f32, f32, f32);
-	void setSpecularDirection(GXLightObj *, guVector);
+	void setSpecularDirectionHalfAngle(GXLightObj * light, f32 nrmX, f32 nrmY, f32 nrmZ, f32 haX, f32 haY, f32 haZ);
+	void setSpecularDirectionHalfAngle(GXLightObj * light, guVector normal, guVector halfangle);
+	void setSpecularDirection(GXLightObj * light, f32 nrmX, f32 nrmY, f32 nrmZ);
+	void setSpecularDirection(GXLightObj * light, guVector normal);
 
-	void setLightSpot(GXLightObj *, f32, gx_spot_illumination_function_t);
+	void setLightSpot(GXLightObj * light, f32 angle, gx_spot_illumination_function_t spotfn);
 
 	// matrices
 	void matrixIndex(u8 index);
@@ -261,7 +259,6 @@ namespace ogcwrap::gx
 	u32 readClksPerVtx(void);
 	u32 getOverflowCount(void);
 	u32 resetOverflowCount(void);
-	void readBoundingBox(u16 *, u16 *, u16 *, u16 *);
 
 	lwp_t getCurrentThread(void);
 	lwp_t setCurrentThread(void);
