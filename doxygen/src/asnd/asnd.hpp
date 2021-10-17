@@ -78,13 +78,53 @@ namespace ogcwrap::asnd
  */
 
 /*! \fn u32 ogcwrap::asnd::getTime(void)
- *  \brief Gets the current global time in milliseconds.
+ *  \brief Gets the current system time
  *
- *  \return The current time, in milliseconds.
+ *  \warning note to self: is this even system time? SYS_GetTime() returns a u64 but this returns a u32???
+ *
+ *  \return The system time, in milliseconds since 2000.
  */
 
 /*! \fn bool ogcwrap::asnd::getSoundPlayStatus(void)
- *  \brief Returns the status of the sound's current playing status.
+ *  \brief Checks whether sound is playing or not.
  *
- *  \return <CODE>true</CODE> if sound is currently playing; <CODE>false</CODE> otherwise.
+ *  \note <CODE>true</CODE> does not necessarily mean sound is playing; it just means that the sound is in play mode
+ *        rather than pause mode. Voices may not have any samples to play and therefore may not be playing anything.
+ *
+ *  \return <CODE>true</CODE> if sound is playing, <CODE>false</CODE> otherwise
+ */
+
+/*! \fn int ogcwrap::asnd::getNoteFreq(int note, int freqbase, int notebase)
+ *  \brief Does some math to get a note frequency, i think
+ *
+ *  not sure
+ *
+ *  \param[in] note     Note to play (see the <A HREF="https://libogc.devkitpro.org/group__notecode.html#gaecdf46a919e14720bd2843c6c191de8f">NOTE()</A>
+ *                      macro here).
+ *  \param[in] freqbase frequency base of the sample
+ *  \param[in] notebase notecode of the sample (see <A HREF="https://libogc.devkitpro.org/group__notecode.html#">these enums</A>
+ *                      here).
+ *
+ *  \return Frequency (of what? new note?)
+ */
+
+/*! \fn u32 ogcwrap::asnd::getSampleRate(void)
+ *  \brief Gets the sample rate of the audio.
+ *
+ *  \deprecated This function is for backwards compatibility with ASND_GetAudioRate(), which itself is for compatibility
+ *              with the original SNDLIB.
+ *
+ *  \return The unsigned integer 48,000. This return value is constant.
+ */
+
+/*! \fn u32 ogcwrap::asnd::getSampleCount(void)
+ *  \brief Gets the number of samples that have (been processed?)
+ *
+ *  \return The number of samples that have (been processed?)
+ */
+
+/*! \fn u32 ogcwrap::asnd::getSampleRateTick(void)
+ *  \brief Gets the amount of samples sent in one tick.
+ *
+ *  \return The amount of samples that are sent in one tick
  */

@@ -28,6 +28,7 @@ var NAVTREE =
     [ "libogcwrap Documentation", "index.html", [
       [ "Wrapper", "index.html#Wrapper", null ]
     ] ],
+    [ "Deprecated List", "db/db6/a00074.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -49,7 +50,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "d0/d89/a00071_source.html",
-"dir_597f6a792ff7cba98dd4f9f2210b5255.html"
+"df/d13/a00085.html#a9e32aaff6784cf9cf0a37c9da38ca6d5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

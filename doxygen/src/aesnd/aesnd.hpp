@@ -79,7 +79,7 @@ namespace ogcwrap::aesnd
 /*! \fn u32 ogcwrap::aesnd::getDSPProcessTime(void)
  *  \brief Gets the amount of time the DSP has been processing commands, in seconds.
  *
- *  \return The amount of time the DSP had been processing commands, in seconds.
+ *  \return The amount of time the DSP has been processing commands, in seconds.
  */
 
 /*! \fn f32 ogcwrap::aesnd::getDSPProcessUsage(void)

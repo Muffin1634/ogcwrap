@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libwrap: ogcwrap::gu Namespace Reference</title>
+<title>libwrap: ogcwrap::debug Namespace Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -84,76 +84,84 @@ $(document).ready(function(){initNavTree('df/d5d/a00084.html','../../'); initRes
 
 <div class="header">
   <div class="summary">
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">ogcwrap::gu Namespace Reference</div></div>
+  <div class="headertitle"><div class="title">ogcwrap::debug Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Namespace containing functions related to the gu/matrix subsystem in libOGC.  
+<p>Namespace containing enums and functions related to the debugging stub included in libOGC.  
 <a href="../../df/d5d/a00084.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a415a9e6a183eae7e61bfdfa1afa48dca"><td class="memItemLeft" align="right" valign="top">enum struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dca">DebugDevice</a> : u8 { <a class="el" href="../../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dcaa359b4bfc7dca491ceff5bec2adf9d98d">dev_USBGecko</a>
+, <a class="el" href="../../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dcaae82e09ef2fc0e6801bc4a31c6e483eee">dev_BBATCP</a>
+ }</td></tr>
+<tr class="memdesc:a415a9e6a183eae7e61bfdfa1afa48dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum to choose which device to use the debugger with.  <a href="../../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dca">More...</a><br /></td></tr>
+<tr class="separator:a415a9e6a183eae7e61bfdfa1afa48dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:afe2bd920b77f774b1cf180358b8ebaed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5d/a00084.html#afe2bd920b77f774b1cf180358b8ebaed">perspective</a> (Mtx44 matrix44, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> fovY, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> aspect, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> near, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> far)</td></tr>
-<tr class="memdesc:afe2bd920b77f774b1cf180358b8ebaed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a perspective-style projection matrix for use with the GX subsystem.  <a href="../../df/d5d/a00084.html#afe2bd920b77f774b1cf180358b8ebaed">More...</a><br /></td></tr>
-<tr class="separator:afe2bd920b77f774b1cf180358b8ebaed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e32aaff6784cf9cf0a37c9da38ca6d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5d/a00084.html#a9e32aaff6784cf9cf0a37c9da38ca6d5">frustum</a> (Mtx44 matrix44, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> top, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> bottom, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> left, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> right, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> near, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> far)</td></tr>
-<tr class="memdesc:a9e32aaff6784cf9cf0a37c9da38ca6d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a frustum-style projection matrix for use with the GX subsystem.  <a href="../../df/d5d/a00084.html#a9e32aaff6784cf9cf0a37c9da38ca6d5">More...</a><br /></td></tr>
-<tr class="separator:a9e32aaff6784cf9cf0a37c9da38ca6d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34264044c838278f20639c7e0e5f7406"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5d/a00084.html#a34264044c838278f20639c7e0e5f7406">orthographic</a> (Mtx44 matrix44, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> top, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> bottom, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> left, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> right, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> near, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> far)</td></tr>
-<tr class="memdesc:a34264044c838278f20639c7e0e5f7406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a orthographic-style projection matrix for use with the GX subsystem.  <a href="../../df/d5d/a00084.html#a34264044c838278f20639c7e0e5f7406">More...</a><br /></td></tr>
-<tr class="separator:a34264044c838278f20639c7e0e5f7406"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a906cd906553dd1d5847d7aa357423ce6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5d/a00084.html#a906cd906553dd1d5847d7aa357423ce6">lightPerspective</a> (Mtx matrix34, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> fovY, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> aspect, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> scaleS, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> scaleT, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> transS, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> transT)</td></tr>
-<tr class="memdesc:a906cd906553dd1d5847d7aa357423ce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a perspective-style light matrix for use with the GX subsystem.  <a href="../../df/d5d/a00084.html#a906cd906553dd1d5847d7aa357423ce6">More...</a><br /></td></tr>
-<tr class="separator:a906cd906553dd1d5847d7aa357423ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0dcae1723f860e12285fc3ee3612885"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5d/a00084.html#ae0dcae1723f860e12285fc3ee3612885">lightFrustum</a> (Mtx matrix34, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> top, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> bottom, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> left, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> right, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> near, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> scaleS, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> scaleT, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> transS, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> transT)</td></tr>
-<tr class="memdesc:ae0dcae1723f860e12285fc3ee3612885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a frustum-style light matrix for use with the GX subsystem.  <a href="../../df/d5d/a00084.html#ae0dcae1723f860e12285fc3ee3612885">More...</a><br /></td></tr>
-<tr class="separator:ae0dcae1723f860e12285fc3ee3612885"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ffd8590fce3600fd3f2295265744e3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5d/a00084.html#a2ffd8590fce3600fd3f2295265744e3b">lightOrthographic</a> (Mtx matrix34, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> top, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> bottom, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> left, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> right, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> scaleS, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> scaleT, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> transS, <a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a> transT)</td></tr>
-<tr class="memdesc:a2ffd8590fce3600fd3f2295265744e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a orthographic-style light matrix for use with the GX subsystem.  <a href="../../df/d5d/a00084.html#a2ffd8590fce3600fd3f2295265744e3b">More...</a><br /></td></tr>
-<tr class="separator:a2ffd8590fce3600fd3f2295265744e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d71a803e7a5d79dc2077e26572bca46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5d/a00084.html#a9d71a803e7a5d79dc2077e26572bca46">lookAt</a> (Mtx camera, guVector *position, guVector *upVector, guVector *target)</td></tr>
-<tr class="memdesc:a9d71a803e7a5d79dc2077e26572bca46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the <code>camera</code> to be placed at <code>position</code> pointed at <code>target</code>.  <a href="../../df/d5d/a00084.html#a9d71a803e7a5d79dc2077e26572bca46">More...</a><br /></td></tr>
-<tr class="separator:a9d71a803e7a5d79dc2077e26572bca46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc72f4aa88d1bcf49da585cba3417690"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5d/a00084.html#acc72f4aa88d1bcf49da585cba3417690">init</a> (<a class="el" href="../../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dca">DebugDevice</a> dev, <a class="el" href="../../d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86">u16</a> port)</td></tr>
+<tr class="memdesc:acc72f4aa88d1bcf49da585cba3417690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the debugging stub and allows you to use <code><a class="el" href="../../df/d5d/a00084.html#ad5cfaa569afb92b433c17a433b967f35" title="Inserts a breakpoint into your code.">_breakpt()</a></code> throughout your code to create breakpoints.  <a href="../../df/d5d/a00084.html#acc72f4aa88d1bcf49da585cba3417690">More...</a><br /></td></tr>
+<tr class="separator:acc72f4aa88d1bcf49da585cba3417690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5cfaa569afb92b433c17a433b967f35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d5d/a00084.html#ad5cfaa569afb92b433c17a433b967f35">_breakpt</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="memdesc:ad5cfaa569afb92b433c17a433b967f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts a breakpoint into your code.  <a href="../../df/d5d/a00084.html#ad5cfaa569afb92b433c17a433b967f35">More...</a><br /></td></tr>
+<tr class="separator:ad5cfaa569afb92b433c17a433b967f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Namespace containing functions related to the gu/matrix subsystem in libOGC. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="afe2bd920b77f774b1cf180358b8ebaed" name="afe2bd920b77f774b1cf180358b8ebaed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe2bd920b77f774b1cf180358b8ebaed">&#9670;&nbsp;</a></span>perspective()</h2>
+<div class="textblock"><p >Namespace containing enums and functions related to the debugging stub included in libOGC. </p>
+<dl class="section warning"><dt>Warning</dt><dd>The debugging stub does not currently work at this time. This documentation is only included for the purposes of completely documenting the wrapper. Do not use this namespace's functions; you will get linker errors as the original functions are not currently included in libOGC. </dd></dl>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a415a9e6a183eae7e61bfdfa1afa48dca" name="a415a9e6a183eae7e61bfdfa1afa48dca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a415a9e6a183eae7e61bfdfa1afa48dca">&#9670;&nbsp;</a></span>DebugDevice</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum struct <a class="el" href="../../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dca">ogcwrap::debug::DebugDevice</a> : <a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enum to choose which device to use the debugger with. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a415a9e6a183eae7e61bfdfa1afa48dcaa359b4bfc7dca491ceff5bec2adf9d98d" name="a415a9e6a183eae7e61bfdfa1afa48dcaa359b4bfc7dca491ceff5bec2adf9d98d"></a>dev_USBGecko&#160;</td><td class="fielddoc"><p >Use the USB Gecko to interface with the debugger. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a415a9e6a183eae7e61bfdfa1afa48dcaae82e09ef2fc0e6801bc4a31c6e483eee" name="a415a9e6a183eae7e61bfdfa1afa48dcaae82e09ef2fc0e6801bc4a31c6e483eee"></a>dev_BBATCP&#160;</td><td class="fielddoc"><p >Use BBA-TCP to interface with the debugger. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="acc72f4aa88d1bcf49da585cba3417690" name="acc72f4aa88d1bcf49da585cba3417690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc72f4aa88d1bcf49da585cba3417690">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::gu::perspective </td>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::debug::init </td>
           <td>(</td>
-          <td class="paramtype">Mtx44&#160;</td>
-          <td class="paramname"><em>matrix44</em>, </td>
+          <td class="paramtype"><a class="el" href="../../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dca">DebugDevice</a>&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>fovY</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>aspect</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>near</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>far</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86">u16</a>&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -163,474 +171,37 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes a perspective-style projection matrix for use with the GX subsystem. </p>
+<p>Initializes the debugging stub and allows you to use <code><a class="el" href="../../df/d5d/a00084.html#ad5cfaa569afb92b433c17a433b967f35" title="Inserts a breakpoint into your code.">_breakpt()</a></code> throughout your code to create breakpoints. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">matrix44</td><td>The destination matrix that will be created; you must allocate this first. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">fovY</td><td>The field of view, in degrees, of the YZ plane (pitch). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">aspect</td><td>The aspect ratio of the resulting view. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">near</td><td>The distance to the near clipping plane on the Z axis. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">far</td><td>The distance to the far clipping plane on the Z axis.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev</td><td>The type of device you would like to use to interface with the debugger. This is either <code>dev_USBGecko</code> to specify that you are using the USB Gecko to debug or <code>dev_BBATCP</code> to specify that you are using BBA-TCP to debug. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>The port that this device is connected to. For the USB Gecko, this is either EXI port <code>0</code> or <code>1</code> (the GameCube Memory Card slots). For BBA-TCP, this is any TCP port from <code>0</code> to <code>65535</code> inclusive.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>none; the result matrix is the first parameter. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
 
 </div>
 </div>
-<a id="a9e32aaff6784cf9cf0a37c9da38ca6d5" name="a9e32aaff6784cf9cf0a37c9da38ca6d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e32aaff6784cf9cf0a37c9da38ca6d5">&#9670;&nbsp;</a></span>frustum()</h2>
+<a id="ad5cfaa569afb92b433c17a433b967f35" name="ad5cfaa569afb92b433c17a433b967f35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5cfaa569afb92b433c17a433b967f35">&#9670;&nbsp;</a></span>_breakpt()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::gu::frustum </td>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::debug::_breakpt </td>
           <td>(</td>
-          <td class="paramtype">Mtx44&#160;</td>
-          <td class="paramname"><em>matrix44</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>top</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>bottom</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>left</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>right</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>near</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>far</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes a frustum-style projection matrix for use with the GX subsystem. </p>
-<dl class="section note"><dt>Note</dt><dd>periverbatim from libOGC: "<em>matrix</em> negates a point's 'z' values, so pre-transformed points should have negative 'z' values in eye space in order to be visible after projection."</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">matrix44</td><td>The destination matrix that will be created; you must allocate this first. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">top</td><td>The top edge of the view rectangle at the near clipping plane. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">bottom</td><td>The bottom edge of the view rectangle at the near clipping plane. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">left</td><td>The left edge of the view rectangle at the near clipping plane. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">right</td><td>The right edge of the view rectangle at the near clipping plane. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">near</td><td>The distance to the near clipping plane on the Z axis. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">far</td><td>The distance to the far clipping plane on the Z axis.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none; the result matrix is the first parameter. </dd></dl>
-
-</div>
-</div>
-<a id="a34264044c838278f20639c7e0e5f7406" name="a34264044c838278f20639c7e0e5f7406"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34264044c838278f20639c7e0e5f7406">&#9670;&nbsp;</a></span>orthographic()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::gu::orthographic </td>
-          <td>(</td>
-          <td class="paramtype">Mtx44&#160;</td>
-          <td class="paramname"><em>matrix44</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>top</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>bottom</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>left</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>right</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>near</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>far</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes a orthographic-style projection matrix for use with the GX subsystem. </p>
-<dl class="section note"><dt>Note</dt><dd>periverbatim from libOGC: "For normal parallel projections, the axis of projection is the -z axis, so <em>t</em> = positive, <em>b</em> = -<em>t</em>, <em>r</em> = positive, <em>l</em> = -<em>r</em>. <em>n</em> and <em>f</em> must both be given as positive distances."</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">matrix44</td><td>The destination matrix that will be created; you must allocate this first. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">top</td><td>The top edge of the view rectangle. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">bottom</td><td>The bottom edge of the view rectangle. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">left</td><td>The left edge of the view rectangle. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">right</td><td>The right edge of the view rectangle. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">near</td><td>The distance to the near clipping plane on the Z axis. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">far</td><td>The distance to the far clipping plane on the Z axis.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none; the result matrix is the first parameter. </dd></dl>
-
-</div>
-</div>
-<a id="a906cd906553dd1d5847d7aa357423ce6" name="a906cd906553dd1d5847d7aa357423ce6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a906cd906553dd1d5847d7aa357423ce6">&#9670;&nbsp;</a></span>lightPerspective()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::gu::lightPerspective </td>
-          <td>(</td>
-          <td class="paramtype">Mtx&#160;</td>
-          <td class="paramname"><em>matrix34</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>fovY</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>aspect</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>scaleS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>scaleT</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>transS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>transT</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes a perspective-style light matrix for use with the GX subsystem. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">matrix34</td><td>The destination matrix that will be created; you must allocate this first. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">fovY</td><td>The field of view, in degrees, of the YZ plane (pitch). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">aspect</td><td>The aspect ratio of the resulting view. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">scaleS</td><td>The scale in the S direction for projected coordinates (normally 0.5). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">scaleT</td><td>The scale in the T direction for projected coordinates (normally 0.5). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">transS</td><td>The translation in the S direction for projected coordinates (normally 0.5). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">transT</td><td>The translation in the T direction for projected coordinates (normally 0.5).</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none; the result matrix is the first parameter. </dd></dl>
-
-</div>
-</div>
-<a id="ae0dcae1723f860e12285fc3ee3612885" name="ae0dcae1723f860e12285fc3ee3612885"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0dcae1723f860e12285fc3ee3612885">&#9670;&nbsp;</a></span>lightFrustum()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::gu::lightFrustum </td>
-          <td>(</td>
-          <td class="paramtype">Mtx&#160;</td>
-          <td class="paramname"><em>matrix34</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>top</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>bottom</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>left</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>right</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>near</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>scaleS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>scaleT</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>transS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>transT</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes a frustum-style light matrix for use with the GX subsystem. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">matrix34</td><td>The destination matrix that will be created; you must allocate this first. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">top</td><td>The top edge of the view rectangle at the near clipping plane. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">bottom</td><td>The bottom edge of the view rectangle at the near clipping plane. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">left</td><td>The left edge of the view rectangle at the near clipping plane. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">right</td><td>The right edge of the view rectangle at the near clipping plane. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">near</td><td>The distance to the near clipping plane on the Z axis. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">scaleS</td><td>The scale in the S direction for projected coordinates (normally 0.5). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">scaleT</td><td>The scale in the T direction for projected coordinates (normally 0.5). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">transS</td><td>The translation in the S direction for projected coordinates (normally 0.5). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">transT</td><td>The translation in the T direction for projected coordinates (normally 0.5).</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none; the result matrix is the first parameter. </dd></dl>
-
-</div>
-</div>
-<a id="a2ffd8590fce3600fd3f2295265744e3b" name="a2ffd8590fce3600fd3f2295265744e3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ffd8590fce3600fd3f2295265744e3b">&#9670;&nbsp;</a></span>lightOrthographic()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::gu::lightOrthographic </td>
-          <td>(</td>
-          <td class="paramtype">Mtx&#160;</td>
-          <td class="paramname"><em>matrix34</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>top</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>bottom</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>left</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>right</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>scaleS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>scaleT</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>transS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a7d886905c667c4e8e91251b6a3a98f39">f32</a>&#160;</td>
-          <td class="paramname"><em>transT</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes a orthographic-style light matrix for use with the GX subsystem. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">matrix34</td><td>The destination matrix that will be created; you must allocate this first. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">top</td><td>The top edge of the view rectangle. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">bottom</td><td>The bottom edge of the view rectangle. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">left</td><td>The left edge of the view rectangle. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">right</td><td>The right edge of the view rectangle. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">scaleS</td><td>The scale in the S direction for projected coordinates (normally 0.5). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">scaleT</td><td>The scale in the T direction for projected coordinates (normally 0.5). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">transS</td><td>The translation in the S direction for projected coordinates (normally 0.5). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">transT</td><td>The translation in the T direction for projected coordinates (normally 0.5).</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none; the result matrix is the first parameter. </dd></dl>
-
-</div>
-</div>
-<a id="a9d71a803e7a5d79dc2077e26572bca46" name="a9d71a803e7a5d79dc2077e26572bca46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d71a803e7a5d79dc2077e26572bca46">&#9670;&nbsp;</a></span>lookAt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::gu::lookAt </td>
-          <td>(</td>
-          <td class="paramtype">Mtx&#160;</td>
-          <td class="paramname"><em>camera34</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">guVector *&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">guVector *&#160;</td>
-          <td class="paramname"><em>upVector</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">guVector *&#160;</td>
-          <td class="paramname"><em>target</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Resets the <code>camera</code> to be placed at <code>position</code> pointed at <code>target</code>. </p>
-<p >The <code>upVector</code> parameter of the function determines the camera's roll. Normally this is (0, 1, 0) which refers to a normal upright camera. However, if you want your camera to tilt, then you can change the <code>upVector</code>.</p>
-<dl class="section note"><dt>Note</dt><dd>verbatim from libOGC: "The camera's reference viewing direction is the -z axis. The camera's reference 'up' direction is the +y axis."</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">camera34</td><td>The camera matrix to modify. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">position</td><td>The camera position in world space where the camera will be. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">upVector</td><td>The "up" direction of the camera; this vector affects the camera's roll. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">target</td><td>The target position in world space where the camera will be pointing.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none; the result matrix is in the first parameter. </dd></dl>
+<p>Inserts a breakpoint into your code. </p>
+<p >This function inserts a breakpoint into your code to let the debugging stub know that it when it reaches this function, it should halt operation of the program and pass control to the debugger for debugging. You may use this function wherever you like.</p>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
 
 </div>
 </div>
@@ -639,8 +210,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>ogcwrap</b></li><li class="navelem"><a class="el" href="../../df/d5d/a00084.html">gu</a></li>
-    <li class="footer">Generated on Wed Sep 22 2021 13:56:44 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="navelem"><b>ogcwrap</b></li><li class="navelem"><a class="el" href="../../df/d5d/a00084.html">debug</a></li>
+    <li class="footer">Generated on Sun Oct 17 2021 16:28:04 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
