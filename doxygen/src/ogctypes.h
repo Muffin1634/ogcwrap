@@ -49,14 +49,14 @@ typedef s32							sfp32;
  *  \brief Header file containing typedefs from the original libOGC.
  *
  *  \note This header file does not actually exist; do not go looking for it. These typedefs are already provided in
- *        libOGC.
+ *        libOGC. This documentation is provided to explain more of libOGC.
  */
 
 /*! \typedef void void
  *  \brief as a return type, no return, or as a pointer type, a generic pointer
  *
  *  \typedef bool bool
- *  \brief boolean that can hold a value of <CODE>true</CODE> or <CODE>false</CODE>.
+ *  \brief boolean that can hold a value of <CODE>true</CODE> or <CODE>false</CODE>
  */
 
 /*! \typedef unsigned char u8

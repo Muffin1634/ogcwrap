@@ -12,3 +12,6 @@ sublime/libwrap.sublime-workspace
 # except for the Doxyfile and the Doxygen folder
 !Doxyfile
 !doxygen/
+
+# visual studio
+.vs/

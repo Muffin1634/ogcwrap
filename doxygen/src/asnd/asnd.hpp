@@ -76,3 +76,15 @@ namespace ogcwrap::asnd
  *
  *  \return none
  */
+
+/*! \fn u32 ogcwrap::asnd::getTime(void)
+ *  \brief Gets the current global time in milliseconds.
+ *
+ *  \return The current time, in milliseconds.
+ */
+
+/*! \fn bool ogcwrap::asnd::getSoundPlayStatus(void)
+ *  \brief Returns the status of the sound's current playing status.
+ *
+ *  \return <CODE>true</CODE> if sound is currently playing; <CODE>false</CODE> otherwise.
+ */
