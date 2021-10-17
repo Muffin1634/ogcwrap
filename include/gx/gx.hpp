@@ -210,7 +210,7 @@ namespace ogcwrap::gx
 	void setLightSpot(GXLightObj * light, f32 angle, gx_spot_illumination_function_t spotfn);
 
 	// matrices
-//	void matrixIndex(u8 index);
+	void matrixIndex(u8 index);
 	void setCurrentMatrix(gx_position_normal_matrix_index_t index);
 
 	void loadProjectionMatrix(Mtx44 mtx, gx_projection_type_t);
@@ -281,84 +281,84 @@ namespace ogcwrap::gx
 	namespace draw
 	{
 		// management
-		void begin(gx_primitive_t, gx_vertex_format_t, u16);
+		void begin(gx_primitive_t primitive, gx_vertex_format_t vtxfmt, u16 count);
 		void end(void);
 
 		u16 getDrawSync(void);
-		void setDrawSync(u16);
+		void setDrawSync(u16 token);
 
 		// display lists
-		void beginDisplayList(void *, u32);
+		void beginDisplayList(void * buf, u32 bufsize);
 		u32 endDisplayList(void);
-		void callDisplayList(void *, u32);
+		void callDisplayList(void * list, u32 listSize);
 
 		// positions
 
 		// index (cast to u8 or u16 specifically for these overloads)
-		void indexedPosition(u8);
-		void indexedPosition(u16);
+		void indexedPosition(u8 index);
+		void indexedPosition(u16 index);
 
 		// 2 dimensions (implied z coordinate of 0)
-		void position(u8, u8);
-		void position(s8, s8);
-		void position(u16, u16);
-		void position(s16, s16);
-		void position(f32, f32);
+		void position(u8 x, u8 y);
+		void position(s8 x, s8 y);
+		void position(u16 x, u16 y);
+		void position(s16 x, s16 y);
+		void position(f32 x, f32 y);
 
 		// 3 dimensions
-		void position(u8, u8, u8);
-		void position(s8, s8, s8);
-		void position(u16, u16, u16);
-		void position(s16, s16, s16);
-		void position(f32, f32, f32);
+		void position(u8 x, u8 y, u8 z);
+		void position(s8 x, s8 y, s8 z);
+		void position(u16 x, u16 y, u16 z);
+		void position(s16 x, s16 y, s16 z);
+		void position(f32 x, f32 y, f32 z);
 
 		// normals
 
 		// index (cast to u8 or u16 specifically for these overloads)
-		void indexedNormal(u8);
-		void indexedNormal(u16);
+		void indexedNormal(u8 index);
+		void indexedNormal(u16 index);
 
 		// 3 dimensions
-		void normal(s8, s8, s8);
-		void normal(s16, s16, s16);
-		void normal(f32, f32, f32);
+		void normal(s8 nrmX, s8 nrmY, s8 nrmZ);
+		void normal(s16 nrmX, s16 nrmY, s16 nrmZ);
+		void normal(f32 nrmX, f32 nrmY, f32 nrmZ);
 
 		// colors
 
 		// index (cast to u8 or u16 specifically for these overloads)
-		void indexedColor(u8);
-		void indexedColor(u16);
+		void indexedColor(u8 index);
+		void indexedColor(u16 index);
 
 		// 1 value (RGB)
-		void color(u16); // RGB565
-		void color(u32); // RGBX8
+		void color(u16 rgb565); // RGB565
+		void color(u32 rgba8); // RGBA8
 
 		// 3 values (R, G, B)
-		void color(u8, u8, u8);
-		void color(f32, f32, f32);
+		void color(u8 r, u8 g, u8 b);
+		void color(f32 r, f32 g, f32 b);
 
 		// 4 values (R, G, B, A)
-		void color(u8, u8, u8, u8);
+		void color(u8 r, u8 g, u8 b, u8 a);
 
 		// textures
 
 		// index (cast to u8 or u16 specifically for these overloads)
-		void indexedTexcoord(u8);
-		void indexedTexcoord(u16);
+		void indexedTexcoord(u8 index);
+		void indexedTexcoord(u16 index);
 
 		// 1 dimension
-		void texcoord(u8); // cast to u8 specifically for this overload
-		void texcoord(s8); // cast to s8 specifically for this overload
-		void texcoord(u16); // cast to u16 specifically for this overload
-		void texcoord(s16); // cast to s16 specifically for this overload
-		void texcoord(f32);
+		void texcoord(u8 s); // cast to u8 specifically for this overload
+		void texcoord(s8 s); // cast to s8 specifically for this overload
+		void texcoord(u16 s); // cast to u16 specifically for this overload
+		void texcoord(s16 s); // cast to s16 specifically for this overload
+		void texcoord(f32 s);
 
 		// 2 dimensions
-		void texcoord(u8, u8);
-		void texcoord(s8, s8);
-		void texcoord(u16, u16);
-		void texcoord(s16, s16);
-		void texcoord(f32, f32);
+		void texcoord(u8 s, u8 t);
+		void texcoord(s8 s, s8 t);
+		void texcoord(u16 s, u16 t);
+		void texcoord(s16 s, s16 t);
+		void texcoord(f32 s, f32 t);
 }
 
 #endif // wrap_gx_h

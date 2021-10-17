@@ -938,10 +938,8 @@ void ogcwrap::gx::setSpecularDirection(GXLightObj * light, guVector normal)
 void ogcwrap::gx::setLightSpot(GXLightObj * light, f32 angle, gx_spot_illumination_function_t spotfn)
 	{ GX_InitLightSpot(lightobj, angle, mcast(u8, spotfn)); }
 
-/* wait what waS this for?
-void ogcwrap::gx::matrixIndex()
-	{}
-*/
+void ogcwrap::gx::matrixIndex(u8 index)
+	{ GX_MatrixIndex1x8(index); }
 
 void ogcwrap::gx::setCurrentMatrix(gx_position_normal_matrix_index_t index)
 	{ GX_SetCurrentMatrix(mcast(u32, index)); }
@@ -1087,6 +1085,137 @@ void readVCacheMetric(u32 * check, u32 * miss, u32 * stall)
 void clearVCacheMetric(void)
 	{ GX_ClearVCacheMetric(); }
 
+// namespace ogcwrap::gx::draw
+
+void ogcwrap::gx::draw::begin(gx_primitive_t primitive, gx_vertex_format_t vtxfmt, u16 count)
+	{ GX_Begin(mcast(u8, primitive), mcast(u8, vtxfmt), count); }
+
+void ogcwrap::gx::draw::end()
+	{ GX_End(); }
+
+u16 ogcwrap::gx::draw::getDrawSync(void)
+	{ return GX_GetDrawSync(); }
+
+void ogcwrap::gx::draw::setDrawSync(u16 token)
+	{ GX_SetDrawSync(token); }
+
+void ogcwrap::gx::draw::beginDisplayList(void * buf, u32 bufsize)
+	{ GX_BeginDispList(buf, bufsize); }
+
+u32 ogcwrap::gx::draw::endDisplayList(void) [[nodiscard("return value used as input in callDisplayList")]]
+	{ return GX_EndDispList(); }
+
+void ogcwrap::gx::draw::callDisplayList(void * list, u32 listSize)
+	{ GX_CallDispList(list, listSize); }
+
+void ogcwrap::gx::draw::indexedPosition(u8 index)
+	{ GX_Position1x8(index); }
+
+void ogcwrap::gx::draw::indexedPosition(u16 index)
+	{ GX_Position1x16(index); }
+
+void ogcwrap::gx::draw::position(u8 x, u8 y)
+	{ GX_Position2u8(x, y); }
+
+void ogcwrap::gx::draw::position(s8 x, s8 y)
+	{ GX_Position2s8(x, y); }
+
+void ogcwrap::gx::draw::position(u16 x, u16 y)
+	{ GX_Position2u16(x, y); }
+
+void ogcwrap::gx::draw::position(s16 x, s16 y)
+	{ GX_Position2s16(x, y); }
+
+void ogcwrap::gx::draw::position(f32 x, f32 y)
+	{ GX_Position2f32(x, y); }
+
+void ogcwrap::gx::draw::position(u8 x, u8 y, u8 z)
+	{ GX_Position3u8(x, y, z); }
+
+void ogcwrap::gx::draw::position(s8 x, s8 y, s8 z)
+	{ GX_Position3s8(x, y, z); }
+
+void ogcwrap::gx::draw::position(u16 x, u16 y, u16 z)
+	{ GX_Position3u16(x, y, z); }
+
+void ogcwrap::gx::draw::position(s16 x, s16 y, s16 z)
+	{ GX_Position3s16(x, y, z); }
+
+void ogcwrap::gx::draw::position(f32 x, f32 y, f32 z)
+	{ GX_Position3f32(x, y, z); }
+
+void ogcwrap::gx::draw::indexedNormal(u8 index)
+	{ GX_Normal1x8(index); }
+
+void ogcwrap::gx::draw::indexedNormal(u16 index)
+	{ GX_Normal1x16(index); }
+
+void ogcwrap::gx::draw::normal(s8 nx, s8 ny, s8 nz)
+	{ GX_Normal3s8(nx, ny, nz); }
+
+void ogcwrap::gx::draw::normal(s16 nx, s16 ny, s16 nz)
+	{ GX_Normal3s16(nx, ny, nz); }
+
+void ogcwrap::gx::draw::normal(f32 nx, f32 ny, f32 nz)
+	{ GX_Normal3f32(nx, ny, nz); }
+
+void ogcwrap::gx::draw::indexedColor(u8 index)
+	{ GX_Color1x8(index); }
+
+void ogcwrap::gx::draw::indexedColor(u16 index)
+	{ GX_Color1x16(index); }
+
+void ogcwrap::gx::draw::color(u16 rgb565)
+	{ GX_Color1u16(rgb565); }
+
+void ogcwrap::gx::draw::color(u32 rgba8)
+	{ GX_Color1u32(rgba8); }
+
+void ogcwrap::gx::draw::color(u8 r, u8 g, u8 b)
+	{ GX_Color3u8(r, g, b); }
+
+void ogcwrap::gx::draw::color(f32 r, f32 g, f32 b)
+	{ GX_Color3f32(r, g, b); }
+
+void ogcwrap::gx::draw::color(u8 r, u8 g, u8 b, u8 a)
+	{ GX_Color4u8(r, g, b, a); }
+
+void ogcwrap::gx::draw::indexedTexcoord(u8 index)
+	{ GX_TexCoord1x8(index); }
+
+void ogcwrap::gx::draw::indexedTexcoord(u16 index)
+	{ GX_TexCoord1x16(index); }
+
+void ogcwrap::gx::draw::texcoord(u8 s)
+	{ GX_TexCoord1u8(s); }
+
+void ogcwrap::gx::draw::texcoord(s8 s)
+	{ GX_TexCoord1s8(s); }
+
+void ogcwrap::gx::draw::texcoord(u16 s)
+	{ GX_TexCoord1u16(s); }
+
+void ogcwrap::gx::draw::texcoord(s16 s)
+	{ GX_TexCoord1s16(s); }
+
+void ogcwrap::gx::draw::texcoord(f32 s)
+	{ GX_TexCoord1f32(s); }
+
+void ogcwrap::gx::draw::texcoord(u8 s, u8 t)
+	{ GX_TexCoord2u8(s, t); }
+
+void ogcwrap::gx::draw::texcoord(s8 s, s8 t)
+	{ GX_TexCoord2s8(s, t); }
+
+void ogcwrap::gx::draw::texcoord(u16 s, u16 t)
+	{ GX_TexCoord2u16(s, t); }
+
+void ogcwrap::gx::draw::texcoord(s16 s, s16 t)
+	{ GX_TexCoord2s16(s, t); }
+
+void ogcwrap::gx::draw::texcoord(f32 s, f32 t)
+	{ GX_TexCoord2f32(s, t); }
+
 // namespace ogcwrap::gx::detail
 
 /*
@@ -1222,7 +1351,6 @@ void ogcwrap::gx::detail::GetVtxDesc(GXVtxDesc * desc)
 			desc->type = ((__gx->vcdHi >> 14) & 0b11);
 		default: [[fallthrough]];
 			break;
-	}
 }
 
 void ogcwrap::gx::detail::LoadNrmMtxIdx(u16 mtxidx, u32 pnidx)
