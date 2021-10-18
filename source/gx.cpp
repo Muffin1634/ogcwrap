@@ -5,6 +5,9 @@
 #include "wrapinclude.hpp"
 #include "gx/gx_td.hpp"
 
+// doesn't work
+// #define GX_DETAIL_IMPLEMENT
+
 /*******************************************************************************
  * function forward declarations
  */
@@ -65,7 +68,7 @@ namespace ogcwrap::gx
 	void setFieldMode(bool, bool);
 
 	void setTextureCopySource(u16, u16, u16, u16);
-	void setTextureCopyDest(u16, u16, gx_texture_format_t bool); //m1
+	void setTextureCopyDest(u16, u16, gx_texture_format_t, bool); //m1
 	void copyTexture(void *, bool);
 
 	// frame management
@@ -85,19 +88,22 @@ namespace ogcwrap::gx
 	// vertex management
 	void invalidateVertexCache(void);
 	void clearVertexDescriptors(void);
-//	void getVertexAttributeFormat();
-//	void getVertexAttributeFormatList();
+
+//	void getVertexAttributeFormat(GXVtxAttrFmt *);
+//	void getVertexAttributeFormatList(GXVtxAttrFmt *);
 	void getVertexDescriptor(GXVtxDesc *);
 	void getVertexDescriptorList(GXVtxDesc *);
+
 	void setVertexAttributeFormat(gx_vertex_format_t, gx_vertex_attribute_t, gx_vertex_component_type_t, gx_vertex_component_format_t, u8);
 	void setVertexAttributeFormatList(gx_vertex_format_t, GXVtxAttrFmt *);
 	void setVertexDescriptor(gx_vertex_attribute_t, gx_vertex_descriptor_t);
 	void setVertexDescriptorList(GXVtxDesc *);
+
 	void setArray(gx_vertex_attribute_t, void *, u8);
 
 	// color management
 	void setChannelCount(u8);
-	void setColorChannelControl(gx_color_channel_t, bool, GXColor, GXColor, u8, gx_diffuse_function_t, gx_attenuation_function_t);
+	void setColorChannelControl(gx_color_channel_t, bool, u8, u8, u8, gx_diffuse_function_t, gx_attenuation_function_t);
 	void setColorChannelAmbient(gx_color_channel_t, GXColor);
 	void setColorChannelMaterial(gx_color_channel_t, GXColor);
 
@@ -118,8 +124,8 @@ namespace ogcwrap::gx
 	void initTextureCacheRegion(GXTexRegion *, bool, void *, gx_texture_cache_size_t, void *, gx_texture_cache_size_t);
 	void initTexturePreloadRegion(GXTexRegion *, void *, u32, void *, u32);
 
-	void initTextureObject(GXTexObj *, void *, u16, u16, gx_texture_format_t, gx_clamp_mode_t, gx_clamp_mode_t, bool);
-	void initTextureObjectColorIndex(GXTexObj *, void *, u16, u16, gx_texture_format_t, gx_clamp_mode_t, gx_clamp_mode_t, bool, gx_tlut_index_t);
+	void initTextureObject(GXTexObj *, void *, u16, u16, gx_texture_format_t, gx_wrap_mode_t, gx_wrap_mode_t, bool);
+	void initTextureObjectColorIndex(GXTexObj *, void *, u16, u16, gx_texture_format_t, gx_wrap_mode_t, gx_wrap_mode_t, bool, gx_tlut_index_t);
 	void initTLUTObj(GXTlutObj *, void *, gx_tlut_entry_format_t, u16);
 	void initTLUTRegion(GXTlutRegion *, void *, u8);
 
@@ -131,7 +137,7 @@ namespace ogcwrap::gx
 	void setTextureObjectData(GXTexObj *, void *);
 	void setTextureObjectUserData(GXTexObj *, void *);
 	void setTextureObjectTLUT(GXTexObj *, gx_tlut_index_t);
-	void setTextureObjectWrap(GXTexObj *, gx_clamp_mode_t, gx_clamp_mode_t);
+	void setTextureObjectWrap(GXTexObj *, gx_wrap_mode_t, gx_wrap_mode_t);
 	void setTextureObjectLOD(GXTexObj *, gx_texture_filter_t, gx_texture_filter_t, f32, f32, f32, bool, bool, gx_max_anisotropic_filter_t);
 	void setTextureObjectLODFilter(GXTexObj *, gx_texture_filter_t, gx_texture_filter_t);
 	void setTextureObjectLODMin(GXTexObj *, f32);
@@ -141,7 +147,7 @@ namespace ogcwrap::gx
 	void setTextureObjectLODEdge(GXTexObj *, bool);
 	void setTextureObjectLODMaxAniso(GXTexObj *, gx_max_anisotropic_filter_t);
 
-	void getTextureObjectAll(GXTexObj *, void * *, u8 *, u8 *, u8 *, u8 *, u16 *, u16 *);
+	void getTextureObjectAll(GXTexObj *, void * *, u16 *, u16 *,u8 *, u8 *, u8 *, u8 *);
 	void * getTextureObjectUserData(GXTexObj *);
 	void * getTextureObjectData(GXTexObj *);
 	u32 getTextureObjectFormat(GXTexObj *);
@@ -157,7 +163,7 @@ namespace ogcwrap::gx
 
 	// texture environment management
 	void setTEVStageCount(u8);
-	void setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_generation_type_t, gx_texture_map_index_t, gx_color_channel_t); //m5
+	void setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_index_t, gx_texture_map_index_t, gx_color_channel_t); //m5
 	void setTEVOp(gx_tev_stage_t, gx_tev_combiner_equation_t);
 	void setTEVColor(gx_tev_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
 	void setTEVColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
@@ -170,8 +176,8 @@ namespace ogcwrap::gx
 	void setTEVKColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
 	void selectTEVKColor(gx_tev_stage_t, gx_tev_constant_color_selection_t);
 	void selectTEVKAlpha(gx_tev_stage_t, gx_tev_constant_alpha_selection_t);
-	void setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t); //m3
-	void setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t); //m4
+	void setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t, gx_tev_swap_table_index_t); //m3
+	void setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t, gx_tev_color_channel_t, gx_tev_color_channel_t, gx_tev_color_channel_t); //m4
 
 	void setTEVDirect(gx_tev_stage_t);
 	void setTEVIndirect(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_format_t, gx_indirect_texture_bias_t, gx_indirect_texture_matrix_t, gx_indirect_texture_wrap_t, gx_indirect_texture_wrap_t, bool, bool, gx_indirect_texture_alpha_bump_t);
@@ -181,7 +187,7 @@ namespace ogcwrap::gx
 	void setIndirectStageCount(u8);
 	void setIndirectTextureOrder(gx_indirect_texture_stage_t, gx_texture_coordinate_index_t, gx_texture_map_index_t);
 	void setIndirectTextureCoordScale(gx_indirect_texture_stage_t, gx_indirect_texture_scale_t, gx_indirect_texture_scale_t);
-	void setIndirectTextureMatrix(gx_indirect_texture_matrix_t, Mtx23 *, s8);
+	void setIndirectTextureMatrix(gx_indirect_texture_matrix_t, f32[2][3], s8);
 	void setIndirectTextureBumpST(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_matrix_t);
 	void setIndirectTextureBumpXYZ(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_matrix_t);
 
@@ -190,7 +196,7 @@ namespace ogcwrap::gx
 	void loadLightObjectIndex(u32, gx_light_index_t);
 
 	void setLightPosition(GXLightObj *, f32, f32, f32);
-	void setLightPosition(GXLightObj *, guPos);
+	void setLightPosition(GXLightObj *, guVector);
 	void setLightDirection(GXLightObj *, f32, f32, f32);
 	void setLightDirection(GXLightObj *, guVector);
 	void setLightColor(GXLightObj *, GXColor);
@@ -208,18 +214,18 @@ namespace ogcwrap::gx
 	void setLightSpot(GXLightObj *, f32, gx_spot_illumination_function_t);
 
 	// matrices
-//	void matrixIndex(u8 index);
-	void setCurrentMatrix(u32);
+	void matrixIndex(u8);
+	void setCurrentMatrix(gx_position_normal_matrix_index_t);
 
 	void loadProjectionMatrix(Mtx44, gx_projection_type_t);
-	void loadPosMtxImm(Mtx, u32 pnidx);
-	void loadPosMtxIdx(u16 mtxidx, u32);
-	void loadNrmMtxImm(Mtx, u32);
-	void loadNrmMtxIdx(u16, u32);
-	void loadNrmMtxImm3x3(Mtx33, u32);
-	void loadNrmMtxIdx3x3(u16, u32);
-	void loadTexMtxImm(Mtx, u32, u8 type);
-	void loadTexMtxIdx(u16, u32, u8);
+	void loadPosMtxImm(Mtx, gx_position_normal_matrix_index_t);
+	void loadPosMtxIdx(u16, gx_position_normal_matrix_index_t);
+	void loadNrmMtxImm(Mtx, gx_position_normal_matrix_index_t);
+	void loadNrmMtxIdx(u16, gx_position_normal_matrix_index_t);
+	void loadNrmMtxImm3x3(Mtx33, gx_position_normal_matrix_index_t);
+	void loadNrmMtxIdx3x3(u16, gx_position_normal_matrix_index_t);
+	void loadTexMtxImm(Mtx, gx_texture_matrix_index_t, gx_texture_matrix_type_t);
+	void loadTexMtxIdx(u16, gx_texture_matrix_index_t, gx_texture_matrix_type_t);
 
 	// breakpoint
 	void enableBreakPoint(void *);
@@ -253,7 +259,7 @@ namespace ogcwrap::gx
 	void peekZ(u16, u16, u32 *);
 
 	// miscellaneous
-	void setMisc(u32, u32);
+	void setMisc(gx_misc_token_t, u32);
 
 	void getGPStatus(u8 *, u8 *, u8 *, u8 *, u8 *);
 	u32 readClksPerVtx(void);
@@ -362,10 +368,12 @@ namespace ogcwrap::gx
 
 	namespace detail
 	{
-		GetVtxAttr(gx_vertex_format_t * format);
-		GetVtxAttrv(gx_vertex_format_t * fmtlist);
+		void GetVtxAttrFmt(GXVtxAttrFmt *);
+//		void GetVtxAttrFmtv(GXVtxAttrFmt *);
 
-		GetVtxDesc(GXVtxDesc * desc);
+		void GetVtxDesc(GXVtxDesc *);
+
+		void LoadNrmMtxIdx(u16, u32);
 	}
 }
 
@@ -436,8 +444,8 @@ f32 ogcwrap::gx::getYScaleFactor(u16 efbHeight, u16 xfbHeight)
 u32 ogcwrap::gx::setDisplayCopyYScale(f32 scale)
 	{ return GX_SetDispCopyYScale(scale); }
 
-u32 ogcwrap::gx::setDisplayCopyYScale(u16 efbHeight, xfbHeight)
-	{ return GX_SetDispCopyYScale(GX_GetYScaleFactor(efbheight, xbheight)); }
+u32 ogcwrap::gx::setDisplayCopyYScale(u16 efbHeight, u16 xfbHeight)
+	{ return GX_SetDispCopyYScale(GX_GetYScaleFactor(efbHeight, xfbHeight)); }
 
 void ogcwrap::gx::setDisplayCopySource(u16 left, u16 top, u16 width, u16 height)
 	{ GX_SetDispCopySrc(left, top, width, height); }
@@ -454,8 +462,8 @@ void ogcwrap::gx::setDisplayCopyFrame2Field(gx_copy_mode_t mode)
 void ogcwrap::gx::setCopyClamp(gx_clamp_mode_t mode)
 	{ GX_SetCopyClamp(mcast(u8, mode)); }
 
-void ogcwrap::gx::setCopyFilter(bool aa_status, u8 samplepattern[12][2], bool vf_status, u8 vfilter[7])
-	{ GX_SetCopyFilter(aa_status, samplepattern, vf_status, vfilter); }
+void ogcwrap::gx::setCopyFilter(bool aaStatus, u8 samplePattern[12][2], bool vfStatus, u8 vfilter[7])
+	{ GX_SetCopyFilter(aaStatus, samplePattern, vfStatus, vfilter); }
 
 void ogcwrap::gx::setCopyClear(GXColor color, u32 z)
 	{ GX_SetCopyClear(color, z); }
@@ -469,8 +477,8 @@ void ogcwrap::gx::setViewport(f32 left, f32 top, f32 width, f32 height, f32 near
 void ogcwrap::gx::setViewportJitter(f32 left, f32 top, f32 width, f32 height, f32 near, f32 far, gx_next_field_t next)
 	{ GX_SetViewportJitter(left, top, width, height, near, far, mcast(u32, next)); }
 
-void ogcwrap::gx::adjustForOverscan(GXRModeObj * rm_in, GXRModeObj * rm_out, u16 htrim, u16 vtrim)
-	{ GX_AdjustForOverscan(rm_in, rm_out, htim, vtrim); }
+void ogcwrap::gx::adjustForOverscan(GXRModeObj * rmIn, GXRModeObj * rmOut, u16 hTrim, u16 vTrim)
+	{ GX_AdjustForOverscan(rmIn, rmOut, hTrim, vTrim); }
 
 void ogcwrap::gx::setScissor(u16 top, u16 left, u16 width, u16 height)
 	{ GX_SetScissor(top, left, width, height); }
@@ -481,17 +489,17 @@ void ogcwrap::gx::setScissorBoxOffset(s16 xOffset, s16 yOffset)
 void ogcwrap::gx::setColorUpdate(bool enable)
 	{ GX_SetColorUpdate(enable); }
 
-void ogcwrap::gx::setColorUpdate(bool color_enable, bool alpha_enable)
+void ogcwrap::gx::setColorUpdate(bool colorEnable, bool alphaEnable)
 {
-	GX_SetColorUpdate(color_enable);
-	GX_SetAlphaUpdate(alpha_enable);
+	GX_SetColorUpdate(colorEnable);
+	GX_SetAlphaUpdate(alphaEnable);
 }
 
 void ogcwrap::gx::setAlphaUpdate(bool enable)
 	{ GX_SetAlphaUpdate(enable); }
 
-void ogcwrap::gx::setPixelFormat(gx_pixel_format_t pixelfmt, gx_z_format_t zfmt)
-	{ GX_SetPixelFmt(mcast(u8, pixelfmt), mcast(u8, zfmt)); }
+void ogcwrap::gx::setPixelFormat(gx_pixel_format_t pixelFmt, gx_z_format_t zFmt)
+	{ GX_SetPixelFmt(mcast(u8, pixelFmt), mcast(u8, zFmt)); }
 
 void ogcwrap::gx::setDestAlpha(bool enable, u8 alpha)
 	{ GX_SetDstAlpha(enable, alpha); }
@@ -500,7 +508,7 @@ void ogcwrap::gx::setFieldMask(bool even, bool odd)
 	{ GX_SetFieldMask(even, odd); }
 
 void ogcwrap::gx::setFieldMode(bool field, bool half_aspect)
-	{ GX_SetFieldMode(field, half_aspect); }
+	{ GX_SetFieldMode(field, halfAspect); }
 
 void ogcwrap::gx::setTextureCopySource(u16 left, u16 top, u16 width, u16 height)
 	{ GX_SetTexCopySrc(left, top, width, height); }
@@ -514,9 +522,6 @@ void ogcwrap::gx::copyTexture(void * dest, bool clear)
 void ogcwrap::gx::abortFrame(void)
 	{ GX_AbortFrame(); }
 
-u16 ogcwrap::gx::getDrawDone(void)
-	{ return GX_GetDrawDone(); }
-
 void ogcwrap::gx::setDrawDone(void)
 	{ GX_SetDrawDone(); }
 
@@ -524,7 +529,7 @@ void ogcwrap::gx::waitDrawDone(void)
 	{ GX_WaitDrawDone(); }
 
 void ogcwrap::gx::syncPixelMode(void)
-	{ GX_SyncPixelMode(); }
+	{ GX_PixModeSync(); }
 
 void ogcwrap::gx::readBoundingBox(u16 * top, u16 * bottom, u16 * left, u16 * right)
 	{ GX_ReadBoundingBox(top, bottom, left, right); }
@@ -532,8 +537,8 @@ void ogcwrap::gx::readBoundingBox(u16 * top, u16 * bottom, u16 * left, u16 * rig
 void ogcwrap::gx::clearBoundingBox(void)
 	{ GX_ClearBoundingBox(); }
 
-void ogcwrap::gx::setFog(gx_fog_equation_t equation, f32 start, f32 end, f32 near, f32 far, GXColor color)
-	{ GX_SetFog(mcast(equation, start, end, near, far, color)); }
+void ogcwrap::gx::setFog(gx_fog_equation_t equation, f32 startZ, f32 endZ, f32 nearZ, f32 farZ, GXColor color)
+	{ GX_SetFog(mcast(u8, equation), start, end, near, far, color); }
 
 void ogcwrap::gx::setFogColor(GXColor color)
 	{ GX_SetFogColor(color); }
@@ -547,6 +552,22 @@ void ogcwrap::gx::invalidateVertexCache(void)
 void ogcwrap::gx::clearVertexDescriptors(void)
 	{ GX_ClearVtxDesc(); }
 
+/*
+void ogcwrap::gx::getVertexAttributeFormat(GXVtxAttrFmt * fmt)
+	{ ogcwrap::gx::detail::GetVtxAttrFmt(fmt); }
+*/
+
+/*
+void ogcwrap::gx::getVertexAttributeFormatList(GXVtxAttrFmt * fmtlist)
+	{ ogcwrap::gx::detail::GetVtxAttrFmtv(fmtlist); }
+*/
+
+void ogcwrap::gx::getVertexDescriptor(GXVtxDesc * desc)
+	{ ogcwrap::gx::detail::GetVtxDesc(desc); }
+
+void ogcwrap::gx::getVertexDescriptorList(GXVtxDesc * desclist)
+	{ GX_GetVtxDescv(desclist); }
+
 void ogcwrap::gx::setVertexAttributeFormat(gx_vertex_format_t format, gx_vertex_attribute_t attr, gx_vertex_component_type_t comptype, gx_vertex_component_format_t compfmt, u8 fraction_bits)
 	{ GX_SetVtxAttrFmt(mcast(u8, format), mcast(u32, attr), mcast(u32, comptype), mcast(u32, compfmt), fraction_bits); }
 
@@ -557,32 +578,16 @@ void ogcwrap::gx::setVertexDescriptor(gx_vertex_attribute_t attr, gx_vertex_desc
 	{ GX_SetVtxDesc(mcast(u8, attr), mcast(u8,type)); }
 
 void ogcwrap::gx::setVertexDescriptorList(GXVtxDesc * desclist)
-	{ GX_SetVtxDescv(desc_list); }
-
-/*
-void ogcwrap::gx::getVertexAttributeFormat()
-	{}
-*/
-
-/*
-void ogcwrap::gx::getVertexAttributeFormatList()
-	{}
-*/
-
-void ogcwrap::gx::getVertexDescriptor(GXVtxDesc * desc)
-	{ ogcwrap::gx::detail::GetVtxDesc(desc); }
-
-void ogcwrap::gx::getVertexDescriptorList(GXVtxDesc * desclist)
-	{ GX_GetVtxDescv(desclist); }
+	{ GX_SetVtxDescv(desclist); }
 
 void ogcwrap::gx::setArray(gx_vertex_attribute_t attr, void * array, u8 stride)
 	{ GX_SetArray(mcast(u8, attr), array, stride); }
 
 void ogcwrap::gx::setChannelCount(u8 count)
-	{ GX_SetChanCount(count); }
+	{ GX_SetNumChans(count); }
 
-void ogcwrap::gx::setColorChannelControl(gx_color_channel_t channel, bool light_enable, GXColor ambient, GXColor material, u8 lights, gx_diffuse_function_t diff, gx_attenuation_function_t attn)
-	{ GX_SetChanCtrl(mcast(s32, channel), light_enable, ambient, material, lights, mcast(u8, diff), mcast(u8, attn)); }
+void ogcwrap::gx::setColorChannelControl(gx_color_channel_t channel, bool lightEnable, u8 ambient, u8 material, u8 lights, gx_diffuse_function_t diff, gx_attenuation_function_t attn)
+	{ GX_SetChanCtrl(mcast(s32, channel), lightEnable, ambient, material, lights, mcast(u8, diff), mcast(u8, attn)); }
 
 void ogcwrap::gx::setColorChannelAmbient(gx_color_channel_t channel, GXColor color)
 	{ GX_SetChanAmbColor(mcast(s32, channel), color); }
@@ -624,20 +629,21 @@ void ogcwrap::gx::setZTexture(gx_z_texture_operator_t op, gx_z_texture_format_t 
 void ogcwrap::gx::setZCompLoc(gx_z_buffer_time_t time)
 	{ GX_SetZCompLoc(mcast(u8, time)); }
 
-void initTextureCacheRegion(GXTexRegion * region, bool is32bmip, void * texmemEven, gx_texture_cache_size_t sizeEven, void * texmemOdd, gx_texture_cache_size_t sizeOdd)
+void ogcwrap::gx::initTextureCacheRegion(GXTexRegion * region, bool is32bmip, void * texmemEven, gx_texture_cache_size_t sizeEven, void * texmemOdd, gx_texture_cache_size_t sizeOdd)
 	{ GX_InitTexCacheRegion(region, is32bmip, mcast(u32, texmemEven), mcast(u8, sizeEven), mcast(u32, texmemOdd), mcast(u8, sizeOdd)); }
 
-void initTexturePreloadRegion(GXTexRegion * region, void * texmemEven, u32 sizeEven, void * texmemOdd, u32 sizeOdd);
+void ogcwrap::gx::initTexturePreloadRegion(GXTexRegion * region, void * texmemEven, u32 sizeEven, void * texmemOdd, u32 sizeOdd)
 	{ GX_InitTexPreloadRegion(region, mcast(u32, texmemEven), sizeEven, mcast(u32, texmemOdd), sizeOdd); }
 
-void ogcwrap::gx::initTextureObject(GXTexObj *			obj,
-									void *				imagebuf,
-									u16					width,
-									u16					height,
-									gx_texture_format_t	format,
-									gx_wrap_mode_t		wrapS,
-									gx_wrap_mode_t		wrapT,
-									bool				trilinear)
+void ogcwrap::gx::initTextureObject(
+	GXTexObj *			obj,
+	void *				imagebuf,
+	u16					width,
+	u16					height,
+	gx_texture_format_t	format,
+	gx_wrap_mode_t		wrapS,
+	gx_wrap_mode_t		wrapT,
+	bool				trilinear)
 {
 	GX_InitTexObj(obj,
 				  imagebuf,
@@ -675,7 +681,7 @@ void ogcwrap::gx::initTLUTObj(GXTlutObj * tlut, void * addr, gx_tlut_entry_forma
 	{ GX_InitTlutObj(tlut, addr, mcast(u8, format), entries); }
 
 void ogcwrap::gx::initTLUTRegion(GXTlutRegion * region, void * addr, u8 size)
-	{ GX_InitTlutRegion(region, addr, size); }
+	{ GX_InitTlutRegion(region, mcast(u32, addr), size); }
 
 void ogcwrap::gx::preloadTexture(GXTexObj * obj, GXTexRegion * region)
 	{ GX_PreloadEntireTexture(obj, region); }
@@ -684,7 +690,7 @@ void ogcwrap::gx::loadTextureObject(GXTexObj * obj, gx_texture_map_index_t index
 	{ GX_LoadTexObj(obj, mcast(u8, index)); }
 
 void ogcwrap::gx::loadTLUT(GXTlutObj * tlut, gx_tlut_index_t index)
-	{ GX_LoadTLUT(tlut, mcast(u8, index)); }
+	{ GX_LoadTlut(tlut, mcast(u8, index)); }
 
 void ogcwrap::gx::loadPreloadedTextureObject(GXTexObj * obj, GXTexRegion * region, gx_texture_map_index_t index)
 	{ GX_LoadTexObjPreloaded(obj, region, mcast(u8, index)); }
@@ -696,7 +702,7 @@ void ogcwrap::gx::setTextureObjectUserData(GXTexObj * obj, void * data)
 	{ GX_InitTexObjUserData(obj, data); }
 
 void ogcwrap::gx::setTextureObjectTLUT(GXTexObj * obj, gx_tlut_index_t tlut)
-	{ GX_InitTexObjTlut(obj, tlut); }
+	{ GX_InitTexObjTlut(obj, mcast(u8, tlut)); }
 
 void ogcwrap::gx::setTextureObjectWrap(GXTexObj * obj, gx_wrap_mode_t wrapS, gx_wrap_mode_t wrapT)
 	{ GX_InitTexObjWrapMode(obj, mcast(u8, wrapS), mcast(u8, wrapT)); }
@@ -708,8 +714,8 @@ void ogcwrap::gx::setTextureObjectLOD(GXTexObj * obj, gx_texture_filter_t miniFi
 	GX_InitTexObjMaxLOD(obj, maxLOD);
 	GX_InitTexObjLODBias(obj, bias);
 	GX_InitTexObjBiasClamp(obj, clamp);
-	GX_InitTexObjLODEdge(obj, edgeLOD);
-	GX_InitTexObjLODMaxAniso(obj, mcast(u8, maxaniso));
+	GX_InitTexObjEdgeLOD(obj, edgeLOD);
+	GX_InitTexObjMaxAniso(obj, mcast(u8, maxaniso));
 }
 
 void ogcwrap::gx::setTextureObjectLODFilter(GXTexObj * obj, gx_texture_filter_t miniFilter, gx_texture_filter_t magniFilter)
@@ -728,13 +734,29 @@ void ogcwrap::gx::setTextureObjectLODBiasClamp(GXTexObj * obj, bool clamp)
 	{ GX_InitTexObjBiasClamp(obj, clamp); }
 
 void ogcwrap::gx::setTextureObjectLODEdge(GXTexObj * obj, bool edgeLOD)
-	{ GX_InitTexObjLODEdge(obj, edgeLOD); }
+	{ GX_InitTexObjEdgeLOD(obj, edgeLOD); }
 
-void ogcwrap::gx::setTextureObjectLODMaxAniso(GXTexObj * obj, gx_max_anisotropic_filter_t maxaniso)
-	{ GX_InitTexObjLODMaxAniso(obj, mcast(u8, maxaniso)); }
+void ogcwrap::gx::setTextureObjectLODMaxAniso(GXTexObj * obj, gx_max_anisotropic_filter_t maxAniso)
+	{ GX_InitTexObjMaxAniso(obj, mcast(u8, maxAniso)); }
 
-void ogcwrap::gx::getTextureObjectAll(GXTexObj * obj, void * * imagebuf, u16 * width, u16 * height, u8 * format, u8 * wrapS, u8 * wrapT, u8 * mipmap)
-	{ GX_GetTexObjAll(obj, imagebuf, width, height, format, wrapS, wrapT, mipmap); }
+void ogcwrap::gx::getTextureObjectAll(GXTexObj * obj,
+									  void * * imagebuf,
+									  u16 * width,
+									  u16 * height,
+									  u8 * format,
+									  u8 * wrapS,
+									  u8 * wrapT,
+									  u8 * mipmap)
+{
+	GX_GetTexObjAll(obj,
+					imagebuf,
+					width,
+					height,
+					format,
+					wrapS,
+					wrapT,
+					mipmap);
+}
 
 void * ogcwrap::gx::getTextureObjectData(GXTexObj * obj)
 	{ return GX_GetTexObjData(obj); }
@@ -749,7 +771,7 @@ u16 ogcwrap::gx::getTextureObjectHeight(GXTexObj * obj)
 	{ return GX_GetTexObjHeight(obj); }
 
 u32 ogcwrap::gx::getTextureObjectFormat(GXTexObj * obj)
-	{ return GX_GetTexObjFormat(obj); }
+	{ return GX_GetTexObjFmt(obj); }
 
 u8 ogcwrap::gx::getTextureObjectWrapS(GXTexObj * obj)
 	{ return GX_GetTexObjWrapS(obj); }
@@ -758,7 +780,7 @@ u8 ogcwrap::gx::getTextureObjectWrapT(GXTexObj * obj)
 	{ return GX_GetTexObjWrapT(obj); }
 
 u32 ogcwrap::gx::getTextureObjectMipmap(GXTexObj * obj)
-	{ return GX_GetTexObjMipmap(obj); }
+	{ return GX_GetTexObjMipMap(obj); }
 
 void ogcwrap::gx::invalidateTextureRegion(GXTexRegion * region)
 	{ GX_InvalidateTexRegion(region); }
@@ -772,7 +794,7 @@ void ogcwrap::gx::texModeSync(void)
 void ogcwrap::gx::setTEVStageCount(u8 count)
 	{ GX_SetNumTevStages(count); }
 
-void ogcwrap::gx::setTEVOrder(gx_tev_stage_t stage, gx_texture_coordinate_generation_index_t texcoord, gx_texture_map_index_t texmap, gx_color_channel_t channel)
+void ogcwrap::gx::setTEVOrder(gx_tev_stage_t stage, gx_texture_coordinate_index_t texcoord, gx_texture_map_index_t texmap, gx_color_channel_t channel)
 	{ GX_SetTevOrder(mcast(u8, stage), mcast(u8, texcoord), mcast(u8, texmap), mcast(u8, channel)); }
 
 void ogcwrap::gx::setTEVOp(gx_tev_stage_t stage, gx_tev_combiner_equation_t tevmode)
@@ -791,10 +813,10 @@ void ogcwrap::gx::setTEVAlphaIn(gx_tev_stage_t stage, gx_tev_register_input_t re
 	{ GX_SetTevAlphaIn(mcast(u8, stage), mcast(u8, regA), mcast(u8, regB), mcast(u8, regC), mcast(u8, regD)); }
 
 void ogcwrap::gx::setTEVColorOp(gx_tev_stage_t stage, gx_tev_combiner_operator_t tevop, gx_tev_bias_t bias, gx_tev_scale_t scale, bool clamp, gx_tev_register_t tevreg)
-	{ GX_SetTevColorOp(mcast(u8, stage), mcast(u8, tevop), mcast(u8, bias), mcast(u8, scale), clamp, tevreg); }
+	{ GX_SetTevColorOp(mcast(u8, stage), mcast(u8, tevop), mcast(u8, bias), mcast(u8, scale), clamp, mcast(u8, tevreg)); }
 
 void ogcwrap::gx::setTEVAlphaOp(gx_tev_stage_t stage, gx_tev_combiner_operator_t tevop, gx_tev_bias_t bias, gx_tev_scale_t scale, bool clamp, gx_tev_register_t tevreg)
-	{ GX_SetTevAlphaOp(mcast(u8, stage), mcast(u8, tevop), mcast(u8, bias), mcast(u8, scale), clamp, tevreg); }
+	{ GX_SetTevAlphaOp(mcast(u8, stage), mcast(u8, tevop), mcast(u8, bias), mcast(u8, scale), clamp, mcast(u8, tevreg)); }
 
 void ogcwrap::gx::setTEVAlphaCompare(gx_comparison_t lcomp, u8 lref, gx_alpha_operation_t alphaop, gx_comparison_t rcomp, u8 rref)
 	{ GX_SetAlphaCompare(mcast(u8, lcomp), lref, mcast(u8, alphaop), mcast(u8, rcomp), rref); }
@@ -858,8 +880,8 @@ void ogcwrap::gx::setTEVIndirectTile(gx_tev_stage_t						stage,
 					 mcast(u8, indstage),
 					 width,
 					 height,
-					 spacingX,
-					 spacingY,
+					 repeatX,
+					 repeatY,
 					 mcast(u8, format),
 					 mcast(u8, mtx),
 					 mcast(u8, bias),
@@ -878,8 +900,8 @@ void ogcwrap::gx::setIndirectTextureOrder(gx_indirect_texture_stage_t indstage, 
 void ogcwrap::gx::setIndirectTextureCoordScale(gx_indirect_texture_stage_t indstage, gx_indirect_texture_scale_t indscaleS, gx_indirect_texture_scale_t indscaleT)
 	{ GX_SetIndTexCoordScale(mcast(u8, indstage), mcast(u8, indscaleS), mcast(u8, indscaleT)); }
 
-void ogcwrap::gx::setIndirectTextureMatrix(gx_indirect_texture_matrix_t indmtx, Mtx23 * offset, s8 scaleExp)
-	{ GX_SetIndTexMatrix(mcast(u8, indmtx), *offset, scaleExp); }
+void ogcwrap::gx::setIndirectTextureMatrix(gx_indirect_texture_matrix_t indmtx, f32 offset[2][3], s8 scaleExp)
+	{ GX_SetIndTexMatrix(mcast(u8, indmtx), offset, scaleExp); }
 
 void ogcwrap::gx::setIndirectTextureBumpST(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx)
 	{ GX_SetTevIndBumpST(mcast(u8, stage), mcast(u8, indstage), mcast(u8, indmtx)); }
@@ -936,13 +958,13 @@ void ogcwrap::gx::setSpecularDirection(GXLightObj * light, guVector normal)
 	{ GX_InitSpecularDir(light, normal.x, normal.y, normal.z); }
 
 void ogcwrap::gx::setLightSpot(GXLightObj * light, f32 angle, gx_spot_illumination_function_t spotfn)
-	{ GX_InitLightSpot(lightobj, angle, mcast(u8, spotfn)); }
+	{ GX_InitLightSpot(light, angle, mcast(u8, spotfn)); }
 
 void ogcwrap::gx::matrixIndex(u8 index)
 	{ GX_MatrixIndex1x8(index); }
 
 void ogcwrap::gx::setCurrentMatrix(gx_position_normal_matrix_index_t index)
-	{ GX_SetCurrentMatrix(mcast(u32, index)); }
+	{ GX_SetCurrentMtx(mcast(u32, index)); }
 
 void ogcwrap::gx::loadProjectionMatrix(Mtx44 mtx, gx_projection_type_t type)
 	{ GX_LoadProjectionMtx(mtx, mcast(u8, type)); }
@@ -957,7 +979,7 @@ void ogcwrap::gx::loadNrmMtxImm(Mtx mtx, gx_position_normal_matrix_index_t index
 	{ GX_LoadNrmMtxImm(mtx, mcast(u32, index)); }
 
 void ogcwrap::gx::loadNrmMtxIdx(u16 mtxidx, gx_position_normal_matrix_index_t index)
-	{ ogcwrap::gx::detail::LoadNrmMtxIdx(mtxidx, index); }
+	{ ogcwrap::gx::detail::LoadNrmMtxIdx(mtxidx, mcast(u32, index)); }
 
 void ogcwrap::gx::loadNrmMtxImm3x3(Mtx33 mtx, gx_position_normal_matrix_index_t index)
 	{ GX_LoadNrmMtxImm3x3(mtx, mcast(u32, index)); }
@@ -996,7 +1018,7 @@ void ogcwrap::gx::setClipMode(bool enable)
 	{ GX_SetClipMode(enable); }
 
 void ogcwrap::gx::setDitherMode(bool enable)
-	{ GX_SetDitherMode(enable); }
+	{ GX_SetDither(enable); }
 
 void ogcwrap::gx::setPokeColor(bool enable)
 	{ GX_PokeColorUpdate(enable); }
@@ -1049,40 +1071,40 @@ u32 ogcwrap::gx::getOverflowCount(void)
 u32 ogcwrap::gx::resetOverflowCount(void)
 	{ return GX_ResetOverflowCount(); }
 
-lwp_t getCurrentThread(void)
-	{ return GX_GetCurrentThread(); }
+lwp_t ogcwrap::gx::getCurrentThread(void)
+	{ return GX_GetCurrentGXThread(); }
 
-lwp_t setCurrentThread(void)
-	{ return GX_SetCurrentThread(); }
+lwp_t ogcwrap::gx::setCurrentThread(void)
+	{ return GX_SetCurrentGXThread(); }
 
-volatile void * redirectWriteGatherPipe(void * tempPipe)
+volatile void * ogcwrap::gx::redirectWriteGatherPipe(void * tempPipe)
 	{ return GX_RedirectWriteGatherPipe(tempPipe); }
 
-void restoreWriteGatherPipe(void)
+void ogcwrap::gx::restoreWriteGatherPipe(void)
 	{ GX_RestoreWriteGatherPipe(); }
 
-void setGPMetric(gx_performance_counter_0_metric_t pc0metric, gx_performance_counter_1_metric_t pc1metric)
+void ogcwrap::gx::setGPMetric(gx_performance_counter_0_metric_t pc0metric, gx_performance_counter_1_metric_t pc1metric)
 	{ GX_SetGPMetric(mcast(u32, pc0metric), mcast(u32, pc1metric)); }
 
-void readGPMetric(u32 * pc0metric, u32 * pc1metric)
+void ogcwrap::gx::readGPMetric(u32 * pc0metric, u32 * pc1metric)
 	{ GX_ReadGPMetric(pc0metric, pc1metric); }
 
-void clearGPMetric(void)
+void ogcwrap::gx::clearGPMetric(void)
 	{ GX_ClearGPMetric(); }
 
-void initXfRasMetric(void)
+void ogcwrap::gx::initXfRasMetric(void)
 	{ GX_InitXfRasMetric(); }
 
-void readXfRasMetric(u32 * xfWaitIn, u32 * xfWaitOut, u32 * rasBusy, u32 * clocks)
+void ogcwrap::gx::readXfRasMetric(u32 * xfWaitIn, u32 * xfWaitOut, u32 * rasBusy, u32 * clocks)
 	{ GX_ReadXfRasMetric(xfWaitIn, xfWaitOut, rasBusy, clocks); }
 
-void setVCacheMetric(gx_vertex_cache_metric_t vtxMetric)
-	{ GX_SetVCacheMetric(vtxMetric); }
+void ogcwrap::gx::setVCacheMetric(gx_vertex_cache_metric_t vtxMetric)
+	{ GX_SetVCacheMetric(mcast(u32, vtxMetric)); }
 
-void readVCacheMetric(u32 * check, u32 * miss, u32 * stall)
+void ogcwrap::gx::readVCacheMetric(u32 * check, u32 * miss, u32 * stall)
 	{ GX_ReadVCacheMetric(check, miss, stall); }
 
-void clearVCacheMetric(void)
+void ogcwrap::gx::clearVCacheMetric(void)
 	{ GX_ClearVCacheMetric(); }
 
 // namespace ogcwrap::gx::draw
@@ -1102,7 +1124,8 @@ void ogcwrap::gx::draw::setDrawSync(u16 token)
 void ogcwrap::gx::draw::beginDisplayList(void * buf, u32 bufsize)
 	{ GX_BeginDispList(buf, bufsize); }
 
-u32 ogcwrap::gx::draw::endDisplayList(void) [[nodiscard("return value used as input in callDisplayList")]]
+[[nodiscard("return value used as input in callDisplayList")]]
+u32 ogcwrap::gx::draw::endDisplayList(void)
 	{ return GX_EndDispList(); }
 
 void ogcwrap::gx::draw::callDisplayList(void * list, u32 listSize)
@@ -1216,23 +1239,70 @@ void ogcwrap::gx::draw::texcoord(s16 s, s16 t)
 void ogcwrap::gx::draw::texcoord(f32 s, f32 t)
 	{ GX_TexCoord2f32(s, t); }
 
+#ifdef GX_DETAIL_IMPLEMENT
+
 // namespace ogcwrap::gx::detail
 
+
+void ogcwrap::gx::detail::GetVtxAttrFmt(u8 slot, GXVtxAttrFmt * fmt)
+{
+	extern __gx_regdef * __gx;
+	u8 vat = (slot & 0b0111);
+
+	u32 gxvals[3] = {__gx->VAT0reg[vat], __gx->VAT1reg[vat], __gx->VAT2reg[vat]};
+
+	fmt->comptype = ( gxvals[0]        & 0x01) |
+					( gxvals[0] >> 9         ) |
+					((gxvals[0] >> 13) & 0x01) |
+					((gxvals[0] >> 17) & 0x01) |
+					((gxvals[0] >> 21) & 0x01) |
+					( gxvals[1]        & 0x01) |
+					((gxvals[1] >> 9 ) & 0x01) |
+					((gxvals[1] >> 18) & 0x01) |
+					((gxvals[1] >> 27) & 0x01) |
+					((gxvals[2] >> 5 ) & 0x01) |
+					((gxvals[2] >> 14) & 0x01) |
+					((gxvals[2] >> 23) & 0x01);
+
+	fmt->comptype = ((gxvals[0] >> 1 ) & 0x07) |
+					((gxvals[0] >> 10) & 0x07) |
+					((gxvals[0] >> 14) & 0x07) |
+					((gxvals[0] >> 18) & 0x07) |
+					((gxvals[0] >> 22) & 0x07) |
+					((gxvals[1] >> 1 ) & 0x07) |
+					((gxvals[1] >> 10) & 0x07) |
+					((gxvals[1] >> 19) & 0x07) |
+					((gxvals[1] >> 28) & 0x07) |
+					((gxvals[2] >> 6 ) & 0x07) |
+					((gxvals[0] >> 15) & 0x07) |
+					((gxvals[0] >> 24) & 0x07);
+
+	if (gxvals[0] & (1 << 62))
+	{
+		fmt->frac = ((gxvals[0] >> 4 ) & 0x1f) | // 31, mask out all but first 5 bits
+					((gxvals[0] >> 25) & 0x1f) |
+					((gxvals[1] >> 4 ) & 0x1f) |
+					((gxvals[1] >> 13) & 0x1f) |
+					((gxvals[1] >> 22) & 0x1f) |
+					( gxvals[2]        & 0x1f) |
+					((gxvals[2] >> 9 ) & 0x1f) |
+					((gxvals[2] >> 18) & 0x1f) |
+					((gxvals[2] >> 27) & 0x1f);
+	}
+	else
+		{ fmt->frac = 0; }
+	}
+}
+
+
 /*
-void ogcwrap::gx::detail::GetVtxAttr(gx_vertex_format_t * format)
+void ogcwrap::gx::detail::GetVtxAttrFmtv(GXVtxAttrFmt * fmtlist)
 {
 	extern __gx_regdef * __gx;
 }
 */
 
-/*
-void ogcwrap::gx::detail::GetVtxAttrv(gx_vertex_format_t * fmtlist)
-{
-	extern __gx_regdef * __gx;
-}
-*/
-
-void ogcwrap::gx::detail::GetVtxDesc(GXVtxDesc * desc)
+void ogcwrap::gx::detail::GetVtxDesc(u8 attr, GXVtxDesc * desc)
 {
 	// damn near verbatim from libogc
 	extern __gx_regdef * __gx;
@@ -1351,6 +1421,7 @@ void ogcwrap::gx::detail::GetVtxDesc(GXVtxDesc * desc)
 			desc->type = ((__gx->vcdHi >> 14) & 0b11);
 		default: [[fallthrough]];
 			break;
+	}
 }
 
 void ogcwrap::gx::detail::LoadNrmMtxIdx(u16 mtxidx, u32 pnidx)
@@ -1360,3 +1431,5 @@ void ogcwrap::gx::detail::LoadNrmMtxIdx(u16 mtxidx, u32 pnidx)
 	wgPipe->U8 = 0x28; // is this correct?
 	wgPipe->U32 = (mtxidx << 16) | (1 << 15) | ((1 << 10) | pnidx * 3);
 }
+
+#endif // GX_DETAIL_IMPLEMENT

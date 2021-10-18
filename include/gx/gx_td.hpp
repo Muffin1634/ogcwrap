@@ -212,7 +212,7 @@ namespace ogcwrap::gx
 
 		Normal,
 		Binormal,
-		Tangent
+		Tangent,
 
 		Color0 = 19,
 		Color1,
@@ -501,7 +501,7 @@ namespace ogcwrap::gx
 	typedef enum struct gx_tev_bias_t
 	{
 		MinusHalfBias = 2,
-		ZeroBias = 0
+		ZeroBias = 0,
 		PlusHalfBias,
 
 		MaxTEVBias = 3
@@ -604,6 +604,14 @@ namespace ogcwrap::gx
 
 		MaxSwapTable
 	} TEVSwapTableIndex;
+
+	typedef enum struct gx_tev_color_channel_t
+	{
+		Red,
+		Green,
+		Blue,
+		Alpha
+	} TEVColorChannel;
 
 	// indirect textures, as a subset
 

@@ -30,7 +30,7 @@ OBJFILES_C				:=	$(SRCFILES_C:.c=.o)
 OBJFILES_CPP			:=	$(SRCFILES_CPP:.cpp=.o)
 OBJFILES				:=	$(OBJFILES_C) $(OBJFILES_CPP)
 
-OBJFILES_EXCLUDE		:=	debug gx
+OBJFILES_EXCLUDE		:=	debug
 OBJFILES_FINAL			:=	$(filter-out $(foreach file,$(OBJFILES_EXCLUDE),$(file).o),$(OBJFILES))
 
 INCLUDE_LOCAL			:=	$(DIRS_INCLUDE)
