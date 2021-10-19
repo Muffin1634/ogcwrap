@@ -10,7 +10,7 @@
 
 namespace ogcwrap::video
 {
-	// library management
+	// subsystem management
 	void init(void);
 
 	// gethods

@@ -11,7 +11,7 @@
 
 namespace ogcwrap::asnd
 {
-	// library management
+	// subsystem management
 	void init(void);
 	void deinit(void);
 

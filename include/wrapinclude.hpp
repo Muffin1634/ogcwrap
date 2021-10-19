@@ -28,6 +28,7 @@
 // gu
 
 // gx
+#include <ogc/gx_struct.h>
 #include <ogc/lwp.h>
 
 // cache
@@ -35,6 +36,8 @@
 // console
 
 // wiilaunch
+
+// aram/arqmgr
 
 // macros
 #define mcast(type, val)	(type)(val)

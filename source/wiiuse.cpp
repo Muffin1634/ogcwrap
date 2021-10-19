@@ -11,7 +11,7 @@
 
 namespace ogcwrap::wiiuse
 {
-	// library management
+	// subsystem management
 //	const char * version(void);
 	wiimote_t * * init(u8);
 	wiimote_t * * init(u8, wii_event_cb);

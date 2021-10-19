@@ -10,9 +10,9 @@
 
 namespace ogcwrap
 {
-	namespace system
+	namespace system // not double nesting namespace here is INTENTIONAL!!!
 	{
-		// management
+		// subsystem management
 		void reset(SystemResetMode mode);
 
 		// gethods

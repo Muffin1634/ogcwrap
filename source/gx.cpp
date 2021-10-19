@@ -14,7 +14,7 @@
 
 namespace ogcwrap::gx
 {
-	// library management
+	// subsystem management
 	GXFifoObj * init(void *, u32);
 
 	// callbacks
@@ -1239,10 +1239,9 @@ void ogcwrap::gx::draw::texcoord(s16 s, s16 t)
 void ogcwrap::gx::draw::texcoord(f32 s, f32 t)
 	{ GX_TexCoord2f32(s, t); }
 
-#ifdef GX_DETAIL_IMPLEMENT
-
 // namespace ogcwrap::gx::detail
 
+#ifdef GX_DETAIL_IMPLEMENT
 
 void ogcwrap::gx::detail::GetVtxAttrFmt(u8 slot, GXVtxAttrFmt * fmt)
 {
@@ -1293,7 +1292,6 @@ void ogcwrap::gx::detail::GetVtxAttrFmt(u8 slot, GXVtxAttrFmt * fmt)
 		{ fmt->frac = 0; }
 	}
 }
-
 
 /*
 void ogcwrap::gx::detail::GetVtxAttrFmtv(GXVtxAttrFmt * fmtlist)

@@ -5,12 +5,13 @@
 #include <gctypes.h>
 #include <ogc/gx.h>
 #include <ogc/gx_struct.h>
+#include <ogc/lwp.h>
 
 #include "gx/gx_td.hpp"
 
 namespace ogcwrap::gx
 {
-	// library management
+	// subsystem management
 	GXFifoObj * init(void * base_addr, u32 size);
 
 	// callbacks

@@ -7,7 +7,7 @@
 
 namespace ogcwrap::wiiuse
 {
-	// library management
+	// subsystem management
 //	const char * version(void);
 	#ifndef GEKKO
 		wiimote_t * * init(u8 number);

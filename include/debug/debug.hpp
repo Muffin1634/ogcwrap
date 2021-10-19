@@ -9,7 +9,7 @@
 
 namespace ogcwrap::debug
 {
-	// library management
+	// subsystem management
 	void init(DebugDevice dev, u16 port);
 
 	// breakpoint

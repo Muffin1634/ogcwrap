@@ -11,7 +11,7 @@
 
 namespace ogcwrap::wiilaunch
 {
-	// library management
+	// subsystem management
 	wii_ret_vals_t init(void);
 
 	// return functions

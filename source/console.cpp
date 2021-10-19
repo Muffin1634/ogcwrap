@@ -11,7 +11,7 @@
 
 namespace ogcwrap::console
 {
-	// library management
+	// subsystem management
 	void init(void *, u16, u16, u16, u16, u32);
 	s32 initEx(GXRModeObj *, u16, u16, u16, u16);
 

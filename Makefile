@@ -18,7 +18,6 @@ DIRS_SOURCE				:=	source
 DIRS_INCLUDE			:=	include
 DIRS_BUILD				:=	build
 DIRS_LIB				:=	lib
-DIRS_DOXYGEN			:=	doxygen
 
 # build list of source files by extension
 SRCFILES_C				:=	$(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(dir)/*.c)))
@@ -77,13 +76,10 @@ LDFLAGS					:=	$(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 # targets
 
 # mark phony targets
-.PHONY: all deploy rebuild load clean debug doxygen
+.PHONY: all rebuild load clean debug
 
 # default target
-all: deploy doxygen
-
-# deploy target
-deploy: libwrap.a load
+all: libwrap.a load
 
 # build target
 # build: libwrap.a
@@ -127,12 +123,6 @@ debug:
 	@echo OBJFILES_FINAL: $(OBJFILES_FINAL)
 	@echo VPATH: $(VPATH)
 
-# doxygen target
-doxygen:
-	@echo Compiling doxygen
-	@cd doxygen/src && \
-	doxygen ../../Doxyfile
-
 #-------------------------------------------------------------------------------
 # generic (header+source)->object->archive rules
 
@@ -151,30 +141,3 @@ libwrap.a: $(OBJFILES_FINAL)
 		$(DIRS_LIB)/$@ \
 		$(addprefix $(DIRS_BUILD)/,$(OBJFILES_FINAL))
 	@echo done building archive
-
-#-------------------------------------------------------------------------------
-# explicit rules
-
-# .PHONY: wrapinclude.hpp
-
-# wrapinclude.hpp:
-# 	@$(CXX) \
-# 		-E include/$(notdir $@)
-# 		-o include/$(notdir $@.gch)
-# 		   $(CFLAGS) \
-# 		   $(CPPFLAGS)
-
-# wiiuse.o: wiiuse.cpp # act as .ii with .gch
-# 	@echo compiling C++ file $@
-# 	@$(CXX) -v \
-# 		-c $(DIRS_SOURCE)/$(notdir $<) \
-# 		-o $(DIRS_BUILD)/$(notdir $@) \
-# 		   $(CXXFLAGS) -Winvalid-pch \
-# 		   $(CPPFLAGS) -fdirectives-only
-
-#-------------------------------------------------------------------------------
-# list of implicit rules
-
-# C: n.o is made automatically from n.c with $(CC) -c $(CPPFLAGS) $(CFLAGS)
-# C++: n.o is made automatically from n.cc or n.cpp with $(CXX) -c $(CPPFLAGS) $(CXXFLAGS)
-# Linking a single object file: n is made automatically from n.o with $(CC) $(LDFLAGS) n.o $(LOADLIBES) $(LDLIBS)

@@ -11,7 +11,7 @@
 
 namespace ogcwrap::wpad
 {
-	// library management
+	// subsystem management
 	wpad_ret_vals_t init(void);
 	void shutdown(void);
 

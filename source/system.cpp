@@ -13,7 +13,7 @@ namespace ogcwrap
 {
 	namespace system
 	{
-		// library management
+		// subsystem management
 		void reset(sys_reset_mode_t);
 
 		// gethods

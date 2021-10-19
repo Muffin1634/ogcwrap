@@ -18,7 +18,10 @@
 #include "system/system.hpp"
 #include "aesnd/aesnd.hpp"
 #include "gu/gu.hpp"
-// #include "gx/gx.hpp"
+#include "gx/gx.hpp"
 #include "cache/cache.hpp"
+#include "console/console.hpp"
+#include "wiilaunch/wiilaunch.hpp"
+#include "aram/aram.hpp"
 
 #endif // libwrap_h

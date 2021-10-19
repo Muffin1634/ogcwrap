@@ -9,7 +9,7 @@
 
 namespace ogcwrap::wiilaunch
 {
-	// library management
+	// subsystem management
 	WLReturnValue init(void);
 
 	// return functions

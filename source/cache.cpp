@@ -56,7 +56,7 @@ namespace ogcwrap::cache
 
 	namespace l2
 	{
-		// library management
+		// subsystem management
 		void enhance(void);
 		void enable(void);
 		void disable(void);
