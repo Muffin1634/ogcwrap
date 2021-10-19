@@ -37,7 +37,7 @@ namespace ogcwrap::aram
 	namespace queue
 	{
 		// subsystem management
-		u32 init(u32, s32);
+		void init(u32, s32);
 
 		// gethods
 		u32 getZeroBuffer(void);
@@ -100,8 +100,8 @@ void ogcwrap::aram::clear(u32 flag)
 
 // namespace ogcwrap::aram::queue
 
-u32 ogcwrap::aram::queue::init(u32 buf, s32 len)
-	{ return ARQM_Init(buf, len); }
+void ogcwrap::aram::queue::init(u32 buf, s32 len)
+	{ ARQM_Init(buf, len); }
 
 u32 ogcwrap::aram::queue::getZeroBuffer(void)
 	{ return ARQM_GetZeroBuffer(); }

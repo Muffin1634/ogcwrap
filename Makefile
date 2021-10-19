@@ -86,7 +86,7 @@ all: libwrap.a load
 
 # rebuild target
 rebuild:
-	@make rebuilding library
+	@echo rebuilding library
 	@make --no-print-dir clean
 	@make --no-print-dir libwrap.a
 
@@ -109,8 +109,7 @@ clean:
 	@echo cleaning...
 	@rm -vrf \
 		$(DIRS_BUILD)/* \
-		$(DIRS_LIB)/* \
-		$(DIRS_DOXYGEN)/*
+		$(DIRS_LIB)/*
 	@echo clean successful
 
 # actual debug target

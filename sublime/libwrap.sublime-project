@@ -2,7 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "C:\\Users\\muffin\\Desktop\\code\\proj\\vanilla\\libwrap"
+			"path": ".."
 		}
 	],
 	"build_systems":
@@ -17,7 +17,7 @@
 				// make and friends
 				{
 					"name": "Build Library and Load",
-					"shell_cmd": "make deploy"
+					"shell_cmd": "make all"
 				},
 				{
 					"name": "Build Library",

@@ -507,7 +507,7 @@ void ogcwrap::gx::setDestAlpha(bool enable, u8 alpha)
 void ogcwrap::gx::setFieldMask(bool even, bool odd)
 	{ GX_SetFieldMask(even, odd); }
 
-void ogcwrap::gx::setFieldMode(bool field, bool half_aspect)
+void ogcwrap::gx::setFieldMode(bool field, bool halfAspect)
 	{ GX_SetFieldMode(field, halfAspect); }
 
 void ogcwrap::gx::setTextureCopySource(u16 left, u16 top, u16 width, u16 height)
@@ -538,7 +538,7 @@ void ogcwrap::gx::clearBoundingBox(void)
 	{ GX_ClearBoundingBox(); }
 
 void ogcwrap::gx::setFog(gx_fog_equation_t equation, f32 startZ, f32 endZ, f32 nearZ, f32 farZ, GXColor color)
-	{ GX_SetFog(mcast(u8, equation), start, end, near, far, color); }
+	{ GX_SetFog(mcast(u8, equation), startZ, endZ, nearZ, farZ, color); }
 
 void ogcwrap::gx::setFogColor(GXColor color)
 	{ GX_SetFogColor(color); }

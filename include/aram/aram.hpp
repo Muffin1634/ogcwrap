@@ -34,7 +34,7 @@ namespace ogcwrap::aram
 	namespace queue
 	{
 		// subsystem management
-		u32 init(u32 base_addr, s32 len);
+		void init(u32 base_addr, s32 len);
 
 		// gethods
 		u32 getZeroBuffer(void);
