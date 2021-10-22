@@ -41,6 +41,8 @@
 
 // irq
 
+// exi
+
 // macros
 #define mcast(type, val)	(type)(val)
 

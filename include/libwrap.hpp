@@ -24,5 +24,6 @@
 #include "wiilaunch/wiilaunch.hpp"
 #include "aram/aram.hpp"
 #include "irq/irq.hpp"
+#include "exi/exi.hpp"
 
 #endif // libwrap_h
