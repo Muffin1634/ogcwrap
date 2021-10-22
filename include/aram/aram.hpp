@@ -4,6 +4,7 @@
 
 #include <gctypes.h>
 #include <ogc/aram.h>
+#include <ogc/arqmgr.h>
 
 namespace ogcwrap::aram
 {

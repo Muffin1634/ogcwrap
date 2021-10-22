@@ -39,6 +39,8 @@
 
 // aram/arqmgr
 
+// irq
+
 // macros
 #define mcast(type, val)	(type)(val)
 

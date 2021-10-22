@@ -35,16 +35,13 @@ OBJFILES_FINAL			:=	$(filter-out $(foreach file,$(OBJFILES_EXCLUDE),$(file).o),$
 INCLUDE_LOCAL			:=	$(DIRS_INCLUDE)
 INCLUDE_SYSTEM			:=	$(DEVKITPRO)/libogc/include
 
-LD_LIBDIRS				:=	$(DIRS_LIB) $(DEVKITPRO)/libogc
-LD_LIBS					:=	wrap ogc m
-
 VPATH					:=	$(DIRS_LIB) $(DIRS_BUILD) $(DIRS_SOURCE) $(DIRS_INCLUDE) \
 							$(foreach \
 								dir,\
 								$(DIRS_INCLUDE),\
 								$(filter-out \
 									$(wildcard */*.*),\
-								$(wildcard $(dir)/*)\
+									$(wildcard $(dir)/*)\
 								)\
 							)
 
@@ -64,13 +61,9 @@ CXXFLAGS_DEBUG			:=	-save-temps
 
 CPPFLAGS_OPTIMIZATION	:=	-O2 -ftabstop=4
 
-LDFLAGS_LIBDIRS			:=	$(addprefix -L,$(LD_LIBDIRS))
-LDFLAGS_LIBS			:=	$(addprefix -l,$(LD_LIBS))
-
 CFLAGS					:=	$(CFLAGS_STANDARDS) $(CFLAGS_WARNINGS) $(CFLAGS_OPTIMIZATION) $(FLAGS_INCLUDE)
 CXXFLAGS				:=	$(CFLAGS) $(CXXFLAGS_DEBUG)
 CPPFLAGS				:=	$(CPPFLAGS_OPTIMIZATION)
-LDFLAGS					:=	$(FLAGS_INCLUDE) $(LDFLAGS_LIBDIRS) $(LDFLAGS_LIBS)
 
 #-------------------------------------------------------------------------------
 # targets
@@ -125,13 +118,13 @@ debug:
 #-------------------------------------------------------------------------------
 # generic (header+source)->object->archive rules
 
-%.o: %.cpp %.hpp
+%.o: %.cpp %.hpp %_td.hpp
 	@echo compiling C++ file $@
 	@$(CXX) \
 		-c $(DIRS_SOURCE)/$(notdir $<) \
 		-o $(DIRS_BUILD)/$(notdir $@) \
-		   $(CPPFLAGS) \
-		   $(CXXFLAGS)
+		   $(CXXFLAGS) \
+		   $(CPPFLAGS)
 
 libwrap.a: $(OBJFILES_FINAL)
 	@echo building static library archive $@

@@ -23,5 +23,6 @@
 #include "console/console.hpp"
 #include "wiilaunch/wiilaunch.hpp"
 #include "aram/aram.hpp"
+#include "irq/irq.hpp"
 
 #endif // libwrap_h
