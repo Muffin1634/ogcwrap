@@ -11,7 +11,7 @@
 
 namespace ogcwrap
 {
-	namespace system
+	namespace system // not double nesting namespace here is INTENTIONAL!!!
 	{
 		// subsystem management
 		void reset(sys_reset_mode_t);

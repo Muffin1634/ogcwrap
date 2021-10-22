@@ -29,7 +29,8 @@ OBJFILES_C				:=	$(SRCFILES_C:.c=.o)
 OBJFILES_CPP			:=	$(SRCFILES_CPP:.cpp=.o)
 OBJFILES				:=	$(OBJFILES_C) $(OBJFILES_CPP)
 
-OBJFILES_EXCLUDE		:=	debug
+OBJFILES_INPROGRESS		:=
+OBJFILES_EXCLUDE		:=	$(OBJFILES_INPROGRESS) debug
 OBJFILES_FINAL			:=	$(filter-out $(foreach file,$(OBJFILES_EXCLUDE),$(file).o),$(OBJFILES))
 
 INCLUDE_LOCAL			:=	$(DIRS_INCLUDE)
@@ -118,7 +119,7 @@ debug:
 #-------------------------------------------------------------------------------
 # generic (header+source)->object->archive rules
 
-%.o: %.cpp %.hpp %_td.hpp
+%.o: %.cpp %.hpp # %_td.hpp
 	@echo compiling C++ file $@
 	@$(CXX) \
 		-c $(DIRS_SOURCE)/$(notdir $<) \
