@@ -25,5 +25,7 @@
 #include "aram/aram.hpp"
 #include "irq/irq.hpp"
 #include "exi/exi.hpp"
+#include "dvd/dvd.hpp"
+#include "card/card.hpp"
 
 #endif // libwrap_h

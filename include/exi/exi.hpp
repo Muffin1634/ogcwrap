@@ -10,35 +10,35 @@
 namespace ogcwrap::exi
 {
 	// callback methods
-	EXICallback registerCallback(exi_channel_t chan, EXICallback cb);
+	EXICallback registerCallback(EXIChannel chan, EXICallback cb);
 
 	// gethods
-	s32 getState(exi_channel_t chan);
-	bool getID(exi_channel_t chan, exi_device_t dev, u32 * id);
+	s32 getState(EXIChannel chan);
+	bool getID(EXIChannel chan, EXIDevice dev, u32 * id);
 
 	// probing methods
-	bool probe(exi_channel_t chan);
-	bool probeExtended(exi_channel_t chan);
+	bool probe(EXIChannel chan);
+	bool probeExtended(EXIChannel chan);
 	void probeReset(void);
 
 	// locking methods
-	bool lock(exi_channel_t chan, exi_device_t dev, EXICallback cb);
-	bool unlock(exi_channel_t chan);
+	bool lock(EXIChannel chan, EXIDevice dev, EXICallback cb);
+	bool unlock(EXIChannel chan);
 
 	// selection methods
-	bool select(exi_channel_t chan, exi_device_t dev, exi_frequency_t freq);
-	bool selectSD(exi_channel_t chan, exi_device_t dev, exi_frequency_t freq);
-	bool deselect(exi_channel_t chan);
+	bool select(EXIChannel chan, EXIDevice dev, EXIFrequency freq);
+	bool selectSD(EXIChannel chan, EXIDevice dev, EXIFrequency freq);
+	bool deselect(EXIChannel chan);
 
 	// memory transfer methods
-	bool immediate(exi_channel_t chan, void * buf, u32 bufsize, exi_transfer_mode_t mode, EXICallback cb);
-	bool immediateExtended(exi_channel_t chan, void * buf, u32 bufsize, exi_transfer_mode_t mode);
-	bool DMA(exi_channel_t chan, void * buf, u32 bufsize, exi_transfer_mode_t mode, EXICallback cb);
-	bool sync(exi_channel_t chan);
+	bool immediate(EXIChannel chan, void * buf, u32 bufsize, TransferMode mode, EXICallback cb);
+	bool immediateExtended(EXIChannel chan, void * buf, u32 bufsize, TransferMode mode);
+	bool DMA(EXIChannel chan, void * buf, u32 bufsize, TransferMode mode, EXICallback cb);
+	bool sync(EXIChannel chan);
 
 	// attachment methods
-	bool attach(exi_channel_t chan, EXICallback cb);
-	bool detach(exi_channel_t chan);
+	bool attach(EXIChannel chan, EXICallback cb);
+	bool detach(EXIChannel chan);
 }
 
 #endif // wrap_exi_h

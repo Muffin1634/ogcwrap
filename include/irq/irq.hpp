@@ -14,13 +14,13 @@ namespace ogcwrap::irq
 	void restore(u32 level);
 
 	// handler methods
-	raw_irq_handler_t registerHandler(irq_value_t irq, raw_irq_handler_t handler, void * pCtx);
-	raw_irq_handler_t freeHandler(irq_value_t irq);
-	raw_irq_handler_t getHandler(irq_value_t irq);
+	raw_irq_handler_t registerHandler(IRQValue irq, raw_irq_handler_t handler, void * pCtx);
+	raw_irq_handler_t freeHandler(IRQValue irq);
+	raw_irq_handler_t getHandler(IRQValue irq);
 
 	// mask/unmask methods
-	void maskIRQ(mask_value_t mask);
-	void unmaskIRQ(mask_value_t mask);
+	void maskIRQ(IRQMask mask);
+	void unmaskIRQ(IRQMask mask);
 }
 
 #endif // wrap_irq_h

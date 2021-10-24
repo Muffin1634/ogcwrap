@@ -11,7 +11,7 @@ namespace ogcwrap::dvd
 {
 	// subsystem management
 	void init(void);
-	void reset(drive_reset_mode_t mode);
+	void reset(DriveResetMode mode);
 	void pause(void);
 
 	// gethods
@@ -32,8 +32,8 @@ namespace ogcwrap::dvd
 	s32 mountAsync(dvdcmdblk * block, dvdcbcallback cb);
 
 	// drive control methods
-	s32 controlDrive(dvdcmdblk * block, drive_control_mode_t mode);
-	s32 controlDriveAsync(dvdcmdblk * block, drive_control_mode_t mode, dvdcbcallback cb);
+	s32 controlDrive(dvdcmdblk * block, DriveControlMode mode);
+	s32 controlDriveAsync(dvdcmdblk * block, DriveControlMode mode, dvdcbcallback cb);
 
 	// sync methods
 	s32 spinUp(dvdcmdblk * block);
