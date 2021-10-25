@@ -27,5 +27,6 @@
 #include "exi/exi.hpp"
 #include "dvd/dvd.hpp"
 #include "card/card.hpp"
+#include "dsp/dsp.hpp"
 
 #endif // libwrap_h
