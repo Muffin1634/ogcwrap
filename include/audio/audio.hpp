@@ -2,6 +2,11 @@
 #ifndef wrap_audio_h
 #define wrap_audio_h
 
+#include <gctypes.h>
+#include <ogc/audio.h>
+
+#include "audio/audio_td.hpp"
+
 namespace ogcwrap::audio
 {
 	// subsystem management
@@ -14,8 +19,8 @@ namespace ogcwrap::audio
 	// gethods
 	u8 getStreamVolumeLeft(void);
 	u8 getStreamVolumeRight(void);
-	sample_rate_t getStreamSampleRate(void);
-	play_state_t getStreamPlayState(void);
+	AudioSampleRate getStreamSampleRate(void);
+	AudioPlayState getStreamPlayState(void);
 
 	u16 getDMAEnableFlag(void);
 	u32 getDMABytesLeft(void);
@@ -26,11 +31,11 @@ namespace ogcwrap::audio
 	// sethods
 	void setStreamVolumeLeft(u8 volume);
 	void setStreamVolumeRight(u8 volume);
-	void setStreamSampleRate(sample_rate_t rate);
-	void setStreamPlayState(play_state_t state);
+	void setStreamSampleRate(AudioSampleRate rate);
+	void setStreamPlayState(AudioPlayState state);
 
 	void setStreamTrigger(u32 count);
-	void setDSPSampleRate(sample_rate_t rate);
+	void setDSPSampleRate(AudioSampleRate rate);
 
 	// dma methods
 	void initDMA(void * buf, u32 bufsize);

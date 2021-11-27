@@ -28,5 +28,6 @@
 #include "dvd/dvd.hpp"
 #include "card/card.hpp"
 #include "dsp/dsp.hpp"
+#include "ios/ios.hpp"
 
 #endif // libwrap_h

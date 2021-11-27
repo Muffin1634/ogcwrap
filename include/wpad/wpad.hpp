@@ -5,6 +5,8 @@
 #include <gctypes.h>
 #include <wiiuse/wpad.h>
 
+#include "wpad/wpad_td.hpp"
+
 namespace ogcwrap::wpad
 {
 	// subsystem management

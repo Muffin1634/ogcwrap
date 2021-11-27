@@ -6,6 +6,7 @@
 #include <ogc/card.h>
 
 #include "card/card_td.hpp"
+#include "exi/exi_td.hpp"
 
 namespace ogcwrap::card
 {

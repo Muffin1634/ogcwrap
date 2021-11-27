@@ -2,6 +2,11 @@
 #ifndef wrap_dsp_h
 #define wrap_dsp_h
 
+#include <gctypes.h>
+#include <ogc/dsp.h>
+
+// #include "dsp/dsp_td.hpp"
+
 namespace ogcwrap::dsp
 {
 	// subsystem management

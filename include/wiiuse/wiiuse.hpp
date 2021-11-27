@@ -5,6 +5,8 @@
 #include <gctypes.h>
 #include <wiiuse/wiiuse.h>
 
+#include <wiiuse/wiiuse_td.hpp>
+
 namespace ogcwrap::wiiuse
 {
 	// subsystem management

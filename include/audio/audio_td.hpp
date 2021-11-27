@@ -17,4 +17,7 @@ namespace ogcwrap::audio
 	} AudioPlayState;
 }
 
+using ogcwrap::audio::AudioSampleRate;
+using ogcwrap::audio::AudioPlayState;
+
 #endif // wrap_audio_td_h

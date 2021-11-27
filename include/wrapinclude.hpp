@@ -44,10 +44,14 @@
 // exi
 
 // card
+#include <ogc/exi.h>
 
 // dsp
 
+// ios
+#include <ogc/ios.h>
+
 // macros
-#define mcast(type, val)	(type)(val)
+#define mcast(type, val)	((type)(val))
 
 #endif // wrap_include_h

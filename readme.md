@@ -1,4 +1,4 @@
-# libogcwrap documentation
+# libogcwrap
 
 todo:
 
@@ -12,3 +12,6 @@ todo:
 
 Note: As of 10/21/21, this list is not being updated anymore. See the project board [here](https://github.com/Muffin1634/ogcwrap/projects/1) for the new list.
 
+--------------------------------------------------------------------------------
+
+Copyright (c) 2021 muff1nOS. libogcwrap is licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0) (SPDX:[Apache-2.0](https://spdx.org/licenses/Apache-2.0.html)). See this repository's [license](LICENSE) for more information.

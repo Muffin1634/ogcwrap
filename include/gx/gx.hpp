@@ -360,6 +360,7 @@ namespace ogcwrap::gx
 		void texcoord(u16 s, u16 t);
 		void texcoord(s16 s, s16 t);
 		void texcoord(f32 s, f32 t);
+	}
 }
 
 #endif // wrap_gx_h

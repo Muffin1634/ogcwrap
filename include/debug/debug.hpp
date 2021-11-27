@@ -14,12 +14,19 @@ namespace ogcwrap::debug
 
 	// breakpoint
 	void _breakpt(void);
+
+	static inline void _debugmsg(const char * format, ...)
+	{
+	#ifdef APP_DEBUG
+		va_list args;
+		va_start(args, format);
+		vprintf(format, args);
+		va_end();
+	#endif // APP_DEBUG
+	}
 }
 
-/* enable the user to write _breakpt instead of debug::_breakpt() or ogcwrap::debug::_breakpt() to reduce name size and
- * increase the effectiveness of the underscore since it will be at the beginning of the function name to better
- * indicate that it is a debugging function
- */
 using ogcwrap::debug::_breakpt;
+using ogcwrap::debug::_debugmsg;
 
 #endif // wrap_debug_h

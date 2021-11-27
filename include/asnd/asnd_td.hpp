@@ -4,7 +4,7 @@
 
 namespace ogcwrap::asnd
 {
-	typedef enum struct asnd_ret_vals_t
+	typedef enum struct asnd_ret_vals_t : s32
 	{
 		OK,
 
@@ -31,5 +31,7 @@ namespace ogcwrap::asnd
 		StereoLE16		= 7
 	} ASNDVoiceFormat;
 }
+
+using ogcwrap::asnd::ASNDReturnValue;
 
 #endif // wrap_asnd_td_h

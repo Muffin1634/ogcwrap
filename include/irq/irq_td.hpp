@@ -18,7 +18,7 @@ namespace ogcwrap::irq
 		ARAM,
 		DSP,
 
-		// unsure; audio interrupt?
+		// unsure; audio interface? interrupt?
 		AI,
 
 		// EXI interface IRQ values
