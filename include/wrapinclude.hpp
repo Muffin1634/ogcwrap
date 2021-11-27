@@ -71,6 +71,7 @@
 #include <ogc/message.h>
 #include <ogc/mutex.h>
 #include <ogc/semaphore.h>
+#include <ogc/cond.h>
 
 // macros
 #define mcast(type, val)	((type)(val))

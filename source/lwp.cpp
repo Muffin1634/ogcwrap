@@ -111,7 +111,7 @@ namespace ogcwrap::lwp
 		bool receive(mqbox_t, mqmsg_t *, u32);
 
 		// backend methods
-		u32 _init(mq_cntrl *, attr *, u32, u32);
+		u32 _init(mq_cntrl *, mq_attr *, u32, u32);
 		void _close(mq_cntrl *, u32);
 		u32 _seize(mq_cntrl *, u32, void *, u32 *, u32, u64);
 		u32 _submit(mq_cntrl *, u32, void *, u32, u32, u32, u64);
@@ -133,7 +133,7 @@ namespace ogcwrap::lwp
 		// backend methods
 		void _init(lwp_mutex *, lwp_mutex_attr *, u32);
 		u32 _surrender(lwp_mutex *);
-		void _seize(lwp_mutex *, , , , u32);
+		void _seize(lwp_mutex *, s32, u8, u32, u32); // lmao this macro's sig took a bunch of digging to find
 		void _seizeIRQBlocking(lwp_mutex *, u64);
 		void _seizeIRQTryLock(lwp_mutex *, u32 *);
 		void _flush(lwp_mutex *, u32);
@@ -212,7 +212,7 @@ s32 ogcwrap::lwp::thread::create(
 	u32		stacksize,
 	u8		priority)
 {
-	LWP_CreateThread(
+	return LWP_CreateThread(
 		thread,
 		entry,
 		arg,
