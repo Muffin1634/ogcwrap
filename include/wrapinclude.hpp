@@ -51,6 +51,27 @@
 // ios
 #include <ogc/ios.h>
 
+// lwp
+#include <ogc/lwp.h>
+#include <ogc/lwp_config.h>
+#include <ogc/lwp_heap.h>
+#include <ogc/lwp_messages.h>
+#include <ogc/lwp_mutex.h>
+#include <ogc/lwp_objmgr.h>
+#include <ogc/lwp_priority.h>
+#include <ogc/lwp_queue.h>
+#include <ogc/lwp_sema.h>
+#include <ogc/lwp_stack.h>
+#include <ogc/lwp_states.h>
+#include <ogc/lwp_threadq.h>
+#include <ogc/lwp_threads.h>
+#include <ogc/lwp_tqdata.h>
+#include <ogc/lwp_watchdog.h>
+#include <ogc/lwp_wkspace.h>
+#include <ogc/message.h>
+#include <ogc/mutex.h>
+#include <ogc/semaphore.h>
+
 // macros
 #define mcast(type, val)	((type)(val))
 
