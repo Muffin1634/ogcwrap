@@ -17,12 +17,12 @@ namespace ogcwrap::debug
 
 	static inline void _debugmsg(const char * format, ...)
 	{
-	#ifdef APP_DEBUG
+	#ifdef DEBUG
 		va_list args;
 		va_start(args, format);
 		vprintf(format, args);
 		va_end();
-	#endif // APP_DEBUG
+	#endif // DEBUG
 	}
 }
 
