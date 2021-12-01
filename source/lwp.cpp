@@ -56,7 +56,7 @@ namespace ogcwrap::lwp
 	namespace thread_queue
 	{
 		// thread queue management
-		void init(lwpq_t *);
+		s32 init(lwpq_t *);
 		void close(lwpq_t);
 
 		s32 threadSleep(lwpq_t);
@@ -204,6 +204,8 @@ namespace ogcwrap::lwp
  * functions
  */
 
+// lwp::thread functions
+
 s32 ogcwrap::lwp::thread::create(
 	lwp_t *	thread,
 	void *	(*entry)(void *),
@@ -220,3 +222,45 @@ s32 ogcwrap::lwp::thread::create(
 		stacksize,
 		priority);
 }
+
+s32 ogcwrap::lwp::thread::suspend(lwp_t thread)
+	{ return LWP_SuspendThread(thread); }
+
+s32 ogcwrap::lwp::thread::resule(lwp_t thread)
+	{ return LWP_ResumeThread(thread); }
+
+bool ogcwrap::lwp::thread::isSuspended(lwp_t thread)
+	{ return (LWP_ThreadIsSuspended(thread) == 1 ? true : false); }
+
+lwp_t ogcwrap::lwp::thread::getSelf(void)
+	{ return LWP_GetSelf(); }
+
+void ogcwrap::lwp::thread::setPriority(lwp_t thread, u8 priority)
+	{ LWP_SetPriority(thread, mcast(u32, priority)); }
+
+void ogcwrap::lwp::thread::yield(void)
+	{ LWP_YieldThread(); }
+
+void ogcwrap::lwp::thread::reschedule(u8 priority)
+	{ LWP_Reschedule(mcast(u32, priority)); }
+
+s32 ogcwrap::lwp::thread::join(lwp_t thread, void * * return_value)
+	{ return LWP_JoinThread(thread, return_value); }
+
+
+// lwp::thread_queue functions
+
+s32 ogcwrap::lwp::thread_queue::init(lwpq_t * queue)
+	{ return LWP_InitQueue(queue); }
+
+void ogcwrap::lwp::thread_queue::close(lwpq_t queue)
+	{ LWP_CloseQueue(queue); }
+
+s32 ogcwrap::lwp::thread_queue::threadSleep(lwpq_t queue)
+	{ return LWP_ThreadSleep(queue); }
+
+void ogcwrap::lwp::thread_queue::threadSignal(lwpq_t queue)
+	{ LWP_ThreadSignal(queue); }
+
+void ogcwrap::lwp::thread_queue::threadBroadcast(lwpq_t queue)
+	{ LWP_ThreadBroadcast(queue); }

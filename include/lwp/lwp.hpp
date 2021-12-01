@@ -70,7 +70,7 @@ namespace ogcwrap::lwp
 	namespace thread_queue
 	{
 		// thread queue management
-		void init(lwpq_t *);
+		s32 init(lwpq_t *);
 		void close(lwpq_t);
 
 		s32 threadSleep(lwpq_t);
