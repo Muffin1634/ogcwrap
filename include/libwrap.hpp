@@ -29,5 +29,7 @@
 #include "card/card.hpp"
 #include "dsp/dsp.hpp"
 #include "ios/ios.hpp"
+#include "lwp/lwp.h"
+// #include "lwp/lwp_extras.h"
 
 #endif // libwrap_h

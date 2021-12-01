@@ -53,6 +53,12 @@
 
 // lwp
 #include <ogc/lwp.h>
+#include <ogc/message.h>
+#include <ogc/mutex.h>
+#include <ogc/semaphore.h>
+#include <ogc/cond.h>
+
+// lwp_extras
 #include <ogc/lwp_config.h>
 #include <ogc/lwp_heap.h>
 #include <ogc/lwp_messages.h>
@@ -68,10 +74,6 @@
 #include <ogc/lwp_tqdata.h>
 #include <ogc/lwp_watchdog.h>
 #include <ogc/lwp_wkspace.h>
-#include <ogc/message.h>
-#include <ogc/mutex.h>
-#include <ogc/semaphore.h>
-#include <ogc/cond.h>
 
 // macros
 #define mcast(type, val)	((type)(val))
