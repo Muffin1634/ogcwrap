@@ -1,6 +1,6 @@
 # intermediates
-build/
 !build/*.o
+build/
 
 # sublime
 sublime/libwrap.sublime-workspace
