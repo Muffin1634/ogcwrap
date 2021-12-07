@@ -14,7 +14,7 @@ namespace ogcwrap::lwp
 	namespace thread
 	{
 		// thread management
-		s32 create(lwp_t * thread, void * (*entry)(void *), void * arg, void * stackbase, u32 stacksize, u8 priority);
+		s32 create(lwp_t * thread, void * (*entry)(void *), void * args, void * stackbase, u32 stacksize, u8 priority);
 		s32 suspend(lwp_t thread);
 		s32 resume(lwp_t thread);
 		bool isSuspended(lwp_t thread);
