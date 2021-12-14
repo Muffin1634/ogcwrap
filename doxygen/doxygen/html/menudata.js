@@ -55,6 +55,7 @@ var menudata={children:[
 {text:"o",url:"namespacemembers_func.html#index_o"},
 {text:"p",url:"namespacemembers_func.html#index_p"},
 {text:"s",url:"namespacemembers_func.html#index_s"},
+{text:"t",url:"namespacemembers_func.html#index_t"},
 {text:"w",url:"namespacemembers_func.html#index_w"}]},
 {text:"Enumerations",url:"namespacemembers_enum.html"}]}]},
 {text:"Files",url:"files.html",children:[

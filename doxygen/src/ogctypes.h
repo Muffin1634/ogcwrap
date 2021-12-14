@@ -12,22 +12,22 @@ typedef bool bool;
 typedef unsigned char				u8;
 typedef unsigned short				u16;
 typedef unsigned int				u32;
-typedef unsigned long				u64;
+typedef unsigned long long			u64;
 
 typedef signed char					s8;
 typedef signed short				s16;
 typedef signed int					s32;
-typedef signed long					s64;
+typedef signed long long			s64;
 
 typedef volatile unsigned char		vu8;
 typedef volatile unsigned short		vu16;
 typedef volatile unsigned int		vu32;
-typedef volatile unsigned long		vu64;
+typedef volatile unsigned long long	vu64;
 
 typedef volatile signed char		vs8;
 typedef volatile signed short		vs16;
 typedef volatile signed int			vs32;
-typedef volatile signed long		vs64;
+typedef volatile signed long long	vs64;
 
 // floating point
 
@@ -47,6 +47,19 @@ typedef s32							sfp32;
 #endif ogctypes_h
 /*! \file ogctypes.h
  *  \brief Header file containing typedefs from the original libOGC.
+ *
+ *  The Wii runs on a 32-bit PowerPC, and has an ILP32 data model. As such:<br />
+ *  <CODE>
+ *      sizeof(char)      == 1<br />
+ *      sizeof(short)     == 2<br />
+ *      sizeof(int)       == 4<br />
+ *      sizeof(long)      == 4<br />
+ *      sizeof(long long) == 8<br />
+ *      sizeof(void*)     == 4<br />
+ *      <br />
+ *      also:<br />
+ *      sizeof(va_list)   == 12? hm<br />
+ *  </CODE>
  *
  *  \note This header file does not actually exist; do not go looking for it. These typedefs are already provided in
  *        libOGC. This documentation is provided to explain more of libOGC.
@@ -68,7 +81,7 @@ typedef s32							sfp32;
  *  \typedef unsigned int u32
  *  \brief unsigned 32 bit integer
  *
- *  \typedef unsigned long u64
+ *  \typedef unsigned long long u64
  *  \brief unsigned 64 bit integer
  *
  *  <!-- ----------------------------------------------------------------------------------------------------------- -->
@@ -82,7 +95,7 @@ typedef s32							sfp32;
  *  \typedef signed int s32
  *  \brief signed 32 bit integer
  *
- *  \typedef signed long s64
+ *  \typedef signed long long s64
  *  \brief signed 64 bit integer
  *
  *  <!-- --> <!-- -------------------------------------------------------------------------------------------------- -->
@@ -96,7 +109,7 @@ typedef s32							sfp32;
  *  \typedef volatile unsigned int vu32
  *  \brief volatile unsigned 32 bit integer
  *
- *  \typedef volatile unsigned long vu64
+ *  \typedef volatile unsigned long long vu64
  *  \brief volatile unsigned 64 bit integer
  *
  *  <!-- ----------------------------------------------------------------------------------------------------------- -->
@@ -110,7 +123,7 @@ typedef s32							sfp32;
  *  \typedef volatile signed int vs32
  *  \brief volatile signed 32 bit integer
  *
- *  \typedef volatile signed long vs64
+ *  \typedef volatile signed long long vs64
  *  \brief volatile signed 64 bit integer
  *
  *  <!-- ----------------------------------------------------------------------------------------------------------- -->

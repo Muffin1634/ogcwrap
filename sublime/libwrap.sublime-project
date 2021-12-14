@@ -2,7 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "C:\\Users\\muffin\\Desktop\\code\\proj\\vanilla\\libwrap"
+			"path": ".."
 		}
 	],
 	"build_systems":
@@ -42,8 +42,8 @@
 					"shell_cmd": "make doxygen"
 				},
 				{
-					"name": "Save Doxygen",
-					"shell_cmd": "make doxygen_save"
+					"name": "Open Doxygen",
+					"shell_cmd": "${folder:${project_path:${file_path}}}\\doxygen\\doxygen\\html\\index.html"
 				},
 				{
 					"name": "Open Doxywizard",
