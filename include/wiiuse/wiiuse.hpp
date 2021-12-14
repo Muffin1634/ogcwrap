@@ -11,14 +11,11 @@ namespace ogcwrap::wiiuse
 {
 	// subsystem management
 //	const char * version(void);
-	#ifndef GEKKO
-		wiimote_t * * init(u8 number);
-	#else
-		wiimote_t * * init(u8 number, wii_event_cb cb);
+	wiimote_t * * init(u8 number, wii_event_cb cb);
 
 	// wiimote handling
-		int registerWM(wiimote_listen_t * wml, bd_addr * bdaddr, wiimote_t * (*assign_cb)(bd_addr *));
-	#endif
+	int registerWM(wiimote_listen_t * wml, bd_addr * bdaddr, wiimote_t * (*assign_cb)(bd_addr *));
+
 //	void cleanupWM(wiimote_t * *, int);
 
 	// bluetooth handling
