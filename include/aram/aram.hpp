@@ -37,16 +37,36 @@ namespace ogcwrap::aram
 	namespace queue
 	{
 		// subsystem management
-		void init(u32 base_addr, s32 len);
+		void init(void);
+		void reset(void);
 
 		// gethods
-		u32 getZeroBuffer(void);
-		u32 getStackPointer(void);
-		u32 getFreeSize(void);
+		u32 getChunkSize(void);
 
-		// queue management methods
-		u32 push(void * buf, s32 bufsize);
-		void pop(void);
+		// sethods
+		void setChunkSize(u32 size);
+
+		// request methods
+		void postRequest(ARQRequest * req, u32 owner, u32 dir, u32 priority, u32 aram_addr, u32 mram_addr, u32 len);
+		void postRequestAsync(ARQRequest * req, u32 owner, u32 dir, u32 priority, u32 aram_addr, u32 mram_addr, u32 len, ARQCallback cb);
+		void removeRequest(ARQRequest * req);
+		u32 removeOwnerRequest(u32 owner);
+		void flushQueue(void);
+
+		namespace manager
+		{
+			// subsystem management
+			void init(u32 buf, s32 len);
+
+			// gethods
+			u32 getZeroBuffer(void);
+			u32 getStackPointer(void);
+			u32 getFreeSize(void);
+
+			// queue management methods
+			u32 push(void * buf, s32 bufsize);
+			void pop(void);
+		}
 	}
 }
 
