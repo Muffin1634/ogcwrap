@@ -104,7 +104,7 @@ ifeq ($(DIRS_BUILD),)
 	give this variable a value to avoid deleting the root directory)
 else ifeq ($(DIRS_LIB),)
 	$(error uh-oh! your DIRS_LIB variable is not set! \
-	@echo give this variable a value to avoid deleting the root directory)
+	give this variable a value to avoid deleting the root directory)
 else
 	@rm -vrf \
 		$(DIRS_BUILD)/* \

@@ -63,9 +63,6 @@ namespace ogcwrap::wiiuse
  * functions
  */
 
-using ogcwrap::wiiuse::wiiuse_aspect_t;
-using ogcwrap::wiiuse::wiiuse_ir_position_t;
-
 const char * ogcwrap::wiiuse::version(void)
 	{ return wiiuse_version(); }
 

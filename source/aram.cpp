@@ -38,16 +38,36 @@ namespace ogcwrap::aram
 	namespace queue
 	{
 		// subsystem management
-		void init(u32, s32);
+		void init(void);
+		void reset(void);
 
 		// gethods
-		u32 getZeroBuffer(void);
-		u32 getStackPointer(void);
-		u32 getFreeSize(void);
+		u32 getChunkSize(void);
 
-		// queue management methods
-		u32 push(void *, s32);
-		void pop(void);
+		// sethods
+		void setChunkSize(u32);
+
+		// request methods
+		void postRequest(ARQRequest *, u32, u32, u32, u32, u32, u32);
+		void postRequestAsync(ARQRequest *, u32, u32, u32, u32, u32, u32, ARQCallback);
+		void removeRequest(ARQRequest *);
+		u32 removeOwnerRequest(u32);
+		void flushQueue(void);
+
+		namespace manager
+		{
+			// subsystem management
+			void init(u32, s32);
+
+			// gethods
+			u32 getZeroBuffer(void);
+			u32 getStackPointer(void);
+			u32 getFreeSize(void);
+
+			// queue management methods
+			u32 push(void *, s32);
+			void pop(void);
+		}
 	}
 }
 
@@ -101,20 +121,50 @@ void ogcwrap::aram::clear(u32 flag)
 
 // namespace ogcwrap::aram::queue
 
-void ogcwrap::aram::queue::init(u32 buf, s32 len)
+void ogcwrap::aram::queue::init(void)
+	{ ARQ_Init(); }
+
+void ogcwrap::aram::queue::reset(void)
+	{ ARQ_Reset(); }
+
+u32 ogcwrap::aram::queue::getChunkSize(void)
+	{ return ARQ_GetChunkSize(); }
+
+void ogcwrap::aram::queue::setChunkSize(u32 size)
+	{ ARQ_SetChunkSize(size); }
+
+void ogcwrap::aram::queue::postRequest(ARQRequest * req, u32 owner, u32 dir, u32 priority, u32 aram_addr, u32 mram_addr, u32 len)
+	{ ARQ_PostRequest(req, owner, dir, priority, aram_addr, mram_addr, len); }
+
+void ogcwrap::aram::queue::postRequestAsync(ARQRequest * req, u32 owner, u32 dir, u32 priority, u32 aram_addr, u32 mram_addr, u32 len, ARQCallback cb)
+	{ ARQ_PostRequestAsync(req, owner, dir, priority, aram_addr, mram_addr, len, cb); }
+
+void ogcwrap::aram::queue::removeRequest(ARQRequest * req)
+	{ ARQ_RemoveRequest(req); }
+
+u32 ogcwrap::aram::queue::removeOwnerRequest(u32 owner)
+	{ return ARQ_RemoveOwnerRequest(owner); }
+
+void ogcwrap::aram::queue::flushQueue(void)
+	{ ARQ_FlushQueue(); }
+
+
+// namespace ogcwrap::aram::queue::manager
+
+void ogcwrap::aram::queue::manager::init(u32 buf, s32 len)
 	{ ARQM_Init(buf, len); }
 
-u32 ogcwrap::aram::queue::getZeroBuffer(void)
+u32 ogcwrap::aram::queue::manager::getZeroBuffer(void)
 	{ return ARQM_GetZeroBuffer(); }
 
-u32 ogcwrap::aram::queue::getStackPointer(void)
+u32 ogcwrap::aram::queue::manager::getStackPointer(void)
 	{ return ARQM_GetStackPointer(); }
 
-u32 ogcwrap::aram::queue::getFreeSize(void)
+u32 ogcwrap::aram::queue::manager::getFreeSize(void)
 	{ return ARQM_GetFreeSize(); }
 
-u32 ogcwrap::aram::queue::push(void * buf, s32 bufsize)
+u32 ogcwrap::aram::queue::manager::push(void * buf, s32 bufsize)
 	{ return ARQM_PushData(buf, bufsize); }
 
-void ogcwrap::aram::queue::pop(void)
+void ogcwrap::aram::queue::manager::pop(void)
 	{ ARQM_Pop(); }
