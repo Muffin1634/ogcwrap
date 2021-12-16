@@ -224,15 +224,15 @@ namespace ogcwrap::aesnd
 /*! \fn void ogcwrap::aesnd::playVoice(AESNDPB * voice, AESNDVoiceFormat format, const void * buffer, u32 size, f32 freq, u32 delay, bool statusLoop)
  *  \brief Starts playback of the given voice <CODE>voice</CODE> with the given settings.
  *
- *  \param[in,out] voice  A pointer to the AESNDPB struct holding information about the voice to start playback on.
- *  \param[in]     format The format that the PCM samples that will be supplied to this voice are stored in.
- *  \param[in]     buffer The sample buffer to assign to the voice.
- *  \param[in]     size   The size of the sample buffer.
- *  \param[in]     freq   The frequency of the PCM samples that will be supplied to this voice.
- *  \param[in]     delay  The amount of delay that the voice should have, given in (???).
- *  \param[in]     status Boolean stating whether or not the voice should loop:
- *                        <CODE>true</CODE> if it should loop,
- *                        <CODE>false</CODE> otherwise.
+ *  \param[in,out] voice      A pointer to the AESNDPB struct holding information about the voice to start playback on.
+ *  \param[in]     format     The format that the PCM samples that will be supplied to this voice are stored in.
+ *  \param[in]     buffer     The sample buffer to assign to the voice.
+ *  \param[in]     size       The size of the sample buffer.
+ *  \param[in]     freq       The frequency of the PCM samples that will be supplied to this voice.
+ *  \param[in]     delay      The amount of delay that the voice should have, given in (???).
+ *  \param[in]     statusLoop Boolean stating whether or not the voice should loop:
+ *                            <CODE>true</CODE> if it should loop,
+ *                            <CODE>false</CODE> otherwise.
  *
  *  \return none
  */

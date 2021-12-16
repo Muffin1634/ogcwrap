@@ -9,9 +9,6 @@ C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hp
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:17: warning: Member getPosition(u8 *row, u8 *col) (function) of namespace ogcwrap::console is not documented.
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:20: warning: Member enableGecko(u8 port, bool safe) (function) of namespace ogcwrap::console is not documented.
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:21: warning: Member disableGecko(void) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/aesnd/aesnd.hpp:227: warning: argument 'status' of command @param is not found in the argument list of ogcwrap::aesnd::playVoice(AESNDPB *voice, AESNDVoiceFormat format, const void *buffer, u32 size, f32 freq, u32 delay, bool statusLoop)
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/aesnd/aesnd.hpp:38: warning: The following parameter of ogcwrap::aesnd::playVoice(AESNDPB *voice, AESNDVoiceFormat format, const void *buffer, u32 size, f32 freq, u32 delay, bool statusLoop) is not documented:
-  parameter 'statusLoop'
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:214: warning: explicit link request to 'Invalid' could not be resolved
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:218: warning: explicit link request to 'OK' could not be resolved
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:235: warning: explicit link request to 'Invalid' could not be resolved
