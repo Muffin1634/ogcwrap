@@ -82,7 +82,14 @@ var namespaces_dup =
         [ "testVoiceBufferUsing", "d1/d09/a00077.html#a622651d642f09d1fbefeabaa7cf453a5", null ],
         [ "testVoiceBufferReady", "d1/d09/a00077.html#a783c293185ec3de7acb30afb0c5f7297", null ]
       ] ],
-      [ "console", "d2/d1f/a00083.html", null ],
+      [ "console", "d2/d1f/a00083.html", [
+        [ "init", "d2/d1f/a00083.html#a8f622049cd5cb7b9e6457a8b5e922292", null ],
+        [ "initEx", "d2/d1f/a00083.html#a995d4f4d3e9d0576b5dd8499ffb35f35", null ],
+        [ "getMetrics", "d2/d1f/a00083.html#a0d1fb77ff850353a08d594b57080ce62", null ],
+        [ "getPosition", "d2/d1f/a00083.html#a22e59c4d9b16dcd7cea16119f675f614", null ],
+        [ "enableGecko", "d2/d1f/a00083.html#a50cefd08b9211df66930cc83c4103008", null ],
+        [ "disableGecko", "d2/d1f/a00083.html#aae7437544605fc01cda1a8e6d197688b", null ]
+      ] ],
       [ "debug", "df/d5d/a00084.html", [
         [ "DebugDevice", "df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dca", [
           [ "dev_USBGecko", "df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dcaa359b4bfc7dca491ceff5bec2adf9d98d", null ],

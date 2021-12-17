@@ -9,5 +9,6 @@ var searchData=
   ['deprecated_20list_6',['Deprecated List',['../db/db6/a00074.html',1,'']]],
   ['dev_5fbbatcp_7',['dev_BBATCP',['../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dcaae82e09ef2fc0e6801bc4a31c6e483eee',1,'ogcwrap::debug']]],
   ['dev_5fusbgecko_8',['dev_USBGecko',['../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dcaa359b4bfc7dca491ceff5bec2adf9d98d',1,'ogcwrap::debug']]],
-  ['dsfieldpos_9',['DSFieldPos',['../d9/dec/a00090.html#a2db48d4a7c1bc15f7814275ed000c48d',1,'ogcwrap::video']]]
+  ['disablegecko_9',['disableGecko',['../d2/d1f/a00083.html#aae7437544605fc01cda1a8e6d197688b',1,'ogcwrap::console']]],
+  ['dsfieldpos_10',['DSFieldPos',['../d9/dec/a00090.html#a2db48d4a7c1bc15f7814275ed000c48d',1,'ogcwrap::video']]]
 ];

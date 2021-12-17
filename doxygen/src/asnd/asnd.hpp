@@ -321,6 +321,5 @@ namespace ogcwrap::asnd
  *
  *  \param[in] voice Voice to test.
  *
- *  \return
  *  \return <CODE>true</CODE> if the specified voice is ready to accept a new buffer; <CODE>false</CODE> otherwise
  */

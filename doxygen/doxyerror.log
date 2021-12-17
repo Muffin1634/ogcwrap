@@ -3,12 +3,6 @@ C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox:9: warni
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox:13: warning: multiple use of section label 'Wrapper' while adding section, (first occurrence: C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox, line 5)
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox:15: warning: multiple use of section label 'Wrapper' while adding section, (first occurrence: C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox, line 5)
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox:17: warning: multiple use of section label 'Wrapper' while adding section, (first occurrence: C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/other.dox, line 5)
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:12: warning: Member init(void *fb, u16 xStart, u16 yStart, u16 xRes, u16 yRes, u32 stride) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:13: warning: Member initEx(GXRModeObj *rmode, u16 xStart, u16 yStart, u16 xRes, u16 yRes) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:16: warning: Member getMetrics(u8 *rows, u8 *cols) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:17: warning: Member getPosition(u8 *row, u8 *col) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:20: warning: Member enableGecko(u8 port, bool safe) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:21: warning: Member disableGecko(void) (function) of namespace ogcwrap::console is not documented.
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:214: warning: explicit link request to 'Invalid' could not be resolved
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:218: warning: explicit link request to 'OK' could not be resolved
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:235: warning: explicit link request to 'Invalid' could not be resolved
@@ -27,9 +21,3 @@ C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:298:
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:298: warning: explicit link request to 'OK' could not be resolved
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:307: warning: explicit link request to 'Invalid' could not be resolved
 C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/asnd/asnd.hpp:307: warning: explicit link request to 'OK' could not be resolved
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:12: warning: Member init(void *fb, u16 xStart, u16 yStart, u16 xRes, u16 yRes, u32 stride) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:13: warning: Member initEx(GXRModeObj *rmode, u16 xStart, u16 yStart, u16 xRes, u16 yRes) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:16: warning: Member getMetrics(u8 *rows, u8 *cols) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:17: warning: Member getPosition(u8 *row, u8 *col) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:20: warning: Member enableGecko(u8 port, bool safe) (function) of namespace ogcwrap::console is not documented.
-C:/Users/muffin/Desktop/code/proj/vanilla/libwrap/doxygen/src/console/console.hpp:21: warning: Member disableGecko(void) (function) of namespace ogcwrap::console is not documented.

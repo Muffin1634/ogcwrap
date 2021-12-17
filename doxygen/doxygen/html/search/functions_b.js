@@ -1,5 +1,25 @@
 var searchData=
 [
-  ['testvoicebufferready_0',['testVoiceBufferReady',['../d1/d09/a00077.html#a783c293185ec3de7acb30afb0c5f7297',1,'ogcwrap::asnd']]],
-  ['testvoicebufferusing_1',['testVoiceBufferUsing',['../d1/d09/a00077.html#a622651d642f09d1fbefeabaa7cf453a5',1,'ogcwrap::asnd']]]
+  ['setaudiocallback_0',['setAudioCallback',['../db/df8/a00076.html#a5138b4a1f6323693c0642692fde24e22',1,'ogcwrap::aesnd']]],
+  ['setblackoutstatus_1',['setBlackoutStatus',['../d9/dec/a00090.html#a565317815f3136b1081d309f86473349',1,'ogcwrap::video']]],
+  ['setcallback_2',['setCallback',['../d1/d09/a00077.html#acdc5699c6d782b61e6e0911aebfa5e01',1,'ogcwrap::asnd']]],
+  ['setconfiguration_3',['setConfiguration',['../d9/dec/a00090.html#accdff77e4dc1dd6f2bf26b67f9fa1623',1,'ogcwrap::video']]],
+  ['setinfinitevoice_4',['setInfiniteVoice',['../d1/d09/a00077.html#a14e202e7a6d83dd5bcc648bbda96fb92',1,'ogcwrap::asnd']]],
+  ['setnextframebuffer_5',['setNextFramebuffer',['../d9/dec/a00090.html#a735c0812a021e34d8f115ec1248c55e0',1,'ogcwrap::video']]],
+  ['setnextrightframebuffer_6',['setNextRightFramebuffer',['../d9/dec/a00090.html#abdf65825ac353b921e970439ee8c6ed8',1,'ogcwrap::video']]],
+  ['setretracecallback_7',['setRetraceCallback',['../d9/dec/a00090.html#af951dea243e1474d28d32d4e7bd6daa5',1,'ogcwrap::video']]],
+  ['settime_8',['setTime',['../d1/d09/a00077.html#a4f4c326a4426e5c4f3f2d6b93ae12505',1,'ogcwrap::asnd']]],
+  ['setvoice_9',['setVoice',['../d1/d09/a00077.html#a0b33b133dfbc766a6a115060c99e2fae',1,'ogcwrap::asnd']]],
+  ['setvoicebuffer_10',['setVoiceBuffer',['../db/df8/a00076.html#a1f6829812b335eaadc66a112e7b55f9e',1,'ogcwrap::aesnd']]],
+  ['setvoicecallback_11',['setVoiceCallback',['../db/df8/a00076.html#aaf493c0158514bd9c65df48d964a04fb',1,'ogcwrap::aesnd']]],
+  ['setvoicedelay_12',['setVoiceDelay',['../db/df8/a00076.html#abdd7fc772ff69b1f82f01dbdc6a30b8f',1,'ogcwrap::aesnd']]],
+  ['setvoiceformat_13',['setVoiceFormat',['../db/df8/a00076.html#a5485900fee49fb0a4fc2b410a706cae9',1,'ogcwrap::aesnd']]],
+  ['setvoicefrequency_14',['setVoiceFrequency',['../db/df8/a00076.html#afcae2467165c185a505973b6b855c925',1,'ogcwrap::aesnd']]],
+  ['setvoiceloopstatus_15',['setVoiceLoopStatus',['../db/df8/a00076.html#aeb667571621963c7a582b67f09eb329c',1,'ogcwrap::aesnd']]],
+  ['setvoicemutestatus_16',['setVoiceMuteStatus',['../db/df8/a00076.html#a3183b3adba0861e21f0a451b78640c9a',1,'ogcwrap::aesnd']]],
+  ['setvoicepitch_17',['setVoicePitch',['../d1/d09/a00077.html#a87f10b63941b9e599853e0d922f3b0b3',1,'ogcwrap::asnd']]],
+  ['setvoicestopstatus_18',['setVoiceStopStatus',['../db/df8/a00076.html#aba385264a7040291f81d09feef13f913',1,'ogcwrap::aesnd']]],
+  ['setvoicestreamstatus_19',['setVoiceStreamStatus',['../db/df8/a00076.html#ae43f298d6e820c4a228c94f7c68812ee',1,'ogcwrap::aesnd']]],
+  ['setvoicevolume_20',['setVoiceVolume',['../db/df8/a00076.html#a643c069dccbc1258c83edec21fb2b137',1,'ogcwrap::aesnd::setVoiceVolume()'],['../d1/d09/a00077.html#a11215d67c11c623ec6ca9320dd85af1d',1,'ogcwrap::asnd::setVoiceVolume(u8 voice, u8 left, u8 right)']]],
+  ['stopvoice_21',['stopVoice',['../d1/d09/a00077.html#aff942c1f2e4105a46323b6cb53bd6e9e',1,'ogcwrap::asnd']]]
 ];

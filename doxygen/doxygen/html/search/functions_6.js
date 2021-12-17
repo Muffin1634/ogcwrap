@@ -1,4 +1,26 @@
 var searchData=
 [
-  ['init_0',['init',['../db/df8/a00076.html#a3dc0df14ba36065ce2f75270c4884806',1,'ogcwrap::aesnd::init()'],['../d1/d09/a00077.html#a474d07692651c56223c750c59e409d80',1,'ogcwrap::asnd::init()'],['../df/d5d/a00084.html#acc72f4aa88d1bcf49da585cba3417690',1,'ogcwrap::debug::init()'],['../d9/dec/a00090.html#a5db23c22110b4ceeaeb72c47f347ff2a',1,'ogcwrap::video::init()']]]
+  ['getcomponentcablestatus_0',['getComponentCableStatus',['../d9/dec/a00090.html#aa7d0ebcafe4a336093f1d16caf59ebe9',1,'ogcwrap::video']]],
+  ['getcurrentframebuffer_1',['getCurrentFramebuffer',['../d9/dec/a00090.html#a2320bb601913dbd808c2fd664cce3266',1,'ogcwrap::video']]],
+  ['getcurrentline_2',['getCurrentLine',['../d9/dec/a00090.html#a6bbfbe256398d200207c638978f082a5',1,'ogcwrap::video']]],
+  ['getdsppercentuse_3',['getDSPPercentUse',['../d1/d09/a00077.html#abc3a014ced66d7d787b3f9a6d45ea1c2',1,'ogcwrap::asnd']]],
+  ['getdspprocesstime_4',['getDSPProcessTime',['../db/df8/a00076.html#ad3c3615b561344634b1f442b1d2e142d',1,'ogcwrap::aesnd::getDSPProcessTime()'],['../d1/d09/a00077.html#ae4bf6b4322feb0790ee0f2e4b603b24f',1,'ogcwrap::asnd::getDSPProcessTime()']]],
+  ['getdspprocessusage_5',['getDSPProcessUsage',['../db/df8/a00076.html#af01ce45e5559f04fbb2ddc710cef775e',1,'ogcwrap::aesnd']]],
+  ['getfirstunusedvoice_6',['getFirstUnusedVoice',['../d1/d09/a00077.html#aa7496de4aec6e87b64b21003b88ca0e1',1,'ogcwrap::asnd']]],
+  ['getframebuffersize_7',['getFramebufferSize',['../d9/dec/a00090.html#a29149138ec4b17800edc9496beb22de6',1,'ogcwrap::video']]],
+  ['getmetrics_8',['getMetrics',['../d2/d1f/a00083.html#a0d1fb77ff850353a08d594b57080ce62',1,'ogcwrap::console']]],
+  ['getnextfield_9',['getNextField',['../d9/dec/a00090.html#a698b16c0456b7cdc6507cbfefdf35519',1,'ogcwrap::video']]],
+  ['getnextframebuffer_10',['getNextFramebuffer',['../d9/dec/a00090.html#afb3ab3a9e32461d7f6f2b8f49a12ec3d',1,'ogcwrap::video']]],
+  ['getnotefreq_11',['getNoteFreq',['../d1/d09/a00077.html#a86e84e3d8f002b88deb662225030a088',1,'ogcwrap::asnd']]],
+  ['getposition_12',['getPosition',['../d2/d1f/a00083.html#a22e59c4d9b16dcd7cea16119f675f614',1,'ogcwrap::console']]],
+  ['getpreferredrmode_13',['getPreferredRMode',['../d9/dec/a00090.html#a6adbf406350ce7ee25e27f70747c9c59',1,'ogcwrap::video']]],
+  ['getsamplecount_14',['getSampleCount',['../d1/d09/a00077.html#a3e1b2b4d0d46694312d3726d9e698d05',1,'ogcwrap::asnd']]],
+  ['getsamplerate_15',['getSampleRate',['../d1/d09/a00077.html#a4a9bcabf908cdbb89dededd67a7efd6d',1,'ogcwrap::asnd']]],
+  ['getsampleratetick_16',['getSampleRateTick',['../d1/d09/a00077.html#a171fdd3b639353eaefa5f770e25a1125',1,'ogcwrap::asnd']]],
+  ['getsoundplaystatus_17',['getSoundPlayStatus',['../d1/d09/a00077.html#a89e69e62d2390b32013d3a52d1710400',1,'ogcwrap::asnd']]],
+  ['gettime_18',['getTime',['../d1/d09/a00077.html#ab8c32a7d4b5ea2be0e2e5aea53820062',1,'ogcwrap::asnd']]],
+  ['gettvmode_19',['getTVMode',['../d9/dec/a00090.html#a5ea6fd8d3ba59b29cbd92b213f2f357d',1,'ogcwrap::video']]],
+  ['getvoicestatus_20',['getVoiceStatus',['../d1/d09/a00077.html#ae600b6e306c26f74775ef8b20e3fb200',1,'ogcwrap::asnd']]],
+  ['getvoiceticks_21',['getVoiceTicks',['../d1/d09/a00077.html#ab66007e4b0fc5a86b628e5b679bd7840',1,'ogcwrap::asnd']]],
+  ['getvoicetime_22',['getVoiceTime',['../d1/d09/a00077.html#a67d5ec8ddf8d93fd63dc5254646be9df',1,'ogcwrap::asnd']]]
 ];

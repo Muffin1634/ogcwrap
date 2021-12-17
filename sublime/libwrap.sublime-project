@@ -32,7 +32,7 @@
 					"shell_cmd": "make clean"
 				},
 				{
-					"name": "Debug",
+					"name": "Debug Makefile",
 					"shell_cmd": "make debug"
 				},
 
