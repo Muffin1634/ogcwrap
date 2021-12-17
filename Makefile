@@ -18,6 +18,7 @@ DIRS_SOURCE				:=	source
 DIRS_INCLUDE			:=	include
 DIRS_BUILD				:=	build
 DIRS_LIB				:=	lib
+DIRS_TESTPROJECT		:=	cpptest
 
 # build list of source files by extension
 SRCFILES_C				:=	$(foreach dir,$(DIRS_SOURCE),$(notdir $(wildcard $(dir)/*.c)))
@@ -91,10 +92,10 @@ install:
 		$(DEVKITPRO)/libogc/lib/wii/libwrap.a
 	@cp -vrf \
 		include \
-		../libwraptest/lib/local/
+		../$(DIRS_TESTPROJECT)/lib/local/
 	@rm -vrf \
-		../libwraptest/lib/local/include/wrapinclude.hpp \
-		$(addprefix ../libwraptest/lib/local/include/,$(OBJFILES_EXCLUDE))
+		../$(DIRS_TESTPROJECT)/lib/local/include/wrapinclude.hpp \
+		$(addprefix ../$(DIRS_TESTPROJECT)/lib/local/include/,$(OBJFILES_EXCLUDE))
 
 # clean target
 clean:
