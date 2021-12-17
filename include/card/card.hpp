@@ -8,6 +8,8 @@
 #include "card/card_td.hpp"
 #include "exi/exi_td.hpp"
 
+using ogcwrap::exi::EXIChannel;
+
 namespace ogcwrap::card
 {
 	// subsystem management
@@ -42,7 +44,7 @@ namespace ogcwrap::card
 
 	// probing methods
 	CardReturnValue probe(EXIChannel chan);
-	CardReturnValue probeExtended(EXIChannel chan, s32 * memSize = NULL, s32 * sectSize = NULL);
+	CardReturnValue probe(EXIChannel chan, s32 * memSize, s32 * sectSize);
 
 	// mounting methods
 	CardReturnValue mount(EXIChannel chan, void * workArea, cardcallback unmountCB);

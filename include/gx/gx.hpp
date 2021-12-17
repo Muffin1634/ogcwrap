@@ -160,7 +160,7 @@ namespace ogcwrap::gx
 
 	// texture environment management
 	void setTEVStageCount(u8 count);
-	void setTEVOrder(gx_tev_stage_t stage, gx_texture_coordinate_generation_index_t texcoord, gx_texture_map_index_t texmap, gx_color_channel_t channel);
+	void setTEVOrder(gx_tev_stage_t stage, gx_texture_coordinate_index_t texcoord, gx_texture_map_index_t texmap, gx_color_channel_t channel);
 	void setTEVOp(gx_tev_stage_t stage, gx_tev_combiner_equation_t tevmode);
 	void setTEVColor(gx_tev_register_t tevreg, GXColor color);		// cast to GXColor    to avoid ambiguity
 	void setTEVColor(gx_tev_register_t tevreg, GXColorS10 color);	// cast to GXColorS10 to avoid ambiguity
@@ -184,7 +184,7 @@ namespace ogcwrap::gx
 	void setIndirectStageCount(u8 count);
 	void setIndirectTextureOrder(gx_indirect_texture_stage_t indstage, gx_texture_coordinate_index_t coordindex, gx_texture_map_index_t mapindex);
 	void setIndirectTextureCoordScale(gx_indirect_texture_stage_t indstage, gx_indirect_texture_scale_t indscaleS, gx_indirect_texture_scale_t indscaleT);
-	void setIndirectTextureMatrix(gx_indirect_texture_matrix_t indmtx, Mtx23 * offset, s8 scaleExp);
+	void setIndirectTextureMatrix(gx_indirect_texture_matrix_t indmtx, f32 offset[2][3], s8 scaleExp);
 	void setIndirectTextureBumpST(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx);
 	void setIndirectTextureBumpXYZ(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx);
 
@@ -270,8 +270,8 @@ namespace ogcwrap::gx
 	volatile void * redirectWriteGatherPipe(void * tempPipe);
 	void restoreWriteGatherPipe(void);
 
-	void setGPMetric(gx_performance_counter_0_metric_t pc0metric, gx_performance_counter_1_metric_t pc0metric);
-	void readGPMetric(u32 * pc0metric, u32 * pc0metric);
+	void setGPMetric(gx_performance_counter_0_metric_t pc0metric, gx_performance_counter_1_metric_t pc1metric);
+	void readGPMetric(u32 * pc0metric, u32 * pc1metric);
 	void clearGPMetric(void);
 	void initXfRasMetric(void);
 	void readXfRasMetric(u32 * xfWaitIn, u32 * xfWaitOut, u32 * rasBusy, u32 * clocks);

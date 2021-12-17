@@ -50,7 +50,7 @@ namespace ogcwrap::card
 
 	// probing methods
 	card_return_value_t probe(exi_channel_t);
-	card_return_value_t probeExtended(exi_channel_t, s32 * = NULL, s32 * = NULL);
+	card_return_value_t probe(exi_channel_t, s32 *, s32 *);
 
 	// mounting methods
 	card_return_value_t mount(exi_channel_t, void *, cardcallback);
@@ -157,7 +157,7 @@ card_return_value_t ogcwrap::card::setAttributesAsync(exi_channel_t chan, s32 fi
 card_return_value_t ogcwrap::card::probe(exi_channel_t chan)
 	{ return mcast(card_return_value_t, CARD_Probe(mcast(s32, chan))); }
 
-card_return_value_t ogcwrap::card::probeExtended(exi_channel_t chan, s32 * memSize, s32 * sectSize)
+card_return_value_t ogcwrap::card::probe(exi_channel_t chan, s32 * memSize, s32 * sectSize)
 	{ return mcast(card_return_value_t, CARD_ProbeEx(mcast(s32, chan), memSize, sectSize)); }
 
 card_return_value_t ogcwrap::card::mount(exi_channel_t chan, void * workArea, cardcallback unmountCB)

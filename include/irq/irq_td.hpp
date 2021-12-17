@@ -92,7 +92,7 @@ namespace ogcwrap::irq
 		PI_HSP		= 0x00000020,
 		PI_ACR		= 0x00000010,
 		PI			= 0x00007FF0
-	} MaskValue;
+	} IRQMask;
 }
 
 #endif // wrap_irq_td_h

@@ -2,7 +2,22 @@
 #ifndef wrap_lwp_extras_h
 #define wrap_lwp_extras_h
 
-#include <gccore.h>
+#include <gctypes.h>
+#include <ogc/lwp_config.h>
+#include <ogc/lwp_heap.h>
+#include <ogc/lwp_messages.h>
+#include <ogc/lwp_mutex.h>
+#include <ogc/lwp_objmgr.h>
+#include <ogc/lwp_priority.h>
+#include <ogc/lwp_queue.h>
+#include <ogc/lwp_sema.h>
+#include <ogc/lwp_stack.h>
+#include <ogc/lwp_states.h>
+#include <ogc/lwp_threadq.h>
+#include <ogc/lwp_threads.h>
+#include <ogc/lwp_tqdata.h>
+#include <ogc/lwp_watchdog.h>
+#include <ogc/lwp_wkspace.h>
 
 namespace ogcwrap::lwp
 {

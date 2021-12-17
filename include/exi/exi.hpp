@@ -31,9 +31,9 @@ namespace ogcwrap::exi
 	bool deselect(EXIChannel chan);
 
 	// memory transfer methods
-	bool immediate(EXIChannel chan, void * buf, u32 bufsize, TransferMode mode, EXICallback cb);
-	bool immediateExtended(EXIChannel chan, void * buf, u32 bufsize, TransferMode mode);
-	bool DMA(EXIChannel chan, void * buf, u32 bufsize, TransferMode mode, EXICallback cb);
+	bool immediate(EXIChannel chan, void * buf, u32 bufsize, EXIDataTransferMode mode, EXICallback cb);
+	bool immediateExtended(EXIChannel chan, void * buf, u32 bufsize, EXIDataTransferMode mode);
+	bool DMA(EXIChannel chan, void * buf, u32 bufsize, EXIDataTransferMode mode, EXICallback cb);
 	bool sync(EXIChannel chan);
 
 	// attachment methods
