@@ -2,6 +2,12 @@
 #ifndef wrap_include_h
 #define wrap_include_h
 
+// #define BAD_FUNCTIONS
+#ifdef BAD_FUNCTIONS
+#define UNDEFINED_REFERENCES
+#define USES_UNDEFINED_REFERENCES
+#endif // BAD_FUNCTIONS
+
 // libogc
 #define HW_RVL
 #include <gctypes.h>

@@ -3,11 +3,11 @@
 #define libwrap_h
 
 #ifndef HW_RVL
-#define HW_RVL // for everything
+#define HW_RVL // for everything but wiiuse
 #endif
 
 #ifndef GEKKO
-#define GEKKO // for wiiuse
+#define GEKKO // for wiiuse but everything
 #endif
 
 #define mcast(type, val)	((type)(val))

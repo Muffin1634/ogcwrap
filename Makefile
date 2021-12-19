@@ -1,6 +1,10 @@
 #-------------------------------------------------------------------------------
-# clear defaults
+# built-in targets
+
+# clear default suffixes and implicit rules
 .SUFFIXES:
+
+# define all files as secondary files, preventing deletion by make
 .SECONDARY:
 
 #-------------------------------------------------------------------------------
@@ -31,8 +35,15 @@ OBJFILES_CPP			:=	$(SRCFILES_CPP:.cpp=.o)
 OBJFILES				:=	$(OBJFILES_C) $(OBJFILES_CPP)
 
 OBJFILES_INPROGRESS		:=
-OBJFILES_EXCLUDE		:=	$(OBJFILES_INPROGRESS)
-OBJFILES_FINAL			:=	$(filter-out $(addsuffix .o,$(OBJFILES_EXCLUDE)),$(OBJFILES))
+OBJFILES_EXCLUDE		:=
+OBJFILES_FINAL			:=	$(filter-out \
+								$(addsuffix \
+									.o,\
+									$(OBJFILES_EXCLUDE) \
+									$(OBJFILES_INPROGRESS)\
+								),\
+								$(OBJFILES)\
+							)
 
 INCLUDE_LOCAL			:=	$(DIRS_INCLUDE)
 INCLUDE_SYSTEM			:=	$(DEVKITPRO)/libogc/include
@@ -45,26 +56,45 @@ VPATH					:=	$(DIRS_LIB) $(DIRS_BUILD) $(DIRS_SOURCE) $(DIRS_INCLUDE) \
 									$(wildcard */*.*),\
 									$(wildcard $(dir)/*)\
 								)\
-							)
+							) # just in case DIRS_INCLUDE is more than one folder
 
 #-------------------------------------------------------------------------------
 # compiler and archiver + flags
+
+# compiler and archiver
 CC						:=	$(DEVKITPPC)/bin/$(PREFIX)gcc.exe
 CXX						:=	$(DEVKITPPC)/bin/$(PREFIX)g++.exe
 AR						:=	$(DEVKITPPC)/bin/$(PREFIX)ar.exe
 
-CFLAGS_WARNINGS			:=	all extra no-comment no-cpp no-uninitialized
+# C/C++ source flags
+CFLAGS_WARNINGS_ENABLE	:=	all extra
+CFLAGS_WARNINGS_DISABLE	:=	comment cpp uninitialized
+CFLAGS_WARNINGS			:=	$(addprefix \
+								-W,\
+								$(CFLAGS_WARNINGS_ENABLE) \
+								$(addprefix \
+									no-,\
+									$(CFLAGS_WARNINGS_DISABLE)\
+								)\
+							)
+CFLAGS_DEBUG			:=	-save-temps
 
+# C-specific source flags
+# CCFLAGS_STANDARDS		:=	-std=c17
+
+# C++-specific source flags
 CXXFLAGS_STANDARDS		:=	-std=c++17
-CXXFLAGS_DEBUG			:=	-save-temps
 
+# C/C++ source preprocessor flags
 CPPFLAGS_INCLUDE		:=	$(addprefix -I,$(INCLUDE_LOCAL)) \
 							$(addprefix -I,$(INCLUDE_SYSTEM))
 CPPFLAGS_OPTIMIZATION	:=	-O2
 CPPFLAGS_OTHER			:=	-ftabstop=4
 
-CFLAGS					:=	$(addprefix -W,$(CFLAGS_WARNINGS))
-CXXFLAGS				:=	$(CFLAGS) $(CXXFLAGS_STANDARDS) $(CXXFLAGS_DEBUG)
+# Final flags
+CFLAGS					:=	$(CFLAGS_WARNINGS) $(CFLAGS_DEBUG)
+CCFLAGS					:=	$(CCFLAGS_STANDARDS) $(CFLAGS)
+CXXFLAGS				:=	$(CXXFLAGS_STANDARDS) $(CFLAGS)
 CPPFLAGS				:=	$(CPPFLAGS_INCLUDE) $(CPPFLAGS_OPTIMIZATION) $(CPPFLAGS_OTHER)
 
 #-------------------------------------------------------------------------------
@@ -82,8 +112,10 @@ all: libwrap.a install
 # rebuild target
 rebuild:
 	@echo rebuilding library
-	@make --no-print-dir clean
-	@make --no-print-dir libwrap.a
+	@echo
+	@make --no-p clean
+	@echo
+	@make --no-p libwrap.a
 
 # install target
 install:
@@ -122,10 +154,21 @@ debug:
 	@echo OBJFILES: $(OBJFILES)
 	@echo OBJFILES_FINAL: $(OBJFILES_FINAL)
 	@echo VPATH: $(VPATH)
+	@echo CFLAGS_WARNINGS: $(CFLAGS_WARNINGS)
 
 #-------------------------------------------------------------------------------
 # generic (header+source)->object->archive rules
 
+# C source files to object files
+%.o: %.c # %.h # %_td.hpp
+	@echo [CC] $< =\> $@
+	@$(CC) \
+		-c $(DIRS_SOURCE)/$(<F) \
+		-o $(DIRS_BUILD)/$(@F) \
+		   $(CCFLAGS) \
+		   $(CPPFLAGS)
+
+# C++ source files to object files
 %.o: %.cpp %.hpp # %_td.hpp
 	@echo [CXX] $< =\> $@
 	@$(CXX) \
@@ -134,10 +177,11 @@ debug:
 		   $(CXXFLAGS) \
 		   $(CPPFLAGS)
 
+# Object files to library archive
 libwrap.a: $(OBJFILES_FINAL)
 	@echo [AR] $@
 	@$(AR) \
-		-rvlsf \
+		-rvlfs \
 		$(DIRS_LIB)/$@ \
 		$(addprefix $(DIRS_BUILD)/,$(OBJFILES_FINAL))
 	@echo done building archive

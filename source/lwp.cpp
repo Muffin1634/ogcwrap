@@ -301,8 +301,10 @@ void ogcwrap::lwp::thread::_startMultitasking(void)
 void ogcwrap::lwp::thread::_stopMultitasking(void (*exit)(void))
 	{ __lwp_thread_stopmultitasking(exit); }
 
+#ifdef UNDEFINED_REFERENCES
 lwp_obj * ogcwrap::lwp::thread::_getObject(lwp_cntrl * thread)
 	{ return __lwp_thread_getobject(thread); }
+#endif // UNDEFINED_REFERENCES
 
 u32 ogcwrap::lwp::thread::_evaluateMode(void)
 	{ return __lwp_evaluatemode(); }
@@ -485,18 +487,18 @@ void ogcwrap::lwp::mutex::_init(lwp_mutex * mutex, lwp_mutex_attr * attr, u32 in
 u32 ogcwrap::lwp::mutex::_surrender(lwp_mutex * mutex)
 	{ return __lwp_mutex_surrender(mutex); }
 
-/* uses undefined functions
+#ifdef USES_UNDEFINED_REFERENCES
 void ogcwrap::lwp::mutex::_seize(lwp_mutex * mutex, s32 id, u8 wait, u32 timeout, u32 level)
 	{ __lwp_mutex_seize(mutex, id, wait, timeout, level); }
-*/
+#endif // USES_UNDEFINED_REFERENCES
 
 void ogcwrap::lwp::mutex::_seizeIRQBlocking(lwp_mutex * mutex, u64 timeout)
 	{ __lwp_mutex_seize_irq_blocking(mutex, timeout); }
 
-/* no definition
+#ifdef UNDEFINED_REFERENCES
 void ogcwrap::lwp::mutex::_seizeIRQTryLock(lwp_mutex * mutex, u32 * status)
 	{ __lwp_mutex_seize_irq_trylock(mutex, status); }
-*/
+#endif // UNDEFINED_REFERENCES
 
 void ogcwrap::lwp::mutex::_flush(lwp_mutex * mutex, u32 status)
 	{ __lwp_mutex_flush(mutex, status); }
@@ -586,8 +588,10 @@ void ogcwrap::lwp::stack::_free(lwp_cntrl * control)
 void ogcwrap::lwp::watchdog::_init(void)
 	{ __lwp_watchdog_init(); }
 
+#ifdef UNDEFINED_REFERENCES
 void ogcwrap::lwp::watchdog::_setTimer(wd_cntrl * wd)
 	{ __lwp_watchdog_settimer(wd); }
+#endif // UNDEFINED_REFERENCES
 
 void ogcwrap::lwp::watchdog::_insert(lwp_queue * header, wd_cntrl * wd)
 	{ __lwp_wd_insert(header, wd); }

@@ -1,0 +1,26 @@
+why did i make this pretty?
+---
+literally ignore this its just for me knowing what standards i can use ok thx bye
+
+# C
+Replace `c` with `gnu` to enable GNU extensions for that standard; e.g. `-std=c17` becomes `-std=gnu17`.
+Note that this does not apply to `iso9899:199409`.
+```
+-std=c90            Conform to the ISO 1990 C standard.
+-std=iso9899:199409 Conform to the ISO 1990 C standard as amended in 1994.
+-std=c99            Conform to the ISO 1999 C standard.
+-std=c11            Conform to the ISO 2011 C standard.
+-std=c17            Conform to the ISO 2017 C standard (published in 2018).
+-std=c2x            Conform to the ISO 202X C standard draft (experimental and incomplete support).
+```
+
+# C++
+Replace `c` with `gnu` to enable GNU extensions for that standard; e.g. `-std=c++17` becomes `-std=gnu++17`.
+```
+-std=c++98          Conform to the ISO 1998 C++ standard revised by the 2003 technical corrigendum.
+-std=c++11          Conform to the ISO 2011 C++ standard.
+-std=c++14          Conform to the ISO 2014 C++ standard.
+-std=c++17          Conform to the ISO 2017 C++ standard.
+-std=c++20          Conform to the ISO 2020 C++ standard (experimental and incomplete support).
+-std=c++23          Conform to the ISO 2023 C++ draft standard (experimental and incomplete support).
+```
