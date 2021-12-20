@@ -82,6 +82,7 @@ var namespaces_dup =
         [ "testVoiceBufferUsing", "d1/d09/a00077.html#a622651d642f09d1fbefeabaa7cf453a5", null ],
         [ "testVoiceBufferReady", "d1/d09/a00077.html#a783c293185ec3de7acb30afb0c5f7297", null ]
       ] ],
+      [ "cache", "d9/da4/a00078.html", "d9/da4/a00078" ],
       [ "console", "d2/d1f/a00083.html", [
         [ "init", "d2/d1f/a00083.html#a8f622049cd5cb7b9e6457a8b5e922292", null ],
         [ "initEx", "d2/d1f/a00083.html#a995d4f4d3e9d0576b5dd8499ffb35f35", null ],

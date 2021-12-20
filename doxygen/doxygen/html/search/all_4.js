@@ -9,6 +9,7 @@ var searchData=
   ['deprecated_20list_6',['Deprecated List',['../db/db6/a00074.html',1,'']]],
   ['dev_5fbbatcp_7',['dev_BBATCP',['../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dcaae82e09ef2fc0e6801bc4a31c6e483eee',1,'ogcwrap::debug']]],
   ['dev_5fusbgecko_8',['dev_USBGecko',['../df/d5d/a00084.html#a415a9e6a183eae7e61bfdfa1afa48dcaa359b4bfc7dca491ceff5bec2adf9d98d',1,'ogcwrap::debug']]],
-  ['disablegecko_9',['disableGecko',['../d2/d1f/a00083.html#aae7437544605fc01cda1a8e6d197688b',1,'ogcwrap::console']]],
-  ['dsfieldpos_10',['DSFieldPos',['../d9/dec/a00090.html#a2db48d4a7c1bc15f7814275ed000c48d',1,'ogcwrap::video']]]
+  ['disable_9',['disable',['../da/dec/a00080.html#a43997d482afc6ae4ce532e73700ab472',1,'ogcwrap::cache::l1::data::disable()'],['../d8/d53/a00081.html#ad288eb6f4d9902049f3f5658cec1244f',1,'ogcwrap::cache::l1::instruction::disable()'],['../d4/d63/a00082.html#a3c670e02e02d2b1cfa9555fa8bbd3401',1,'ogcwrap::cache::l2::disable()']]],
+  ['disablegecko_10',['disableGecko',['../d2/d1f/a00083.html#aae7437544605fc01cda1a8e6d197688b',1,'ogcwrap::console']]],
+  ['dsfieldpos_11',['DSFieldPos',['../d9/dec/a00090.html#a2db48d4a7c1bc15f7814275ed000c48d',1,'ogcwrap::video']]]
 ];

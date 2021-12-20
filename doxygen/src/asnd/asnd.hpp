@@ -55,7 +55,7 @@ namespace ogcwrap::asnd
  *  \brief Header file for the wrapper of the Accelerated SouND subsystem.
  *
  *  This header contains functions in the <CODE>ogcwrap::asnd</CODE> namespace for initializing the ASND subsystem,
- *  managing and gathering statistics from tho Digital Sound Processor (DSP), managing individual voices, and testing
+ *  managing and gathering statistics from tho Digital Signal Processor (DSP), managing individual voices, and testing
  *  sample buffers.
  *
  *  <!-- ----------------------------------------------------------------------------------------------------------- -->
@@ -130,7 +130,7 @@ namespace ogcwrap::asnd
  */
 
 /*! \fn u8 ogcwrap::asnd::getFirstUnusedVoice(void)
- *  \brief Gets the first available void that is not being used.
+ *  \brief Gets the first available voice that is not being used.
  *
  *  \return The first unused voice.
  */

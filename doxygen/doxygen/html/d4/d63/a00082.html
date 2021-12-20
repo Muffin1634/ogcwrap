@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libwrap: ogcwrap::console Namespace Reference</title>
+<title>libwrap: ogcwrap::cache::l2 Namespace Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">libwrap<span id="projectnumber">&#160;221v0.1.0</span>
+   <div id="projectname">libwrap<span id="projectnumber">&#160;221v0.1.1</span>
    </div>
-   <div id="projectbrief">C++ wrapper for libOGC</div>
+   <div id="projectbrief">C++ wrapper and big documentation pile for libOGC</div>
   </td>
  </tr>
  </tbody>
@@ -85,43 +85,564 @@ $(document).ready(function(){initNavTree('d4/d63/a00082.html','../../'); initRes
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">ogcwrap::console Namespace Reference</div></div>
+  <div class="headertitle"><div class="title">ogcwrap::cache::l2 Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Namespace containing functions related to the console subsystem in libOGC.  
+<p>Namespace containing functions related to the L2 cache.  
 <a href="../../d4/d63/a00082.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8f622049cd5cb7b9e6457a8b5e922292"><td class="memItemLeft" align="right" valign="top"><a id="a8f622049cd5cb7b9e6457a8b5e922292" name="a8f622049cd5cb7b9e6457a8b5e922292"></a>
-<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *fb, <a class="el" href="../../d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86">u16</a> xStart, <a class="el" href="../../d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86">u16</a> yStart, <a class="el" href="../../d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86">u16</a> xRes, <a class="el" href="../../d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86">u16</a> yRes, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> stride)</td></tr>
-<tr class="separator:a8f622049cd5cb7b9e6457a8b5e922292"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b446bd9d05a78a72d57c4a23775fe9a"><td class="memItemLeft" align="right" valign="top"><a id="a1b446bd9d05a78a72d57c4a23775fe9a" name="a1b446bd9d05a78a72d57c4a23775fe9a"></a>
-<a class="el" href="../../d8/d41/a00038.html#ae156694b2c31f94e37ff9683a1205175">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>initEx</b> (GXRModeObj *rmode, <a class="el" href="../../d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86">u16</a> xStart, <a class="el" href="../../d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86">u16</a> yStart, <a class="el" href="../../d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86">u16</a> xRes, <a class="el" href="../../d8/d41/a00038.html#a4575f0da2ab008b663ee9d7214a5af86">u16</a> yRes)</td></tr>
-<tr class="separator:a1b446bd9d05a78a72d57c4a23775fe9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d1fb77ff850353a08d594b57080ce62"><td class="memItemLeft" align="right" valign="top"><a id="a0d1fb77ff850353a08d594b57080ce62" name="a0d1fb77ff850353a08d594b57080ce62"></a>
-<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getMetrics</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> *rows, <a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> *cols)</td></tr>
-<tr class="separator:a0d1fb77ff850353a08d594b57080ce62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22e59c4d9b16dcd7cea16119f675f614"><td class="memItemLeft" align="right" valign="top"><a id="a22e59c4d9b16dcd7cea16119f675f614" name="a22e59c4d9b16dcd7cea16119f675f614"></a>
-<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getPosition</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> *row, <a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> *col)</td></tr>
-<tr class="separator:a22e59c4d9b16dcd7cea16119f675f614"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a401794ed6242276479bd55600b932c5e"><td class="memItemLeft" align="right" valign="top"><a id="a401794ed6242276479bd55600b932c5e" name="a401794ed6242276479bd55600b932c5e"></a>
-<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>enableGecko</b> (<a class="el" href="../../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d">u8</a> port, <a class="el" href="../../d8/d41/a00038.html#a3b5a99ce2a4fb6dc207d32e39df29f3b">bool</a> safe)</td></tr>
-<tr class="separator:a401794ed6242276479bd55600b932c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae7437544605fc01cda1a8e6d197688b"><td class="memItemLeft" align="right" valign="top"><a id="aae7437544605fc01cda1a8e6d197688b" name="aae7437544605fc01cda1a8e6d197688b"></a>
-<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>disableGecko</b> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
-<tr class="separator:aae7437544605fc01cda1a8e6d197688b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27f04d97267083951d288dba294df986"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#a27f04d97267083951d288dba294df986">enhance</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="memdesc:a27f04d97267083951d288dba294df986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enhances the ablilties of the L2 cache(?)  <a href="../../d4/d63/a00082.html#a27f04d97267083951d288dba294df986">More...</a><br /></td></tr>
+<tr class="separator:a27f04d97267083951d288dba294df986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcc99bc49da8b83479b824676ede82aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#afcc99bc49da8b83479b824676ede82aa">enable</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="memdesc:afcc99bc49da8b83479b824676ede82aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the L2 cache.  <a href="../../d4/d63/a00082.html#afcc99bc49da8b83479b824676ede82aa">More...</a><br /></td></tr>
+<tr class="separator:afcc99bc49da8b83479b824676ede82aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c670e02e02d2b1cfa9555fa8bbd3401"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#a3c670e02e02d2b1cfa9555fa8bbd3401">disable</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="memdesc:a3c670e02e02d2b1cfa9555fa8bbd3401"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the L2 cache.  <a href="../../d4/d63/a00082.html#a3c670e02e02d2b1cfa9555fa8bbd3401">More...</a><br /></td></tr>
+<tr class="separator:a3c670e02e02d2b1cfa9555fa8bbd3401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab281abe1b8c507eecf3b6e6885f97a36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#ab281abe1b8c507eecf3b6e6885f97a36">getBase</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="memdesc:ab281abe1b8c507eecf3b6e6885f97a36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the base address of the L2 cache.  <a href="../../d4/d63/a00082.html#ab281abe1b8c507eecf3b6e6885f97a36">More...</a><br /></td></tr>
+<tr class="separator:ab281abe1b8c507eecf3b6e6885f97a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0022d61f9d0e77a0edd3f81d61ef8785"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#a0022d61f9d0e77a0edd3f81d61ef8785">loadBlocks</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *src_addr, <a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *dst_addr, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> length)</td></tr>
+<tr class="memdesc:a0022d61f9d0e77a0edd3f81d61ef8785"><td class="mdescLeft">&#160;</td><td class="mdescRight">loadBlocks  <a href="../../d4/d63/a00082.html#a0022d61f9d0e77a0edd3f81d61ef8785">More...</a><br /></td></tr>
+<tr class="separator:a0022d61f9d0e77a0edd3f81d61ef8785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e1db224a68ab9ee9e7fbb7474038201"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#a8e1db224a68ab9ee9e7fbb7474038201">storeBlocks</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *src_addr, <a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *dst_addr, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> length)</td></tr>
+<tr class="memdesc:a8e1db224a68ab9ee9e7fbb7474038201"><td class="mdescLeft">&#160;</td><td class="mdescRight">storeBlocks  <a href="../../d4/d63/a00082.html#a8e1db224a68ab9ee9e7fbb7474038201">More...</a><br /></td></tr>
+<tr class="separator:a8e1db224a68ab9ee9e7fbb7474038201"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a739fd59cb910051ca844ec5b7b8e6b62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#a739fd59cb910051ca844ec5b7b8e6b62">loadData</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *src_addr, <a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *dst_addr, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> length)</td></tr>
+<tr class="memdesc:a739fd59cb910051ca844ec5b7b8e6b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">loadData  <a href="../../d4/d63/a00082.html#a739fd59cb910051ca844ec5b7b8e6b62">More...</a><br /></td></tr>
+<tr class="separator:a739fd59cb910051ca844ec5b7b8e6b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7036bf64cf819198083cd4032681fa3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#ae7036bf64cf819198083cd4032681fa3">storeData</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *src_addr, <a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *dst_addr, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> length)</td></tr>
+<tr class="memdesc:ae7036bf64cf819198083cd4032681fa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">storeData  <a href="../../d4/d63/a00082.html#ae7036bf64cf819198083cd4032681fa3">More...</a><br /></td></tr>
+<tr class="separator:ae7036bf64cf819198083cd4032681fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae97889884217df9937d31207d102f5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#aae97889884217df9937d31207d102f5d">waitInQueue</a> (<a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> length)</td></tr>
+<tr class="memdesc:aae97889884217df9937d31207d102f5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">waitInQueue  <a href="../../d4/d63/a00082.html#aae97889884217df9937d31207d102f5d">More...</a><br /></td></tr>
+<tr class="separator:aae97889884217df9937d31207d102f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e5b590e15ab7710f8b2a468ebd811d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#a5e5b590e15ab7710f8b2a468ebd811d7">getQueueLength</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="memdesc:a5e5b590e15ab7710f8b2a468ebd811d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the length of the cache queue.  <a href="../../d4/d63/a00082.html#a5e5b590e15ab7710f8b2a468ebd811d7">More...</a><br /></td></tr>
+<tr class="separator:a5e5b590e15ab7710f8b2a468ebd811d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a585b0b5e492100bcfb08d995e0c640cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#a585b0b5e492100bcfb08d995e0c640cf">flushQueue</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>)</td></tr>
+<tr class="memdesc:a585b0b5e492100bcfb08d995e0c640cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes the cache queue. (to what?)  <a href="../../d4/d63/a00082.html#a585b0b5e492100bcfb08d995e0c640cf">More...</a><br /></td></tr>
+<tr class="separator:a585b0b5e492100bcfb08d995e0c640cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed80f850f12109919db225e31806b6de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#aed80f850f12109919db225e31806b6de">allocate</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *start_addr, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> length)</td></tr>
+<tr class="memdesc:aed80f850f12109919db225e31806b6de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates a new buffer of (?)  <a href="../../d4/d63/a00082.html#aed80f850f12109919db225e31806b6de">More...</a><br /></td></tr>
+<tr class="separator:aed80f850f12109919db225e31806b6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1909d7bc268b432c769b6fabf1090a16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#a1909d7bc268b432c769b6fabf1090a16">allocateNoInvalidate</a> (<a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *start_addr, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> length)</td></tr>
+<tr class="memdesc:a1909d7bc268b432c769b6fabf1090a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates a new buffer of (?) without invalidating (?)  <a href="../../d4/d63/a00082.html#a1909d7bc268b432c769b6fabf1090a16">More...</a><br /></td></tr>
+<tr class="separator:a1909d7bc268b432c769b6fabf1090a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1512526e6cd2913ee8df62c8366358f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#ad1512526e6cd2913ee8df62c8366358f">allocateOneTag</a> (<a class="el" href="../../d8/d41/a00038.html#a3b5a99ce2a4fb6dc207d32e39df29f3b">bool</a> arg0, <a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *arg1)</td></tr>
+<tr class="memdesc:ad1512526e6cd2913ee8df62c8366358f"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocateOneTag  <a href="../../d4/d63/a00082.html#ad1512526e6cd2913ee8df62c8366358f">More...</a><br /></td></tr>
+<tr class="separator:ad1512526e6cd2913ee8df62c8366358f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa99c006baa800f9462824cad0c7e6352"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d63/a00082.html#aa99c006baa800f9462824cad0c7e6352">allocateTags</a> (<a class="el" href="../../d8/d41/a00038.html#a3b5a99ce2a4fb6dc207d32e39df29f3b">bool</a> arg0, <a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *arg, <a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> arg2)</td></tr>
+<tr class="memdesc:aa99c006baa800f9462824cad0c7e6352"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocateTags  <a href="../../d4/d63/a00082.html#aa99c006baa800f9462824cad0c7e6352">More...</a><br /></td></tr>
+<tr class="separator:aa99c006baa800f9462824cad0c7e6352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Namespace containing functions related to the console subsystem in libOGC. </p>
-</div></div><!-- contents -->
+<div class="textblock"><p >Namespace containing functions related to the L2 cache. </p>
+<dl class="section warning"><dt>Warning</dt><dd>All <code>start_addr</code>, <code>src_addr</code> and <code>dst_addr</code> arguments in this namespace <b>MUST be aligned on a 32-byte boundary</b>, and all <code>length</code> arguments in this namespace <b>MUST be a multiple of 32</b>, unless otherwise specified. </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a27f04d97267083951d288dba294df986" name="a27f04d97267083951d288dba294df986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27f04d97267083951d288dba294df986">&#9670;&nbsp;</a></span>enhance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::cache::l2::enhance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enhances the ablilties of the L2 cache(?) </p>
+<dl class="section note"><dt>Note</dt><dd>This function is only available for Wiis (the macro <code>HW_RVL</code> is defined). This function is not available for GameCubes. </dd></dl>
+
+</div>
+</div>
+<a id="afcc99bc49da8b83479b824676ede82aa" name="afcc99bc49da8b83479b824676ede82aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcc99bc49da8b83479b824676ede82aa">&#9670;&nbsp;</a></span>enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::cache::l2::enable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables the L2 cache. </p>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+
+</div>
+</div>
+<a id="a3c670e02e02d2b1cfa9555fa8bbd3401" name="a3c670e02e02d2b1cfa9555fa8bbd3401"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c670e02e02d2b1cfa9555fa8bbd3401">&#9670;&nbsp;</a></span>disable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::cache::l2::disable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disables the L2 cache. </p>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+
+</div>
+</div>
+<a id="ab281abe1b8c507eecf3b6e6885f97a36" name="ab281abe1b8c507eecf3b6e6885f97a36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab281abe1b8c507eecf3b6e6885f97a36">&#9670;&nbsp;</a></span>getBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> * ogcwrap::cache::l2::getBase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the base address of the L2 cache. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>void *</code> to the beginning address of the L2 cache. </dd></dl>
+
+</div>
+</div>
+<a id="a0022d61f9d0e77a0edd3f81d61ef8785" name="a0022d61f9d0e77a0edd3f81d61ef8785"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0022d61f9d0e77a0edd3f81d61ef8785">&#9670;&nbsp;</a></span>loadBlocks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::cache::l2::loadBlocks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>src_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>dst_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>loadBlocks </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src_addr</td><td>Source address. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dst_addr</td><td>Destination address. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Length of the blocks.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+
+</div>
+</div>
+<a id="a8e1db224a68ab9ee9e7fbb7474038201" name="a8e1db224a68ab9ee9e7fbb7474038201"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e1db224a68ab9ee9e7fbb7474038201">&#9670;&nbsp;</a></span>storeBlocks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::cache::l2::storeBlocks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>src_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>dst_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>storeBlocks </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src_addr</td><td>Source address. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dst_addr</td><td>Destination address. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Length of the blocks.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+
+</div>
+</div>
+<a id="a739fd59cb910051ca844ec5b7b8e6b62" name="a739fd59cb910051ca844ec5b7b8e6b62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a739fd59cb910051ca844ec5b7b8e6b62">&#9670;&nbsp;</a></span>loadData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> ogcwrap::cache::l2::loadData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>src_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>dst_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>loadData </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src_addr</td><td>Source address. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dst_addr</td><td>Destination address. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Length of the data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>loadDataReturn </dd></dl>
+
+</div>
+</div>
+<a id="ae7036bf64cf819198083cd4032681fa3" name="ae7036bf64cf819198083cd4032681fa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7036bf64cf819198083cd4032681fa3">&#9670;&nbsp;</a></span>storeData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> ogcwrap::cache::l2::storeData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>src_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>dst_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>storeData </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">src_addr</td><td>Source address. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dst_addr</td><td>Destination address. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Length of the data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>storeDataReturn </dd></dl>
+
+</div>
+</div>
+<a id="aae97889884217df9937d31207d102f5d" name="aae97889884217df9937d31207d102f5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae97889884217df9937d31207d102f5d">&#9670;&nbsp;</a></span>waitInQueue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> ogcwrap::cache::l2::waitInQueue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td>
+          <td class="paramname"><em>length</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>waitInQueue </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Length of ?</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>waitInQueueReturn </dd></dl>
+
+</div>
+</div>
+<a id="a5e5b590e15ab7710f8b2a468ebd811d7" name="a5e5b590e15ab7710f8b2a468ebd811d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e5b590e15ab7710f8b2a468ebd811d7">&#9670;&nbsp;</a></span>getQueueLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> ogcwrap::cache::l2::getQueueLength </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the length of the cache queue. </p>
+<dl class="section return"><dt>Returns</dt><dd>The length of the cache queue. </dd></dl>
+
+</div>
+</div>
+<a id="a585b0b5e492100bcfb08d995e0c640cf" name="a585b0b5e492100bcfb08d995e0c640cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a585b0b5e492100bcfb08d995e0c640cf">&#9670;&nbsp;</a></span>flushQueue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::cache::l2::flushQueue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flushes the cache queue. (to what?) </p>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+
+</div>
+</div>
+<a id="aed80f850f12109919db225e31806b6de" name="aed80f850f12109919db225e31806b6de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed80f850f12109919db225e31806b6de">&#9670;&nbsp;</a></span>allocate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::cache::l2::allocate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>start_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocates a new buffer of (?) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">start_addr</td><td>Starting address of the buffer to be allocated. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Length of the buffer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+
+</div>
+</div>
+<a id="a1909d7bc268b432c769b6fabf1090a16" name="a1909d7bc268b432c769b6fabf1090a16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1909d7bc268b432c769b6fabf1090a16">&#9670;&nbsp;</a></span>allocateNoInvalidate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> ogcwrap::cache::l2::allocateNoInvalidate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>start_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocates a new buffer of (?) without invalidating (?) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">start_addr</td><td>Starting address. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>Length of the buffer.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+
+</div>
+</div>
+<a id="ad1512526e6cd2913ee8df62c8366358f" name="ad1512526e6cd2913ee8df62c8366358f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1512526e6cd2913ee8df62c8366358f">&#9670;&nbsp;</a></span>allocateOneTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> ogcwrap::cache::l2::allocateOneTag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a3b5a99ce2a4fb6dc207d32e39df29f3b">bool</a>&#160;</td>
+          <td class="paramname"><em>arg0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>arg1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>allocateOneTag </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg0</td><td>??? </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg1</td><td>???</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+
+</div>
+</div>
+<a id="aa99c006baa800f9462824cad0c7e6352" name="aa99c006baa800f9462824cad0c7e6352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa99c006baa800f9462824cad0c7e6352">&#9670;&nbsp;</a></span>allocateTags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a> ogcwrap::cache::l2::allocateTags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a3b5a99ce2a4fb6dc207d32e39df29f3b">bool</a>&#160;</td>
+          <td class="paramname"><em>arg0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a397f25d90863f345d65d0cd64bc2c733">void</a> *&#160;</td>
+          <td class="paramname"><em>arg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d8/d41/a00038.html#a0f96c2dca5406affb1ae89c21384ade4">u32</a>&#160;</td>
+          <td class="paramname"><em>arg2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>allocateTags </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg0</td><td>??? </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg1</td><td>??? </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg2</td><td>???</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>ogcwrap</b></li><li class="navelem"><a class="el" href="../../d4/d63/a00082.html">console</a></li>
-    <li class="footer">Generated on Wed Sep 22 2021 13:56:44 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="navelem"><b>ogcwrap</b></li><li class="navelem"><a class="el" href="../../d9/da4/a00078.html">cache</a></li><li class="navelem"><a class="el" href="../../d4/d63/a00082.html">l2</a></li>
+    <li class="footer">Generated on Tue Dec 21 2021 19:11:43 for libwrap by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

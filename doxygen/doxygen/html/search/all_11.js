@@ -5,5 +5,6 @@ var searchData=
   ['u64_2',['u64',['../d8/d41/a00038.html#a2d1becce7843f3ed0b97b9a69b2d186d',1,'ogctypes.h']]],
   ['u8_3',['u8',['../d8/d41/a00038.html#ac3f962f92747812438b379bc466b106d',1,'ogctypes.h']]],
   ['ufp16_4',['ufp16',['../d8/d41/a00038.html#a6c222254f38ee63aafd33db68a5b09e6',1,'ogctypes.h']]],
-  ['ufp32_5',['ufp32',['../d8/d41/a00038.html#a5e3615c55d5aced9612c2de2653ed039',1,'ogctypes.h']]]
+  ['ufp32_5',['ufp32',['../d8/d41/a00038.html#a5e3615c55d5aced9612c2de2653ed039',1,'ogctypes.h']]],
+  ['unfreeze_6',['unfreeze',['../da/dec/a00080.html#aeccc83462b6eca45dca83d77e742b486',1,'ogcwrap::cache::l1::data::unfreeze()'],['../d8/d53/a00081.html#aebebb4f4ae34ab50ee2258d5c0210c26',1,'ogcwrap::cache::l1::instruction::unfreeze()']]]
 ];
