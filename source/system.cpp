@@ -94,13 +94,13 @@ namespace ogcwrap
 	namespace memcast
 	{
 		// src addr -> dest addr
-		void * Virtual_Physical(u32);
-		void * Physical_K0(u32);
-		void * Physical_K1(u32);
-		void * K0_Physical(u32);
-		void * K0_K1(u32);
-		void * K1_Physical(u32);
-		void * K1_K0(u32);
+		void * Virtual_Physical(void *);
+		void * Physical_K0(void *);
+		void * Physical_K1(void *);
+		void * K0_Physical(void *);
+		void * K0_K1(void *);
+		void * K1_Physical(void *);
+		void * K1_K0(void *);
 	}
 }
 
@@ -275,23 +275,23 @@ void ogcwrap::system::detail::init(void)
 
 // ogcwrap:::memcast
 
-void * ogcwrap::memcast::Virtual_Physical(u32 addr)
-	{ return ((void *)(addr & 0x3FFFFFFF)); }
+void * ogcwrap::memcast::Virtual_Physical(void * addr)
+	{ return mcast(void *, mcast(u32, addr) & 0x3FFFFFFF); }
 
-void * ogcwrap::memcast::Physical_K0(u32 addr)
-	{ return ((void *)(addr + 0x80000000)); }
+void * ogcwrap::memcast::Physical_K0(void * addr)
+	{ return mcast(void *, mcast(u32, addr) + 0x80000000); }
 
-void * ogcwrap::memcast::Physical_K1(u32 addr)
-	{ return ((void *)(addr + 0xC0000000)); }
+void * ogcwrap::memcast::Physical_K1(void * addr)
+	{ return mcast(void *, mcast(u32, addr) + 0xC0000000); }
 
-void * ogcwrap::memcast::K0_Physical(u32 addr)
-	{ return ((void *)(addr - 0x80000000)); }
+void * ogcwrap::memcast::K0_Physical(void * addr)
+	{ return mcast(void *, mcast(u32, addr) - 0x80000000); }
 
-void * ogcwrap::memcast::K0_K1(u32 addr)
-	{ return ((void *)(addr + 0x40000000)); }
+void * ogcwrap::memcast::K0_K1(void * addr)
+	{ return mcast(void *, mcast(u32, addr) + 0x40000000); }
 
-void * ogcwrap::memcast::K1_Physical(u32 addr)
-	{ return ((void *)(addr - 0xC0000000)); }
+void * ogcwrap::memcast::K1_Physical(void * addr)
+	{ return mcast(void *, mcast(u32, addr) - 0xC0000000); }
 
-void * ogcwrap::memcast::K1_K0(u32 addr)
-	{ return ((void *)(addr - 0x40000000)); }
+void * ogcwrap::memcast::K1_K0(void * addr)
+	{ return mcast(void *, mcast(u32, addr) - 0x40000000); }

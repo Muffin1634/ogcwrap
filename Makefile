@@ -132,10 +132,10 @@ install:
 # clean target
 clean:
 	@echo cleaning...
-ifeq ($(DIRS_BUILD),)
+ifeq ($(strip $(DIRS_BUILD)),)
 	$(error uh-oh! your DIRS_BUILD variable is not set! \
 	give this variable a value to avoid deleting the root directory)
-else ifeq ($(DIRS_LIB),)
+else ifeq ($(strip $(DIRS_LIB)),)
 	$(error uh-oh! your DIRS_LIB variable is not set! \
 	give this variable a value to avoid deleting the root directory)
 else
