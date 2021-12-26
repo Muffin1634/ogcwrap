@@ -5,12 +5,13 @@
 #include <gctypes.h>
 #include <ogc/gx.h>
 #include <ogc/gx_struct.h>
+#include <ogc/lwp.h>
 
 #include "gx/gx_td.hpp"
 
 namespace ogcwrap::gx
 {
-	// library management
+	// subsystem management
 	GXFifoObj * init(void * base_addr, u32 size);
 
 	// callbacks
@@ -38,34 +39,34 @@ namespace ogcwrap::gx
 	void flushCPUFifo(void);
 
 	// framebuffer management
-	f32 getYScaleFactor(u16, u16);
-	u32 setDisplayCopyYScale(f32);
-	u32 setDisplayCopyYScale(u16, u16);
-	void setDisplayCopySource(u16, u16, u16, u16);
-	void setDisplayCopyDest(u16, u16);
-	void setDisplayCopyGamma(gx_gamma_t);
-	void setDisplayCopyFrame2Field(gx_copy_mode_t);
-	void setCopyClamp(gx_clamp_mode_t);
-	void setCopyFilter(bool, u8[12][2], bool, u8[7]);
-	void setCopyClear(GXColor, u32);
-	void copyDisplay(void *, bool);
+	f32 getYScaleFactor(u16 efbHeight, u16 xfbHeight);
+	u32 setDisplayCopyYScale(f32 scale);
+	u32 setDisplayCopyYScale(u16 efbHeight, u16 xfbHeight);
+	void setDisplayCopySource(u16 left, u16 top, u16 width, u16 height);
+	void setDisplayCopyDest(u16 width, u16 height);
+	void setDisplayCopyGamma(gx_gamma_t gamma);
+	void setDisplayCopyFrame2Field(gx_copy_mode_t mode);
+	void setCopyClamp(gx_clamp_mode_t mode);
+	void setCopyFilter(bool aaStatus, u8 samplePattern[12][2], bool vfStatus, u8 vfilter[7]);
+	void setCopyClear(GXColor color, u32 z);
+	void copyDisplay(void * dest, bool clear);
 
-	void setViewport(f32, f32, f32, f32, f32, f32);
-	void setViewportJitter(f32, f32, f32, f32, f32, f32, gx_next_field_t);
-	void adjustForOverscan(GXRModeObj *, GXRModeObj *, u16, u16);
-	void setScissor(u16, u16, u16, u16);
-	void setScissorBoxOffset(s16, s16);
-	void setColorUpdate(bool);
-	void setColorUpdate(bool, bool);
-	void setAlphaUpdate(bool);
-	void setPixelFormat(gx_pixel_format_t, gx_z_format_t);
-	void setDestAlpha(bool, u8);
-	void setFieldMask(bool, bool);
-	void setFieldMode(bool, bool);
+	void setViewport(f32 left, f32 top, f32 width, f32 height, f32 near, f32 far);
+	void setViewportJitter(f32 left, f32 top, f32 width, f32 height, f32 near, f32 far, gx_next_field_t next);
+	void adjustForOverscan(GXRModeObj * rmIn, GXRModeObj * rmOut, u16 hTrim, u16 vTrim);
+	void setScissor(u16 top, u16 left, u16 width, u16 height);
+	void setScissorBoxOffset(s16 xOffset, s16 yOffset);
+	void setColorUpdate(bool enable);
+	void setColorUpdate(bool colorEnable, bool alphaEnable);
+	void setAlphaUpdate(bool enable);
+	void setPixelFormat(gx_pixel_format_t pixelFmt, gx_z_format_t zFmt);
+	void setDestAlpha(bool enable, u8 alpha);
+	void setFieldMask(bool even, bool odd);
+	void setFieldMode(bool field, bool halfAspect);
 
-	void setTextureCopySource(u16, u16, u16, u16);
-	void setTextureCopyDest(u16, u16, gx_texture_format_t);
-	void copyTexture(void *, bool);
+	void setTextureCopySource(u16 top, u16 left, u16 width, u16 height);
+	void setTextureCopyDest(u16 width, u16 height, gx_texture_format_t format, bool mipmap);
+	void copyTexture(void * dest, bool clear);
 
 	// frame management
 	void abortFrame(void);
@@ -73,285 +74,293 @@ namespace ogcwrap::gx
 	void waitDrawDone(void);
 
 	void syncPixelMode(void);
+	void readBoundingBox(u16 * top, u16 * bottom, u16 * left, u16 * right);
 	void clearBoundingBox(void);
 
 	// fog
-	void setFog(gx_fog_equation_t, f32, f32, f32, f32, GXColor);
-	void setFogColor(GXColor);
-	void setFogRangeAdjustment(GXFogAdjTbl *, u16, Mtx44 *);
+	void setFog(gx_fog_equation_t equation, f32 startZ, f32 endZ, f32 nearZ, f32 farZ, GXColor color);
+	void setFogColor(GXColor color);
+	void setFogRangeAdjustment(bool enable, u16 center, GXFogAdjTbl * table);
 
 	// vertex management
 	void invalidateVertexCache(void);
 	void clearVertexDescriptors(void);
-	void setVertexAttributeFormat(gx_vertex_format_t, gx_vertex_attribute_t, gx_vertex_component_type_t, gx_vertex_component_format_t, u8);
-	void setVertexAttributeFormatList(gx_vertex_format_t, GXVtxAttrFmt *);
-	void setVertexDescriptor(gx_vertex_attribute_t, gx_vertex_descriptor_t);
-	void setVertexDescriptorList(GXVtxDesc *);
+
+//	void getVertexAttributeFormat(GXVtxAttrFmt * fmt);
+//	void getVertexAttributeFormatList(GXVtxAttrFmt * fmtlist);
+	void getVertexDescriptor(GXVtxDesc * desc);
+	void getVertexDescriptorList(GXVtxDesc * desclist);
+
+	void setVertexAttributeFormat(gx_vertex_format_t format, gx_vertex_attribute_t attr, gx_vertex_component_type_t comptype, gx_vertex_component_format_t compfmt, u8 fracbits);
+	void setVertexAttributeFormatList(GXVtxAttrFmt * attrlist);
+	void setVertexDescriptor(gx_vertex_attribute_t attr, gx_vertex_descriptor_t type);
+	void setVertexDescriptorList(GXVtxDesc * desclist);
+
+	void setArray(gx_vertex_attribute_t attr, void * array, u8 stride);
 
 	// color management
-	void setChannelCount(u8);
-	void setColorChannelControl(gx_color_channel_t, bool, GXColor, GXColor, u8, gx_diffuse_function_t, gx_attenuation_function_t);
-	void setColorChannelAmbient(gx_color_channel_t, GXColor);
-	void setColorChannelMaterial(gx_color_channel_t, GXColor);
+	void setChannelCount(u8 count);
+	void setColorChannelControl(gx_color_channel_t channel, bool lightEnable, u8 ambient, u8 material, u8 lights, gx_diffuse_function_t diff, gx_attenuation_function_t attn);
+	void setColorChannelAmbient(gx_color_channel_t channel, GXColor color);
+	void setColorChannelMaterial(gx_color_channel_t channel, GXColor color);
 
 	// texture management
-	void setNumTexGens(u8);
-	void setTexCoordGen(gx_texture_coordinate_index_t, gx_texture_coordinate_generation_type_t, gx_texture_coordinate_source_t, gx_texture_matrix_index_t, bool = false, gx_post_transform_matrix_index_t = (gx_post_transform_matrix_index_t)0);
-	void setTexCoordScale(gx_texture_coordinate_index_t, bool, u16 = 1, u16 = 1);
-	void setTexCoordBias(gx_texture_coordinate_index_t, bool, bool);
-	void setTexCoordCylWrap(u8, bool, bool);
-	void setTextureOffsetStatus(gx_texture_coordinate_index_t, bool, bool);
+	void setTexGenCount(u8 count);
+	void setTexCoordGen(gx_texture_coordinate_index_t coordindex, gx_texture_coordinate_generation_type_t type, gx_texture_coordinate_source_t source, gx_texture_matrix_index_t index, bool normalize = false, gx_post_transform_matrix_index_t ptfindex = mcast(gx_post_transform_matrix_index_t, 0));
+	void setTexCoordScale(gx_texture_coordinate_index_t coordindex, bool autoscale, u16 scaleS = 1, u16 scaleT = 1);
+	void setTexCoordBias(gx_texture_coordinate_index_t coordindex, bool biasS, bool biasT);
+	void setTexCoordCylWrap(u8 texcoord, bool s_enable, bool t_enable);
+	void setTextureOffsetStatus(gx_texture_coordinate_index_t coordindex, bool lineStatus, bool pointStatus);
 
-	u32 getTextureBufferSize(u16, u16, gx_texture_format_t, bool, u8);
+	u32 getTextureBufferSize(u16 width, u16 height, gx_texture_format_t format, bool mipmapStatus, u8 maxLOD);
 
-	void setZMode(bool, gx_comparison_t, bool);
-	void setZTexture(gx_z_texture_operator_t, gx_z_texture_format_t, u32);
-	void setZCompLoc(gx_z_buffer_time_t);
+	void setZMode(bool comparisonEnable, gx_comparison_t comparison, bool bufferUpdate);
+	void setZTexture(gx_z_texture_operator_t op, gx_z_texture_format_t format, u32 bias);
+	void setZCompLoc(gx_z_buffer_time_t time);
 
-	void initTextureCacheRegion(GXTexRegion *, bool, void *, gx_texture_cache_size_t, void *, gx_texture_cache_size_t);
-	void initTexturePreloadRegion(GXTexRegion *, void *, u32, void *, u32);
+	void initTextureCacheRegion(GXTexRegion * region, bool is32bitmip, void * texmemEven, gx_texture_cache_size_t sizeEven, void * texmemOdd, gx_texture_cache_size_t sizeOdd);
+	void initTexturePreloadRegion(GXTexRegion * region, void * texmemEven, u32 sizeEven, void * texmemOdd, u32 sizeOdd);
 
-	void initTextureObject(GXTexObj *, void *, u16, u16, gx_texture_format_t, gx_clamp_mode_t, gx_clamp_mode_t, bool);
-	void initTextureObjectColorIndex(GXTexObj *, void *, u16, u16, gx_texture_format_t, gx_clamp_mode_t, gx_clamp_mode_t, bool, gx_tlut_index_t);
-	void initTLUTObj(GXTlutObj *, void *, gx_tlut_entry_format_t, u16);
-	void initTLUTRegion(GXTlutRegion *, void *, u8);
+	void initTextureObject(GXTexObj * obj, void * imagebuf, u16 width, u16 height, gx_texture_format_t format, gx_wrap_mode_t wrapS, gx_wrap_mode_t wrapT, bool trilinear);
+	void initTextureObjectColorIndex(GXTexObj * obj, void * imagebuf, u16 width, u16 height, gx_texture_format_t format, gx_wrap_mode_t wrapS, gx_wrap_mode_t wrapT, bool mipmap, gx_tlut_index_t tlut);
+	void initTLUTObj(GXTlutObj * obj, void * LUTaddr, gx_tlut_entry_format_t format, u16 entries);
+	void initTLUTRegion(GXTlutRegion * region, void * addr, u8 size);
 
-	void preloadTexture(GXTexObj *, GXTexRegion *);
-	void loadTextureObject(GXTexObj *, gx_texture_map_index_t);
-	void loadTLUT(GXTlutObj *, gx_tlut_index_t);
-	void loadPreloadedTextureObject(GXTexObj *, GXTexRegion *, gx_texture_map_index_t);
+	void preloadTexture(GXTexObj * obj, GXTexRegion * region);
+	void loadTextureObject(GXTexObj * obj, gx_texture_map_index_t index);
+	void loadTLUT(GXTlutObj * tlut, gx_tlut_index_t index);
+	void loadPreloadedTextureObject(GXTexObj * obj, GXTexRegion * region, gx_texture_map_index_t index);
 
-	void setTextureObjectData(GXTexObj *, void *);
-	void setTextureObjectUserData(GXTexObj *, void *);
-	void setTextureObjectTLUT(GXTexObj *, gx_tlut_index_t);
-	void setTextureObjectWrap(GXTexObj *, gx_clamp_mode_t, gx_clamp_mode_t);
-	void setTextureObjectLOD(GXTexObj *, gx_texture_filter_t, gx_texture_filter_t, f32, f32, f32, bool, bool, gx_max_anisotropic_filter_t);
-	void setTextureObjectLODFilter(GXTexObj *, gx_texture_filter_t, gx_texture_filter_t);
-	void setTextureObjectLODMin(GXTexObj *, f32);
-	void setTextureObjectLODMax(GXTexObj *, f32);
-	void setTextureObjectLODBias(GXTexObj *, f32);
-	void setTextureObjectLODBiasClamp(GXTexObj *, bool);
-	void setTextureObjectLODEdge(GXTexObj *, bool);
-	void setTextureObjectLODMaxAniso(GXTexObj *, gx_max_anisotropic_filter_t);
+	void setTextureObjectData(GXTexObj * obj, void * imagebuf);
+	void setTextureObjectUserData(GXTexObj * obj, void * data);
+	void setTextureObjectTLUT(GXTexObj * obj, gx_tlut_index_t tlut);
+	void setTextureObjectWrap(GXTexObj * obj, gx_wrap_mode_t, gx_wrap_mode_t);
+	void setTextureObjectLOD(GXTexObj * obj, gx_texture_filter_t miniFilter, gx_texture_filter_t magniFilter, f32 minLOD, f32 maxLOD, f32 bias, bool clamp, bool edgeLOD, gx_max_anisotropic_filter_t maxaniso);
+	void setTextureObjectLODFilter(GXTexObj * obj, gx_texture_filter_t miniFilter, gx_texture_filter_t magniFilter);
+	void setTextureObjectLODMin(GXTexObj * obj, f32 minLOD);
+	void setTextureObjectLODMax(GXTexObj * obj, f32 maxLOD);
+	void setTextureObjectLODBias(GXTexObj * obj, f32 bias);
+	void setTextureObjectLODBiasClamp(GXTexObj * obj, bool clamp);
+	void setTextureObjectLODEdge(GXTexObj * obj, bool edgeLOD);
+	void setTextureObjectLODMaxAniso(GXTexObj * obj, gx_max_anisotropic_filter_t maxaniso);
 
-	void getTextureObjectAll(GXTexObj *, void * *, u8 *, u8 *, u8 *, u8 *, u16 *, u16 *);
-	void * getTextureObjectUserData(GXTexObj *);
-	void * getTextureObjectData(GXTexObj *);
-	u32 getTextureObjectFormat(GXTexObj *);
-	u32 getTextureObjectMipmap(GXTexObj *);
-	u8 getTextureObjectWrapS(GXTexObj *);
-	u8 getTextureObjectWrapT(GXTexObj *);
-	u16 getTextureObjectHeight(GXTexObj *);
-	u16 getTextureObjectWidth(GXTexObj *);
+	void getTextureObjectAll(GXTexObj * obj, void * * imagebuf, u16 * width, u16 * height, u8 * format, u8 * wrapS, u8 * wrapT, u8 * mipmap);
+	void * getTextureObjectData(GXTexObj * obj);
+	void * getTextureObjectUserData(GXTexObj * obj);
+	u16 getTextureObjectWidth(GXTexObj * obj);
+	u16 getTextureObjectHeight(GXTexObj * obj);
+	u32 getTextureObjectFormat(GXTexObj * obj);
+	u8 getTextureObjectWrapS(GXTexObj * obj);
+	u8 getTextureObjectWrapT(GXTexObj * obj);
+	u32 getTextureObjectMipmap(GXTexObj * obj);
 
-	void invalidateTextureRegion(GXTexRegion *);
+	void invalidateTextureRegion(GXTexRegion * region);
 	void invalidateAllTextures(void);
 	void texModeSync(void);
 
 	// texture environment management
-	void setTEVStageCount(u8);
-	void setTEVOrder(gx_tev_stage_t, gx_texture_coordinate_generation_type_t, gx_texture_map_index_t, gx_color_channel_t);
-	void setTEVOp(gx_tev_stage_t, gx_tev_combiner_equation_t);
-	void setTEVColor(gx_tev_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
-	void setTEVColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
-	void setTEVColorIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t);
-	void setTEVAlphaIn(gx_tev_stage_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t, gx_tev_register_input_t);
-	void setTEVColorOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t);
-	void setTEVAlphaOp(gx_tev_stage_t, gx_tev_combiner_operator_t, gx_tev_bias_t, gx_tev_scale_t, bool, gx_tev_register_t);
-	void setTEVAlphaCompare(gx_comparison_t, u8, gx_alpha_operation_t, gx_comparison_t, u8);
-	void setTEVKColor(gx_tev_register_t, GXColor);		// cast to GXColor    to avoid ambiguity
-	void setTEVKColor(gx_tev_register_t, GXColorS10);	// cast to GXColorS10 to avoid ambiguity
-	void selectTEVKColor(gx_tev_stage_t, gx_tev_constant_color_selection_t);
-	void selectTEVKAlpha(gx_tev_stage_t, gx_tev_constant_alpha_selection_t);
-	void setTEVSwapMode(gx_tev_stage_t, gx_tev_swap_table_index_t);
+	void setTEVStageCount(u8 count);
+	void setTEVOrder(gx_tev_stage_t stage, gx_texture_coordinate_index_t texcoord, gx_texture_map_index_t texmap, gx_color_channel_t channel);
+	void setTEVOp(gx_tev_stage_t stage, gx_tev_combiner_equation_t tevmode);
+	void setTEVColor(gx_tev_register_t tevreg, GXColor color);		// cast to GXColor    to avoid ambiguity
+	void setTEVColor(gx_tev_register_t tevreg, GXColorS10 color);	// cast to GXColorS10 to avoid ambiguity
+	void setTEVColorIn(gx_tev_stage_t stage, gx_tev_register_input_t regA, gx_tev_register_input_t regB, gx_tev_register_input_t regC, gx_tev_register_input_t regD);
+	void setTEVAlphaIn(gx_tev_stage_t stage, gx_tev_register_input_t regA, gx_tev_register_input_t regB, gx_tev_register_input_t regC, gx_tev_register_input_t regD);
+	void setTEVColorOp(gx_tev_stage_t stage, gx_tev_combiner_operator_t tevop, gx_tev_bias_t bias, gx_tev_scale_t scale, bool clamp, gx_tev_register_t tevreg);
+	void setTEVAlphaOp(gx_tev_stage_t stage, gx_tev_combiner_operator_t tevop, gx_tev_bias_t bias, gx_tev_scale_t scale, bool clamp, gx_tev_register_t tevreg);
+	void setTEVAlphaCompare(gx_comparison_t lcomp, u8 lref, gx_alpha_operation_t alphaop, gx_comparison_t rcomp, u8 rref);
+	void setTEVKColor(gx_tev_register_t tevreg, GXColor color);		// cast to GXColor    to avoid ambiguity
+	void setTEVKColor(gx_tev_register_t tevreg, GXColorS10 color);	// cast to GXColorS10 to avoid ambiguity
+	void selectTEVKColor(gx_tev_stage_t stage, gx_tev_constant_color_selection_t colorsel);
+	void selectTEVKAlpha(gx_tev_stage_t stage, gx_tev_constant_alpha_selection_t alphasel);
+	void setTEVSwapMode(gx_tev_stage_t stage, gx_tev_swap_table_index_t);
 	void setTEVSwapModeTable(gx_tev_swap_table_index_t, gx_tev_color_channel_t);
 
-	void setTEVDirect(gx_tev_stage_t);
-	void setTEVIndirect(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_format_t, gx_indirect_texture_bias_t, gx_indirect_texture_matrix_t, gx_indirect_texture_wrap_t, gx_indirect_texture_wrap_t, bool, bool, gx_indirect_texture_alpha_bump_t);
-	void setTEVIndirectTile(gx_tev_stage_t, gx_indirect_texture_stage_t, u16, u16, u16, u16, gx_indirect_texture_format_t, gx_indirect_texture_matrix_t, gx_indirect_texture_bias_t, gx_indirect_texture_alpha_bump_t);
-	void setTEVIndirectRepeat(gx_tev_stage_t);
+	void setTEVDirect(gx_tev_stage_t stage);
+	void setTEVIndirect(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_format_t format, gx_indirect_texture_bias_t bias, gx_indirect_texture_matrix_t mtx, gx_indirect_texture_wrap_t wrapS, gx_indirect_texture_wrap_t wrapT, bool addprev, bool modtc_mipmap, gx_indirect_texture_alpha_bump_t bump);
+	void setTEVIndirectTile(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, u16 width, u16 height, u16 repeatX, u16 repeatY, gx_indirect_texture_format_t format, gx_indirect_texture_matrix_t mtx, gx_indirect_texture_bias_t bias, gx_indirect_texture_alpha_bump_t bump);
+	void setTEVIndirectRepeat(gx_tev_stage_t stage);
 
-	void setIndirectStageCount(u8);
-	void setIndirectTextureOrder(gx_indirect_texture_stage_t, gx_texture_coordinate_index_t, gx_texture_map_index_t);
-	void setIndirectTextureCoordScale(gx_indirect_texture_stage_t, gx_indirect_texture_scale_t, gx_indirect_texture_scale_t);
-	void setIndirectTextureMatrix(gx_indirect_texture_matrix_t, Mtx23 *, s8);
-	void setIndirectTextureBumpST(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_matrix_t);
-	void setIndirectTextureBumpXYZ(gx_tev_stage_t, gx_indirect_texture_stage_t, gx_indirect_texture_matrix_t);
+	void setIndirectStageCount(u8 count);
+	void setIndirectTextureOrder(gx_indirect_texture_stage_t indstage, gx_texture_coordinate_index_t coordindex, gx_texture_map_index_t mapindex);
+	void setIndirectTextureCoordScale(gx_indirect_texture_stage_t indstage, gx_indirect_texture_scale_t indscaleS, gx_indirect_texture_scale_t indscaleT);
+	void setIndirectTextureMatrix(gx_indirect_texture_matrix_t indmtx, f32 offset[2][3], s8 scaleExp);
+	void setIndirectTextureBumpST(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx);
+	void setIndirectTextureBumpXYZ(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx);
 
 	// light management
-	void loadLightObject(GXLightObj *, gx_light_index_t);
-	void loadLightObjectIndex(u32, gx_light_index_t);
+	void loadLightObject(GXLightObj * light, gx_light_index_t index);
+	void loadLightObjectIndex(u32 lightelement, gx_light_index_t index);
 
-	void setLightShininess(GXLightObj *, f32);
-	void setLightPosition(GXLightObj *, f32, f32, f32);
-	void setLightPosition(GXLightObj *, guPos);
-	void setLightDirection(GXLightObj *, f32, f32, f32);
-	void setLightDirection(GXLightObj *, guVector);
-	void setLightColor(GXLightObj *, GXColor);
-	void setLightDistanceAttenuation(GXLightObj *, f32, f32, gx_attenuation_function_t);
-	void setLightAttenuation(GXLightObj *, f32, f32, f32, f32, f32, f32);
-	void setLightAttenuation(GXLightObj *, guVector, guVector);
-	void setLightAttenuationAngle(GXLightObj *, f32, f32, f32);
-	void setLightAttenuationAngle(GXLightObj *, guVector);
-	void setLightAttenuationDistance(GXLightObj *, f32, f32, f32);
-	void setLightAttenuationDistance(GXLightObj *, guVector);
+	void setLightPosition(GXLightObj * light, f32 posX, f32 posY, f32 posZ);
+	void setLightPosition(GXLightObj * light, guVector position);
+	void setLightDirection(GXLightObj * light, f32 nrmX, f32 nrmY, f32 nrmZ);
+	void setLightDirection(GXLightObj * light, guVector normal);
+	void setLightColor(GXLightObj * light, GXColor color);
+	void setLightDistanceAttenuation(GXLightObj * light, f32 distance, f32 brightness, gx_attenuation_function_t distfn);
+	void setLightAttenuation(GXLightObj * light, f32 ac1, f32 ac2, f32 ac3, f32 dc1, f32 dc2, f32 dc3);
+	void setLightAttenuationAngle(GXLightObj * light, f32 ac1, f32 ac2, f32 ac3);
+	void setLightAttenuationDistance(GXLightObj * light, f32 dc1, f32 dc2, f32 dc3);
+	void setLightShininess(GXLightObj * light, f32 shininess);
 
-	void setSpecularDirectionHalfAngle(GXLightObj *, f32, f32, f32, f32, f32, f32);
-	void setSpecularDirectionHalfAngle(GXLightObj *, guVector, guVector);
-	void setSpecularDirection(GXLightObj *, f32, f32, f32);
-	void setSpecularDirection(GXLightObj *, guVector);
+	void setSpecularDirectionHalfAngle(GXLightObj * light, f32 nrmX, f32 nrmY, f32 nrmZ, f32 haX, f32 haY, f32 haZ);
+	void setSpecularDirectionHalfAngle(GXLightObj * light, guVector normal, guVector halfangle);
+	void setSpecularDirection(GXLightObj * light, f32 nrmX, f32 nrmY, f32 nrmZ);
+	void setSpecularDirection(GXLightObj * light, guVector normal);
 
-	void setLightSpot(GXLightObj *, f32, gx_spot_illumination_function_t);
+	void setLightSpot(GXLightObj * light, f32 angle, gx_spot_illumination_function_t spotfn);
 
 	// matrices
 	void matrixIndex(u8 index);
-	void setCurrentMatrix(u32);
+	void setCurrentMatrix(gx_position_normal_matrix_index_t index);
 
-	void loadProjectionMatrix(Mtx44, gx_projection_type_t);
-	void loadPosMtxImm(Mtx, u32 pnidx);
-	void loadPosMtxIdx(u16 mtxidx, u32);
-	void loadNrmMtxImm(Mtx, u32);
-	void loadNrmMtxImm3x3(Mtx33, u32);
-	void loadNrmMtxIdx3x3(u16, u32);
-	void loadTexMtxImm(Mtx, u32, u8 type);
-	void loadTexMtxIdx(u16, u32, u8);
-
-	// arrays
-	void setArray(gx_vertex_attribute_t, void *, u8);
+	void loadProjectionMatrix(Mtx44 mtx, gx_projection_type_t);
+	void loadPosMtxImm(Mtx mtx, gx_position_normal_matrix_index_t index);
+	void loadPosMtxIdx(u16 mtxidx, gx_position_normal_matrix_index_t index);
+	void loadNrmMtxImm(Mtx mtx, gx_position_normal_matrix_index_t index);
+	void loadNrmMtxIdx(u16 mtxidx, gx_position_normal_matrix_index_t index);
+	void loadNrmMtxImm3x3(Mtx33 mtx, gx_position_normal_matrix_index_t index);
+	void loadNrmMtxIdx3x3(u16 mtxidx, gx_position_normal_matrix_index_t index);
+	void loadTexMtxImm(Mtx mtx, gx_texture_matrix_index_t index, gx_texture_matrix_type_t type);
+	void loadTexMtxIdx(u16 mtxidx, gx_texture_matrix_index_t index, gx_texture_matrix_type_t type);
 
 	// breakpoint
-	void enableBreakPoint(void *);
+	void enableBreakPoint(void * addr);
 	void disableBreakPoint(void);
 
 	// drawing settings
-	void setLineWidth(u8, gx_texture_offset_value_t);
-	void setPointSize(u8, gx_texture_offset_value_t);
-	void setBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t);
-	void setDitherMode(bool);
-	void setCullingMode(gx_culling_mode_t);
-	void setCoplanarMode(bool);
-	void setClipMode(bool);
+	void setLineWidth(u8 width, gx_texture_offset_value_t texfmt);
+	void setPointSize(u8 width, gx_texture_offset_value_t texfmt);
+	void setBlendMode(gx_blend_mode_t type, gx_blend_control_t sourceFactor, gx_blend_control_t destFactor, gx_logic_operation_t op);
+	void setCullingMode(gx_culling_mode_t mode);
+	void setCoplanarMode(bool enable);
+	void setClipMode(bool enable);
+	void setDitherMode(bool enable);
 
 	// poke/peek
-	void setPokeAlpha(bool);
-	void setPokeColor(bool);
-	void setPokeDither(bool);
+	void setPokeColor(bool enable);
+	void setPokeAlpha(bool enable);
+	void setPokeDither(bool enable);
 
-	void pokeAlphaMode(gx_comparison_t, u8);
-	void pokeBlendMode(gx_blend_mode_t, gx_blend_control_t, gx_blend_control_t, gx_logic_operation_t);
-	void pokeZMode(bool, gx_comparison_t, bool);
+	void pokeAlphaMode(gx_comparison_t comp, u8 threshold);
+	void pokeBlendMode(gx_blend_mode_t type, gx_blend_control_t sourceFactor, gx_blend_control_t destFactor, gx_logic_operation_t op);
+	void pokeZMode(bool comp, gx_comparison_t compfn, bool update);
 
-	void pokeAlphaRead(gx_alpha_read_mode_t);
+	void pokeAlphaRead(gx_alpha_read_mode_t mode);
+	void pokeDestAlpha(bool enable, u8 constAlpha);
 
-	void pokeDestAlpha(bool, u8);
-	void pokeRGBA(u16, u16, GXColor);
-	void pokeZ(u16, u16, u32);
+	void pokeRGBA(u16 x, u16 y, GXColor color);
+	void pokeZ(u16 x, u16 y, u32 z);
 
-	void peekRGBA(u16, u16, GXColor *);
-	void peekZ(u16, u16, u32 *);
+	void peekRGBA(u16 x, u16 y, GXColor * color);
+	void peekZ(u16 x, u16 y, u32 * z);
 
 	// miscellaneous
-	void setMisc(u32, u32);
+	void setMisc(gx_misc_token_t token, u32 value);
 
+	void getGPStatus(u8 * overHigh, u8 * underLow, u8 * readIdle, u8 * cmdIdle, u8 * breakpt);
 	u32 readClksPerVtx(void);
+
 	u32 getOverflowCount(void);
 	u32 resetOverflowCount(void);
-	void readBoundingBox(u16 *, u16 *, u16 *, u16 *);
 
 	lwp_t getCurrentThread(void);
 	lwp_t setCurrentThread(void);
-	volatile void * redirectWriteGatherPipe(void *);
+
+	volatile void * redirectWriteGatherPipe(void * tempPipe);
 	void restoreWriteGatherPipe(void);
-	void setGPMetric(gx_performance_counter_0_metric_t, gx_performance_counter_1_metric_t);
-	void readGPMetric(u32 *, u32 *);
+
+	void setGPMetric(gx_performance_counter_0_metric_t pc0metric, gx_performance_counter_1_metric_t pc1metric);
+	void readGPMetric(u32 * pc0metric, u32 * pc1metric);
 	void clearGPMetric(void);
 	void initXfRasMetric(void);
-	void readXfRasMetric(u32 *, u32 *, u32 *, u32 *);
-	void setVCacheMetric(gx_vertex_cache_metric_t);
-	void readVCacheMetric(u32 *, u32 *, u32 *);
+	void readXfRasMetric(u32 * xfWaitIn, u32 * xfWaitOut, u32 * rasBusy, u32 * clocks);
+	void setVCacheMetric(gx_vertex_cache_metric_t vtxMetric);
+	void readVCacheMetric(u32 * check, u32 * miss, u32 * stall);
 	void clearVCacheMetric(void);
 
 	namespace draw
 	{
 		// management
-		void begin(gx_primitive_t, gx_vertex_format_t, u16);
+		void begin(gx_primitive_t primitive, gx_vertex_format_t vtxfmt, u16 count);
 		void end(void);
 
 		u16 getDrawSync(void);
-		void setDrawSync(u16);
+		void setDrawSync(u16 token);
 
 		// display lists
-		void beginDisplayList(void *, u32);
+		void beginDisplayList(void * buf, u32 bufsize);
 		u32 endDisplayList(void);
-		void callDisplayList(void *, u32);
+		void callDisplayList(void * list, u32 listSize);
 
 		// positions
 
 		// index (cast to u8 or u16 specifically for these overloads)
-		void indexedPosition(u8);
-		void indexedPosition(u16);
+		void indexedPosition(u8 index);
+		void indexedPosition(u16 index);
 
 		// 2 dimensions (implied z coordinate of 0)
-		void position(u8, u8);
-		void position(s8, s8);
-		void position(u16, u16);
-		void position(s16, s16);
-		void position(f32, f32);
+		void position(u8 x, u8 y);
+		void position(s8 x, s8 y);
+		void position(u16 x, u16 y);
+		void position(s16 x, s16 y);
+		void position(f32 x, f32 y);
 
 		// 3 dimensions
-		void position(u8, u8, u8);
-		void position(s8, s8, s8);
-		void position(u16, u16, u16);
-		void position(s16, s16, s16);
-		void position(f32, f32, f32);
+		void position(u8 x, u8 y, u8 z);
+		void position(s8 x, s8 y, s8 z);
+		void position(u16 x, u16 y, u16 z);
+		void position(s16 x, s16 y, s16 z);
+		void position(f32 x, f32 y, f32 z);
 
 		// normals
 
 		// index (cast to u8 or u16 specifically for these overloads)
-		void indexedNormal(u8);
-		void indexedNormal(u16);
+		void indexedNormal(u8 index);
+		void indexedNormal(u16 index);
 
 		// 3 dimensions
-		void normal(s8, s8, s8);
-		void normal(s16, s16, s16);
-		void normal(f32, f32, f32);
+		void normal(s8 nrmX, s8 nrmY, s8 nrmZ);
+		void normal(s16 nrmX, s16 nrmY, s16 nrmZ);
+		void normal(f32 nrmX, f32 nrmY, f32 nrmZ);
 
 		// colors
 
 		// index (cast to u8 or u16 specifically for these overloads)
-		void indexedColor(u8);
-		void indexedColor(u16);
+		void indexedColor(u8 index);
+		void indexedColor(u16 index);
 
 		// 1 value (RGB)
-		void color(u16); // RGB565
-		void color(u32); // RGBX8
+		void color(u16 rgb565); // RGB565
+		void color(u32 rgba8); // RGBA8
 
 		// 3 values (R, G, B)
-		void color(u8, u8, u8);
-		void color(f32, f32, f32);
+		void color(u8 r, u8 g, u8 b);
+		void color(f32 r, f32 g, f32 b);
 
 		// 4 values (R, G, B, A)
-		void color(u8, u8, u8, u8);
+		void color(u8 r, u8 g, u8 b, u8 a);
 
 		// textures
 
 		// index (cast to u8 or u16 specifically for these overloads)
-		void indexedTexcoord(u8);
-		void indexedTexcoord(u16);
+		void indexedTexcoord(u8 index);
+		void indexedTexcoord(u16 index);
 
 		// 1 dimension
-		void texcoord(u8); // cast to u8 specifically for this overload
-		void texcoord(s8); // cast to s8 specifically for this overload
-		void texcoord(u16); // cast to u16 specifically for this overload
-		void texcoord(s16); // cast to s16 specifically for this overload
-		void texcoord(f32);
+		void texcoord(u8 s); // cast to u8 specifically for this overload
+		void texcoord(s8 s); // cast to s8 specifically for this overload
+		void texcoord(u16 s); // cast to u16 specifically for this overload
+		void texcoord(s16 s); // cast to s16 specifically for this overload
+		void texcoord(f32 s);
 
 		// 2 dimensions
-		void texcoord(u8, u8);
-		void texcoord(s8, s8);
-		void texcoord(u16, u16);
-		void texcoord(s16, s16);
-		void texcoord(f32, f32);
+		void texcoord(u8 s, u8 t);
+		void texcoord(s8 s, s8 t);
+		void texcoord(u16 s, u16 t);
+		void texcoord(s16 s, s16 t);
+		void texcoord(f32 s, f32 t);
+	}
 }
 
 #endif // wrap_gx_h

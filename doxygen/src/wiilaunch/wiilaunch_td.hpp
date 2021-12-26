@@ -4,7 +4,7 @@
 
 namespace ogcwrap::wiilaunch
 {
-	typedef enum struct wii_ret_vals_t
+	typedef enum struct wii_return_value_t : s32
 	{
 		OK,
 

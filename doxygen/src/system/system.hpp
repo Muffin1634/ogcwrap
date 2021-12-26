@@ -10,9 +10,9 @@
 
 namespace ogcwrap
 {
-	namespace system
+	namespace system // not double nesting namespace here is INTENTIONAL!!!
 	{
-		// management
+		// subsystem management
 		void reset(SystemResetMode mode);
 
 		// gethods
@@ -89,13 +89,13 @@ namespace ogcwrap
 	namespace memcast
 	{
 		// src addr -> dest addr
-		void * Virtual_Physical(u32 addr);
-		void * Physical_K0(u32 addr);
-		void * Physical_K1(u32 addr);
-		void * K0_Physical(u32 addr);
-		void * K0_K1(u32 addr);
-		void * K1_Physical(u32 addr);
-		void * K1_K0(u32 addr);
+		void * Virtual_Physical(void * addr);
+		void * Physical_K0(void * addr);
+		void * Physical_K1(void * addr);
+		void * K0_Physical(void * addr);
+		void * K0_K1(void * addr);
+		void * K1_Physical(void * addr);
+		void * K1_K0(void * addr);
 	}
 }
 

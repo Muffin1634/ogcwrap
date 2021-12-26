@@ -4,7 +4,7 @@
 
 namespace ogcwrap::wpad
 {
-	typedef enum struct wpad_ret_vals_t
+	typedef enum struct wpad_ret_vals_t : s32
 	{
 		OK,
 
@@ -18,7 +18,7 @@ namespace ogcwrap::wpad
 		BadValue		= -8,
 		BadConf			= -9,
 
-		StatusDisabled = 0,
+		StatusDisabled	= 0,
 		StatusEnabling,
 		StatusEnabled
 	} WPADReturnValue;
@@ -29,7 +29,7 @@ namespace ogcwrap::wpad
 		BatteryDeadCB
 	} CallbackType;
 
-	typedef enum struct wiimote_channel_t
+	typedef enum struct wiimote_channel_t : s32
 	{
 		Channel0,
 		Channel1,
@@ -41,7 +41,7 @@ namespace ogcwrap::wpad
 		AllChannels		= -1
 	} WiimoteChannel;
 
-	typedef enum struct data_format_t
+	typedef enum struct data_format_t : s32
 	{
 		Buttons,
 		ButtonsAccel,

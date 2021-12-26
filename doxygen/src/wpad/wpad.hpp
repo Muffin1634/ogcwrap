@@ -5,9 +5,11 @@
 #include <gctypes.h>
 #include <wiiuse/wpad.h>
 
+#include "wpad/wpad_td.hpp"
+
 namespace ogcwrap::wpad
 {
-	// library management
+	// subsystem management
 	WPADReturnValue init(void);
 	void shutdown(void);
 

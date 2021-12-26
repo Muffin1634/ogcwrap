@@ -2,30 +2,37 @@
 	"folders":
 	[
 		{
-			"path": ".."
+			"path": "..",
+			"file_exclude_patterns": ["*.ii", "*.s"],
+			"folder_exclude_patterns": [".git", ".vs"],
+			"follow_symlinks": true
 		}
 	],
 	"build_systems":
 	[
 		{
 			"name": "Project Build System",
-			"shell_cmd": "make all",
+			"shell_cmd": "echo This target does nothing pick another one",
 			"working_dir": "${folder:${project_path:${file_path}}}",
-			"syntax": "Packages/Makefile/Make Output.sublime-syntax",
+			"syntax": "Make Output.sublime-syntax",
 			"variants":
 			[
 				// make and friends
 				{
 					"name": "Build Library and Load",
-					"shell_cmd": "make deploy"
+					"shell_cmd": "make all"
 				},
 				{
 					"name": "Build Library",
 					"shell_cmd": "make libwrap.a"
 				},
 				{
+					"name": "Rebuild Library",
+					"shell_cmd": "make rebuild"
+				},
+				{
 					"name": "Load Library into Test Project",
-					"shell_cmd": "make load"
+					"shell_cmd": "make install"
 				},
 				{
 					"name": "Clean",
@@ -51,5 +58,5 @@
 				}
 			]
 		}
-	]
+	],
 }

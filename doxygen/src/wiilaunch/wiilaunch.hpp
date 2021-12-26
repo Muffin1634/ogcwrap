@@ -9,7 +9,7 @@
 
 namespace ogcwrap::wiilaunch
 {
-	// library management
+	// subsystem management
 	WLReturnValue init(void);
 
 	// return functions
@@ -25,7 +25,7 @@ namespace ogcwrap::wiilaunch
 
 #endif // wrap_wiilaunch_h
 
-/*  notes
+/*  Notes
  *
  *  1. For valid arguments to returnToSettingsPage(), see lines 53-59 of <ogc/wiilaunch.h>:
  *
@@ -38,6 +38,6 @@ namespace ogcwrap::wiilaunch
  *  #define SETTINGS_UPDATE		"Update/Update_index.html"
  *
  *  2. Due to certain circumstances regarding variadic arguments of functions, launchTitleWithArgs() cannot be wrapped.
- *  Please use the original.
+ *     Please use the original.
  *
  */
