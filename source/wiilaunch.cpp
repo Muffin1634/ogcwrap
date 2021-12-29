@@ -32,19 +32,19 @@ namespace ogcwrap::wiilaunch
  */
 
 wii_return_value_t ogcwrap::wiilaunch::init(void)
-	{ return mcast(wii_return_value_t, WII_Initialize()); }
+	{ return static_cast<wii_return_value_t>(WII_Initialize()); }
 
 wii_return_value_t ogcwrap::wiilaunch::returnToMenu(void)
-	{ return mcast(wii_return_value_t, WII_ReturnToMenu()); }
+	{ return static_cast<wii_return_value_t>(WII_ReturnToMenu()); }
 
 wii_return_value_t ogcwrap::wiilaunch::returnToSettings(void)
-	{ return mcast(wii_return_value_t, WII_ReturnToSettings()); }
+	{ return static_cast<wii_return_value_t>(WII_ReturnToSettings()); }
 
 wii_return_value_t ogcwrap::wiilaunch::returnToSettingsPage(const char * page)
-	{ return mcast(wii_return_value_t, WII_ReturnToSettingsPage(page)); }
+	{ return static_cast<wii_return_value_t>(WII_ReturnToSettingsPage(page)); }
 
 wii_return_value_t ogcwrap::wiilaunch::launchTitle(u64 titleID)
-	{ return mcast(wii_return_value_t, WII_LaunchTitle(titleID)); }
+	{ return static_cast<wii_return_value_t>(WII_LaunchTitle(titleID)); }
 
 /*
 wii_return_value_t ogcwrap::wiilaunch::launchTitleWithArgs()
@@ -52,4 +52,4 @@ wii_return_value_t ogcwrap::wiilaunch::launchTitleWithArgs()
 */
 
 wii_return_value_t ogcwrap::wiilaunch::openURL(const char * url)
-	{ return mcast(wii_return_value_t, WII_OpenURL(url)); }
+	{ return static_cast<wii_return_value_t>(WII_OpenURL(url)); }

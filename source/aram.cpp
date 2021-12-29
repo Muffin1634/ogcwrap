@@ -82,7 +82,7 @@ void ogcwrap::aram::deinit(void)
 	{ AR_Reset(); }
 
 bool ogcwrap::aram::checkInit(void)
-	{ return mcast(bool, AR_CheckInit()); }
+	{ return static_cast<bool>(AR_CheckInit()); }
 	// original implementation uses BOOL from
 	// <gcbool.h>, which is a typedef of int
 

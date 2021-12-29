@@ -113,7 +113,7 @@ using ogcwrap::system::sys_audio_mode_t;
 using ogcwrap::system::sys_video_mode_t;
 
 void ogcwrap::system::reset(sys_reset_mode_t mode)
-	{ SYS_ResetSystem(mcast(s32, mode), 0, 0); }
+	{ SYS_ResetSystem(static_cast<s32>(mode), 0, 0); }
 
 u32 ogcwrap::system::getHollywoodRevision(void)
 	{ return SYS_GetHollywoodRevision(); }
@@ -131,16 +131,16 @@ bool ogcwrap::system::getEuRGB60(void)
 	{ return SYS_GetEuRGB60(); }
 
 sys_language_t ogcwrap::system::getLanguage(void)
-	{ return mcast(sys_language_t, SYS_GetLanguage()); }
+	{ return static_cast<sys_language_t>(SYS_GetLanguage()); }
 
 bool ogcwrap::system::getProgressiveScanStatus(void)
 	{ return SYS_GetProgressiveScan(); }
 
 sys_audio_mode_t ogcwrap::system::getAudioMode(void)
-	{ return mcast(sys_audio_mode_t, SYS_GetSoundMode()); }
+	{ return static_cast<sys_audio_mode_t>(SYS_GetSoundMode()); }
 
 sys_video_mode_t ogcwrap::system::getVideoMode(void)
-	{ return mcast(sys_video_mode_t, SYS_GetVideoMode()); }
+	{ return static_cast<sys_video_mode_t>(SYS_GetVideoMode()); }
 
 u16 ogcwrap::system::getWirelessID(u32 channel)
 	{ return SYS_GetWirelessID(channel); }
@@ -185,16 +185,16 @@ void ogcwrap::system::setEuRGB60(bool status)
 	{ SYS_SetEuRGB60(status); }
 
 void ogcwrap::system::setLanguage(sys_language_t lang)
-	{ SYS_SetLanguage(mcast(u8, lang)); }
+	{ SYS_SetLanguage(static_cast<u8>(lang)); }
 
 void ogcwrap::system::setProgressiveScan(bool status)
 	{ SYS_SetProgressiveScan(status); }
 
 void ogcwrap::system::setAudioMode(sys_audio_mode_t mode)
-	{ SYS_SetSoundMode(mcast(u8, mode)); }
+	{ SYS_SetSoundMode(static_cast<u8>(mode)); }
 
 void ogcwrap::system::setVideoMode(sys_video_mode_t mode)
-	{ SYS_SetVideoMode(mcast(u8, mode)); }
+	{ SYS_SetVideoMode(static_cast<u8>(mode)); }
 
 void ogcwrap::system::setWirelessID(u32 channel, u16 id)
 	{ SYS_SetWirelessID(channel, id); }
@@ -276,22 +276,22 @@ void ogcwrap::system::detail::init(void)
 // ogcwrap:::memcast
 
 void * ogcwrap::memcast::Virtual_Physical(void * addr)
-	{ return mcast(void *, mcast(u32, addr) & 0x3FFFFFFF); }
+	{ return static_cast<void *>(static_cast<u32>(addr) & 0x3FFFFFFF); }
 
 void * ogcwrap::memcast::Physical_K0(void * addr)
-	{ return mcast(void *, mcast(u32, addr) + 0x80000000); }
+	{ return static_cast<void *>(static_cast<u32>(addr) + 0x80000000); }
 
 void * ogcwrap::memcast::Physical_K1(void * addr)
-	{ return mcast(void *, mcast(u32, addr) + 0xC0000000); }
+	{ return static_cast<void *>(static_cast<u32>(addr) + 0xC0000000); }
 
 void * ogcwrap::memcast::K0_Physical(void * addr)
-	{ return mcast(void *, mcast(u32, addr) - 0x80000000); }
+	{ return static_cast<void *>(static_cast<u32>(addr) - 0x80000000); }
 
 void * ogcwrap::memcast::K0_K1(void * addr)
-	{ return mcast(void *, mcast(u32, addr) + 0x40000000); }
+	{ return static_cast<void *>(static_cast<u32>(addr) + 0x40000000); }
 
 void * ogcwrap::memcast::K1_Physical(void * addr)
-	{ return mcast(void *, mcast(u32, addr) - 0xC0000000); }
+	{ return static_cast<void *>(static_cast<u32>(addr) - 0xC0000000); }
 
 void * ogcwrap::memcast::K1_K0(void * addr)
-	{ return mcast(void *, mcast(u32, addr) - 0x40000000); }
+	{ return static_cast<void *>(static_cast<u32>(addr) - 0x40000000); }

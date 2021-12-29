@@ -53,7 +53,7 @@ GXRModeObj * ogcwrap::video::getPreferredRMode(GXRModeObj * rmode)
 	{ return VIDEO_GetPreferredMode(rmode); }
 
 tv_mode_t ogcwrap::video::getTVMode(void)
-	{ return mcast(tv_mode_t, VIDEO_GetCurrentTvMode()); }
+	{ return static_cast<tv_mode_t>(VIDEO_GetCurrentTvMode()); }
 
 bool ogcwrap::video::getComponentCableStatus(void)
 	{ return VIDEO_HaveComponentCable(); }
@@ -71,7 +71,7 @@ u32 ogcwrap::video::getCurrentLine(void)
 	{ return VIDEO_GetCurrentLine(); }
 
 ds_field_pos_t ogcwrap::video::getNextField(void)
-	{ return mcast(ds_field_pos_t, VIDEO_GetNextField()); }
+	{ return static_cast<ds_field_pos_t>(VIDEO_GetNextField()); }
 
 void ogcwrap::video::setConfiguration(GXRModeObj * rmode)
 	{ VIDEO_Configure(rmode); }

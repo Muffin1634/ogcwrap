@@ -112,7 +112,7 @@ void ogcwrap::wiiuse::setBluetoothStack(wiimote_t * * wm, int wiimotes, win_bt_s
 	{ wiiuse_set_bluetooth_stack(wm, wiimotes, unid); }
 
 void ogcwrap::wiiuse::setTimeout(wiimote_t * * wm, int wiimotes, u8 normal_timeout, u8 exp_timeout)
-	{ wiiuse_set_timeout(wm, wiimotes, mcast(ubyte, normal_timeout), mcast(ubyte, exp_timeout)); }
+	{ wiiuse_set_timeout(wm, wiimotes, static_cast<ubyte>(normal_timeout), static_cast<ubyte>(exp_timeout)); }
 
 void ogcwrap::wiiuse::setMotionStatus(wiimote_t * wm, bool status)
 	{ wiiuse_motion_sensing(wm, status); }
@@ -124,13 +124,13 @@ void ogcwrap::wiiuse::setSpeakerStatus(wiimote_t * wm, bool status)
 	{ wiiuse_set_speaker(wm, status); }
 
 void ogcwrap::wiiuse::setAspectRatio(wiimote_t * wm, wiiuse_aspect_t aspect)
-	{ wiiuse_set_aspect_ratio(wm, mcast(aspect_t, aspect)); }
+	{ wiiuse_set_aspect_ratio(wm, static_cast<aspect_t>(aspect)); }
 
 void ogcwrap::wiiuse::setIRStatus(wiimote_t * wm, bool status)
 	{ wiiuse_set_ir(wm, status); }
 
 void ogcwrap::wiiuse::setIRPosition(wiimote_t * wm, wiiuse_ir_position_t position)
-	{ wiiuse_set_ir_position(wm, mcast(ir_position_t, position)); }
+	{ wiiuse_set_ir_position(wm, static_cast<ir_position_t>(position)); }
 
 void ogcwrap::wiiuse::setIRVRes(wiimote_t * wm, u32 xres, u32 yres)
 	{ wiiuse_set_ir_vres(wm, xres, yres); }

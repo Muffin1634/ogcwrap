@@ -87,7 +87,7 @@ void ogcwrap::aesnd::setVoiceStreamStatus(AESNDPB * voice, bool status)
 	{ AESND_SetVoiceStream(voice, status); }
 
 void ogcwrap::aesnd::setVoiceFormat(AESNDPB * voice, aesnd_voice_format_t format)
-	{ AESND_SetVoiceFormat(voice, mcast(u32, format)); }
+	{ AESND_SetVoiceFormat(voice, static_cast<u32>(format)); }
 
 void ogcwrap::aesnd::setVoiceFrequency(AESNDPB * voice, f32 freq)
 	{ AESND_SetVoiceFrequency(voice, freq); }
@@ -102,4 +102,4 @@ void ogcwrap::aesnd::setVoiceBuffer(AESNDPB * voice, const void * buffer, u32 si
 	{ AESND_SetVoiceBuffer(voice, buffer, size); }
 
 void ogcwrap::aesnd::playVoice(AESNDPB * voice, aesnd_voice_format_t format, const void * buffer, u32 size, f32 freq, u32 delay, bool statusLoop)
-	{ AESND_PlayVoice(voice, mcast(u32, format), buffer, size, freq, delay, statusLoop); }
+	{ AESND_PlayVoice(voice, static_cast<u32>(format), buffer, size, freq, delay, statusLoop); }
