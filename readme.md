@@ -20,7 +20,7 @@ Note: As of 10/21/21, this list is not being updated anymore. See the project bo
 
 --------------------------------------------------------------------------------
 
-Random text because i said so
+Random text because i said so.
 
 --------------------------------------------------------------------------------
 
