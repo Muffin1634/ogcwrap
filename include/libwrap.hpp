@@ -10,8 +10,6 @@
 #define GEKKO // for wiiuse but everything
 #endif
 
-#define mcast(type, val)	((type)(val))
-
 #include "debug/debug.hpp"
 #include "wpad/wpad.hpp"
 #include "wiiuse/wiiuse.hpp"

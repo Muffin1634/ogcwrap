@@ -36,22 +36,22 @@ namespace ogcwrap::ios
  */
 
 ios_return_value_t ogcwrap::ios::_init(void)
-	{ return mcast(ios_return_value_t, __IOS_InitializeSubsystems()); }
+	{ return static_cast<ios_return_value_t>(__IOS_InitializeSubsystems()); }
 
 ios_return_value_t ogcwrap::ios::_deinit(void)
-	{ return mcast(ios_return_value_t, __IOS_ShutdownSubsystems()); }
+	{ return static_cast<ios_return_value_t>(__IOS_ShutdownSubsystems()); }
 
 ios_return_value_t ogcwrap::ios::_loadStartupIOS(void)
-	{ return mcast(ios_return_value_t, 0); }
+	{ return static_cast<ios_return_value_t>(0); }
 
 ios_return_value_t ogcwrap::ios::_launchNewIOS(int version)
-	{ return mcast(ios_return_value_t, __IOS_LaunchNewIOS(version)); }
+	{ return static_cast<ios_return_value_t>(__IOS_LaunchNewIOS(version)); }
 
 ios_return_value_t getPreferredIOS(void)
-	{ return mcast(ios_return_value_t, IOS_GetPreferredVersion()); }
+	{ return static_cast<ios_return_value_t>(IOS_GetPreferredVersion()); }
 
 ios_return_value_t reloadIOS(int version)
-	{ return mcast(ios_return_value_t, IOS_ReloadIOS(version)); }
+	{ return static_cast<ios_return_value_t>(IOS_ReloadIOS(version)); }
 
 s32 getVersion(void)
 	{ return IOS_GetVersion(); }

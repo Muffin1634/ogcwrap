@@ -110,31 +110,31 @@ void ogcwrap::asnd::pauseSound(void)
 	{ ASND_Pause(1); }
 
 asnd_ret_vals_t ogcwrap::asnd::addVoice(u8 voice, void * samples, u32 sampleCount)
-	{ return mcast(asnd_ret_vals_t, ASND_AddVoice(voice, samples, sampleCount)); }
+	{ return static_cast<asnd_ret_vals_t>(ASND_AddVoice(voice, samples, sampleCount)); }
 
 asnd_ret_vals_t ogcwrap::asnd::playVoice(u8 voice)
-	{ return mcast(asnd_ret_vals_t, ASND_PauseVoice(voice, 0)); }
+	{ return static_cast<asnd_ret_vals_t>(ASND_PauseVoice(voice, 0)); }
 
 asnd_ret_vals_t ogcwrap::asnd::pauseVoice(u8 voice)
-	{ return mcast(asnd_ret_vals_t, ASND_PauseVoice(voice, 1)); }
+	{ return static_cast<asnd_ret_vals_t>(ASND_PauseVoice(voice, 1)); }
 
 asnd_ret_vals_t ogcwrap::asnd::stopVoice(u8 voice)
-	{ return mcast(asnd_ret_vals_t, ASND_StopVoice(voice)); }
+	{ return static_cast<asnd_ret_vals_t>(ASND_StopVoice(voice)); }
 
 asnd_ret_vals_t ogcwrap::asnd::getVoiceStatus(u8 voice)
-	{ return mcast(asnd_ret_vals_t, ASND_StatusVoice(voice) + 2); }
+	{ return static_cast<asnd_ret_vals_t>(ASND_StatusVoice(voice) + 2); }
 
 asnd_ret_vals_t ogcwrap::asnd::setVoice(u8 voice, asnd_voice_fmt_t sampleFormat, u32 pitch, u32 delay, void * samples, u32 sampleSize, u8 left, u8 right, ASNDVoiceCallback cb)
-	{ return mcast(asnd_ret_vals_t, ASND_SetVoice(voice, mcast(s32, sampleFormat), pitch, delay, samples, sampleSize, left, right, cb)); }
+	{ return static_cast<asnd_ret_vals_t>(ASND_SetVoice(voice, static_cast<s32>(sampleFormat), pitch, delay, samples, sampleSize, left, right, cb)); }
 
 asnd_ret_vals_t ogcwrap::asnd::setInfiniteVoice(u8 voice, asnd_voice_fmt_t sampleFormat, u32 pitch, u32 delay, void * samples, u32 sampleSize, u8 left, u8 right)
-	{ return mcast(asnd_ret_vals_t, ASND_SetInfiniteVoice(voice, mcast(s32, sampleFormat), pitch, delay, samples, sampleSize, left, right)); }
+	{ return static_cast<asnd_ret_vals_t>(ASND_SetInfiniteVoice(voice, static_cast<s32>(sampleFormat), pitch, delay, samples, sampleSize, left, right)); }
 
 asnd_ret_vals_t ogcwrap::asnd::setVoiceVolume(u8 voice, u8 left, u8 right)
-	{ return mcast(asnd_ret_vals_t, ASND_ChangeVolumeVoice(voice, left, right)); }
+	{ return static_cast<asnd_ret_vals_t>(ASND_ChangeVolumeVoice(voice, left, right)); }
 
 asnd_ret_vals_t ogcwrap::asnd::setVoicePitch(u8 voice, u32 pitch)
-	{ return mcast(asnd_ret_vals_t, ASND_ChangePitchVoice(voice, pitch)); }
+	{ return static_cast<asnd_ret_vals_t>(ASND_ChangePitchVoice(voice, pitch)); }
 
 bool ogcwrap::asnd::testVoiceBufferUsing(u8 voice, void * buffer)
 	{ return ASND_TestPointer(voice, buffer); }

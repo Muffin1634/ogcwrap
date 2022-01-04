@@ -36,16 +36,16 @@ void ogcwrap::irq::restore(u32 level)
 	{ IRQ_Restore(level); }
 
 raw_irq_handler_t ogcwrap::irq::registerHandler(irq_value_t irq, raw_irq_handler_t handler, void * pCtx)
-	{ return IRQ_Request(mcast(u32, irq), handler, pCtx); }
+	{ return IRQ_Request(static_cast<u32>(irq), handler, pCtx); }
 
 raw_irq_handler_t ogcwrap::irq::freeHandler(irq_value_t irq)
-	{ return IRQ_Free(mcast(u32, irq)); }
+	{ return IRQ_Free(static_cast<u32>(irq)); }
 
 raw_irq_handler_t ogcwrap::irq::getHandler(irq_value_t irq)
-	{ return IRQ_GetHandler(mcast(u32, irq)); }
+	{ return IRQ_GetHandler(static_cast<u32>(irq)); }
 
 void ogcwrap::irq::maskIRQ(mask_value_t mask)
-	{ __MaskIrq(mcast(u32, mask)); }
+	{ __MaskIrq(static_cast<u32>(mask)); }
 
 void ogcwrap::irq::unmaskIRQ(mask_value_t mask)
-	{ __UnmaskIrq(mcast(u32, mask)); }
+	{ __UnmaskIrq(static_cast<u32>(mask)); }

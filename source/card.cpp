@@ -86,136 +86,136 @@ namespace ogcwrap::card
  */
 
 card_return_value_t ogcwrap::card::init(const char * gameCode, const char * companyCode)
-	{ return mcast(card_return_value_t, CARD_Init(gameCode, companyCode)); }
+	{ return static_cast<card_return_value_t>(CARD_Init(gameCode, companyCode)); }
 
 card_return_value_t ogcwrap::card::getStatus(exi_channel_t chan, s32 fileNo, card_stat * stat)
-	{ return mcast(card_return_value_t, CARD_GetStatus(mcast(s32, chan), fileNo, stat)); }
+	{ return static_cast<card_return_value_t>(CARD_GetStatus(static_cast<s32>(chan), fileNo, stat)); }
 
 card_return_value_t ogcwrap::card::getAttributes(exi_channel_t chan, s32 fileNo, u8 * attr)
-	{ return mcast(card_return_value_t, CARD_GetAttributes(mcast(s32, chan), fileNo, attr)); }
+	{ return static_cast<card_return_value_t>(CARD_GetAttributes(static_cast<s32>(chan), fileNo, attr)); }
 
 card_return_value_t ogcwrap::card::getErrorCode(exi_channel_t chan)
-	{ return mcast(card_return_value_t, CARD_GetErrorCode(mcast(s32, chan))); }
+	{ return static_cast<card_return_value_t>(CARD_GetErrorCode(static_cast<s32>(chan))); }
 
 card_return_value_t ogcwrap::card::getFirstEntry(exi_channel_t chan, card_dir * dir, bool allFiles)
-	{ return mcast(card_return_value_t, CARD_FindFirst(mcast(s32, chan), dir, allFiles)); }
+	{ return static_cast<card_return_value_t>(CARD_FindFirst(static_cast<s32>(chan), dir, allFiles)); }
 
 card_return_value_t ogcwrap::card::getNextEntry(card_dir * dir)
-	{ return mcast(card_return_value_t, CARD_FindNext(dir)); }
+	{ return static_cast<card_return_value_t>(CARD_FindNext(dir)); }
 
 card_return_value_t ogcwrap::card::getDirectory(exi_channel_t chan, card_dir * dir, s32 * count, bool allFiles)
-	{ return mcast(card_return_value_t, CARD_GetDirectory(mcast(s32, chan), dir, count, allFiles)); }
+	{ return static_cast<card_return_value_t>(CARD_GetDirectory(static_cast<s32>(chan), dir, count, allFiles)); }
 
 card_return_value_t ogcwrap::card::getSectorSize(exi_channel_t chan, u32 * sectorSize)
-	{ return mcast(card_return_value_t, CARD_GetSectorSize(mcast(s32, chan), sectorSize)); }
+	{ return static_cast<card_return_value_t>(CARD_GetSectorSize(static_cast<s32>(chan), sectorSize)); }
 
 card_return_value_t ogcwrap::card::getBlockCount(exi_channel_t chan, u32 * blockCount)
-	{ return mcast(card_return_value_t, CARD_GetBlockCount(mcast(s32, chan), blockCount)); }
+	{ return static_cast<card_return_value_t>(CARD_GetBlockCount(static_cast<s32>(chan), blockCount)); }
 
 banner_format_t ogcwrap::card::getBannerFormat(card_stat * stat)
-	{ return mcast(banner_format_t, (stat->banner_fmt) & mcast(u8, banner_format_t::Mask)); }
+	{ return static_cast<banner_format_t>((stat->banner_fmt) & static_cast<u8>(banner_format_t::Mask)); }
 
 icon_format_t ogcwrap::card::getIconFormat(card_stat * stat, u8 iconNo)
-	{ return mcast(icon_format_t, (stat->icon_fmt >> (2 * iconNo)) & mcast(u16, icon_format_t::Mask)); }
+	{ return static_cast<icon_format_t>((stat->icon_fmt >> (2 * iconNo)) & static_cast<u16>(icon_format_t::Mask)); }
 
 icon_speed_t ogcwrap::card::getIconSpeed(card_stat * stat, u8 iconNo)
-	{ return mcast(icon_speed_t, (stat->icon_speed >> (2 * iconNo)) & ~(mcast(u16, icon_speed_t::Mask))); }
+	{ return static_cast<icon_speed_t>((stat->icon_speed >> (2 * iconNo)) & ~(static_cast<u16>(icon_speed_t::Mask))); }
 
 card_return_value_t ogcwrap::card::setGameCode(const char * gameCode)
-	{ return mcast(card_return_value_t, CARD_SetGamecode(gameCode)); }
+	{ return static_cast<card_return_value_t>(CARD_SetGamecode(gameCode)); }
 
 card_return_value_t ogcwrap::card::setCompanyCode(const char * companyCode)
-	{ return mcast(card_return_value_t, CARD_SetCompany(companyCode)); }
+	{ return static_cast<card_return_value_t>(CARD_SetCompany(companyCode)); }
 
 card_return_value_t ogcwrap::card::setStatus(exi_channel_t chan, s32 fileNo, card_stat * stat)
-	{ return mcast(card_return_value_t, CARD_SetStatus(mcast(s32, chan), fileNo, stat)); }
+	{ return static_cast<card_return_value_t>(CARD_SetStatus(static_cast<s32>(chan), fileNo, stat)); }
 
 card_return_value_t ogcwrap::card::setAttributes(exi_channel_t chan, s32 fileNo, u8 attr)
-	{ return mcast(card_return_value_t, CARD_SetAttributes(mcast(s32, chan), fileNo, attr)); }
+	{ return static_cast<card_return_value_t>(CARD_SetAttributes(static_cast<s32>(chan), fileNo, attr)); }
 
 void ogcwrap::card::setBannerFormat(card_stat * stat, banner_format_t format)
-	{ stat->banner_fmt = (stat->banner_fmt & ~(mcast(u8, banner_format_t::Mask))) | mcast(u8, format); }
+	{ stat->banner_fmt = (stat->banner_fmt & ~(static_cast<u8>(banner_format_t::Mask))) | static_cast<u8>(format); }
 
 void ogcwrap::card::setIconFormat(card_stat * stat, u8 iconNo, icon_format_t format)
-	{ stat->icon_fmt = ((stat->icon_fmt & ~(mcast(u16, icon_format_t::Mask) << (2 * iconNo))) | (mcast(u16, format) << (2 * iconNo))); }
+	{ stat->icon_fmt = ((stat->icon_fmt & ~(static_cast<u16>(icon_format_t::Mask) << (2 * iconNo))) | (static_cast<u16>(format) << (2 * iconNo))); }
 
 void ogcwrap::card::setIconSpeed(card_stat * stat, u8 iconNo, icon_speed_t speed)
-	{ stat->icon_speed = ((stat->icon_speed & ~(mcast(u16, icon_speed_t::Mask) << (2 * iconNo))) | (mcast(u16, speed) << (2 * iconNo))); }
+	{ stat->icon_speed = ((stat->icon_speed & ~(static_cast<u16>(icon_speed_t::Mask) << (2 * iconNo))) | (static_cast<u16>(speed) << (2 * iconNo))); }
 
 void ogcwrap::card::setIconAddr(card_stat * stat, void * addr)
-	{ stat->icon_addr = mcast(u32, addr); }
+	{ stat->icon_addr = static_cast<u32>(addr); }
 
 void ogcwrap::card::setCommentAddr(card_stat * stat, void * addr)
-	{ stat->comment_addr = mcast(u32, addr); }
+	{ stat->comment_addr = static_cast<u32>(addr); }
 
 card_return_value_t ogcwrap::card::setStatusAsync(exi_channel_t chan, s32 fileNo, card_stat * stat, cardcallback cb)
-	{ return mcast(card_return_value_t, CARD_SetStatusAsync(mcast(s32, chan), fileNo, stat, cb)); }
+	{ return static_cast<card_return_value_t>(CARD_SetStatusAsync(static_cast<s32>(chan), fileNo, stat, cb)); }
 
 card_return_value_t ogcwrap::card::setAttributesAsync(exi_channel_t chan, s32 fileNo, u8 attr, cardcallback cb)
-	{ return mcast(card_return_value_t, CARD_SetAttributesAsync(mcast(s32, chan), fileNo, attr, cb)); }
+	{ return static_cast<card_return_value_t>(CARD_SetAttributesAsync(static_cast<s32>(chan), fileNo, attr, cb)); }
 
 card_return_value_t ogcwrap::card::probe(exi_channel_t chan)
-	{ return mcast(card_return_value_t, CARD_Probe(mcast(s32, chan))); }
+	{ return static_cast<card_return_value_t>(CARD_Probe(static_cast<s32>(chan))); }
 
 card_return_value_t ogcwrap::card::probe(exi_channel_t chan, s32 * memSize, s32 * sectSize)
-	{ return mcast(card_return_value_t, CARD_ProbeEx(mcast(s32, chan), memSize, sectSize)); }
+	{ return static_cast<card_return_value_t>(CARD_ProbeEx(static_cast<s32>(chan), memSize, sectSize)); }
 
 card_return_value_t ogcwrap::card::mount(exi_channel_t chan, void * workArea, cardcallback unmountCB)
-	{ return mcast(card_return_value_t, CARD_Mount(mcast(s32, chan), workArea, unmountCB)); }
+	{ return static_cast<card_return_value_t>(CARD_Mount(static_cast<s32>(chan), workArea, unmountCB)); }
 
 card_return_value_t ogcwrap::card::mountAsync(exi_channel_t chan, void * workArea, cardcallback unmountCB, cardcallback asyncCB)
-	{ return mcast(card_return_value_t, CARD_MountAsync(mcast(s32, chan), workArea, unmountCB, asyncCB)); }
+	{ return static_cast<card_return_value_t>(CARD_MountAsync(static_cast<s32>(chan), workArea, unmountCB, asyncCB)); }
 
 card_return_value_t ogcwrap::card::unmount(exi_channel_t chan)
-	{ return mcast(card_return_value_t, CARD_Unmount(mcast(s32, chan))); }
+	{ return static_cast<card_return_value_t>(CARD_Unmount(static_cast<s32>(chan))); }
 
 card_return_value_t ogcwrap::card::format(exi_channel_t chan)
-	{ return mcast(card_return_value_t, CARD_Format(mcast(s32, chan))); }
+	{ return static_cast<card_return_value_t>(CARD_Format(static_cast<s32>(chan))); }
 
 card_return_value_t ogcwrap::card::formatAsync(exi_channel_t chan, cardcallback cb)
-	{ return mcast(card_return_value_t, CARD_FormatAsync(mcast(s32, chan), cb)); }
+	{ return static_cast<card_return_value_t>(CARD_FormatAsync(static_cast<s32>(chan), cb)); }
 
 card_return_value_t ogcwrap::card::createFile(exi_channel_t chan, const char * fileName, u32 size, card_file * file)
-	{ return mcast(card_return_value_t, CARD_Create(mcast(s32, chan), fileName, size, file)); }
+	{ return static_cast<card_return_value_t>(CARD_Create(static_cast<s32>(chan), fileName, size, file)); }
 
 card_return_value_t ogcwrap::card::createFile(exi_channel_t chan, card_dir * dirEntry, card_file * file)
-	{ return mcast(card_return_value_t, CARD_CreateEntry(mcast(s32, chan), dirEntry, file)); }
+	{ return static_cast<card_return_value_t>(CARD_CreateEntry(static_cast<s32>(chan), dirEntry, file)); }
 
 card_return_value_t ogcwrap::card::deleteFile(exi_channel_t chan, const char * fileName)
-	{ return mcast(card_return_value_t, CARD_Delete(mcast(s32, chan), fileName)); }
+	{ return static_cast<card_return_value_t>(CARD_Delete(static_cast<s32>(chan), fileName)); }
 
 card_return_value_t ogcwrap::card::deleteFile(exi_channel_t chan, card_dir * dirEntry)
-	{ return mcast(card_return_value_t, CARD_DeleteEntry(mcast(s32, chan), dirEntry)); }
+	{ return static_cast<card_return_value_t>(CARD_DeleteEntry(static_cast<s32>(chan), dirEntry)); }
 
 s32 ogcwrap::card::open(exi_channel_t chan, const char * fileName, card_file * file)
-	{ return CARD_Open(mcast(s32, chan), fileName, file); }
+	{ return CARD_Open(static_cast<s32>(chan), fileName, file); }
 
 s32 ogcwrap::card::open(exi_channel_t chan, card_dir * dirEntry, card_file * file)
-	{ return CARD_OpenEntry(mcast(s32, chan), dirEntry, file); }
+	{ return CARD_OpenEntry(static_cast<s32>(chan), dirEntry, file); }
 
 card_return_value_t ogcwrap::card::close(card_file * file)
-	{ return mcast(card_return_value_t, CARD_Close(file)); }
+	{ return static_cast<card_return_value_t>(CARD_Close(file)); }
 
 card_return_value_t ogcwrap::card::read(card_file * file, void * buf, u32 bufsize, u32 offset)
-	{ return mcast(card_return_value_t, CARD_Read(file, buf, bufsize, offset)); }
+	{ return static_cast<card_return_value_t>(CARD_Read(file, buf, bufsize, offset)); }
 
 card_return_value_t ogcwrap::card::write(card_file * file, void * buf, u32 bufsize, u32 offset)
-	{ return mcast(card_return_value_t, CARD_Write(file, buf, bufsize, offset)); }
+	{ return static_cast<card_return_value_t>(CARD_Write(file, buf, bufsize, offset)); }
 
 card_return_value_t ogcwrap::card::createFileAsync(exi_channel_t chan, const char * fileName, u32 size, card_file * file, cardcallback cb)
-	{ return mcast(card_return_value_t, CARD_CreateAsync(mcast(s32, chan), fileName, size, file, cb)); }
+	{ return static_cast<card_return_value_t>(CARD_CreateAsync(static_cast<s32>(chan), fileName, size, file, cb)); }
 
 card_return_value_t ogcwrap::card::createFileAsync(exi_channel_t chan, card_dir * dirEntry, card_file * file, cardcallback cb)
-	{ return mcast(card_return_value_t, CARD_CreateEntryAsync(mcast(s32, chan), dirEntry, file, cb)); }
+	{ return static_cast<card_return_value_t>(CARD_CreateEntryAsync(static_cast<s32>(chan), dirEntry, file, cb)); }
 
 card_return_value_t ogcwrap::card::deleteFileAsync(exi_channel_t chan, const char * fileName, cardcallback cb)
-	{ return mcast(card_return_value_t, CARD_DeleteAsync(mcast(s32, chan), fileName, cb)); }
+	{ return static_cast<card_return_value_t>(CARD_DeleteAsync(static_cast<s32>(chan), fileName, cb)); }
 
 card_return_value_t ogcwrap::card::deleteFileAsync(exi_channel_t chan, card_dir * dirEntry, cardcallback cb)
-	{ return mcast(card_return_value_t, CARD_DeleteEntryAsync(mcast(s32, chan), dirEntry, cb)); }
+	{ return static_cast<card_return_value_t>(CARD_DeleteEntryAsync(static_cast<s32>(chan), dirEntry, cb)); }
 
 card_return_value_t ogcwrap::card::readAsync(card_file * file, void * buf, u32 bufsize, u32 offset, cardcallback cb)
-	{ return mcast(card_return_value_t, CARD_ReadAsync(file, buf, bufsize, offset, cb)); }
+	{ return static_cast<card_return_value_t>(CARD_ReadAsync(file, buf, bufsize, offset, cb)); }
 
 card_return_value_t ogcwrap::card::writeAsync(card_file * file, void * buf, u32 bufsize, u32 offset, cardcallback cb)
-	{ return mcast(card_return_value_t, CARD_WriteAsync(file, buf, bufsize, offset, cb)); }
+	{ return static_cast<card_return_value_t>(CARD_WriteAsync(file, buf, bufsize, offset, cb)); }

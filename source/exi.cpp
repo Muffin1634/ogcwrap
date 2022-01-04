@@ -51,52 +51,52 @@ namespace ogcwrap::exi
  */
 
 EXICallback ogcwrap::exi::registerCallback(exi_channel_t chan, EXICallback cb)
-	{ return EXI_RegisterEXICallback(mcast(s32, chan), cb); }
+	{ return EXI_RegisterEXICallback(static_cast<s32>(chan), cb); }
 
 s32 ogcwrap::exi::getState(exi_channel_t chan)
-	{ return EXI_GetState(mcast(s32, chan)); }
+	{ return EXI_GetState(static_cast<s32>(chan)); }
 
 bool ogcwrap::exi::getID(exi_channel_t chan, exi_device_t dev, u32 * id)
-	{ return EXI_GetID(mcast(s32, chan), mcast(s32, dev), id); }
+	{ return EXI_GetID(static_cast<s32>(chan), static_cast<s32>(dev), id); }
 
 bool ogcwrap::exi::probe(exi_channel_t chan)
-	{ return EXI_Probe(mcast(s32, chan)); }
+	{ return EXI_Probe(static_cast<s32>(chan)); }
 
 bool ogcwrap::exi::probeExtended(exi_channel_t chan)
-	{ return EXI_ProbeEx(mcast(s32, chan)); }
+	{ return EXI_ProbeEx(static_cast<s32>(chan)); }
 
 void ogcwrap::exi::probeReset(void)
 	{ EXI_ProbeReset(); }
 
 bool ogcwrap::exi::lock(exi_channel_t chan, exi_device_t dev, EXICallback cb)
-	{ return EXI_Lock(mcast(s32, chan), mcast(s32, dev), cb); }
+	{ return EXI_Lock(static_cast<s32>(chan), static_cast<s32>(dev), cb); }
 
 bool ogcwrap::exi::unlock(exi_channel_t chan)
-	{ return EXI_Unlock(mcast(s32, chan)); }
+	{ return EXI_Unlock(static_cast<s32>(chan)); }
 
 bool ogcwrap::exi::select(exi_channel_t chan, exi_device_t dev, exi_frequency_t freq)
-	{ return EXI_Select(mcast(s32, chan), mcast(s32, dev), mcast(s32, freq)); }
+	{ return EXI_Select(static_cast<s32>(chan), static_cast<s32>(dev), static_cast<s32>(freq)); }
 
 bool ogcwrap::exi::selectSD(exi_channel_t chan, exi_device_t dev, exi_frequency_t freq)
-	{ return EXI_SelectSD(mcast(s32, chan), mcast(s32, dev), mcast(s32, freq)); }
+	{ return EXI_SelectSD(static_cast<s32>(chan), static_cast<s32>(dev), static_cast<s32>(freq)); }
 
 bool ogcwrap::exi::deselect(exi_channel_t chan)
-	{ return EXI_Deselect(mcast(s32, chan)); }
+	{ return EXI_Deselect(static_cast<s32>(chan)); }
 
 bool ogcwrap::exi::immediate(exi_channel_t chan, void * buf, u32 bufsize, exi_transfer_mode_t mode, EXICallback cb)
-	{ return EXI_Imm(mcast(s32, chan), buf, bufsize, mcast(u32, mode), cb); }
+	{ return EXI_Imm(static_cast<s32>(chan), buf, bufsize, static_cast<u32>(mode), cb); }
 
 bool ogcwrap::exi::immediateExtended(exi_channel_t chan, void * buf, u32 bufsize, exi_transfer_mode_t mode)
-	{ return EXI_ImmEx(mcast(s32, chan), buf, bufsize, mcast(u32, mode)); }
+	{ return EXI_ImmEx(static_cast<s32>(chan), buf, bufsize, static_cast<u32>(mode)); }
 
 bool ogcwrap::exi::DMA(exi_channel_t chan, void * buf, u32 bufsize, exi_transfer_mode_t mode, EXICallback cb)
-	{ return EXI_Dma(mcast(s32, chan), buf, bufsize, mcast(u32, mode), cb); }
+	{ return EXI_Dma(static_cast<s32>(chan), buf, bufsize, static_cast<u32>(mode), cb); }
 
 bool ogcwrap::exi::sync(exi_channel_t chan)
-	{ return EXI_Sync(mcast(s32, chan)); }
+	{ return EXI_Sync(static_cast<s32>(chan)); }
 
 bool ogcwrap::exi::attach(exi_channel_t chan, EXICallback cb)
-	{ return EXI_Attach(mcast(s32, chan), cb); }
+	{ return EXI_Attach(static_cast<s32>(chan), cb); }
 
 bool ogcwrap::exi::detach(exi_channel_t chan)
-	{ return EXI_Detach(mcast(s32, chan)); }
+	{ return EXI_Detach(static_cast<s32>(chan)); }

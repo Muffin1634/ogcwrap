@@ -454,13 +454,13 @@ void ogcwrap::gx::setDisplayCopyDest(u16 width, u16 height)
 	{ GX_SetDispCopyDst(width, height); }
 
 void ogcwrap::gx::setDisplayCopyGamma(gx_gamma_t gamma)
-	{ GX_SetDispCopyGamma(mcast(u8, gamma)); }
+	{ GX_SetDispCopyGamma(static_cast<u8>(gamma)); }
 
 void ogcwrap::gx::setDisplayCopyFrame2Field(gx_copy_mode_t mode)
-	{ GX_SetDispCopyFrame2Field(mcast(u8, mode)); }
+	{ GX_SetDispCopyFrame2Field(static_cast<u8>(mode)); }
 
 void ogcwrap::gx::setCopyClamp(gx_clamp_mode_t mode)
-	{ GX_SetCopyClamp(mcast(u8, mode)); }
+	{ GX_SetCopyClamp(static_cast<u8>(mode)); }
 
 void ogcwrap::gx::setCopyFilter(bool aaStatus, u8 samplePattern[12][2], bool vfStatus, u8 vfilter[7])
 	{ GX_SetCopyFilter(aaStatus, samplePattern, vfStatus, vfilter); }
@@ -475,7 +475,7 @@ void ogcwrap::gx::setViewport(f32 left, f32 top, f32 width, f32 height, f32 near
 	{ GX_SetViewport(left, top, width, height, near, far); }
 
 void ogcwrap::gx::setViewportJitter(f32 left, f32 top, f32 width, f32 height, f32 near, f32 far, gx_next_field_t next)
-	{ GX_SetViewportJitter(left, top, width, height, near, far, mcast(u32, next)); }
+	{ GX_SetViewportJitter(left, top, width, height, near, far, static_cast<u32>(next)); }
 
 void ogcwrap::gx::adjustForOverscan(GXRModeObj * rmIn, GXRModeObj * rmOut, u16 hTrim, u16 vTrim)
 	{ GX_AdjustForOverscan(rmIn, rmOut, hTrim, vTrim); }
@@ -499,7 +499,7 @@ void ogcwrap::gx::setAlphaUpdate(bool enable)
 	{ GX_SetAlphaUpdate(enable); }
 
 void ogcwrap::gx::setPixelFormat(gx_pixel_format_t pixelFmt, gx_z_format_t zFmt)
-	{ GX_SetPixelFmt(mcast(u8, pixelFmt), mcast(u8, zFmt)); }
+	{ GX_SetPixelFmt(static_cast<u8>(pixelFmt), static_cast<u8>(zFmt)); }
 
 void ogcwrap::gx::setDestAlpha(bool enable, u8 alpha)
 	{ GX_SetDstAlpha(enable, alpha); }
@@ -514,7 +514,7 @@ void ogcwrap::gx::setTextureCopySource(u16 left, u16 top, u16 width, u16 height)
 	{ GX_SetTexCopySrc(left, top, width, height); }
 
 void ogcwrap::gx::setTextureCopyDest(u16 width, u16 height, gx_texture_format_t format, bool mipmap)
-	{ GX_SetTexCopyDst(width, height, mcast(u32, format), mipmap); }
+	{ GX_SetTexCopyDst(width, height, static_cast<u32>(format), mipmap); }
 
 void ogcwrap::gx::copyTexture(void * dest, bool clear)
 	{ GX_CopyTex(dest, clear); }
@@ -538,7 +538,7 @@ void ogcwrap::gx::clearBoundingBox(void)
 	{ GX_ClearBoundingBox(); }
 
 void ogcwrap::gx::setFog(gx_fog_equation_t equation, f32 startZ, f32 endZ, f32 nearZ, f32 farZ, GXColor color)
-	{ GX_SetFog(mcast(u8, equation), startZ, endZ, nearZ, farZ, color); }
+	{ GX_SetFog(static_cast<u8>(equation), startZ, endZ, nearZ, farZ, color); }
 
 void ogcwrap::gx::setFogColor(GXColor color)
 	{ GX_SetFogColor(color); }
@@ -569,31 +569,31 @@ void ogcwrap::gx::getVertexDescriptorList(GXVtxDesc * desclist)
 	{ GX_GetVtxDescv(desclist); }
 
 void ogcwrap::gx::setVertexAttributeFormat(gx_vertex_format_t format, gx_vertex_attribute_t attr, gx_vertex_component_type_t comptype, gx_vertex_component_format_t compfmt, u8 fraction_bits)
-	{ GX_SetVtxAttrFmt(mcast(u8, format), mcast(u32, attr), mcast(u32, comptype), mcast(u32, compfmt), fraction_bits); }
+	{ GX_SetVtxAttrFmt(static_cast<u8>(format), static_cast<u32>(attr), static_cast<u32>(comptype), static_cast<u32>(compfmt), fraction_bits); }
 
 void ogcwrap::gx::setVertexAttributeFormatList(gx_vertex_format_t format, GXVtxAttrFmt * attrlist)
-	{ GX_SetVtxAttrFmtv(mcast(u8, format), attrlist); }
+	{ GX_SetVtxAttrFmtv(static_cast<u8>(format), attrlist); }
 
 void ogcwrap::gx::setVertexDescriptor(gx_vertex_attribute_t attr, gx_vertex_descriptor_t type)
-	{ GX_SetVtxDesc(mcast(u8, attr), mcast(u8,type)); }
+	{ GX_SetVtxDesc(static_cast<u8>(attr), mcast(u8,type)); }
 
 void ogcwrap::gx::setVertexDescriptorList(GXVtxDesc * desclist)
 	{ GX_SetVtxDescv(desclist); }
 
 void ogcwrap::gx::setArray(gx_vertex_attribute_t attr, void * array, u8 stride)
-	{ GX_SetArray(mcast(u8, attr), array, stride); }
+	{ GX_SetArray(static_cast<u8>(attr), array, stride); }
 
 void ogcwrap::gx::setChannelCount(u8 count)
 	{ GX_SetNumChans(count); }
 
 void ogcwrap::gx::setColorChannelControl(gx_color_channel_t channel, bool lightEnable, u8 ambient, u8 material, u8 lights, gx_diffuse_function_t diff, gx_attenuation_function_t attn)
-	{ GX_SetChanCtrl(mcast(s32, channel), lightEnable, ambient, material, lights, mcast(u8, diff), mcast(u8, attn)); }
+	{ GX_SetChanCtrl(static_cast<s32>(channel), lightEnable, ambient, material, lights, static_cast<u8>(diff), static_cast<u8>(attn)); }
 
 void ogcwrap::gx::setColorChannelAmbient(gx_color_channel_t channel, GXColor color)
-	{ GX_SetChanAmbColor(mcast(s32, channel), color); }
+	{ GX_SetChanAmbColor(static_cast<s32>(channel), color); }
 
 void ogcwrap::gx::setColorChannelMaterial(gx_color_channel_t channel, GXColor color)
-	{ GX_SetChanMatColor(mcast(s32, channel), color); }
+	{ GX_SetChanMatColor(static_cast<s32>(channel), color); }
 
 void ogcwrap::gx::setTexGenCount(u8 count)
 	{ GX_SetNumTexGens(count); }
@@ -601,39 +601,39 @@ void ogcwrap::gx::setTexGenCount(u8 count)
 void ogcwrap::gx::setTexCoordGen(gx_texture_coordinate_index_t coordindex, gx_texture_coordinate_generation_type_t type, gx_texture_coordinate_source_t source, gx_texture_matrix_index_t index, bool normalize, gx_post_transform_matrix_index_t ptfindex)
 {
 	if (ptfindex == gx_post_transform_matrix_index_t::STCG1)
-		GX_SetTexCoordGen(mcast(u16, coordindex), mcast(u32, type), mcast(u32, source), mcast(u32, index));
+		GX_SetTexCoordGen(static_cast<u16>(coordindex), static_cast<u32>(type), static_cast<u32>(source), static_cast<u32>(index));
 	else
-		GX_SetTexCoordGen2(mcast(u16, coordindex), mcast(u32, type), mcast(u32, source), mcast(u32, index), normalize, mcast(u32, ptfindex));
+		GX_SetTexCoordGen2(static_cast<u16>(coordindex), static_cast<u32>(type), static_cast<u32>(source), static_cast<u32>(index), normalize, static_cast<u32>(ptfindex));
 }
 void ogcwrap::gx::setTexCoordScale(gx_texture_coordinate_index_t coordindex, bool autoscale, u16 scaleS, u16 scaleT)
-	{ GX_SetTexCoordScaleManually(mcast(u8, coordindex), autoscale, scaleS, scaleT); }
+	{ GX_SetTexCoordScaleManually(static_cast<u8>(coordindex), autoscale, scaleS, scaleT); }
 
 void ogcwrap::gx::setTexCoordBias(gx_texture_coordinate_index_t coordindex, bool biasS, bool biasT)
-	{ GX_SetTexCoordBias(mcast(u8, coordindex), biasS, biasT); }
+	{ GX_SetTexCoordBias(static_cast<u8>(coordindex), biasS, biasT); }
 
 void ogcwrap::gx::setTexCoordCylWrap(u8 texcoord, bool s_enable, bool t_enable)
 	{ GX_SetTexCoordCylWrap(texcoord, s_enable, t_enable); }
 
 void ogcwrap::gx::setTextureOffsetStatus(gx_texture_coordinate_index_t coordindex, bool lineStatus, bool pointStatus)
-	{ GX_EnableTexOffsets(mcast(u8, coordindex), lineStatus, pointStatus); }
+	{ GX_EnableTexOffsets(static_cast<u8>(coordindex), lineStatus, pointStatus); }
 
 u32 ogcwrap::gx::getTextureBufferSize(u16 width, u16 height, gx_texture_format_t format, bool mipmapStatus, u8 maxLOD)
-	{ return GX_GetTexBufferSize(width, height, mcast(u32, format), mipmapStatus, maxLOD); }
+	{ return GX_GetTexBufferSize(width, height, static_cast<u32>(format), mipmapStatus, maxLOD); }
 
 void ogcwrap::gx::setZMode(bool comparisonEnable, gx_comparison_t comparison, bool bufferUpdate)
-	{ GX_SetZMode(comparisonEnable, mcast(u8, comparison), bufferUpdate); }
+	{ GX_SetZMode(comparisonEnable, static_cast<u8>(comparison), bufferUpdate); }
 
 void ogcwrap::gx::setZTexture(gx_z_texture_operator_t op, gx_z_texture_format_t format, u32 bias)
-	{ GX_SetZTexture(mcast(u8, op), mcast(u8, format), bias); }
+	{ GX_SetZTexture(static_cast<u8>(op), static_cast<u8>(format), bias); }
 
 void ogcwrap::gx::setZCompLoc(gx_z_buffer_time_t time)
-	{ GX_SetZCompLoc(mcast(u8, time)); }
+	{ GX_SetZCompLoc(static_cast<u8>(time)); }
 
 void ogcwrap::gx::initTextureCacheRegion(GXTexRegion * region, bool is32bmip, void * texmemEven, gx_texture_cache_size_t sizeEven, void * texmemOdd, gx_texture_cache_size_t sizeOdd)
-	{ GX_InitTexCacheRegion(region, is32bmip, mcast(u32, texmemEven), mcast(u8, sizeEven), mcast(u32, texmemOdd), mcast(u8, sizeOdd)); }
+	{ GX_InitTexCacheRegion(region, is32bmip, static_cast<u32>(texmemEven), static_cast<u8>(sizeEven), static_cast<u32>(texmemOdd), static_cast<u8>(sizeOdd)); }
 
 void ogcwrap::gx::initTexturePreloadRegion(GXTexRegion * region, void * texmemEven, u32 sizeEven, void * texmemOdd, u32 sizeOdd)
-	{ GX_InitTexPreloadRegion(region, mcast(u32, texmemEven), sizeEven, mcast(u32, texmemOdd), sizeOdd); }
+	{ GX_InitTexPreloadRegion(region, static_cast<u32>(texmemEven), sizeEven, static_cast<u32>(texmemOdd), sizeOdd); }
 
 void ogcwrap::gx::initTextureObject(
 	GXTexObj *			obj,
@@ -649,9 +649,9 @@ void ogcwrap::gx::initTextureObject(
 				  imagebuf,
 				  width,
 				  height,
-				  mcast(u8, format),
-				  mcast(u8, wrapS),
-				  mcast(u8, wrapT),
+				  static_cast<u8>(format),
+				  static_cast<u8>(wrapS),
+				  static_cast<u8>(wrapT),
 				  trilinear);
 }
 
@@ -670,30 +670,30 @@ void ogcwrap::gx::initTextureObjectColorIndex(
 					imagebuf,
 					width,
 					height,
-					mcast(u8, format),
-					mcast(u8, wrapS),
-					mcast(u8, wrapT),
+					static_cast<u8>(format),
+					static_cast<u8>(wrapS),
+					static_cast<u8>(wrapT),
 					mipmap,
-					mcast(u32, tlut));
+					static_cast<u32>(tlut));
 }
 
 void ogcwrap::gx::initTLUTObj(GXTlutObj * tlut, void * addr, gx_tlut_entry_format_t format, u16 entries)
-	{ GX_InitTlutObj(tlut, addr, mcast(u8, format), entries); }
+	{ GX_InitTlutObj(tlut, addr, static_cast<u8>(format), entries); }
 
 void ogcwrap::gx::initTLUTRegion(GXTlutRegion * region, void * addr, u8 size)
-	{ GX_InitTlutRegion(region, mcast(u32, addr), size); }
+	{ GX_InitTlutRegion(region, static_cast<u32>(addr), size); }
 
 void ogcwrap::gx::preloadTexture(GXTexObj * obj, GXTexRegion * region)
 	{ GX_PreloadEntireTexture(obj, region); }
 
 void ogcwrap::gx::loadTextureObject(GXTexObj * obj, gx_texture_map_index_t index)
-	{ GX_LoadTexObj(obj, mcast(u8, index)); }
+	{ GX_LoadTexObj(obj, static_cast<u8>(index)); }
 
 void ogcwrap::gx::loadTLUT(GXTlutObj * tlut, gx_tlut_index_t index)
-	{ GX_LoadTlut(tlut, mcast(u8, index)); }
+	{ GX_LoadTlut(tlut, static_cast<u8>(index)); }
 
 void ogcwrap::gx::loadPreloadedTextureObject(GXTexObj * obj, GXTexRegion * region, gx_texture_map_index_t index)
-	{ GX_LoadTexObjPreloaded(obj, region, mcast(u8, index)); }
+	{ GX_LoadTexObjPreloaded(obj, region, static_cast<u8>(index)); }
 
 void ogcwrap::gx::setTextureObjectData(GXTexObj * obj, void * imagebuf)
 	{ GX_InitTexObjData(obj, imagebuf); }
@@ -702,24 +702,24 @@ void ogcwrap::gx::setTextureObjectUserData(GXTexObj * obj, void * data)
 	{ GX_InitTexObjUserData(obj, data); }
 
 void ogcwrap::gx::setTextureObjectTLUT(GXTexObj * obj, gx_tlut_index_t tlut)
-	{ GX_InitTexObjTlut(obj, mcast(u8, tlut)); }
+	{ GX_InitTexObjTlut(obj, static_cast<u8>(tlut)); }
 
 void ogcwrap::gx::setTextureObjectWrap(GXTexObj * obj, gx_wrap_mode_t wrapS, gx_wrap_mode_t wrapT)
-	{ GX_InitTexObjWrapMode(obj, mcast(u8, wrapS), mcast(u8, wrapT)); }
+	{ GX_InitTexObjWrapMode(obj, static_cast<u8>(wrapS), static_cast<u8>(wrapT)); }
 
 void ogcwrap::gx::setTextureObjectLOD(GXTexObj * obj, gx_texture_filter_t miniFilter, gx_texture_filter_t magniFilter, f32 minLOD, f32 maxLOD, f32 bias, bool clamp, bool edgeLOD, gx_max_anisotropic_filter_t maxaniso)
 {
-	GX_InitTexObjFilterMode(obj, mcast(u8, miniFilter), mcast(u8, magniFilter));
+	GX_InitTexObjFilterMode(obj, static_cast<u8>(miniFilter), static_cast<u8>(magniFilter));
 	GX_InitTexObjMinLOD(obj, minLOD);
 	GX_InitTexObjMaxLOD(obj, maxLOD);
 	GX_InitTexObjLODBias(obj, bias);
 	GX_InitTexObjBiasClamp(obj, clamp);
 	GX_InitTexObjEdgeLOD(obj, edgeLOD);
-	GX_InitTexObjMaxAniso(obj, mcast(u8, maxaniso));
+	GX_InitTexObjMaxAniso(obj, static_cast<u8>(maxaniso));
 }
 
 void ogcwrap::gx::setTextureObjectLODFilter(GXTexObj * obj, gx_texture_filter_t miniFilter, gx_texture_filter_t magniFilter)
-	{ GX_InitTexObjFilterMode(obj, mcast(u8, miniFilter), mcast(u8, magniFilter)); }
+	{ GX_InitTexObjFilterMode(obj, static_cast<u8>(miniFilter), static_cast<u8>(magniFilter)); }
 
 void ogcwrap::gx::setTextureObjectLODMin(GXTexObj * obj, f32 minLOD)
 	{ GX_InitTexObjMinLOD(obj, minLOD); }
@@ -737,7 +737,7 @@ void ogcwrap::gx::setTextureObjectLODEdge(GXTexObj * obj, bool edgeLOD)
 	{ GX_InitTexObjEdgeLOD(obj, edgeLOD); }
 
 void ogcwrap::gx::setTextureObjectLODMaxAniso(GXTexObj * obj, gx_max_anisotropic_filter_t maxAniso)
-	{ GX_InitTexObjMaxAniso(obj, mcast(u8, maxAniso)); }
+	{ GX_InitTexObjMaxAniso(obj, static_cast<u8>(maxAniso)); }
 
 void ogcwrap::gx::getTextureObjectAll(GXTexObj * obj,
 									  void * * imagebuf,
@@ -795,52 +795,52 @@ void ogcwrap::gx::setTEVStageCount(u8 count)
 	{ GX_SetNumTevStages(count); }
 
 void ogcwrap::gx::setTEVOrder(gx_tev_stage_t stage, gx_texture_coordinate_index_t texcoord, gx_texture_map_index_t texmap, gx_color_channel_t channel)
-	{ GX_SetTevOrder(mcast(u8, stage), mcast(u8, texcoord), mcast(u8, texmap), mcast(u8, channel)); }
+	{ GX_SetTevOrder(static_cast<u8>(stage), static_cast<u8>(texcoord), static_cast<u8>(texmap), static_cast<u8>(channel)); }
 
 void ogcwrap::gx::setTEVOp(gx_tev_stage_t stage, gx_tev_combiner_equation_t tevmode)
-	{ GX_SetTevOp(mcast(u8, stage), mcast(u8, tevmode)); }
+	{ GX_SetTevOp(static_cast<u8>(stage), static_cast<u8>(tevmode)); }
 
 void ogcwrap::gx::setTEVColor(gx_tev_register_t tevreg, GXColor color)
-	{ GX_SetTevColor(mcast(u8, tevreg), color); }
+	{ GX_SetTevColor(static_cast<u8>(tevreg), color); }
 
 void ogcwrap::gx::setTEVColor(gx_tev_register_t tevreg, GXColorS10 color)
-	{ GX_SetTevColorS10(mcast(u8, tevreg), color); }
+	{ GX_SetTevColorS10(static_cast<u8>(tevreg), color); }
 
 void ogcwrap::gx::setTEVColorIn(gx_tev_stage_t stage, gx_tev_register_input_t regA, gx_tev_register_input_t regB, gx_tev_register_input_t regC, gx_tev_register_input_t regD)
-	{ GX_SetTevColorIn(mcast(u8, stage), mcast(u8, regA), mcast(u8, regB), mcast(u8, regC), mcast(u8, regD)); }
+	{ GX_SetTevColorIn(static_cast<u8>(stage), static_cast<u8>(regA), static_cast<u8>(regB), static_cast<u8>(regC), static_cast<u8>(regD)); }
 
 void ogcwrap::gx::setTEVAlphaIn(gx_tev_stage_t stage, gx_tev_register_input_t regA, gx_tev_register_input_t regB, gx_tev_register_input_t regC, gx_tev_register_input_t regD)
-	{ GX_SetTevAlphaIn(mcast(u8, stage), mcast(u8, regA), mcast(u8, regB), mcast(u8, regC), mcast(u8, regD)); }
+	{ GX_SetTevAlphaIn(static_cast<u8>(stage), static_cast<u8>(regA), static_cast<u8>(regB), static_cast<u8>(regC), static_cast<u8>(regD)); }
 
 void ogcwrap::gx::setTEVColorOp(gx_tev_stage_t stage, gx_tev_combiner_operator_t tevop, gx_tev_bias_t bias, gx_tev_scale_t scale, bool clamp, gx_tev_register_t tevreg)
-	{ GX_SetTevColorOp(mcast(u8, stage), mcast(u8, tevop), mcast(u8, bias), mcast(u8, scale), clamp, mcast(u8, tevreg)); }
+	{ GX_SetTevColorOp(static_cast<u8>(stage), static_cast<u8>(tevop), static_cast<u8>(bias), static_cast<u8>(scale), clamp, static_cast<u8>(tevreg)); }
 
 void ogcwrap::gx::setTEVAlphaOp(gx_tev_stage_t stage, gx_tev_combiner_operator_t tevop, gx_tev_bias_t bias, gx_tev_scale_t scale, bool clamp, gx_tev_register_t tevreg)
-	{ GX_SetTevAlphaOp(mcast(u8, stage), mcast(u8, tevop), mcast(u8, bias), mcast(u8, scale), clamp, mcast(u8, tevreg)); }
+	{ GX_SetTevAlphaOp(static_cast<u8>(stage), static_cast<u8>(tevop), static_cast<u8>(bias), static_cast<u8>(scale), clamp, static_cast<u8>(tevreg)); }
 
 void ogcwrap::gx::setTEVAlphaCompare(gx_comparison_t lcomp, u8 lref, gx_alpha_operation_t alphaop, gx_comparison_t rcomp, u8 rref)
-	{ GX_SetAlphaCompare(mcast(u8, lcomp), lref, mcast(u8, alphaop), mcast(u8, rcomp), rref); }
+	{ GX_SetAlphaCompare(static_cast<u8>(lcomp), lref, static_cast<u8>(alphaop), static_cast<u8>(rcomp), rref); }
 
 void ogcwrap::gx::setTEVKColor(gx_tev_register_t tevreg, GXColor color)
-	{ GX_SetTevKColor(mcast(u8, tevreg), color); }
+	{ GX_SetTevKColor(static_cast<u8>(tevreg), color); }
 
 void ogcwrap::gx::setTEVKColor(gx_tev_register_t tevreg, GXColorS10 color)
-	{ GX_SetTevKColorS10(mcast(u8, tevreg), color); }
+	{ GX_SetTevKColorS10(static_cast<u8>(tevreg), color); }
 
 void ogcwrap::gx::selectTEVKColor(gx_tev_stage_t stage, gx_tev_constant_color_selection_t colorsel)
-	{ GX_SetTevKColorSel(mcast(u8, stage), mcast(u8, colorsel)); }
+	{ GX_SetTevKColorSel(static_cast<u8>(stage), static_cast<u8>(colorsel)); }
 
 void ogcwrap::gx::selectTEVKAlpha(gx_tev_stage_t stage, gx_tev_constant_alpha_selection_t alphasel)
-	{ GX_SetTevKAlphaSel(mcast(u8, stage), mcast(u8, alphasel)); }
+	{ GX_SetTevKAlphaSel(static_cast<u8>(stage), static_cast<u8>(alphasel)); }
 
 void ogcwrap::gx::setTEVSwapMode(gx_tev_stage_t stage, gx_tev_swap_table_index_t raster, gx_tev_swap_table_index_t texture)
-	{ GX_SetTevSwapMode(mcast(u8, stage), mcast(u8, raster), mcast(u8, texture)); }
+	{ GX_SetTevSwapMode(static_cast<u8>(stage), static_cast<u8>(raster), static_cast<u8>(texture)); }
 
 void ogcwrap::gx::setTEVSwapModeTable(gx_tev_swap_table_index_t table, gx_tev_color_channel_t red, gx_tev_color_channel_t green, gx_tev_color_channel_t blue, gx_tev_color_channel_t alpha)
-	{ GX_SetTevSwapModeTable(mcast(u8, table), mcast(u8, red), mcast(u8, green), mcast(u8, blue), mcast(u8, alpha)); }
+	{ GX_SetTevSwapModeTable(static_cast<u8>(table), static_cast<u8>(red), static_cast<u8>(green), static_cast<u8>(blue), static_cast<u8>(alpha)); }
 
 void ogcwrap::gx::setTEVDirect(gx_tev_stage_t stage)
-	{ GX_SetTevDirect(mcast(u8, stage)); }
+	{ GX_SetTevDirect(static_cast<u8>(stage)); }
 
 void ogcwrap::gx::setTEVIndirect(gx_tev_stage_t						stage,
 								 gx_indirect_texture_stage_t		indstage,
@@ -853,16 +853,16 @@ void ogcwrap::gx::setTEVIndirect(gx_tev_stage_t						stage,
 								 bool								modtc_mipmap,
 								 gx_indirect_texture_alpha_bump_t	bump)
 {
-	GX_SetTevIndirect(mcast(u8, stage),
-					  mcast(u8, indstage),
-					  mcast(u8, format),
-					  mcast(u8, bias),
-					  mcast(u8, mtx),
-					  mcast(u8, wrapS),
-					  mcast(u8, wrapT),
+	GX_SetTevIndirect(static_cast<u8>(stage),
+					  static_cast<u8>(indstage),
+					  static_cast<u8>(format),
+					  static_cast<u8>(bias),
+					  static_cast<u8>(mtx),
+					  static_cast<u8>(wrapS),
+					  static_cast<u8>(wrapT),
 					  addprev,
 					  modtc_mipmap,
-					  mcast(u8, bump));
+					  static_cast<u8>(bump));
 }
 
 void ogcwrap::gx::setTEVIndirectTile(gx_tev_stage_t						stage,
@@ -876,44 +876,44 @@ void ogcwrap::gx::setTEVIndirectTile(gx_tev_stage_t						stage,
 									 gx_indirect_texture_bias_t			bias,
 									 gx_indirect_texture_alpha_bump_t	bump)
 {
-	GX_SetTevIndTile(mcast(u8, stage),
-					 mcast(u8, indstage),
+	GX_SetTevIndTile(static_cast<u8>(stage),
+					 static_cast<u8>(indstage),
 					 width,
 					 height,
 					 repeatX,
 					 repeatY,
-					 mcast(u8, format),
-					 mcast(u8, mtx),
-					 mcast(u8, bias),
-					 mcast(u8, bump));
+					 static_cast<u8>(format),
+					 static_cast<u8>(mtx),
+					 static_cast<u8>(bias),
+					 static_cast<u8>(bump));
 }
 
 void ogcwrap::gx::setTEVIndirectRepeat(gx_tev_stage_t stage)
-	{ GX_SetTevIndRepeat(mcast(u8, stage)); }
+	{ GX_SetTevIndRepeat(static_cast<u8>(stage)); }
 
 void ogcwrap::gx::setIndirectStageCount(u8 count)
 	{ GX_SetNumIndStages(count); }
 
 void ogcwrap::gx::setIndirectTextureOrder(gx_indirect_texture_stage_t indstage, gx_texture_coordinate_index_t coordindex, gx_texture_map_index_t mapindex)
-	{ GX_SetIndTexOrder(mcast(u8, indstage), mcast(u8, coordindex), mcast(u8, mapindex)); }
+	{ GX_SetIndTexOrder(static_cast<u8>(indstage), static_cast<u8>(coordindex), static_cast<u8>(mapindex)); }
 
 void ogcwrap::gx::setIndirectTextureCoordScale(gx_indirect_texture_stage_t indstage, gx_indirect_texture_scale_t indscaleS, gx_indirect_texture_scale_t indscaleT)
-	{ GX_SetIndTexCoordScale(mcast(u8, indstage), mcast(u8, indscaleS), mcast(u8, indscaleT)); }
+	{ GX_SetIndTexCoordScale(static_cast<u8>(indstage), static_cast<u8>(indscaleS), static_cast<u8>(indscaleT)); }
 
 void ogcwrap::gx::setIndirectTextureMatrix(gx_indirect_texture_matrix_t indmtx, f32 offset[2][3], s8 scaleExp)
-	{ GX_SetIndTexMatrix(mcast(u8, indmtx), offset, scaleExp); }
+	{ GX_SetIndTexMatrix(static_cast<u8>(indmtx), offset, scaleExp); }
 
 void ogcwrap::gx::setIndirectTextureBumpST(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx)
-	{ GX_SetTevIndBumpST(mcast(u8, stage), mcast(u8, indstage), mcast(u8, indmtx)); }
+	{ GX_SetTevIndBumpST(static_cast<u8>(stage), static_cast<u8>(indstage), static_cast<u8>(indmtx)); }
 
 void ogcwrap::gx::setIndirectTextureBumpXYZ(gx_tev_stage_t stage, gx_indirect_texture_stage_t indstage, gx_indirect_texture_matrix_t indmtx)
-	{ GX_SetTevIndBumpXYZ(mcast(u8, stage), mcast(u8, indstage), mcast(u8, indmtx)); }
+	{ GX_SetTevIndBumpXYZ(static_cast<u8>(stage), static_cast<u8>(indstage), static_cast<u8>(indmtx)); }
 
 void ogcwrap::gx::loadLightObject(GXLightObj * light, gx_light_index_t index)
-	{ GX_LoadLightObj(light, mcast(u8, index)); }
+	{ GX_LoadLightObj(light, static_cast<u8>(index)); }
 
 void ogcwrap::gx::loadLightObjectIndex(u32 lightelement, gx_light_index_t index)
-	{ GX_LoadLightObjIdx(lightelement, mcast(u8, index)); }
+	{ GX_LoadLightObjIdx(lightelement, static_cast<u8>(index)); }
 
 void ogcwrap::gx::setLightPosition(GXLightObj * light, f32 posX, f32 posY, f32 posZ)
 	{ GX_InitLightPos(light, posX, posY, posZ); }
@@ -931,7 +931,7 @@ void ogcwrap::gx::setLightColor(GXLightObj * light, GXColor color)
 	{ GX_InitLightColor(light, color); }
 
 void ogcwrap::gx::setLightDistanceAttenuation(GXLightObj * light, f32 distance, f32 brightness, gx_attenuation_function_t distfn)
-	{ GX_InitLightDistAttn(light, distance, brightness, mcast(u8, distfn)); }
+	{ GX_InitLightDistAttn(light, distance, brightness, static_cast<u8>(distfn)); }
 
 void ogcwrap::gx::setLightAttenuation(GXLightObj * light, f32 ac1, f32 ac2, f32 ac3, f32 dc1, f32 dc2, f32 dc3)
 	{ GX_InitLightAttn(light, ac1, ac2, ac3, dc1, dc2, dc3); }
@@ -958,40 +958,40 @@ void ogcwrap::gx::setSpecularDirection(GXLightObj * light, guVector normal)
 	{ GX_InitSpecularDir(light, normal.x, normal.y, normal.z); }
 
 void ogcwrap::gx::setLightSpot(GXLightObj * light, f32 angle, gx_spot_illumination_function_t spotfn)
-	{ GX_InitLightSpot(light, angle, mcast(u8, spotfn)); }
+	{ GX_InitLightSpot(light, angle, static_cast<u8>(spotfn)); }
 
 void ogcwrap::gx::matrixIndex(u8 index)
 	{ GX_MatrixIndex1x8(index); }
 
 void ogcwrap::gx::setCurrentMatrix(gx_position_normal_matrix_index_t index)
-	{ GX_SetCurrentMtx(mcast(u32, index)); }
+	{ GX_SetCurrentMtx(static_cast<u32>(index)); }
 
 void ogcwrap::gx::loadProjectionMatrix(Mtx44 mtx, gx_projection_type_t type)
-	{ GX_LoadProjectionMtx(mtx, mcast(u8, type)); }
+	{ GX_LoadProjectionMtx(mtx, static_cast<u8>(type)); }
 
 void ogcwrap::gx::loadPosMtxImm(Mtx mtx, gx_position_normal_matrix_index_t index)
-	{ GX_LoadPosMtxImm(mtx, mcast(u32, index)); }
+	{ GX_LoadPosMtxImm(mtx, static_cast<u32>(index)); }
 
 void ogcwrap::gx::loadPosMtxIdx(u16 mtxidx, gx_position_normal_matrix_index_t index)
-	{ GX_LoadPosMtxIdx(mtxidx, mcast(u32, index)); }
+	{ GX_LoadPosMtxIdx(mtxidx, static_cast<u32>(index)); }
 
 void ogcwrap::gx::loadNrmMtxImm(Mtx mtx, gx_position_normal_matrix_index_t index)
-	{ GX_LoadNrmMtxImm(mtx, mcast(u32, index)); }
+	{ GX_LoadNrmMtxImm(mtx, static_cast<u32>(index)); }
 
 void ogcwrap::gx::loadNrmMtxIdx(u16 mtxidx, gx_position_normal_matrix_index_t index)
-	{ ogcwrap::gx::detail::LoadNrmMtxIdx(mtxidx, mcast(u32, index)); }
+	{ ogcwrap::gx::detail::LoadNrmMtxIdx(mtxidx, static_cast<u32>(index)); }
 
 void ogcwrap::gx::loadNrmMtxImm3x3(Mtx33 mtx, gx_position_normal_matrix_index_t index)
-	{ GX_LoadNrmMtxImm3x3(mtx, mcast(u32, index)); }
+	{ GX_LoadNrmMtxImm3x3(mtx, static_cast<u32>(index)); }
 
 void ogcwrap::gx::loadNrmMtxIdx3x3(u16 mtxidx, gx_position_normal_matrix_index_t index)
-	{ GX_LoadNrmMtxIdx3x3(mtxidx, mcast(u32, index)); }
+	{ GX_LoadNrmMtxIdx3x3(mtxidx, static_cast<u32>(index)); }
 
 void ogcwrap::gx::loadTexMtxImm(Mtx mtx, gx_texture_matrix_index_t index, gx_texture_matrix_type_t type)
-	{ GX_LoadTexMtxImm(mtx, mcast(u32, index), mcast(u8, type)); }
+	{ GX_LoadTexMtxImm(mtx, static_cast<u32>(index), static_cast<u8>(type)); }
 
 void ogcwrap::gx::loadTexMtxIdx(u16 mtxidx, gx_texture_matrix_index_t index, gx_texture_matrix_type_t type)
-	{ GX_LoadTexMtxIdx(mtxidx, mcast(u32, index), mcast(u8, type)); }
+	{ GX_LoadTexMtxIdx(mtxidx, static_cast<u32>(index), static_cast<u8>(type)); }
 
 void ogcwrap::gx::enableBreakPoint(void * addr)
 	{ GX_EnableBreakPt(addr); }
@@ -1000,16 +1000,16 @@ void ogcwrap::gx::disableBreakPoint(void)
 	{ GX_DisableBreakPt(); }
 
 void ogcwrap::gx::setLineWidth(u8 width, gx_texture_offset_value_t texfmt)
-	{ GX_SetLineWidth(width, mcast(u8, texfmt)); }
+	{ GX_SetLineWidth(width, static_cast<u8>(texfmt)); }
 
 void ogcwrap::gx::setPointSize(u8 width, gx_texture_offset_value_t texfmt)
-	{ GX_SetPointSize(width, mcast(u8, texfmt)); }
+	{ GX_SetPointSize(width, static_cast<u8>(texfmt)); }
 
 void ogcwrap::gx::setBlendMode(gx_blend_mode_t type, gx_blend_control_t sourceFactor, gx_blend_control_t destFactor, gx_logic_operation_t op)
-	{ GX_SetBlendMode(mcast(u8, type), mcast(u8, sourceFactor), mcast(u8, destFactor), mcast(u8, op)); }
+	{ GX_SetBlendMode(static_cast<u8>(type), static_cast<u8>(sourceFactor), static_cast<u8>(destFactor), static_cast<u8>(op)); }
 
 void ogcwrap::gx::setCullingMode(gx_culling_mode_t mode)
-	{ GX_SetCullMode(mcast(u8, mode)); }
+	{ GX_SetCullMode(static_cast<u8>(mode)); }
 
 void ogcwrap::gx::setCoplanarMode(bool enable)
 	{ GX_SetCoPlanar(enable); }
@@ -1030,16 +1030,16 @@ void ogcwrap::gx::setPokeDither(bool enable)
 	{ GX_PokeDither(enable); }
 
 void ogcwrap::gx::pokeAlphaMode(gx_comparison_t comp, u8 threshold)
-	{ GX_PokeAlphaMode(mcast(u8, comp), threshold); }
+	{ GX_PokeAlphaMode(static_cast<u8>(comp), threshold); }
 
 void ogcwrap::gx::pokeBlendMode(gx_blend_mode_t type, gx_blend_control_t sourceFactor, gx_blend_control_t destFactor, gx_logic_operation_t op)
-	{ GX_PokeBlendMode(mcast(u8, type), mcast(u8, sourceFactor), mcast(u8, destFactor), mcast(u8, op)); }
+	{ GX_PokeBlendMode(static_cast<u8>(type), static_cast<u8>(sourceFactor), static_cast<u8>(destFactor), static_cast<u8>(op)); }
 
 void ogcwrap::gx::pokeZMode(bool comp, gx_comparison_t compfn, bool update)
-	{ GX_PokeZMode(comp, mcast(u8, compfn), update); }
+	{ GX_PokeZMode(comp, static_cast<u8>(compfn), update); }
 
 void ogcwrap::gx::pokeAlphaRead(gx_alpha_read_mode_t mode)
-	{ GX_PokeAlphaRead(mcast(u8, mode)); }
+	{ GX_PokeAlphaRead(static_cast<u8>(mode)); }
 
 void ogcwrap::gx::pokeDestAlpha(bool enable, u8 constAlpha)
 	{ GX_PokeDstAlpha(enable, constAlpha); }
@@ -1057,7 +1057,7 @@ void ogcwrap::gx::peekZ(u16 x, u16 y, u32 * z)
 	{ GX_PeekZ(x, y, z); }
 
 void ogcwrap::gx::setMisc(gx_misc_token_t token, u32 value)
-	{ GX_SetMisc(mcast(u32, token), value); }
+	{ GX_SetMisc(static_cast<u32>(token), value); }
 
 void ogcwrap::gx::getGPStatus(u8 * overHigh, u8 * underLow, u8 * readIdle, u8 * cmdIdle, u8 * breakpt)
 	{ GX_GetGPStatus(overHigh, underLow, readIdle, cmdIdle, breakpt); }
@@ -1084,7 +1084,7 @@ void ogcwrap::gx::restoreWriteGatherPipe(void)
 	{ GX_RestoreWriteGatherPipe(); }
 
 void ogcwrap::gx::setGPMetric(gx_performance_counter_0_metric_t pc0metric, gx_performance_counter_1_metric_t pc1metric)
-	{ GX_SetGPMetric(mcast(u32, pc0metric), mcast(u32, pc1metric)); }
+	{ GX_SetGPMetric(static_cast<u32>(pc0metric), static_cast<u32>(pc1metric)); }
 
 void ogcwrap::gx::readGPMetric(u32 * pc0metric, u32 * pc1metric)
 	{ GX_ReadGPMetric(pc0metric, pc1metric); }
@@ -1099,7 +1099,7 @@ void ogcwrap::gx::readXfRasMetric(u32 * xfWaitIn, u32 * xfWaitOut, u32 * rasBusy
 	{ GX_ReadXfRasMetric(xfWaitIn, xfWaitOut, rasBusy, clocks); }
 
 void ogcwrap::gx::setVCacheMetric(gx_vertex_cache_metric_t vtxMetric)
-	{ GX_SetVCacheMetric(mcast(u32, vtxMetric)); }
+	{ GX_SetVCacheMetric(static_cast<u32>(vtxMetric)); }
 
 void ogcwrap::gx::readVCacheMetric(u32 * check, u32 * miss, u32 * stall)
 	{ GX_ReadVCacheMetric(check, miss, stall); }
@@ -1110,7 +1110,7 @@ void ogcwrap::gx::clearVCacheMetric(void)
 // namespace ogcwrap::gx::draw
 
 void ogcwrap::gx::draw::begin(gx_primitive_t primitive, gx_vertex_format_t vtxfmt, u16 count)
-	{ GX_Begin(mcast(u8, primitive), mcast(u8, vtxfmt), count); }
+	{ GX_Begin(static_cast<u8>(primitive), static_cast<u8>(vtxfmt), count); }
 
 void ogcwrap::gx::draw::end()
 	{ GX_End(); }

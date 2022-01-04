@@ -275,7 +275,7 @@ void ogcwrap::lwp::thread::_clearState(lwp_cntrl * thread, u32 state)
 	{ __lwp_thread_clearstate(thread, state); }
 
 void ogcwrap::lwp::thread::_changePriority(lwp_cntrl * thread, u32 priority, bool prepend)
-	{ __lwp_thread_changepriority(thread, priority, mcast(u32, prepend)); }
+	{ __lwp_thread_changepriority(thread, priority, static_cast<u32>(prepend)); }
 
 void ogcwrap::lwp::thread::_setPriority(lwp_cntrl * thread, u32 priority)
 	{ __lwp_thread_setpriority(thread, priority); }
@@ -287,7 +287,7 @@ void ogcwrap::lwp::thread::_suspend(lwp_cntrl * thread)
 	{ __lwp_thread_suspend(thread); }
 
 void ogcwrap::lwp::thread::_resume(lwp_cntrl * thread, bool force)
-	{ __lwp_thread_resume(thread, mcast(u32, force)); }
+	{ __lwp_thread_resume(thread, static_cast<u32>(force)); }
 
 void ogcwrap::lwp::thread::_loadEnv(lwp_cntrl * thread)
 	{ __lwp_thread_loadenv(thread); }

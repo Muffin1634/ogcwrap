@@ -23,7 +23,7 @@ namespace ogcwrap::debug
  */
 
 void ogcwrap::debug::init(debug_device_t dev, u16 port)
-	{ DEBUG_Init(mcast(s32, dev), port); }
+	{ DEBUG_Init(static_cast<s32>(dev), port); }
 
 void ogcwrap::debug::_breakpt(void)
 	{ _break(); }

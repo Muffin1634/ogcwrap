@@ -68,10 +68,10 @@ u8 ogcwrap::audio::getStreamVolumeRight(void)
 	{ return AUDIO_GetStreamVolRight(); }
 
 sample_rate_t ogcwrap::audio::getStreamSampleRate(void)
-	{ return mcast(sample_rate_t, AUDIO_GetStreamSampleRate()); }
+	{ return static_cast<sample_rate_t>(AUDIO_GetStreamSampleRate()); }
 
 play_state_t ogcwrap::audio::getStreamPlayState(void)
-	{ return mcast(play_state_t, AUDIO_GetStreamPlayState()); }
+	{ return static_cast<play_state_t>(AUDIO_GetStreamPlayState()); }
 
 u16 ogcwrap::audio::getDMAEnableFlag(void)
 	{ return AUDIO_GetDMAEnableFlag(); }
@@ -95,19 +95,19 @@ void ogcwrap::audio::setStreamVolumeRight(u8 volume)
 	{ AUDIO_SetStreamVolRight(volume); }
 
 void ogcwrap::audio::setStreamSampleRate(sample_rate_t rate)
-	{ AUDIO_SetStreamSampleRate(mcast(u32, rate)); }
+	{ AUDIO_SetStreamSampleRate(static_cast<u32>(rate)); }
 
 void ogcwrap::audio::setStreamPlayState(play_state_t state)
-	{ AUDIO_SetStreamPlayState(mcast(u32, state)); }
+	{ AUDIO_SetStreamPlayState(static_cast<u32>(state)); }
 
 void ogcwrap::audio::setStreamTrigger(u32 count)
 	{ AUDIO_SetStreamTrigger(count); }
 
 void ogcwrap::audio::setDSPSampleRate(sample_rate_t rate)
-	{ AUDIO_SetDSPSampleRate(mcast(u32, rate)); }
+	{ AUDIO_SetDSPSampleRate(static_cast<u32>(rate)); }
 
 void ogcwrap::audio::initDMA(void * buf, u32 bufsize)
-	{ AUDIO_InitDMA(mcast(u32, buf), bufsize); }
+	{ AUDIO_InitDMA(static_cast<u32>(buf), bufsize); }
 
 void ogcwrap::audio::startDMA(void)
 	{ AUDIO_StartDMA(); }

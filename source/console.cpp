@@ -40,8 +40,8 @@ void ogcwrap::console::getMetrics(u8 * rows, u8 * cols)
 
 	CON_GetMetrics(colptr, rowptr);
 
-	*rows = mcast(u8, *rowptr);
-	*cols = mcast(u8, *colptr);
+	*rows = static_cast<u8>(*rowptr);
+	*cols = static_cast<u8>(*colptr);
 }
 
 void ogcwrap::console::getPosition(u8 * row, u8 * col)
@@ -50,8 +50,8 @@ void ogcwrap::console::getPosition(u8 * row, u8 * col)
 
 	CON_GetPosition(colptr, rowptr);
 
-	*row = mcast(u8, *rowptr);
-	*col = mcast(u8, *rowptr);
+	*row = static_cast<u8>(*rowptr);
+	*col = static_cast<u8>(*rowptr);
 }
 
 void ogcwrap::console::enableGecko(u8 channel, bool safe)

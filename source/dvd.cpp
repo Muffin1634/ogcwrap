@@ -65,7 +65,7 @@ void ogcwrap::dvd::init(void)
 	{ DVD_Init(); }
 
 void ogcwrap::dvd::reset(drive_reset_mode_t mode)
-	{ DVD_Reset(mcast(u32, mode)); }
+	{ DVD_Reset(static_cast<u32>(mode)); }
 
 void ogcwrap::dvd::pause(void)
 	{ DVD_Pause(); }
@@ -101,10 +101,10 @@ s32 ogcwrap::dvd::mountAsync(dvdcmdblk * block, dvdcbcallback cb)
 	{ return DVD_MountAsync(block, cb); }
 
 s32 ogcwrap::dvd::controlDrive(dvdcmdblk * block, drive_control_mode_t mode)
-	{ return DVD_ControlDrive(block, mcast(u32, mode)); }
+	{ return DVD_ControlDrive(block, static_cast<u32>(mode)); }
 
 s32 ogcwrap::dvd::controlDriveAsync(dvdcmdblk * block, drive_control_mode_t mode, dvdcbcallback cb)
-	{ return DVD_ControlDriveAsync(block, mcast(u32, mode), cb); }
+	{ return DVD_ControlDriveAsync(block, static_cast<u32>(mode), cb); }
 
 s32 ogcwrap::dvd::spinUp(dvdcmdblk * block)
 	{ return DVD_SpinUpDrive(block); }

@@ -1,6 +1,6 @@
 # intermediates
-!build/*.o
 build/
+lib/
 
 # sublime
 sublime/libwrap.sublime-workspace
@@ -11,3 +11,4 @@ Doxyfile
 
 # visual studio
 .vs/
+.vscode/
