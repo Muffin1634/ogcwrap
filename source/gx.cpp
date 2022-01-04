@@ -575,7 +575,7 @@ void ogcwrap::gx::setVertexAttributeFormatList(gx_vertex_format_t format, GXVtxA
 	{ GX_SetVtxAttrFmtv(static_cast<u8>(format), attrlist); }
 
 void ogcwrap::gx::setVertexDescriptor(gx_vertex_attribute_t attr, gx_vertex_descriptor_t type)
-	{ GX_SetVtxDesc(static_cast<u8>(attr), mcast(u8,type)); }
+	{ GX_SetVtxDesc(static_cast<u8>(attr), static_cast<u8>(type)); }
 
 void ogcwrap::gx::setVertexDescriptorList(GXVtxDesc * desclist)
 	{ GX_SetVtxDescv(desclist); }
@@ -630,10 +630,10 @@ void ogcwrap::gx::setZCompLoc(gx_z_buffer_time_t time)
 	{ GX_SetZCompLoc(static_cast<u8>(time)); }
 
 void ogcwrap::gx::initTextureCacheRegion(GXTexRegion * region, bool is32bmip, void * texmemEven, gx_texture_cache_size_t sizeEven, void * texmemOdd, gx_texture_cache_size_t sizeOdd)
-	{ GX_InitTexCacheRegion(region, is32bmip, static_cast<u32>(texmemEven), static_cast<u8>(sizeEven), static_cast<u32>(texmemOdd), static_cast<u8>(sizeOdd)); }
+	{ GX_InitTexCacheRegion(region, is32bmip, *static_cast<u32 *>(texmemEven), static_cast<u8>(sizeEven), *static_cast<u32 *>(texmemOdd), static_cast<u8>(sizeOdd)); }
 
 void ogcwrap::gx::initTexturePreloadRegion(GXTexRegion * region, void * texmemEven, u32 sizeEven, void * texmemOdd, u32 sizeOdd)
-	{ GX_InitTexPreloadRegion(region, static_cast<u32>(texmemEven), sizeEven, static_cast<u32>(texmemOdd), sizeOdd); }
+	{ GX_InitTexPreloadRegion(region, *static_cast<u32 *>(texmemEven), sizeEven, *static_cast<u32 *>(texmemOdd), sizeOdd); }
 
 void ogcwrap::gx::initTextureObject(
 	GXTexObj *			obj,
@@ -681,7 +681,7 @@ void ogcwrap::gx::initTLUTObj(GXTlutObj * tlut, void * addr, gx_tlut_entry_forma
 	{ GX_InitTlutObj(tlut, addr, static_cast<u8>(format), entries); }
 
 void ogcwrap::gx::initTLUTRegion(GXTlutRegion * region, void * addr, u8 size)
-	{ GX_InitTlutRegion(region, static_cast<u32>(addr), size); }
+	{ GX_InitTlutRegion(region, *static_cast<u32 *>(addr), size); }
 
 void ogcwrap::gx::preloadTexture(GXTexObj * obj, GXTexRegion * region)
 	{ GX_PreloadEntireTexture(obj, region); }
